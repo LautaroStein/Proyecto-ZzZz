@@ -35,7 +35,6 @@ const controllerUser = {
                     phone, 
                     google,
                     rol
-                    
                 })
 
                 console.log(nuevoUsuario)

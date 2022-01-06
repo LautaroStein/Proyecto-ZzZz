@@ -8,6 +8,14 @@ const userSchema = new mongoose.Schema({
     userImg:{type: String, required:true},
     phone:{type: Number, required:true},
     google:{type:Boolean, default:false},
+    payments:[{
+        number:{type: Number},
+        name:{type: String},
+        expiration:{type: Number},
+        security:{type: String},
+        bank:{type: String},
+        paymentMethod:{type: Boolean}
+    }],
     rol: {type:String, default:'usuario'}
 })
 

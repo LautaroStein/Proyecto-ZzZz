@@ -1,10 +1,9 @@
 import React, {useRef, useState} from 'react'
-import {Link} from 'react-router-dom'
 import GoogleLogin from 'react-google-login'
+import { toast } from 'react-toastify';
 
 
-
-const SignUp = () => {
+const SignUp = (props) => {
 
 
     const [ error, setError] = useState({})
@@ -53,24 +52,50 @@ const SignUp = () => {
     const inputPhoneNumber = useRef()
    
 
-    const handleSubmitInputs = (e)=> {
+    const handleSubmitInputs = async(e)=> {
         e.preventDefault()
-        handleSubmit(
-           inputName.current.value,
-           inputLastName.current.value,
-           inputUserMail.current.value,
-           inputPassword.current.value,
-           inputImagenUser.current.value,
-           inputPhoneNumber.current.value,
-          )
+        
+        const user = {
+            name : inputName.current.value,
+            lastName : inputLastName.current.value,
+            email : inputUserMail.current.value,
+            password : inputPassword.current.value,
+            userImg : inputImagenUser.current.value,
+            phone : inputPhoneNumber.current.value
+        }
+
+        const userResponse = await props.signup(user)
    
-           inputName.current.value =""
-           inputLastName.current.value =""
-           inputUserMail.current.value =""
-           inputPassword.current.value =""
-           inputImagenUser.current.value =""
-           inputPhoneNumber.current.value =""
-           
+        console.log(userResponse)
+        userResponse.succes 
+            ? 
+            toast.success('Your acount succesfuly Sign up', {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+            }) 
+            
+            : toast.warn(userResponse.error, {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+            });
+            if(userResponse.succes === true){
+                inputName.current.value =""
+                inputLastName.current.value =""
+                inputUserMail.current.value =""
+                inputPassword.current.value =""
+                inputImagenUser.current.value =""
+                inputPhoneNumber.current.value =""
+            }
     }
 
 
@@ -134,7 +159,7 @@ const SignUp = () => {
                             type="text"
                             name="phoneNumberUser"
                             ref = {inputPhoneNumber}
-                            placeholder="Profile picture image Url"
+                            placeholder="2974758745"
                             />
                             {error.phoneNumberUser && <p>{error.phoneNumberUser}</p> }
                         </div>
@@ -148,7 +173,6 @@ const SignUp = () => {
                         onFailure={responseGoogle}
                         cookiePolicy={'single_host_origin'} />
                 
-                    <p> ..Already a member?, <Link className="signinhere" to="/signin">Sign In here ⬅</Link></p>
                     </div>
                 </div>
                 </div>

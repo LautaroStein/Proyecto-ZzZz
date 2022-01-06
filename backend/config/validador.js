@@ -22,7 +22,6 @@ const validador = (req, res, next) => {
         phone:joi.number().required(),
         google:joi.boolean(),
         rol:joi.string(),
-        
     })
 
     const verification = schema.validate(req.body, {abortEarly: false})
