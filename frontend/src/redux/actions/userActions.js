@@ -74,7 +74,7 @@ const userActions = {
                 const user = await axios.get('https://mytinerary-moraga.herokuapp.com/api/user/auth', {
                     headers: { 'Authorization': 'Bearer ' + token }
                 })
-                dispatch({ type: 'USER_LOGGED', payload: { userName: user.data.response.userName, img: user.data.response.img, userID: user.data.response._id } })
+                dispatch({ type: 'usuario', payload: { userName: user.data.response.userName, img: user.data.response.img, userID: user.data.response._id } })
                 return { response: user.data.response }
             } catch (error) {
                 return { error: 'Unauthorized user, try login again' }
