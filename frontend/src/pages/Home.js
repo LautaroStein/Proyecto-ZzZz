@@ -1,7 +1,9 @@
+import Nagation from "../components/Nagation"
+
 const Home = () => {
     return (
         <div>
-            <h1>Holaaaaa</h1>
+            <Nagation />
         </div>
     )
 }

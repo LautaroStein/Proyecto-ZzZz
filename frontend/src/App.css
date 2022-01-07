@@ -27,6 +27,9 @@
     box-sizing: border-box;
     font-family: 'Nunito', sans-serif;
 }
+body{
+  background-color: var(--ColorFondo);
+}
 
 .form-central-todo{
     height: 100vh;
@@ -243,3 +246,118 @@ ul li button:hover:nth-child(4) {
 .form-contenedor-input h1{
     color: var(--color-white);
 }
+.navigation{
+  position: relative;
+  width:400px;
+  height: 70px;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+}
+.navigation ul{
+  display: flex;
+  width: 350px;
+}
+.navigation ul li{
+  position:relative;
+  list-style: none;
+  width: 70px;
+  height: 70px;
+  z-index: 1;
+}
+.navigation ul li a{
+  position: relative;
+  display: flex;
+  justify-self: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  text-align: center;
+  font-weight: 500;
+}
+.navigation ul li a .icon-navigation{
+  position: relative;
+  display: block;
+  line-height: 75px;
+  font-size: 1.5em;
+  text-align: center;
+  transition: 0.5s;
+  color: var(--ColorFondo);
+}
+.navigation ul li.active a .icon-navigation{
+  transform: translateY(32px);
+}
+.navigation ul li a .text-navigation{
+  position: absolute;
+  color: var(--ColorFondo);
+  font-weight: 400;
+  font-size: 0.75em;
+  letter-spacing: 0.05em;
+  transition: 0.5s;
+  opacity: 0;
+  transform: translateY(20px);
+}
+.navigation ul li.active a .text-navigation{
+  opacity: 1;
+  transform: translateY(10px);
+}
+.indicator{
+  position: absolute;
+  top:50%;
+  left:0;
+  width: 70px;
+  height: 70px;
+  background-color: var(--ColorPrimario);
+  border-radius: 50%;
+  border: 6px solid var(--ColorFondo);
+  transition: 0.5s;
+}
+
+.navigation ul li:nth-child(1).active ~ .indicator{
+  transform: translateX(calc(70px * 0));
+}
+.navigation ul li:nth-child(2).active ~ .indicator{
+  transform: translateX(calc(70px * 1));
+}
+.navigation ul li:nth-child(3).active ~ .indicator{
+  transform: translateX(calc(70px * 2));
+}
+.navigation ul li:nth-child(4).active ~ .indicator{
+  transform: translateX(calc(70px * 3));
+}
+.navigation ul li:nth-child(5).active ~ .indicator{
+  transform: translateX(calc(70px * 4));
+}
+
+
+/* 
+
+1- buscar fotos, nombres para cda una, descripcion, que rareza ponerle , precio, cantidad a ofrecer(Facu y Adri) 
+2- autenticacion de usuario y f5(yo).
+3- hacer la card del nft (yo).
+4- navegacion entre distintas paginas(yo).
+5- footer consigna{
+  contactos/redes
+  un input que puede enviar una consulta
+  navegacion
+  copyrigth
+  nombre del proyecto
+}(pedro).
+6- compra falsa de nft.(marcos)
+7- diseñar perfil.
+8- filtros por rareza, precio y mas vendido/menos vendido(Facu y Adri).
+9- controlador get nft por id de usuario.(marcos)
+10- carrito en el front.
+11- template de nodemail al comprar(mati).
+12- agregar tarjeta de credito en la wallet dle usuario.(yo)
+13- que se pueda subir foto por archivo.
+
+
+
+
+
+
+
+*/
