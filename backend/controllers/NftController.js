@@ -51,7 +51,22 @@ loadUnNft: async(req,res)=>{
     }
     res.json({ success: actualizado ? true : false });
   },
+
+  deleteNft: async (req, res) => {
+    const id = req.params.id;
+    let nft;
+    try {
+      await Nft.findOneAndDelete({ _id: id });
+      nft = await Nft.find();
+    } catch (error) {
+      console.log(error);
+    }
   
-};
+    res.json({ response: nft, success: true });
+  },
+  
+  
+}
+
 
 module.exports = nftControllers;

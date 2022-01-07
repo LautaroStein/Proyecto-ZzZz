@@ -2,7 +2,7 @@ const Router = require("express").Router();
 const validador = require("../config/validador");
 const controllerUser = require('../controllers/controllerUser');
 const NftControllers=require("../controllers/NftController");
-const{getAllNft,loadUnNft, modifyAnNft,getOneNft }=NftControllers;
+const{getAllNft,loadUnNft, modifyAnNft,getOneNft,deleteNft }=NftControllers;
 const {newUser,userLoged} = controllerUser;
 
 
@@ -17,8 +17,7 @@ Router.route('/nft')
 Router.route("/nft/:id")
 .put( modifyAnNft) 
 .get(getOneNft)
-
-
+.delete(deleteNft)
 
 // Routes of Users
 
