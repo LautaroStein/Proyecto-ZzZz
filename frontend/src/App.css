@@ -8,6 +8,7 @@
     --ColorCuarto : #85DEB4;
     --ColorQuinto : #96FAAF;
     --ColorDesctacar : #8f0788;
+    --ColorButton : #b903b0;
     --ColorFondo : #14141d;
     --ColorContenedores : #1f1f36;
 
@@ -29,6 +30,7 @@
 }
 body{
   background-color: var(--ColorFondo);
+  /* background-image: url("./assets/4356068.webp"); */
 }
 
 .form-central-todo{
@@ -248,17 +250,16 @@ ul li button:hover:nth-child(4) {
 }
 .navigation{
   position: relative;
-  width:400px;
   height: 70px;
-  background-color: white;
+  background-color: var(--ColorPrimarioFuerte);
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: 10px;
+  border-radius:0 0 10px 10px;
 }
 .navigation ul{
   display: flex;
-  width: 350px;
+  width: 500px;
 }
 .navigation ul li{
   position:relative;
@@ -284,14 +285,15 @@ ul li button:hover:nth-child(4) {
   font-size: 1.5em;
   text-align: center;
   transition: 0.5s;
-  color: var(--ColorFondo);
+  color: rgb(146, 146, 146);
 }
 .navigation ul li.active a .icon-navigation{
-  transform: translateY(32px);
+  transform: translateY(37px);
+  color: white;
 }
 .navigation ul li a .text-navigation{
   position: absolute;
-  color: var(--ColorFondo);
+  color: white;
   font-weight: 400;
   font-size: 0.75em;
   letter-spacing: 0.05em;
@@ -306,7 +308,7 @@ ul li button:hover:nth-child(4) {
 .indicator{
   position: absolute;
   top:50%;
-  left:0;
+  left:25px;
   width: 70px;
   height: 70px;
   background-color: var(--ColorPrimario);
@@ -315,46 +317,196 @@ ul li button:hover:nth-child(4) {
   transition: 0.5s;
 }
 
-.navigation ul li:nth-child(1).active ~ .indicator{
-  transform: translateX(calc(70px * 0));
-}
 .navigation ul li:nth-child(2).active ~ .indicator{
-  transform: translateX(calc(70px * 1));
+  transform: translateX(calc(95px * 1));
 }
 .navigation ul li:nth-child(3).active ~ .indicator{
-  transform: translateX(calc(70px * 2));
+  transform: translateX(calc(95px * 2));
 }
 .navigation ul li:nth-child(4).active ~ .indicator{
-  transform: translateX(calc(70px * 3));
+  transform: translateX(calc(95px * 3));
 }
 .navigation ul li:nth-child(5).active ~ .indicator{
-  transform: translateX(calc(70px * 4));
+  transform: translateX(calc(95px * 4));
 }
 
+.iluminador{
+  position: fixed;
+  z-index: -1;
+  left: -100px;
+  opacity: 0.3;
+  background-image: url("./assets/lauty1.png");
+  height: 500px;
+  width: 500px;
+}
+.iluminador2{
+  position: fixed;
+  z-index: -1;
+  opacity: 0.4;
+  top: 70%;
+  right: 150px;
+  background-image: url("./assets/lauty2.png");
+  height: 500px;
+  width: 500px;
+}
+.iluminador3{
+  position: fixed;
+  z-index: -1;
+  opacity: 0.4;
+  top: -80px;
+  right: -150px;
+  background-image: url("./assets/lauty3.png");
+  height: 400px;
+  width: 400px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 
-/* 
-
-1- buscar fotos, nombres para cda una, descripcion, que rareza ponerle , precio, cantidad a ofrecer(Facu y Adri) 
-2- autenticacion de usuario y f5(yo).
-3- hacer la card del nft (yo).
-4- navegacion entre distintas paginas(yo).
-5- footer consigna{
-  contactos/redes
-  un input que puede enviar una consulta
-  navegacion
-  copyrigth
-  nombre del proyecto
-}(pedro).
-6- compra falsa de nft.(marcos)
-7- diseñar perfil.
-8- filtros por rareza, precio y mas vendido/menos vendido(Facu y Adri).
-9- controlador get nft por id de usuario.(marcos)
-10- carrito en el front.
-11- template de nodemail al comprar(mati).
-12- agregar tarjeta de credito en la wallet dle usuario.(yo)
-13- que se pueda subir foto por archivo.
-
-
-
-
-*/
+}
+.background-iluminacion{
+  height: 92vh;
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.contenedor-home{
+  width: 90%;
+  height: 90%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: white;
+}
+.contenedor-text-home{
+  height: 50%;
+  width: 45%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+.text-home-numberone{
+  width: 100%;
+  height: 10%;
+  font-weight: 700;
+  align-items: center;
+  display: flex;
+  font-size: 0.9em;
+  letter-spacing: 1px;
+}
+.contenedor-text-home h1{
+  font-weight: 900;
+  font-size: 2.5em;
+}
+.text-home-collect{
+  font-weight: 200;
+  font-size: 1.1em;
+}
+.contenedor-text-home div{
+  width: 100%;
+  height: 15%;
+  display: flex;
+  align-items: center;
+}
+.contenedor-text-home div button{
+  height: 95%;
+  width: 30%;
+  border-radius: 1px;
+  border: none;
+  color: white;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 900;
+  letter-spacing: 1px;
+  background:none;
+  cursor: pointer;
+  transition: ease-in-out 0.5s;
+}
+.contenedor-text-home div button:nth-child(1){
+  background-color: var(--ColorButton);
+  margin-right: 30px;
+}
+.contenedor-text-home div button:nth-child(1):hover{
+  background-color: var(--ColorDesctacar);
+}
+.contenedor-text-home div button:nth-child(2):hover{
+  border: 3px solid var(--color-white);
+}
+.contenedor-nft{
+  width: 45%;
+  height: 75%;
+  display: flex;
+  
+  position: relative;
+}
+.contenedor-nft .img:nth-child(1){
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  top: 50%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border: none;
+  z-index: 1;
+  background-image: url("./assets/RoundCube-Iridescent.png");
+}
+.contenedor-nft .img:nth-child(2){
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  top: 60%;
+  left: 4%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border: none;
+  z-index: 1;
+  background-image: url("./assets/RoundCube-Iridescent.png");
+}
+.contenedor-nft-real{
+  width: 100%;
+  display: flex;
+  justify-content: end;
+} 
+.contenedor-nft-real .contenedor-nft-total{
+  width: 94%;
+  height: 90%;
+  border: 3px solid var(--ColorButton);
+  border-radius: 40px 0 40px 0;   
+  background-color: rgba(255, 255, 255, 0.034);
+  backdrop-filter: blur(20px);
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-around;
+}
+.contenedor-nft-real .contenedor-nft-total .image{
+  background-image: url("./assets/9778e9361fabdb7fd6eded5ec35102f5.gif");
+  height: 75%;
+  width: 90%;
+  border-radius: 20px 20px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.texto-nft-home{
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  width: 90%;
+  height: 15%;
+}
+.texto-nft-home h2{
+  width: 60%;
+  height: 80%;
+  display: flex;
+  align-items: flex-end;
+}
+.texto-nft-home div{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: space-around;
+  height: 60%;
+}

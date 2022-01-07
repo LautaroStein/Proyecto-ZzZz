@@ -12,7 +12,6 @@ const userSchema = new mongoose.Schema({
         number:{type: Number},
         name:{type: String},
         expiration:{type: Number},
-        security:{type: String},
         bank:{type: String},
         paymentMethod:{type: Boolean}
     }],

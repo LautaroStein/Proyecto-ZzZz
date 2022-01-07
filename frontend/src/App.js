@@ -5,7 +5,8 @@ import { withRouter } from './utils/withRouter';
 import Form from './pages/Form'
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { connect } from "react-redux"
+import { connect } from "react-redux";
+import Nagation from "./components/Nagation"
 
 const Forms = withRouter(Form)
 
@@ -13,9 +14,9 @@ function App(props) {
 
   return (
     <BrowserRouter>
+      <Nagation />
       <Routes>
         <Route path="/" element={<Home/>}/>
-
         {
           !props.user.userID && 
           <>
