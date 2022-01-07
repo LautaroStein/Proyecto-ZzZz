@@ -1,7 +1,13 @@
+import Navigation from "../components/Navigation"
+import Footer from "../components/Footer"
+
 const Home = () => {
     return (
-        <div>
-            <h1>Holaaaaa</h1>
+        <div className="homeBackground">
+            <div className="homeContainer">
+                <Navigation/>
+                <Footer/>
+            </div>
         </div>
     )
 }
