@@ -46,9 +46,9 @@ const SignIn = (props) => {
 
     return (
         <>
-            <form onSubmit={handleSubmit}>
-                <input type="text" ref={Email} placeholder="Pepe@gmail.com" />
-                <input type="password" ref={Password} placeholder="*****" />
+            <form onSubmit={handleSubmit} className='form-take-input'>
+                <input type="text" ref={Email} placeholder="  &#xF007;    Pepe@gmail.com" />
+                <input type="password" ref={Password} placeholder="  &#xf084;    *****" />
                 <button tpye="submit">Log in</button>
             </form> 
         </>

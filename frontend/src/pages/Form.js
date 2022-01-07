@@ -3,17 +3,68 @@ import SignUp from "../components/SignUp"
 import { Link } from "react-router-dom";
 import { connect } from "react-redux"
 import userActions from "../redux/actions/userActions"
+import { GoogleLogin } from 'react-google-login';
+import { BsFacebook, BsInstagram, BsGoogle } from "react-icons/bs";
 
 const Form = (props) => {
+
+    const responseGoogle = (response) => {
+        let googleUser = {
+            email: response.profileObj.email, 
+            password: response.profileObj.googleId,
+            google: true,
+        }
+    }
+
 
     console.log(props.user)
     return (
         <div className="form-central-todo">
             <div className="form-color-todo">
                 <div className="form-contenedor-input">
-                    
-                    {props.location.pathname === "/SignIn" ?<><h1>Sign In</h1> <SignIn signin={props.login} /></>: null}
-                    {props.location.pathname === "/SignUp" ?<><h1>Sign Up</h1> <SignUp signup={props.signup} /></>: null}
+                    <h1>{props.location.pathname === "/SignIn" ? <>Sign In</> : <>Sign Up</>}</h1>
+                    <div className="social-container">
+                        <ul>
+                            <li>
+                                <button className="facebook">
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                    <BsFacebook />
+                                </button>
+                            </li>
+                            <li>
+                            <GoogleLogin
+                                clientId="409676372754-m8ptb83qo10l0r1rn4itlai43g7tjjh1.apps.googleusercontent.com"
+                                render={renderProps => (
+                                    <button className="google" onClick={renderProps.onClick} disabled={renderProps.disabled}>
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                        <BsGoogle className="googlecom" />
+                                    </button>
+                                )}
+                                buttonText="Login"
+                                onSuccess={responseGoogle}
+                                onFailure={responseGoogle}
+                                cookiePolicy={'single_host_origin'}
+                                />
+                            </li>
+                            <li>
+                                <button className="instagram">
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                    <BsInstagram />
+                                </button>
+                            </li>
+                        </ul>
+                    </div>
+                    {props.location.pathname === "/SignIn" ?<><SignIn signin={props.login} /></>: null}
+                    {props.location.pathname === "/SignUp" ?<><SignUp signup={props.signup} /></>: null}
                 </div>
             {
                 props.location.pathname === "/SignUp" ?
