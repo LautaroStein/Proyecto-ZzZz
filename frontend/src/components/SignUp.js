@@ -37,7 +37,7 @@ const SignUp = () => {
         })
         .catch((error) => {
             console.log(error)
-            alert('Something went wrong! Come back later!')
+            alert('Something went wrong, come back later.')
   
         })
   
