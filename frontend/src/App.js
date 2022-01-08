@@ -37,7 +37,9 @@ function App({ user, rdxAuth, rdxLogin }) {
             <Route path="/SignUp" element={<Forms />} />
           </>
         }
+
         <Route path="*" element={<Home />} />
+
       </Routes>
       <ToastContainer />
     </BrowserRouter>

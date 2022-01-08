@@ -16,7 +16,12 @@ const nftSchema = new mongoose.Schema({
             },
         ],
         hp: { type: Number },
-        maxHp: { type: Number }
+        maxHp: { type: Number },
+        usersFeatures: [{
+            exp: { type: Number },
+            level: { type: Number },
+            userId: { type: mongoose.Types.ObjectId, ref: 'user' }
+        }]
     }
 })
 
