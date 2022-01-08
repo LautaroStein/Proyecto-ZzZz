@@ -1,4 +1,4 @@
-import React, {useRef, useState} from 'react'
+import React, { useRef, useState } from 'react'
 import GoogleLogin from 'react-google-login'
 import { toast } from 'react-toastify';
 
@@ -14,25 +14,24 @@ const SignUp = (props) => {
     const inputPassword = useRef()
     const inputImagenUser = useRef()
     const inputPhoneNumber = useRef()
-   
 
-    const handleSubmitInputs = async(e)=> {
+
+    const handleSubmitInputs = async (e) => {
         e.preventDefault()
-        
+
         const user = {
-            name : inputName.current.value,
-            lastName : inputLastName.current.value,
-            email : inputUserMail.current.value,
-            password : inputPassword.current.value,
-            userImg : inputImagenUser.current.value,
-            phone : inputPhoneNumber.current.value
+            name: inputName.current.value,
+            lastName: inputLastName.current.value,
+            email: inputUserMail.current.value,
+            password: inputPassword.current.value,
+            userImg: inputImagenUser.current.value,
+            phone: inputPhoneNumber.current.value
         }
 
         const userResponse = await props.signup(user)
-   
-        console.log(userResponse)
-        userResponse.succes 
-            ? 
+
+        userResponse.succes
+            ?
             toast.success('Your acount succesfuly Sign up', {
                 position: "top-right",
                 autoClose: 5000,
@@ -41,8 +40,8 @@ const SignUp = (props) => {
                 pauseOnHover: true,
                 draggable: true,
                 progress: undefined,
-            }) 
-            
+            })
+
             : toast.warn(userResponse.error, {
                 position: "top-right",
                 autoClose: 5000,
@@ -52,28 +51,28 @@ const SignUp = (props) => {
                 draggable: true,
                 progress: undefined,
             });
-            if(userResponse.succes === true){
-                inputName.current.value =""
-                inputLastName.current.value =""
-                inputUserMail.current.value =""
-                inputPassword.current.value =""
-                inputImagenUser.current.value =""
-                inputPhoneNumber.current.value =""
-            }
+        if (userResponse.succes === true) {
+            inputName.current.value = ""
+            inputLastName.current.value = ""
+            inputUserMail.current.value = ""
+            inputPassword.current.value = ""
+            inputImagenUser.current.value = ""
+            inputPhoneNumber.current.value = ""
+        }
     }
 
 
     return (
         <>
-                    <form onSubmit={handleSubmitInputs} className='form-take-input'>
-                        <input type="text" name="Name" ref = {inputName} placeholder="Name"/>
-                        <input type="text" name="lastName" ref = {inputLastName} placeholder="Last name"/>
-                        <input type="email" name="userMail" ref = {inputUserMail} placeholder="Email"/>
-                        <input type="password" name="password" ref = {inputPassword} placeholder="Password"/>
-                        <input type="text" name="imagenUser" ref = {inputImagenUser} placeholder="Profile picture image Url"/>
-                        <input type="text" name="phoneNumberUser" ref = {inputPhoneNumber} placeholder="2974758745"/>
-                        <button type='submit'>Sign Up</button>
-                    </form>
+            <form onSubmit={handleSubmitInputs} className='form-take-input'>
+                <input type="text" name="Name" ref={inputName} placeholder="Name" />
+                <input type="text" name="lastName" ref={inputLastName} placeholder="Last name" />
+                <input type="email" name="userMail" ref={inputUserMail} placeholder="Email" />
+                <input type="password" name="password" ref={inputPassword} placeholder="Password" />
+                <input type="text" name="imagenUser" ref={inputImagenUser} placeholder="Profile picture image Url" />
+                <input type="text" name="phoneNumberUser" ref={inputPhoneNumber} placeholder="2974758745" />
+                <button type='submit'>Sign Up</button>
+            </form>
         </>
     )
 }

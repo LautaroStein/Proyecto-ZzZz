@@ -18,7 +18,6 @@ const controllerUser = {
         let { name, lastName, email, password, userImg, phone, google, rol } = req.body
 
         try {
-            console.log(req.body)
             const usuarioExiste = await User.findOne({ email })
             if (usuarioExiste) {
                 return res.json({ success: false, error: "The user already exists" })
@@ -37,7 +36,6 @@ const controllerUser = {
                     rol
                 })
 
-                console.log(nuevoUsuario)
 
                 await nuevoUsuario.save()
                 const token = jwt.sign({ ...nuevoUsuario }, process.env.SECRET_KEY)
@@ -47,7 +45,6 @@ const controllerUser = {
             }
 
         } catch (error) {
-            console.log(process.env.SECRET_KEY, error)
             res.json({ success: false, response: null, error: error })
         }
 
@@ -55,24 +52,23 @@ const controllerUser = {
     },
 
     userLoged: async (req, res) => {
+
         const { email, password } = req.body
         if (email == '' || password == '') {
             return res.json({ success: true, error: "Fields cannot be left empty" })
         }
-        console.log(req.body)
         try {
             const usuarioExiste = await User.findOne({ email })
-
             if (!usuarioExiste) {
-                res.json({ success: true, error: "Mail does not exist" })
+                res.json({ success: false, error: "Mail does not exist" })
             } else {
                 let contraseñaCoincide = bcryptjs.compareSync(password, usuarioExiste.password)
-                if (contraseñaCoincide) {
+                if (contraseñaCoincide || password === usuarioExiste.password) {
                     const token = jwt.sign({ ...usuarioExiste }, process.env.SECRET_KEY)
                     res.json({ success: true, response: { token, ...usuarioExiste }, error: null })
 
                 } else {
-                    res.json({ success: true, error: "The password is incorrect" })
+                    res.json({ success: false, error: "The password is incorrect" })
                 }
             }
 
