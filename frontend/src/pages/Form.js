@@ -10,14 +10,13 @@ const Form = (props) => {
 
     const responseGoogle = (response) => {
         let googleUser = {
-            email: response.profileObj.email, 
+            email: response.profileObj.email,
             password: response.profileObj.googleId,
             google: true,
         }
     }
 
 
-    console.log(props.user)
     return (
         <div className="form-central-todo">
             <div className="form-color-todo">
@@ -35,21 +34,21 @@ const Form = (props) => {
                                 </button>
                             </li>
                             <li>
-                            <GoogleLogin
-                                clientId="409676372754-m8ptb83qo10l0r1rn4itlai43g7tjjh1.apps.googleusercontent.com"
-                                render={renderProps => (
-                                    <button className="google" onClick={renderProps.onClick} disabled={renderProps.disabled}>
-                                        <span></span>
-                                        <span></span>
-                                        <span></span>
-                                        <span></span>
-                                        <BsGoogle className="googlecom" />
-                                    </button>
-                                )}
-                                buttonText="Login"
-                                onSuccess={responseGoogle}
-                                onFailure={responseGoogle}
-                                cookiePolicy={'single_host_origin'}
+                                <GoogleLogin
+                                    clientId="409676372754-m8ptb83qo10l0r1rn4itlai43g7tjjh1.apps.googleusercontent.com"
+                                    render={renderProps => (
+                                        <button className="google" onClick={renderProps.onClick} disabled={renderProps.disabled}>
+                                            <span></span>
+                                            <span></span>
+                                            <span></span>
+                                            <span></span>
+                                            <BsGoogle className="googlecom" />
+                                        </button>
+                                    )}
+                                    buttonText="Login"
+                                    onSuccess={responseGoogle}
+                                    onFailure={responseGoogle}
+                                    cookiePolicy={'single_host_origin'}
                                 />
                             </li>
                             <li>
@@ -63,23 +62,23 @@ const Form = (props) => {
                             </li>
                         </ul>
                     </div>
-                    {props.location.pathname === "/SignIn" ?<><SignIn signin={props.login} /></>: null}
-                    {props.location.pathname === "/SignUp" ?<><SignUp signup={props.signup} /></>: null}
+                    {props.location.pathname === "/SignIn" ? <><SignIn signin={props.login} /></> : null}
+                    {props.location.pathname === "/SignUp" ? <><SignUp signup={props.signup} /></> : null}
                 </div>
-            {
-                props.location.pathname === "/SignUp" ?
-                <div className="background-image">
-                    <h2>Welcome Back!</h2>
-                    <p>To keep connected with us please login with your personal info</p>
-                    <Link to="/SignIn">SignIn</Link>
-                </div>
-                :
-                <div className="background-image">
-                    <h2>Hello, Friend!</h2>
-                    <p>Enter your personal details and start journey with us</p>
-                    <Link to="/SignUp">SignUp</Link>
-                </div>
-            }
+                {
+                    props.location.pathname === "/SignUp" ?
+                        <div className="background-image">
+                            <h2>Welcome Back!</h2>
+                            <p>To keep connected with us please login with your personal info</p>
+                            <Link to="/SignIn">SignIn</Link>
+                        </div>
+                        :
+                        <div className="background-image">
+                            <h2>Hello, Friend!</h2>
+                            <p>Enter your personal details and start journey with us</p>
+                            <Link to="/SignUp">SignUp</Link>
+                        </div>
+                }
             </div>
         </div>
 
@@ -88,13 +87,13 @@ const Form = (props) => {
 
 const mapStateToProps = (state) => {
     return {
-        user : state.userReducers.user
+        user: state.userReducers.user
     }
 }
 
 const mapDispatchToProps = {
-    login : userActions.signIn,
-    signup : userActions.addUser
+    login: userActions.signIn,
+    signup: userActions.addUser
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Form)
