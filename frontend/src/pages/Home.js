@@ -1,7 +1,19 @@
-
+import React, { useState, useEffect } from "react"
 
 const Home = () => {
+
+    const [offsetY, setOffsetY] = useState(0)
+    const handleScroll = () => setOffsetY(window.pageYOffset)
+
+    useEffect(() => {
+        window.addEventListener("scroll", handleScroll);
+
+        return () => window.removeEventListener("scroll", handleScroll);
+    },[])
+    console.log(offsetY)
+
     return (
+        <>
         <div className="background-iluminacion">
             <div className="contenedor-home">
                 <div className="contenedor-text-home">
@@ -30,10 +42,18 @@ const Home = () => {
                     </div>
                 </div>
             </div>
-            <div className='iluminador'></div>
-            <div className='iluminador2'></div>
-            <div className='iluminador3'></div>
+                <div className='iluminador' style={ { transform : `translateY(${ offsetY * 0.4 }px) translateX(${ offsetY * 0.7 }px) scale(${offsetY > 50 ? 1.2 : 0.7 })`, transition: "transform 1.5s"} }></div>
+                <div className='iluminador2'style={ { transform : `translateY(${ -offsetY * 0.6 }px) translateX(${ -offsetY * 0.4 }px)` } } ></div>
+                <div className='iluminador3'style={ { transform : `translateY(${ -offsetY * 0.05 }px) translateX(${ -offsetY * 0.05 }px) scale(${offsetY > 10 ? 1.2 : 0.7 }`, transition: "transform 1.5s" } }></div>
         </div>
+        <div className="contenedor-about">
+            <p>WHO WE ARE</p>
+            <h2>About us</h2>
+            <div>
+                
+            </div>
+        </div>
+        </>
     )
 }
 

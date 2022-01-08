@@ -256,6 +256,9 @@ ul li button:hover:nth-child(4) {
   justify-content: center;
   align-items: center;
   border-radius:0 0 10px 10px;
+  width: 100%;
+  position: fixed;
+  z-index: 99;
 }
 .navigation ul{
   display: flex;

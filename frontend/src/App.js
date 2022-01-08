@@ -6,28 +6,28 @@ import Form from './pages/Form'
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { connect } from "react-redux";
-import Nagation from "./components/Nagation"
+import Nagation from "./components/Nagation";
 
 const Forms = withRouter(Form)
 
 function App(props) {
 
   return (
-    <BrowserRouter>
-      <Nagation />
-      <Routes>
-        <Route path="/" element={<Home/>}/>
-        {
-          !props.user.userID && 
-          <>
-            <Route path="/SignIn" element={<Forms/>}/>
-            <Route path="/SignUp" element={<Forms/>}/>
-          </>
-        }
-        <Route path="*" element={<Home/>} />
-      </Routes>
-      <ToastContainer/>
-    </BrowserRouter>
+      <BrowserRouter>
+        <Nagation />
+        <Routes>
+          <Route path="/" element={<Home/>}/>
+          {
+            !props.user.userID && 
+            <>
+              <Route path="/SignIn" element={<Forms/>}/>
+              <Route path="/SignUp" element={<Forms/>}/>
+            </>
+          }
+          <Route path="*" element={<Home/>} />
+        </Routes>
+        <ToastContainer/>
+      </BrowserRouter>
   );
 }
 

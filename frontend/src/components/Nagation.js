@@ -47,7 +47,7 @@ const Nagation = () => {
                 <li className={active === "profile" ? "active": null} onClick={()=>{
                     setActive("profile")
                 }}>
-                    <Link to="/">
+                    <Link to="/SignIn">
                         <span className="icon-navigation"><FaUserAlt/></span>
                         <span className="text-navigation">Profile</span>
                     </Link>
