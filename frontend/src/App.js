@@ -1,5 +1,5 @@
 import './App.css';
-import { Routes, Route, BrowserRouter } from "react-router-dom";
+import { Routes, Route, BrowserRouter, Navigate } from "react-router-dom";
 import Home from "./pages/Home"
 import { withRouter } from './utils/withRouter';
 import Form from './pages/Form'
@@ -9,6 +9,10 @@ import { connect } from "react-redux";
 import Nagation from "./components/Nagation"
 import userActions from "../src/redux/actions/userActions"
 import { useEffect } from 'react'
+import Profile from './pages/Profile';
+import Game from "./pages/Game"
+
+const Navigation = withRouter(Nagation)
 const Forms = withRouter(Form)
 
 function App({ user, rdxAuth, rdxLogin }) {
@@ -27,17 +31,13 @@ function App({ user, rdxAuth, rdxLogin }) {
   }, [rdxAuth, rdxLogin])
   return (
     <BrowserRouter>
-      <Nagation />
+      <Navigation user={user} />
       <Routes>
         <Route path="/" element={<Home />} />
-        {
-          user === '' &&
-          <>
-            <Route path="/SignIn" element={<Forms />} />
-            <Route path="/SignUp" element={<Forms />} />
-          </>
-        }
-
+        <Route path="/Profile" element={<Profile />} />
+        <Route path="/Game" element={<Game />} />
+        <Route path="/SignIn" element={user === '' ? <Forms /> : <Navigate replace to="/" />} />
+        <Route path="/SignUp" element={user === '' ? <Forms /> : <Navigate replace to="/" />} />
         <Route path="*" element={<Home />} />
 
       </Routes>
