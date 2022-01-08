@@ -487,6 +487,9 @@ ul li button:hover:nth-child(4) {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .texto-nft-home {
   display: flex;
@@ -507,4 +510,81 @@ ul li button:hover:nth-child(4) {
   align-items: flex-end;
   justify-content: space-around;
   height: 60%;
+}
+.contenedor-about{
+  width: 100%;
+  height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.contenedor-ocho-about{
+  width: 90%;
+  height: 90%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
+  color: white;
+}
+.contenedor-ocho-about p{
+  font-weight: 800;
+  font-size: 0.8em;
+}
+.contenedor-ocho-about h2{
+  font-weight: 900;
+  font-size: 2.7em;
+}
+.total-about{
+  width: 100%;
+  height: 80%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.total-about div{
+  width: 47%;
+  height: 95%;
+  position: relative;
+}
+.total-about div:nth-child(2){
+  width: 47%;
+  height: 90%;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}
+.total-about div div:nth-child(1){
+  position:absolute;
+  width: 80%;
+  height: 100%;
+  background-image: url("./assets/about.jpeg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 20px;
+  box-shadow:  8px 5px 30px #96faaf4b
+}
+.total-about div div:nth-child(2){
+  position: absolute;
+  height: 250px;
+  width: 250px;
+  background-image: url("./assets/aboutraro.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 20px;
+  right: 0;
+  top: 30%;
+}
+.total-about div:nth-child(2) h3{
+  font-size: 2.5em;
+  width: 80%;
+  font-weight: 700;
+}
+.total-about div:nth-child(2) p{
+  font-size: 1.3em;
+  font-weight: 400;
+  color: rgb(204, 204, 204);
+  line-height: 30px;
 }
