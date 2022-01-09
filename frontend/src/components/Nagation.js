@@ -17,9 +17,9 @@ const Nagation = (props) => {
                         <span className="text-navigation">Home</span>
                     </Link>
                 </li>
-                <li className={props.location.pathname === "/Store" ? "active" : null}>
-                    <Link to="/">
-                        <span className="icon-navigation"><AiFillAppstore /></span>
+                <li className={props.location.pathname === "/Store" ? "active": null}>
+                    <Link to="/Store">
+                        <span className="icon-navigation"><AiFillAppstore/></span>
                         <span className="text-navigation">Official Store</span>
                     </Link>
                 </li>

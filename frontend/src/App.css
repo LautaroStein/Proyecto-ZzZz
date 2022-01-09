@@ -26,12 +26,12 @@
   box-sizing: border-box;
   font-family: "Nunito", sans-serif;
 }
-#root {
+/* #root {
   display: flex;
   flex-direction: column;
   width: 100vw;
   height: 100vh;
-}
+} */
 body {
   background-color: var(--ColorFondo);
   /* background-image: url("./assets/4356068.webp"); */
@@ -491,6 +491,9 @@ ul li button:hover:nth-child(4) {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .texto-nft-home {
   display: flex;
@@ -512,6 +515,193 @@ ul li button:hover:nth-child(4) {
   justify-content: space-around;
   height: 60%;
 }
+.contenedor-about{
+  width: 100%;
+  height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.contenedor-ocho-about{
+  width: 90%;
+  height: 90%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
+  color: white;
+}
+.contenedor-ocho-about p{
+  font-weight: 800;
+  font-size: 0.8em;
+}
+.contenedor-ocho-about h2{
+  font-weight: 900;
+  font-size: 2.7em;
+}
+.total-about{
+  width: 100%;
+  height: 80%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.total-about div{
+  width: 47%;
+  height: 95%;
+  position: relative;
+}
+.total-about div:nth-child(2){
+  width: 47%;
+  height: 90%;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}
+.total-about div div:nth-child(1){
+  position:absolute;
+  width: 80%;
+  height: 100%;
+  background-image: url("./assets/about.jpeg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 20px;
+  box-shadow:  8px 5px 30px #96faaf4b
+}
+.total-about div div:nth-child(2){
+  position: absolute;
+  height: 250px;
+  width: 250px;
+  background-image: url("./assets/aboutraro.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 20px;
+  right: 0;
+  top: 30%;
+}
+.total-about div:nth-child(2) h3{
+  font-size: 2.5em;
+  width: 80%;
+  font-weight: 700;
+}
+.total-about div:nth-child(2) p{
+  font-size: 1.3em;
+  font-weight: 400;
+  color: rgb(204, 204, 204);
+  line-height: 30px;
+}
+.contenedor-store-public{
+  width: 100%;
+  height:40vh;
+  position: relative;
+}
+.contenedor-store-public div:nth-child(1){
+  position: absolute;
+  height: 100%;
+  width: 48.8%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: 20px 0 0 20px;
+  transform: perspective( 700px ) rotateY( -10deg);
+  background: linear-gradient(86.06deg, #355783 -42.21%, #1B2845 57.79%);
+}
+.contenedor-store-public div:nth-child(1) h1{
+  font-size: 3em;
+  font-weight: 600;
+  width: 80%;
+  color: white;
+}
+.contenedor-store-public div:nth-child(1) p{
+  font-size: 1.5em;
+  font-weight: 300;
+  width: 80%;
+  color: white;
+}
+.contenedor-store-public div:nth-child(2){
+  position: absolute;
+  right: 0;
+  height: 100%;
+  width: 48.8%;
+  border-radius: 0 20px 20px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: perspective( 700px ) rotateY( 10deg );
+  background: linear-gradient(-153.06deg, #274060 -42.21%, #1B2845 57.79%);
+}
+.contenedor-store-public div:nth-child(2) div{
+  background-image: url("./assets/mineria.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 96%;
+  width: 100%;
+}
+.contenedor-top-sellers-store{
+  height: 70vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.contenedor-top-sellers-store .sellers{
+  width: 95%;
+  height: 90%;
+}
+.title-top-sellers{
+  font-weight: 600;
+  font-size: 1.5em;
+  color: white;
+  letter-spacing: 3px;
+  width: 100%;
+  height: 15%;
+  display: flex;
+  align-items: center;
+  
+}
+.contenedor-top-sellers-cards{
+  width: auto;
+  height: 85%;
+  overflow-y: hidden; 
+  overflow-x: auto;
+  white-space: nowrap;
+}
+.contenedor-top-sellers-cards::-webkit-scrollbar {
+  display: none;
+}
+.contenedor-card-nft{
+  height: 100%;
+  width:  400px;
+  margin-right: 15px;
+  display: inline-block;
+  position: relative;
+}
+.img-nft-total{
+  height: 95%;
+  width: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 20px;
+  display: flex;
+  align-items: flex-end;
+}
+.text-nft-total{
+  width: 100%;
+  height: 30%;
+}
+
+
+
+
+
+
+
+
 
 /* GAME */
 
@@ -519,7 +709,7 @@ ul li button:hover:nth-child(4) {
   display: flex;
   flex-direction: column;
   width: 100%;
-  flex-grow: 1;
+  height: 100vh;
   color: white;
 }
 

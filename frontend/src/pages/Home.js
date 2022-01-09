@@ -57,15 +57,25 @@ const Home = () => {
                     </div>
                 </div>
             </div>
-                <div className='iluminador' style={ { transform : `translateY(${ offsetY * 0.4 }px) translateX(${ offsetY * 0.7 }px) scale(${offsetY > 50 ? 1.2 : 0.7 })`, transition: "transform 1.5s"} }></div>
+                <div className='iluminador' style={ { transform : `translateY(${ offsetY * 0.4 }px) translateX(${ offsetY * 0.7 }px) scale(${offsetY > 50 ? 1.2 : 1 })`, transition: "transform 1.5s"} }></div>
                 <div className='iluminador2'style={ { transform : `translateY(${ -offsetY * 0.6 }px) translateX(${ -offsetY * 0.4 }px)` } } ></div>
                 <div className='iluminador3'style={ { transform : `translateY(${ -offsetY * 0.05 }px) translateX(${ -offsetY * 0.05 }px) scale(${offsetY > 10 ? 1.2 : 0.7 }`, transition: "transform 1.5s" } }></div>
         </div>
         <div className="contenedor-about">
-            <p>WHO WE ARE</p>
-            <h2>About us</h2>
-            <div>
-                
+            <div className="contenedor-ocho-about">
+                <p>WHO WE ARE</p>
+                <h2>About us</h2>
+                <div className="total-about">
+                    <div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                    <div>
+                        <h3>Building an open digital economy</h3>
+                        <p>At ProyectZzZz, we´re excited about a brand new type of digital good called a non-fungible token, or NFT.<br/> NFTs have exciting new properties: they´re unique. provably scarce, tradeable, and usable across multiple application.</p>
+                        <p>Just like physcal goods, you can do whatever you want with them! You could throw them in the trash, gift them to a friend across the world, or go sell them on an open marketplace.</p>
+                    </div>
+                </div>
             </div>
         </div>
         </>
