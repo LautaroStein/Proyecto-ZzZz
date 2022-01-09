@@ -64,7 +64,7 @@ const Home = () => {
         </div>
         <div className="contenedor-about">
             <div className="contenedor-ocho-about">
-                {/* <p>WHO WE ARE</p> */}
+                <p>WHO WE ARE</p>
                 <h2>About us</h2>
                 <div className="total-about">
                     <div>

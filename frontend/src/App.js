@@ -13,7 +13,7 @@ import Profile from './pages/Profile';
 import Game from "./pages/Game"
 import Store from "./pages/Store"
 import nftActions from '../src/redux/actions/nftActions'
-const NavigationRouter = withRouter(Navigation)
+const Navigations = withRouter(Navigation)
 const Forms = withRouter(Form)
 
 function App({ user, rdxAuth, rdxLogin, getUserNfts, getNfts }) {
@@ -36,7 +36,7 @@ function App({ user, rdxAuth, rdxLogin, getUserNfts, getNfts }) {
 
   return (
     <BrowserRouter>
-      <Navigation user={user} />
+      <Navigations user={user} />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/Profile" element={<Profile/>} />
