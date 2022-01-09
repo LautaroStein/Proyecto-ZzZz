@@ -12,15 +12,16 @@ import { useEffect } from 'react'
 import Profile from './pages/Profile';
 import Game from "./pages/Game"
 import Store from "./pages/Store"
-
+import nftActions from '../src/redux/actions/nftActions'
 const Navigation = withRouter(Nagation)
 const Forms = withRouter(Form)
 
-function App({ user, rdxAuth, rdxLogin }) {
+function App({ user, rdxAuth, rdxLogin, getUserNfts, getNfts }) {
   useEffect(() => {
+    // 
     async function fetchData() {
       const user = await rdxAuth();
-
+      getUserNfts(user.response._id)
       user.error && toast(user.error)
       const userLogged = {
         email: user.response.email,
@@ -29,10 +30,13 @@ function App({ user, rdxAuth, rdxLogin }) {
       user.response && rdxLogin(userLogged)
     }
     localStorage.getItem('token') && fetchData();
-  }, [rdxAuth, rdxLogin])
+    getNfts()
+  }, [rdxAuth, rdxLogin, getUserNfts])// eslint-disable-line react-hooks/exhaustive-deps
+
+
   return (
     <BrowserRouter>
-      <Navigation user={user}/>
+      <Navigation user={user} />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/Profile" element={<Profile/>} />
@@ -55,6 +59,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = {
   rdxAuth: userActions.isAuth,
-  rdxLogin: userActions.signIn
+  rdxLogin: userActions.signIn,
+  getNfts: nftActions.getNfts,
+  getUserNfts: nftActions.getNftsByUser,
 }
 export default connect(mapStateToProps, mapDispatchToProps)(App);

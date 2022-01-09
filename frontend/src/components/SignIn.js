@@ -1,6 +1,7 @@
-import react, { useRef } from "react"
+import React, { useRef } from "react"
 import { toast } from 'react-toastify';
-
+import nftActions from '../redux/actions/nftActions'
+import { connect } from 'react-redux'
 const SignIn = (props) => {
 
     const Email = useRef()
@@ -15,6 +16,7 @@ const SignIn = (props) => {
             password: Password.current.value
         }
         const userResponse = await props.signin(user)
+        props.getNeftsByUser(userResponse.userId)
         userResponse.succes
             ?
             toast.success('Welcom to the NFT world', {
@@ -54,4 +56,9 @@ const SignIn = (props) => {
     )
 }
 
-export default SignIn
+
+const mapDispatchToProps = {
+    getNeftsByUser: nftActions.getNftsByUser
+
+}
+export default connect(null, mapDispatchToProps)(SignIn);
