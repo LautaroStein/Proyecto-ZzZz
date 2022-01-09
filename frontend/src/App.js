@@ -11,6 +11,7 @@ import userActions from "../src/redux/actions/userActions"
 import { useEffect } from 'react'
 import Profile from './pages/Profile';
 import Game from "./pages/Game"
+import Store from "./pages/Store"
 
 const Navigation = withRouter(Nagation)
 const Forms = withRouter(Form)
@@ -39,6 +40,7 @@ function App({ user, rdxAuth, rdxLogin }) {
         <Route path="/SignIn" element={user === '' ? <Forms /> : <Navigate replace to="/"/>} />
         <Route path="/SignUp" element={user === '' ? <Forms /> : <Navigate replace to="/"/>} />
         <Route path="*" element={<Home />} />
+        <Route path="/Store" element={<Store/>} />
       </Routes>
       <ToastContainer />
     </BrowserRouter>
