@@ -12,7 +12,6 @@ const Game = (props) => {
     const [userNft, setUserNft] = useState('')
     const [bootNft, setbootNft] = useState('')
     const [isSelected, setIsSelected] = useState(false)
-    const [escenario, setEscenario] = useState('')
     const [isUserTurn, setIsUserTurn] = useState(true)
     const [userAttacked, setUserAttacked] = useState(false)
     const [userHp, setUserHp] = useState()
@@ -20,11 +19,9 @@ const Game = (props) => {
 
     useEffect(() => {
 
-        const rdnEsc = Math.floor((Math.random() * ((props.escenarios.length - 1) + 1)))
         const rdn = Math.floor((Math.random() * ((props.rdxNfts.length - 1) + 1)))
         setbootNft(props.rdxNfts[rdn])
         props.rdxNfts[rdn] && setBootHp(props.rdxNfts[rdn].features.hp)
-        setEscenario(props.escenarios[rdnEsc])
 
     }, [props.rdxNfts])// eslint-disable-line react-hooks/exhaustive-deps
 
@@ -124,9 +121,9 @@ const Game = (props) => {
                 </>
             }
             {isSelected &&
-                <div className={escenario}>
+                <div className='main-stage'>
                     {/* call random escenario */}
-                    <h1 style={{ textAlign: 'center', fontSize: '4rem' }}>Combat {userNft.features.name} v/s {bootNft.features.name} </h1>
+                    <h1 style={{ textAlign: 'center', fontSize: '4rem' }}>Combat {userNft.name} v/s {bootNft.name} </h1>
                     <div style={{ textAlign: 'center', height: '90%', width: '100%', display: 'flex' }}>
                         <div style={{ justifyItems: 'center', fontSize: '10rem', height: '100%', width: '50%', display: 'flex', flexDirection: 'column' }}>
                             {/* call userNFt component */}
