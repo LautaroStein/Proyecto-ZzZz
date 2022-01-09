@@ -20,11 +20,9 @@ const Game = (props) => {
 
     useEffect(() => {
 
-        const rdnEsc = Math.floor((Math.random() * ((props.escenarios.length - 1) + 1)))
         const rdn = Math.floor((Math.random() * ((props.rdxNfts.length - 1) + 1)))
         setbootNft(props.rdxNfts[rdn])
         props.rdxNfts[rdn] && setBootHp(props.rdxNfts[rdn].features.hp)
-        setEscenario(props.escenarios[rdnEsc])
 
     }, [props.rdxNfts])// eslint-disable-line react-hooks/exhaustive-deps
 
