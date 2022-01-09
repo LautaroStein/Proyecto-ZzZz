@@ -45,10 +45,8 @@ const Carousel = (props) => {
         setNftProceced(aux)
     }, [props.nfts])
     return (
-        <>
 
-            <NftItem choice={props.choice} right={handlerRight} left={handlerLeft} nftsProceced={nftProceced[slide]} />
-        </>
+        <NftItem choice={props.choice} right={handlerRight} left={handlerLeft} nftsProceced={nftProceced[slide]} />
 
     )
 }

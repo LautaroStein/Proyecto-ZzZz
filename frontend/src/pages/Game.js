@@ -16,6 +16,7 @@ const Game = (props) => {
     const [userAttacked, setUserAttacked] = useState(false)
     const [userHp, setUserHp] = useState()
     const [bootHp, setBootHp] = useState()
+    const [storyteller, setStoryteller] = useState('Start Fight !')
 
     useEffect(() => {
 
@@ -121,29 +122,32 @@ const Game = (props) => {
                 </>
             }
             {isSelected &&
-                <div className='main-stage'>
-                    {/* call random escenario */}
-                    <h1 style={{ textAlign: 'center', fontSize: '4rem' }}>Combat {userNft.name} v/s {bootNft.name} </h1>
-                    <div style={{ textAlign: 'center', height: '90%', width: '100%', display: 'flex' }}>
-                        <div style={{ justifyItems: 'center', fontSize: '10rem', height: '100%', width: '50%', display: 'flex', flexDirection: 'column' }}>
-                            {/* call userNFt component */}
-                            <div className=''>{userNft.features.name}</div>
-                            {/* habilities */}
+                <div className='stage'>
+                    <div className='boot-box' >
+                        <div className='storyteller'>
+                            <p>{storyteller}</p>
+                        </div>
+                        <div className='card-boot-nft'>
+                            <div style={{ backgroundImage: `url(${bootNft.img})` }} className='nft-body'>
+                                <h2>{bootNft.name}</h2>
+                                <BootHealth healty={bootNft.features.hp} maxhealty={bootNft.features.maxHp} />
+                            </div>
+                        </div>
+                    </div>
+                    <div className='user-box' >
+                        <div className='card-user-nft'>
+                            <div style={{ backgroundImage: `url(${userNft.img})` }} className='nft-body'>
+                                <h2>{userNft.name}</h2>
+                                <UserHealth healty={userNft.features.hp} maxhealty={userNft.features.maxHp} />
+                            </div>
+                        </div>
+                        <div className='user-habilities'>
                             {!userAttacked &&
-                                <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                                    <div className=''>{userNft.features.habilities.map(hability => <button key={hability.name} style={{ marginRight: '5px', width: '120px', cursor: 'pointer' }} onClick={() => attackHandler(hability)}>{hability.name}</button>)}</div>
+                                <div className='habilities-container'>
+
+                                    {userNft.features.habilities.map(hability => <button className='hability-action' key={hability.name} onClick={() => attackHandler(hability)}>{hability.name}</button>)}
                                 </div>
                             }
-                            {/** healty nft */}
-                            <UserHealth healty={userNft.features.hp} maxhealty={userNft.features.maxHp} />
-                            <div>{userNft.features.hp}</div>
-                        </div>
-                        <div style={{ alignItems: 'center', fontSize: '10rem', height: '100%', width: '50%', display: 'flex', flexDirection: 'column' }}>
-                            {/* call bootNFt */}
-                            <div className=''>{bootNft.features.name}</div>
-                            {/** healty nft */}
-                            <BootHealth healty={bootNft.features.hp} maxhealty={bootNft.features.maxHp} />
-                            {<div>{bootNft.features.hp}</div>}
                         </div>
                     </div>
                 </div>
