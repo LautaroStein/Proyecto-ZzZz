@@ -46,15 +46,15 @@ const Navigation = (props) => {
                         </Link>
                     </li>
                     <li>
-                        <button onClick={()=>setShowCart(!showCart)}>
+                        <a onClick={()=>setShowCart(!showCart)} style={{cursor: "pointer"}}>
                             <span className="icon-navigation"><AiOutlineShoppingCart/></span>
                             <span className="text-navigation">Shopping Cart</span>
-                        </button>
-                        {showCart ? <Cart /> : null}
+                        </a>
                     </li>
                     <div className="indicator"></div>
                 </ul>
             </div>
+            {showCart ? <Cart /> : null}
         </>
     )
 }
