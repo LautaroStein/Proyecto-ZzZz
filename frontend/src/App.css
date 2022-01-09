@@ -258,6 +258,7 @@ ul li button:hover:nth-child(4) {
   align-items: center;
   border-radius: 0 0 10px 10px;
   width: 100%;
+  position: fixed;
   z-index: 99;
 }
 .navigation ul {
@@ -311,7 +312,7 @@ ul li button:hover:nth-child(4) {
 .indicator {
   position: absolute;
   top: 50%;
-  left: 25px;
+  left: 12px;
   width: 70px;
   height: 70px;
   background-color: var(--ColorPrimario);
@@ -321,16 +322,16 @@ ul li button:hover:nth-child(4) {
 }
 
 .navigation ul li:nth-child(2).active ~ .indicator {
-  transform: translateX(calc(95px * 1));
+  transform: translateX(calc(81px * 1));
 }
 .navigation ul li:nth-child(3).active ~ .indicator {
-  transform: translateX(calc(95px * 2));
+  transform: translateX(calc(81px * 2));
 }
 .navigation ul li:nth-child(4).active ~ .indicator {
-  transform: translateX(calc(95px * 3));
+  transform: translateX(calc(81px * 3));
 }
 .navigation ul li:nth-child(5).active ~ .indicator {
-  transform: translateX(calc(95px * 4));
+  transform: translateX(calc(81px * 4));
 }
 
 .iluminador {
