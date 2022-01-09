@@ -1,11 +1,14 @@
+import React, {useState} from 'react'
 import { Link } from "react-router-dom";
 import { AiFillHome, AiFillAppstore, AiOutlineShoppingCart } from "react-icons/ai";
 import { BsFillBookmarkHeartFill } from "react-icons/bs";
 import { BiStore } from "react-icons/bi";
 import { FaUserAlt } from "react-icons/fa";
+import Cart from './Cart'
 
 const Navigation = (props) => {
 
+    const [showCart, setShowCart ] = useState(false)
 
     console.log(props)
     return (
@@ -43,10 +46,11 @@ const Navigation = (props) => {
                         </Link>
                     </li>
                     <li>
-                        <Link to="">
+                        <button onClick={()=>setShowCart(!showCart)}>
                             <span className="icon-navigation"><AiOutlineShoppingCart/></span>
-                            <span className="text-navigation">Settings</span>
-                        </Link>
+                            <span className="text-navigation">Shopping Cart</span>
+                        </button>
+                        {showCart ? <Cart /> : null}
                     </li>
                     <div className="indicator"></div>
                 </ul>
