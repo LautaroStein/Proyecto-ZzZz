@@ -3,9 +3,11 @@ import FiltroStore from '../components/FiltroStore'
 
 const Store = () => {
     return (
-        <div>
+        <>
+        <div >
             <FiltroStore/>
         </div>
+        </>
     )
 }
 
