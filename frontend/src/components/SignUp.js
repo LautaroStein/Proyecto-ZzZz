@@ -1,12 +1,9 @@
-import React, { useRef, useState } from 'react'
-import GoogleLogin from 'react-google-login'
+import React, { useRef } from 'react'
 import { toast } from 'react-toastify';
-
+import nftActions from '../redux/actions/nftActions'
+import { connect } from 'react-redux'
 
 const SignUp = (props) => {
-
-
-
 
     const inputName = useRef()
     const inputLastName = useRef()
@@ -29,7 +26,7 @@ const SignUp = (props) => {
         }
 
         const userResponse = await props.signup(user)
-
+        props.getNeftsByUser(userResponse.userId)
         userResponse.succes
             ?
             toast.success('Your acount succesfuly Sign up', {
@@ -77,9 +74,10 @@ const SignUp = (props) => {
     )
 }
 
-export default SignUp
-
-
+const mapDispatchToProps = {
+    getNeftsByUser: nftActions.getNftsByUser
+}
+export default connect(null, mapDispatchToProps)(SignUp);
 
 
 

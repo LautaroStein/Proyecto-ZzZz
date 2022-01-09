@@ -26,6 +26,12 @@
   box-sizing: border-box;
   font-family: "Nunito", sans-serif;
 }
+#root {
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  height: 100vh;
+}
 body {
   background-color: var(--ColorFondo);
   /* background-image: url("./assets/4356068.webp"); */
@@ -245,15 +251,13 @@ ul li button:hover:nth-child(4) {
   color: var(--color-white);
 }
 .navigation {
-  position: relative;
   height: 70px;
   background-color: var(--ColorPrimarioFuerte);
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius:0 0 10px 10px;
+  border-radius: 0 0 10px 10px;
   width: 100%;
-  position: fixed;
   z-index: 99;
 }
 .navigation ul {
@@ -465,7 +469,7 @@ ul li button:hover:nth-child(4) {
 .contenedor-nft-real {
   width: 100%;
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
 }
 .contenedor-nft-real .contenedor-nft-total {
   width: 94%;
@@ -508,3 +512,74 @@ ul li button:hover:nth-child(4) {
   justify-content: space-around;
   height: 60%;
 }
+
+/* GAME */
+.main-content {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  flex-grow: 1;
+  color: white;
+}
+
+.choice-nfts-card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80%;
+  width: 100%;
+  overflow-x: auto;
+}
+.nft-card {
+  cursor: pointer;
+  height: 70%;
+  margin: 1rem;
+  width: 17%;
+  color: white;
+  background-color: transparent;
+  border-radius: 15px;
+}
+.show-slide {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  padding: 1rem;
+}
+.nft-item {
+  display: flex;
+  height: 100%;
+  width: 100%;
+}
+.choice-title {
+  height: 20%;
+  width: 100%;
+  text-align: center;
+  font-size: 4.5rem;
+}
+.nft-name {
+  height: 15%;
+  width: 100%;
+  font-size: 1.5rem;
+}
+.nft-img {
+  height: 55%;
+  width: 100%;
+  background-size: cover;
+  background-position: center;
+}
+.nfts-loading-container {
+  display: flex;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+}
+.nfts-loading {
+  background-size: cover;
+  background-position: center;
+  border-radius: 50%;
+  border: none;
+  height: 85%;
+  width: 30%;
+}
+
+/* ********* */

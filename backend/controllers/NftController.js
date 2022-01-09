@@ -63,7 +63,7 @@ const nftControllers = {
 
     res.json({ response: nft, success: true });
   },
-  getNftByUser: async (req, res) => {
+  getNftsByUser: async (req, res) => {
     const id = req.params.id
     try {
       if (req.user) {
