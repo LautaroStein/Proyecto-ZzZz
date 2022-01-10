@@ -80,6 +80,22 @@ const nftControllers = {
     }
   },
 
+  favAndDisFavController: async (req, res) => {
+    const { nftId, userId, boolean} = req.body;
+    try {
+      const itinerary = await Itinerary.findOneAndUpdate(
+        { _id:nftId },
+       !boolean
+        ? { $addToSet: { likes: userId }} 
+        : { $pull: { likes: userId }},
+        { new: true }
+        );
+      res.json({ success: true, error: null });
+    } catch (e) {
+      res.json({ success: false, response: null, error: e.message });
+    }
+  },
+
 
 }
 

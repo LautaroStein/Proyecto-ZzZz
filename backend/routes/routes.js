@@ -2,10 +2,8 @@ const Router = require("express").Router();
 const validador = require("../config/validador");
 const controllerUser = require('../controllers/controllerUser');
 const NftControllers = require("../controllers/NftController");
-const favoritosControllers = require("../controllers/favoritosControllers");
-const { getAllNft, loadUnNft, modifyAnNft, getOneNft, deleteNft, getNftsByUser } = NftControllers;
+const { getAllNft, loadUnNft, modifyAnNft, getOneNft, deleteNft, getNftsByUser, favAndDisFavController } = NftControllers;
 const { newUser, userLoged, authUser } = controllerUser;
-const {  } = favoritosControllers;
 const passport = require('../config/passport')
 
 
@@ -40,7 +38,7 @@ Router.route('/user/auth')
     //Routes Favoritos
     
     Router.route('/user/favoritos')
-        .put()
+        .put(favAndDisFavController)
 
 
 module.exports = Router
