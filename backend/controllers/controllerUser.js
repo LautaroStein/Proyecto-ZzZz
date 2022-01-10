@@ -13,16 +13,15 @@ const controllerUser = {
     // - 3) validacion de datos
 
 
-    newUser: async(req, res) => {
-        
-        let { name,lastName,email,password,userImg,phone, google,rol } = req.body      
+    newUser: async (req, res) => {
+
+        let { name, lastName, email, password, userImg, phone, google, rol } = req.body
 
         try {
-            console.log(req.body)
-            const usuarioExiste = await User.findOne({email})
-            if (usuarioExiste){
-                return res.json({success: false, error:"The user already exists"})
-            }else{
+            const usuarioExiste = await User.findOne({ email })
+            if (usuarioExiste) {
+                return res.json({ success: false, error: "The user already exists" })
+            } else {
 
                 const contraseñaHasheada = bcryptjs.hashSync(password, 10)
 
@@ -30,55 +29,60 @@ const controllerUser = {
                     name,
                     lastName,
                     email,
-                    password:contraseñaHasheada,
+                    password: contraseñaHasheada,
                     userImg,
-                    phone, 
+                    phone,
                     google,
                     rol
                 })
 
-                console.log(nuevoUsuario)
 
                 await nuevoUsuario.save()
-                const token = jwt.sign({...nuevoUsuario}, process.env.SECRET_KEY)
-                return res.json({success: true, response: {token,...nuevoUsuario}, error: null})
-                
-                
+                const token = jwt.sign({ ...nuevoUsuario }, process.env.SECRET_KEY)
+                return res.json({ success: true, response: { token, ...nuevoUsuario }, error: null })
+
+
             }
-        
-        }catch(error){
-            console.log(process.env.SECRET_KEY,error)
-            res.json({success: false, response: null, error: error})
+
+        } catch (error) {
+            res.json({ success: false, response: null, error: error })
         }
 
-        
+
     },
 
-    userLoged: async(req, res)=>{
+    userLoged: async (req, res) => {
+
         const { email, password } = req.body
-        if (email == '' || password == ''){
-            return res.json({success: true, error:"Fields cannot be left empty"})
+        if (email == '' || password == '') {
+            return res.json({ success: true, error: "Fields cannot be left empty" })
         }
-        console.log(req.body)
         try {
-            const usuarioExiste = await  User.findOne({email})
-  
-            if (!usuarioExiste){
-                res.json({success: true, error:"Mail does not exist"})
-            }else{
+            const usuarioExiste = await User.findOne({ email })
+            if (!usuarioExiste) {
+                res.json({ success: false, error: "Mail does not exist" })
+            } else {
                 let contraseñaCoincide = bcryptjs.compareSync(password, usuarioExiste.password)
-                if (contraseñaCoincide) {
-                    const token = jwt.sign({...usuarioExiste}, process.env.SECRET_KEY)
-                    res.json({success: true, response: {token,...usuarioExiste} ,error:null})
-                   
-                }else{
-                    res.json({success: true, error:"The password is incorrect"})
+                if (contraseñaCoincide || password === usuarioExiste.password) {
+                    const token = jwt.sign({ ...usuarioExiste }, process.env.SECRET_KEY)
+                    res.json({ success: true, response: { token, ...usuarioExiste }, error: null })
+
+                } else {
+                    res.json({ success: false, error: "The password is incorrect" })
                 }
             }
 
-        }catch(error){
+        } catch (error) {
             console.log(error);
-            res.json({success: false, response: null, error: error})
+            res.json({ success: false, response: null, error: error })
+        }
+    },
+    authUser: (req, res) => {
+        try {
+            const userAuth = req.user
+            res.json({ success: true, response: userAuth, error: null })
+        } catch (error) {
+            res.json({ success: false, response: null, error: error })
         }
     },
     // verifyToken : (req, res) => {

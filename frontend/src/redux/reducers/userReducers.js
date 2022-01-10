@@ -1,5 +1,6 @@
 const initialState = {
-    user: {}
+    user: '',
+    users: []
 }
 
 const userReducers = (state = initialState, action) => {

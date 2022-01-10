@@ -1,54 +1,43 @@
 import { Link } from "react-router-dom";
-import { AiFillHome, AiFillAppstore, AiFillSetting } from "react-icons/ai";
+import { AiFillHome, AiFillAppstore } from "react-icons/ai";
 import { BsFillBookmarkHeartFill } from "react-icons/bs";
 import { BiStore } from "react-icons/bi";
 import { FaUserAlt } from "react-icons/fa";
-import react, {useState} from "react"
 
-const Nagation = () => {
+const Nagation = (props) => {
 
-    const [active, setActive] = useState("home")
 
+    console.log(props)
     return (
         <div className="navigation">
             <ul>
-                <li className={active === "home" ? "active": null} onClick={()=>{
-                    setActive("home")
-                }}>
+                <li className={props.location.pathname === "/" ? "active" : null}>
                     <Link to="/">
                         <span className="icon-navigation"><AiFillHome /></span>
                         <span className="text-navigation">Home</span>
                     </Link>
                 </li>
-                <li className={active === "store" ? "active": null} onClick={()=>{
-                    setActive("store")
-                }}>
-                    <Link to="/">
+                <li className={props.location.pathname === "/Store" ? "active": null}>
+                    <Link to="/Store">
                         <span className="icon-navigation"><AiFillAppstore/></span>
                         <span className="text-navigation">Official Store</span>
                     </Link>
                 </li>
-                <li className={active === "market" ? "active": null} onClick={()=>{
-                    setActive("market")
-                }}>
+                <li className={props.location.pathname === "/market" ? "active" : null}>
                     <Link to="/">
-                        <span className="icon-navigation"><BiStore/></span>
+                        <span className="icon-navigation"><BiStore /></span>
                         <span className="text-navigation">Market Place</span>
                     </Link>
                 </li>
-                <li className={active === "saved" ? "active": null} onClick={()=>{
-                    setActive("saved")
-                }}>
+                <li className={props.location.pathname === "/saved" ? "active" : null}>
                     <Link to="/">
-                        <span className="icon-navigation"><BsFillBookmarkHeartFill/></span>
+                        <span className="icon-navigation"><BsFillBookmarkHeartFill /></span>
                         <span className="text-navigation">NFT Saved</span>
                     </Link>
                 </li>
-                <li className={active === "profile" ? "active": null} onClick={()=>{
-                    setActive("profile")
-                }}>
-                    <Link to="/">
-                        <span className="icon-navigation"><FaUserAlt/></span>
+                <li className={props.location.pathname === "/SignUp" || props.location.pathname === "/SignIn" || props.location.pathname === "/Profile" ? "active" : null}>
+                    <Link to={props.user !== "" ? "/Profile" : "/SignIn"}>
+                        <span className="icon-navigation"><FaUserAlt /></span>
                         <span className="text-navigation">Profile</span>
                     </Link>
                 </li>

@@ -1,6 +1,7 @@
-import react, {useRef} from "react"
+import React, { useRef } from "react"
 import { toast } from 'react-toastify';
-
+import nftActions from '../redux/actions/nftActions'
+import { connect } from 'react-redux'
 const SignIn = (props) => {
 
     const Email = useRef()
@@ -11,13 +12,13 @@ const SignIn = (props) => {
 
 
         const user = {
-            email :  Email.current.value,
-            password :  Password.current.value
+            email: Email.current.value,
+            password: Password.current.value
         }
         const userResponse = await props.signin(user)
-        console.log(userResponse)
-        userResponse.succes 
-            ? 
+        props.getNeftsByUser(userResponse.userId)
+        userResponse.succes
+            ?
             toast.success('Welcom to the NFT world', {
                 position: "top-right",
                 autoClose: 5000,
@@ -26,8 +27,8 @@ const SignIn = (props) => {
                 pauseOnHover: true,
                 draggable: true,
                 progress: undefined,
-            }) 
-            
+            })
+
             : toast.warn(userResponse.error, {
                 position: "top-right",
                 autoClose: 5000,
@@ -37,10 +38,10 @@ const SignIn = (props) => {
                 draggable: true,
                 progress: undefined,
             });
-            if(userResponse.succes === true){
-                Email.current.value = ""
-                Password.current.value = ""
-            }
+        if (userResponse.succes === true) {
+            Email.current.value = ""
+            Password.current.value = ""
+        }
     }
 
 
@@ -50,9 +51,14 @@ const SignIn = (props) => {
                 <input type="text" ref={Email} placeholder="  &#xF007;    Pepe@gmail.com" />
                 <input type="password" ref={Password} placeholder="  &#xf084;    *****" />
                 <button tpye="submit">Log in</button>
-            </form> 
+            </form>
         </>
     )
 }
 
-export default SignIn
+
+const mapDispatchToProps = {
+    getNeftsByUser: nftActions.getNftsByUser
+
+}
+export default connect(null, mapDispatchToProps)(SignIn);
