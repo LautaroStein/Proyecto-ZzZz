@@ -67,6 +67,30 @@ const Store = () => {
                     </div>
                 </div>
             </div>
+            <div className="contenedor-top-sellers-store">
+                <div className="sellers">
+                    <div className="title-top-sellers flex-all-sellers">
+                        <p>All</p>
+                        <div className="filter-all-select">
+                            <select>
+                                <option>Class</option>
+                            </select>
+                            <select>
+                                <option>Type</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div className="contenedor-top-sellers-cards">
+                        {
+                            arrayFalso.map((element, index) => {
+                                return(
+                                    <CardNFT name={element.name} type={element.type} price={element.price} img={element.img} clase={element.clase} />
+                                )
+                            })
+                        }
+                    </div>
+                </div>
+            </div>
         </div>
     )
 }
