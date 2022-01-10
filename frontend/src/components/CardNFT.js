@@ -93,14 +93,14 @@ const resFavNft = async () => {
 
 const mapStateToProps = (state) => {
     return {
-      nfts: state.itinerariesReducers.nfts,
+      nfts: state.nftReducers.nfts,
       user: state.usersReducers.user,
     };
   };
   
   const mapDispatchToProps = {
-    getNfts: nftsActions.getNfts,
-    favNft: nftsActions.favNft,
+    getNfts: nftActions.getNfts,
+    favNft: nftActions.favNft,
   };
   
   export default connect(mapStateToProps, mapDispatchToProps)(CardNFT);
