@@ -1,9 +1,14 @@
 import React from 'react'
+import Graph from '../components/RealTimeGraph/Graph'
 
 const AdminPanel = () => {
     return (
         <div>
-            I am the admin panel
+            <h2>
+                I am the admin panel
+            </h2>
+
+            <Graph />
         </div>
     )
 }

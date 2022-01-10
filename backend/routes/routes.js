@@ -3,10 +3,8 @@ const validador = require("../config/validador");
 const controllerUser = require('../controllers/controllerUser');
 const NftControllers = require("../controllers/NftController");
 const { getAllNft, loadUnNft, modifyAnNft, getOneNft, deleteNft, getNftsByUser } = NftControllers;
-const { newUser, userLoged, authUser } = controllerUser;
-const passport = require('../config/passport')
-
-
+const { newUser, userLoged, authUser, getUsers, updateUser } = controllerUser;
+const passport = require('../config/passport');
 
 
 
@@ -14,11 +12,11 @@ const passport = require('../config/passport')
 
 Router.route('/nft')
     .get(getAllNft)
-    .post(loadUnNft)
+    .post(passport.authenticate('jwt', { session: false }), loadUnNft)
 Router.route("/nft/:id")
-    .put(modifyAnNft)
     .get(getOneNft)
-    .delete(deleteNft)
+    .put(passport.authenticate('jwt', { session: false }), modifyAnNft)
+    .delete(passport.authenticate('jwt', { session: false }), deleteNft)
 
 
 // Routes of Users
@@ -34,6 +32,12 @@ Router.route('/nfts/user/:id')
 
 Router.route('/user/auth')
     .get(passport.authenticate('jwt', { session: false }), authUser)
+
+Router.route('/admin/users')
+    .get(passport.authenticate('jwt', { session: false }), getUsers)
+Router.route('/admin/user/:id')
+    .put(passport.authenticate('jwt', { session: false }), updateUser)
+
 
 
 

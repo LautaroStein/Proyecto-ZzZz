@@ -120,7 +120,7 @@ const Game = (props) => {
         <div className='main-content'>
             {!isSelected &&
                 <>
-                    <h2 className='choice-title'>Choice your NFT</h2>
+                    <h2 className='choice-title'>Welcome "userName", Choose your NFT</h2>
                     <div className='choice-nfts-card'>
                         {props.rdxNftsByUser.length === 0 ? <div className="nfts-loading-container"><div className="nfts-loading" style={{ backgroundImage: `url(/assets/loading_gif.gif)` }} /></div> : <Carousel choice={handlerChoice} nfts={props.rdxNftsByUser} />}
                     </div>
