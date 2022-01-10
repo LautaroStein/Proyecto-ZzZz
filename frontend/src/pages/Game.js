@@ -16,7 +16,7 @@ const Game = (props) => {
     const [userAttacked, setUserAttacked] = useState(false)
     const [userHp, setUserHp] = useState()
     const [bootHp, setBootHp] = useState()
-    const [storyteller, setStoryteller] = useState('Start Fight !')
+    const [storyteller, setStoryteller] = useState('')
 
     useEffect(() => {
 
@@ -31,6 +31,7 @@ const Game = (props) => {
         setUserHp(props.rdxNftsByUser[filterChoice].features.hp)
         setUserNft(props.rdxNftsByUser[filterChoice])
         setIsSelected(true)
+
     }
 
     const initialState = () => {
@@ -44,7 +45,8 @@ const Game = (props) => {
     const attackHandler = (attack) => {
         const damage = Math.floor(attack.damage + ((Math.random() * ((bootNft.features.hp / 2) - 1)) + 1))
         bootNft.features.hp -= damage
-        console.log('user damage: ' + damage);
+
+        setStoryteller(`The NFT ${userNft.name} attacks with ${attack.name} and his damaga was ${damage}`)
         // si cuando ataca la vida del bootNft es menor o igual que cero , el usuario gana
         if (bootNft.features.hp <= 0) {
             // se pregunta si quiere volver a jugar, ganaste loco boludo
@@ -69,7 +71,7 @@ const Game = (props) => {
             setUserAttacked(true)
             setTimeout(() => {
                 setIsUserTurn(false)
-            }, 1000)
+            }, 4000)
         }
     }
     useEffect(() => {
@@ -84,6 +86,8 @@ const Game = (props) => {
             const damage = Math.floor(attack.damage + ((Math.random() * ((userNft.features.hp / 2) - 1)) + 1))
             userNft.features.hp -= damage
             // si cuando ataca la vida del userNft es menor o igual que cero , el usuario gana
+            setStoryteller(`The NFT ${bootNft.name} attacks with ${attack.name} and his damaga was ${damage}`)
+
             if (userNft.features.hp <= 0) {
                 // se pregunta si quiere volver a jugar y se muestra un mensaje , Re papafrita loco
                 userNft.features.hp = 0
@@ -107,7 +111,7 @@ const Game = (props) => {
                 setTimeout(() => {
                     setUserAttacked(false)
                     setIsUserTurn(true)
-                }, 1000)
+                }, 4000)
             }
         }
     }, [isUserTurn])// eslint-disable-line react-hooks/exhaustive-deps
@@ -174,5 +178,6 @@ const Game = (props) => {
 const mapStateToProps = (state) => ({
     rdxNfts: state.nftReducers.nfts,
     rdxNftsByUser: state.nftReducers.userNfts,
+    rdxuser: state.userReducers.user
 })
 export default connect(mapStateToProps, null)(Game)
