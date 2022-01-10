@@ -64,6 +64,18 @@ const userActions = {
             }
         }
     },
+
+    favNft: (fav) => {
+        //recibe>> fav = {nftId:nftId, userId:user._id, boolean}
+        return async (dispatch, getState) => {
+            try {
+                // const nft = await axios.put('https://mytinerary-moraga.herokuapp.com/api/user/favoritos', fav, )
+
+            } catch (error) {
+                console.log(error);
+            }
+        }
+    },
 }
 
 export default userActions

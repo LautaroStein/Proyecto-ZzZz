@@ -1,4 +1,5 @@
-import react,{ useState,useEffect } from "react"
+import React,{ useState,useEffect } from "react"
+import nftActions from "../redux/actions/nftActions";
 import Swal from 'sweetalert2'
 
 
@@ -6,6 +7,11 @@ const CardNFT = ({name, type, price, img, clase}) => {
 
 const [color, setColor] = useState("")
 const [backColor, setBackColor] = useState("")
+const [disliked, setDisliked] = useState(true)
+const [boolean, setBoolean] = useState(nft.likes.find((like)=>like===user._id) ? true : false)
+
+const { } = props
+
 
 useEffect(() => {
     clase === "Common" ? setColor("rgba( 0, 232, 255, 0.25 )") : clase === "Rare" ? setColor("rgba( 0, 160, 42, 0.55 )") : setColor("rgba( 143, 7, 136, 0.55 )")
@@ -27,21 +33,21 @@ const Toast = Swal.mixin({
 
 
 
-const resLikesAndDislikes = async () => {
+const resFavNft = async () => {
     setDisliked(!disliked)
-    let like = {nftId:nftId, userId:user._id, boolean}
+    let fav = {nftId:nftId, userId:user._id, boolean}
     if(!props.user._id) {
       Toast.fire({
         icon: 'error',
         title: 'You must be logged to like this post!'
       })  
     }else {
-    let response = await favAndDisFavController(like)
+    let response = await favNft(fav)
     if(response.success){
       setBoolean(!boolean) 
-        // getNfts()
+        getNfts()
     }
-    // console.log(response)
+    console.log(response)
     } 
     }
 
@@ -68,7 +74,7 @@ const resLikesAndDislikes = async () => {
                                     Buy
                                     <span style={{backgroundColor:`${backColor}`}}></span><span style={{backgroundColor:`${backColor}`}}></span><span style={{backgroundColor:`${backColor}`}}></span><span style={{backgroundColor:`${backColor}`}}></span>
                                     </button>
-                                <button className="button-fav-nft" onClick={resLikesAndDislikes} style={{color: `${color}`,borderColor:`${color}`}}>
+                                <button className="button-fav-nft" onClick={resFavNft} style={{color: `${color}`,borderColor:`${color}`}}>
                                 <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-star" width="36" height="36" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffec00" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                         <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                                         <path d="M12 17.75l-6.172 3.245l1.179 -6.873l-5 -4.867l6.9 -1l3.086 -6.253l3.086 6.253l6.9 1l-5 4.867l1.179 6.873z" />
@@ -84,4 +90,17 @@ const resLikesAndDislikes = async () => {
     )
 }
 
-export default CardNFT
+const mapStateToProps = (state) => {
+    return {
+      nfts: state.itinerariesReducer.nfts,
+      user: state.authReducer.user,
+    };
+  };
+  
+  const mapDispatchToProps = {
+    getNfts: nftsActions.getNfts,
+    favNft: nftsActions.favNft,
+  };
+  
+  export default connect(mapStateToProps, mapDispatchToProps)(CardNFT);
+  

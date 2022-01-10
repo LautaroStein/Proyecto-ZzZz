@@ -8,6 +8,7 @@ const nftSchema = new mongoose.Schema({
     price: { type: Number, required: true },
     stock: { type: Number, required: true },
     users: [{ type: mongoose.Types.ObjectId, ref: 'user' }],
+    favs: [{ type: mongoose.Types.ObjectId, ref: "user" }],
     features: {
         habilities: [
             {

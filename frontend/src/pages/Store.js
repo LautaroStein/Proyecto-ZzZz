@@ -7,28 +7,32 @@ const Store = () => {
             type:"Gamer",
             clase:"Common",
             price:40,
-            img:"https://images-zzz.netlify.app/asstes/Morde.jpeg"
+            img:"https://images-zzz.netlify.app/asstes/Morde.jpeg",
+            id:1,
         },
         {
             name:"Awakening Of An Adventurer",
             clase:"Rare",
             type:"Cyberpunk",
             price:100,
-            img:"https://images-zzz.netlify.app/asstes/awakening.jpg"
+            img:"https://images-zzz.netlify.app/asstes/awakening.jpg",
+            id:2,
         },
         {
             name:"Speed Lover",
             clase:"Mythical",
             type:"Cyberpunk",
             price:100,
-            img:"https://images-zzz.netlify.app/asstes/speed.jpg"
+            img:"https://images-zzz.netlify.app/asstes/speed.jpg",
+            id:3,
         },
         {
             name:"Okuda Geometric",
             clase:"Rare",
             type:"Arte",
             price:78,
-            img:"https://images-zzz.netlify.app/asstes/okuda.jpg"
+            img:"https://images-zzz.netlify.app/asstes/okuda.jpg",
+            id:4,
         }
     ]
 
