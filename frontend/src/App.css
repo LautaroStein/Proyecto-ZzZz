@@ -697,6 +697,11 @@ ul li button:hover:nth-child(4) {
   align-items: center;
   justify-content: center;
 }
+
+/* .container-nft {
+  padding: 0.5rem;
+} */
+
 .contenedor-card-nft .container-nft .ochenta-nft{
   height: 95%;
   width: 93%;
@@ -740,11 +745,19 @@ ul li button:hover:nth-child(4) {
   align-items: center;
   justify-content: space-between;
 }
+
+.contenedor-buttons-nft{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 .button-compra-nft{
   font-size: 16px;
   border: 0.3em solid;
   border-radius: 0.5em;
-  width: 12em;
+  width: 9em;
   height: 3em;
   text-transform: uppercase;
   font-weight: bold;
@@ -763,6 +776,31 @@ ul li button:hover:nth-child(4) {
   align-items: center;
   justify-content: center;
 }
+
+.button-fav-nft{
+  font-size: 16px;
+  border: 0.3em solid;
+  border-radius: 0.5em;
+  width: 6em;
+  height: 3em;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-family: sans-serif;
+  letter-spacing: 0.1em;
+  text-align: center;
+  line-height: 3em;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  transition: 0.5s;
+  margin: 0.5em;
+  background: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .button-compra-nft span{
   position: absolute;
   width: 25%;

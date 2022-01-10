@@ -142,7 +142,7 @@ const Home = () => {
 
         <div className="contenedor-about">
             <div className="contenedor-ocho-about">
-            <p>CEATORS</p>
+            <p>CREATORS</p>
                 <h2>Top Collections of the week</h2>
                 <div className="contenedor-cards-topCollection-home">  
                         <div className="card-topCollection">                       
