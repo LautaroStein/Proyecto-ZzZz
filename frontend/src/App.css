@@ -691,6 +691,7 @@ ul li button:hover:nth-child(4) {
 
 /* GAME */
 
+/* when the user choice a NFT */
 .main-content {
   display: flex;
   flex-direction: column;
@@ -719,12 +720,7 @@ ul li button:hover:nth-child(4) {
 .fa-chevron-left {
   font-size: 2rem !important;
 }
-.show-slide {
-  display: flex;
-  height: 100%;
-  width: 100%;
-  padding: 1rem;
-}
+
 .nft-item {
   display: flex;
   height: 100%;
@@ -742,11 +738,46 @@ ul li button:hover:nth-child(4) {
   width: 100%;
   font-size: 1.5rem;
 }
-.nft-img {
+.nft-img-container-boot {
+  display: flex;
+  flex-direction: column;
   height: 55%;
+  justify-content: flex-end;
+  z-index: 0;
+  width: 60%;
+}
+.nft-img-container-user {
+  display: flex;
+  flex-direction: column;
+  height: 55%;
+
+  width: 60%;
+}
+.nft-img {
+  z-index: 1;
+  height: 85%;
   width: 100%;
+  border-radius: 15px;
   background-size: cover;
   background-position: center;
+}
+.nft-stage {
+  height: 100%;
+  width: 250px;
+  background-color: #1b2845;
+  border-radius: 50%;
+  align-self: center;
+  background-size: cover;
+  background-position: center;
+  background-image: url("http://localhost:3000/assets/nft_portal.gif");
+  perspective: 100px;
+}
+.nft-stage-container {
+  height: 15%;
+  width: 250px;
+  background-color: #1b2845;
+  border-radius: 50%;
+  align-self: center;
 }
 .nfts-loading-container {
   display: flex;
@@ -755,88 +786,6 @@ ul li button:hover:nth-child(4) {
   width: 100%;
 }
 
-.stage {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  width: 100%;
-}
-
-.boot-box {
-  display: flex;
-  height: 50%;
-  width: 100%;
-}
-.user-box {
-  display: flex;
-  height: 50%;
-  width: 100%;
-}
-.nft-body h2 {
-  font-size: 1rem;
-}
-.nft-body {
-  display: flex;
-  padding: 2rem;
-  border-radius: 15px;
-  background-size: cover;
-  background-position: center;
-  height: 100%;
-  width: 48%;
-  flex-direction: column;
-  align-items: center;
-}
-.storyteller {
-  display: flex;
-  justify-content: center;
-  width: 50%;
-  height: 100%;
-  align-items: center;
-  padding: 5rem;
-}
-.storyteller p {
-  height: 60%;
-  padding: 1rem;
-  background-color: white;
-  width: 60%;
-  font-size: 1rem;
-  color: black;
-  border-radius: 15px;
-}
-.card-boot-nft {
-  display: flex;
-  justify-content: center;
-  width: 50%;
-  height: 100%;
-  padding: 2.5rem;
-}
-.hability-action {
-  margin: 0.5rem;
-  color: white;
-  cursor: pointer;
-  padding: 1.5rem;
-  background-color: rgba(0, 0, 0, 0.534);
-}
-.habilities-container {
-  width: 100%;
-  display: flex;
-  border-radius: 15px;
-  align-items: center;
-  height: 100%;
-  padding: 2rem;
-}
-.card-user-nft {
-  padding: 2.5rem;
-  width: 50%;
-  display: flex;
-  justify-content: center;
-  height: 100%;
-}
-.user-habilities {
-  padding: 2rem;
-  width: 50%;
-  height: 100%;
-}
 .nfts-loading {
   background-size: cover;
   background-position: center;
@@ -845,7 +794,99 @@ ul li button:hover:nth-child(4) {
   height: 85%;
   width: 30%;
 }
+/* END CHOICE */
 
+/* display arena battle */
+.main-content-battle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+.stage {
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+  background-color: rgba(2, 92, 134, 0.658);
+  height: 85%;
+}
+.arena-battle {
+  display: flex;
+  height: 80%;
+  width: 100%;
+}
+
+.boot-box {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  align-items: flex-end;
+  padding: 1rem;
+  justify-content: center;
+  height: 100%;
+}
+.left {
+  margin-bottom: 1rem;
+  padding: 1rem;
+}
+.user-box {
+  padding: 1rem;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 50%;
+  align-items: flex-start;
+  height: 100%;
+}
+
+.abilities-container {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+  height: 20%;
+}
+.ability-action {
+  padding: 1rem;
+  cursor: pointer;
+  height: 65px;
+  background-color: transparent;
+}
+.health-container {
+  width: 60%;
+  height: 10%;
+}
+.features-container {
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+  border-radius: 15px;
+
+  height: 30%;
+  background-color: rgba(98, 107, 18, 0.664);
+}
+.features-head {
+  display: flex;
+  height: 50%;
+  width: 100%;
+  justify-content: space-between;
+}
+.center {
+  padding: 1rem;
+  margin-top: 1rem;
+}
+.features-head:first-child {
+  font-size: 70%;
+}
+
+.features-health {
+  height: 100%;
+  border-radius: 20px;
+}
+
+/* END ARENA BATTLE */
+
+/*  */
 @keyframes border-pulsate {
   0% {
     border-color: rgba(0, 255, 255, 1);
