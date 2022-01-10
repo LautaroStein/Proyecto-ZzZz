@@ -1,6 +1,7 @@
 const initialState = {
     nfts: [],
-    nft: {}
+    nft: {},
+    userNfts: []
 }
 
 const nftReducers = (state = initialState, action) => {
@@ -32,7 +33,11 @@ const nftReducers = (state = initialState, action) => {
                 ...state,
                 nft: action.payload
             }
-
+        case 'GET_USER_NFTS':
+            return {
+                ...state,
+                userNfts: action.payload
+            }
         default:
             return state
     }

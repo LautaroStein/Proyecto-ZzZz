@@ -1,14 +1,14 @@
 const mongoose = require("mongoose")
 
 const nftSchema = new mongoose.Schema({
+    name: { type: String },
+    type: { type: String },
     clase: { type: String, required: true },
     img: { type: String, required: true },
     price: { type: Number, required: true },
     stock: { type: Number, required: true },
     users: [{ type: mongoose.Types.ObjectId, ref: 'user' }],
     features: {
-        name: { type: String },
-        type: { type: String },
         habilities: [
             {
                 name: { type: String },
@@ -16,7 +16,12 @@ const nftSchema = new mongoose.Schema({
             },
         ],
         hp: { type: Number },
-        maxHp: { type: Number }
+        maxHp: { type: Number },
+        usersFeatures: [{
+            exp: { type: Number, default: 0 },
+            level: { type: Number, default: 0 },
+            userId: { type: mongoose.Types.ObjectId, ref: 'user' }
+        }]
     }
 })
 
