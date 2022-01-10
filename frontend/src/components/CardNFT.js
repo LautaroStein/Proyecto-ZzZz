@@ -8,7 +8,7 @@ const CardNFT = ({name, type, price, img, clase}) => {
 const [color, setColor] = useState("")
 const [backColor, setBackColor] = useState("")
 const [disliked, setDisliked] = useState(true)
-const [boolean, setBoolean] = useState(nft.likes.find((like)=>like===user._id) ? true : false)
+const [boolean, setBoolean] = useState(nft.favs.find((like)=>like===user._id) ? true : false)
 
 const { } = props
 
@@ -36,6 +36,7 @@ const Toast = Swal.mixin({
 const resFavNft = async () => {
     setDisliked(!disliked)
     let fav = {nftId:nftId, userId:user._id, boolean}
+
     if(!props.user._id) {
       Toast.fire({
         icon: 'error',
@@ -92,8 +93,8 @@ const resFavNft = async () => {
 
 const mapStateToProps = (state) => {
     return {
-      nfts: state.itinerariesReducer.nfts,
-      user: state.authReducer.user,
+      nfts: state.itinerariesReducers.nfts,
+      user: state.usersReducers.user,
     };
   };
   
