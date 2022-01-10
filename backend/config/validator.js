@@ -16,7 +16,7 @@ const validator = (req, res, next) => {
         password:joi.string().trim().min(6).required().messages({
             'string.empty' : 'You must complete this field',
         }),
-        profilePhoto:joi.string().min(5).trim().required().messages({
+        urlPhoto:joi.string().min(5).trim().required().messages({
             'string.min': 'Please use a valid url'
         }),
         country:joi.string().required(),
