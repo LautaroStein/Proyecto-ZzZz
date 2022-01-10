@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react"
+import { Link } from "react-router-dom"
+// import Footer from '../components/Footer'
 
 const Home = () => {
 
@@ -19,11 +21,11 @@ const Home = () => {
         <div className="background-iluminacion">
             <div className="contenedor-home">
                 <div className="contenedor-text-home">
-                    <p className="text-home-numberone">#1 LARGEST NFT MARKETPLACE</p>
+                    <p className="text-home-numberone">#1 LARGEST NFT MARKET</p>
                     <h1>Discover, collect, and sell awesome NFTs</h1>
-                    <p className="text-home-collect">ProyectZzZz is a collection 5000 unique NFTs who you can easly find some NFT ProyectZzZz is largest NFT marketplace.</p>
+                    <p className="text-home-collect">ProyectZzZz is a collection with more than 4500 unique NFTs. You can easly find some NFT ProyectZzZz.</p>
                     <div>
-                        <button>Explore</button>
+                        <button><Link to="/Store">Explore</Link></button>
                         <button>Create</button>
                     </div>
                 </div>
@@ -72,12 +74,13 @@ const Home = () => {
                     </div>
                     <div>
                         <h3>Building an open digital economy</h3>
-                        <p>At ProyectZzZz, we´re excited about a brand new type of digital good called a non-fungible token, or NFT.<br/> NFTs have exciting new properties: they´re unique. provably scarce, tradeable, and usable across multiple application.</p>
+                        <p>At ProyectZzZz, we´re excited about a brand new type of digital good, called NFT (non-fungible token).<br/> NFTs have exciting properties: they´re unique. probably scarce, tradeable, and usable across multiple applications.</p>
                         <p>Just like physcal goods, you can do whatever you want with them! You could throw them in the trash, gift them to a friend across the world, or go sell them on an open marketplace.</p>
                     </div>
                 </div>
             </div>
         </div>
+        {/* <Footer/> */}
         </>
     )
 }

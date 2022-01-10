@@ -6,14 +6,14 @@ import Form from './pages/Form'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { connect } from "react-redux";
-import Nagation from "./components/Nagation"
+import Navigation from "./components/Navigation"
 import userActions from "../src/redux/actions/userActions"
 import { useEffect } from 'react'
 import Profile from './pages/Profile';
 import Game from "./pages/Game"
 import Store from "./pages/Store"
 import nftActions from '../src/redux/actions/nftActions'
-const Navigation = withRouter(Nagation)
+const Navigations = withRouter(Navigation)
 const Forms = withRouter(Form)
 
 function App({ user, rdxAuth, rdxLogin, getUserNfts, getNfts }) {
@@ -36,7 +36,7 @@ function App({ user, rdxAuth, rdxLogin, getUserNfts, getNfts }) {
 
   return (
     <BrowserRouter>
-      <Navigation user={user} />
+      <Navigations user={user} />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/Profile" element={<Profile/>} />
