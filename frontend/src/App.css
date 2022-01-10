@@ -251,6 +251,7 @@ ul li button:hover:nth-child(4) {
   color: var(--color-white);
 }
 .navigation {
+  position: fixed;
   height: 70px;
   background-color: var(--ColorPrimarioFuerte);
   display: flex;
@@ -258,6 +259,7 @@ ul li button:hover:nth-child(4) {
   align-items: center;
   border-radius: 0 0 10px 10px;
   width: 100%;
+  position: fixed;
   z-index: 99;
 }
 .navigation ul {
@@ -308,10 +310,11 @@ ul li button:hover:nth-child(4) {
   opacity: 1;
   transform: translateY(10px);
 }
+
 .indicator {
   position: absolute;
   top: 50%;
-  left: 25px;
+  left: 12px;
   width: 70px;
   height: 70px;
   background-color: var(--ColorPrimario);
@@ -321,16 +324,16 @@ ul li button:hover:nth-child(4) {
 }
 
 .navigation ul li:nth-child(2).active ~ .indicator {
-  transform: translateX(calc(95px * 1));
+  transform: translateX(calc(81px * 1));
 }
 .navigation ul li:nth-child(3).active ~ .indicator {
-  transform: translateX(calc(95px * 2));
+  transform: translateX(calc(81px * 2));
 }
 .navigation ul li:nth-child(4).active ~ .indicator {
-  transform: translateX(calc(95px * 3));
+  transform: translateX(calc(81px * 3));
 }
 .navigation ul li:nth-child(5).active ~ .indicator {
-  transform: translateX(calc(95px * 4));
+  transform: translateX(calc(81px * 4));
 }
 
 .iluminador {
@@ -427,6 +430,10 @@ ul li button:hover:nth-child(4) {
 .contenedor-text-home div button:nth-child(1) {
   background-color: var(--ColorButton);
   margin-right: 30px;
+}
+.contenedor-text-home div button:nth-child(1) a{
+  color: white;
+  text-decoration: none;
 }
 .contenedor-text-home div button:nth-child(1):hover {
   background-color: var(--ColorDesctacar);
@@ -642,7 +649,7 @@ ul li button:hover:nth-child(4) {
   width: 100%;
 }
 .contenedor-top-sellers-store{
-  height: 70vh;
+  height: 90vh;
   width: 100%;
   display: flex;
   align-items: center;
@@ -665,7 +672,7 @@ ul li button:hover:nth-child(4) {
 }
 .contenedor-top-sellers-cards{
   width: auto;
-  height: 85%;
+  height: 75%;
   overflow-y: hidden; 
   overflow-x: auto;
   white-space: nowrap;
@@ -676,25 +683,138 @@ ul li button:hover:nth-child(4) {
 .contenedor-card-nft{
   height: 100%;
   width:  400px;
-  margin-right: 15px;
+  margin-right: 35px;
   display: inline-block;
   position: relative;
+  border-radius: 40px;
+  background-color:rgba(255, 255, 255, 0.034);
 }
-.img-nft-total{
-  height: 95%;
-  width: 100%;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  border-radius: 20px;
+.contenedor-card-nft .container-nft{
+  height: 100%;
+  width : 100%;
   display: flex;
-  align-items: flex-end;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
-.text-nft-total{
+.contenedor-card-nft .container-nft .ochenta-nft{
+  height: 95%;
+  width: 93%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.contenedor-card-nft .container-nft .ochenta-nft img{
   width: 100%;
-  height: 30%;
+  height: 70%;
+  border-radius: 30px;
+  object-fit: cover;
+}
+.contenedor-card-nft .container-nft .ochenta-nft h2{
+  color: white;
+  width: 100%;
+  height: 7%;
+  display: flex;
+  align-items: center;
+}
+.clasificacion-nft{
+  width: 100%;
+  height: 50%;
+  display:flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  font-size: 1.2em;
+}
+.contenedor-total-clasificacion{
+  width: 100%;
+  height: 20%;
+  display: flex;
+  flex-direction: column;
+  color: white;
+}
+.contenedor-price-nft{
+  width: 100%;
+  height: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.button-compra-nft{
+  font-size: 16px;
+  border: 0.3em solid;
+  border-radius: 0.5em;
+  width: 12em;
+  height: 3em;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-family: sans-serif;
+  letter-spacing: 0.1em;
+  text-align: center;
+  line-height: 3em;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  transition: 0.5s;
+  margin: 1em;
+  background: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.button-compra-nft span{
+  position: absolute;
+  width: 25%;
+  height: 100%;
+  background-color: var(--c);
+  transform: translateY(150%);
+  border-radius: 50%;
+  left: calc((var(--n) - 1) * 25%);
+  transition: 0.5s;
+  transition-delay: calc((var(--n) - 1) * 0.1s);
+  z-index: -1;
+}
+.button-compra-nft:hover {
+  color: white !important;
 }
 
+.button-compra-nft:hover span {
+  transform: translateY(0) scale(2);
+}
+
+.button-compra-nft span:nth-child(1) {
+  --n: 1;
+}
+
+.button-compra-nft span:nth-child(2) {
+  --n: 2;
+}
+
+.button-compra-nft span:nth-child(3) {
+  --n: 3;
+}
+
+.button-compra-nft span:nth-child(4) {
+  --n: 4;
+}
+.filter-all-select{
+height: 100%;
+display: flex;
+align-items: center;
+}
+.filter-all-select select{
+  width: 8em;
+  margin-right: 10px;
+  height: 25%;
+  background-color: rgba(255, 255, 255, 0.034);
+  border: none;
+  color: white;
+
+}
+.flex-all-sellers{
+  justify-content: space-between;
+}
 
 
 
@@ -772,4 +892,115 @@ ul li button:hover:nth-child(4) {
   width: 30%;
 }
 
+/* **CARRITO**: */
+
+.contenedor-carrito {
+  color: white;
+  background-color: rgba(255, 0, 0, 0.589);
+  width: 40vw;
+  position: absolute;
+  top: 70px;
+  right: 10px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 0 0 15px 15px;
+  padding: 0.3rem;
+  z-index: 1;
+  position: fixed;
+}
+.contenedor-carrito h3{
+  text-align: center;
+}
+
+.producto-en-carrito {
+  background-color: rgba(255, 0, 0, 0.431);
+  margin: 0.4rem;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-around;
+  align-items: center;
+
+}
+
+.total-carrito {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-around;
+  align-items: center;
+  padding: 0.5rem;
+}
+
+.contenedor-imagen-nft-carrito{
+  display: flex;
+  align-items: flex-start;
+  background-color: #1874ecb2;
+  /* padding: 0.5rem; */
+  margin: 0.5rem;
+}
+.producto-en-carrito .contenedor-imagen-nft-carrito img{
+  height:60px;
+  width:60px;
+  padding: 0.5rem;
+  margin: 0.5rem;
+  border-radius: 10px;
+}
+
+.button-completar-compra {
+  background-color: green;
+  padding: 0.5rem;
+}
+
+.button-cancelar-compra {
+  background-color: rgb(223, 130, 10);
+  padding: 0.5rem;
+}
+
 /* ********* */
+
+.total-profile-container{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-grow: 1;
+  height: 92.2vh;
+}
+
+.nav-profile-col{
+  width: 70px;
+  height: 60vh;
+  background-color: var(--ColorPrimarioFuerte);
+  border-radius: 0 20px 20px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+.nav-profile-col svg{
+  font-size: 1.5em;
+  color: rgb(146, 146, 146);
+  cursor: pointer;
+  transition: all 1000ms;
+}
+.nav-profile-col svg:hover{
+  animation: pulse 1500ms infinite;
+  border-radius: 50%;
+}
+@keyframes pulse {
+  0%{
+    box-shadow: var(--ColorButton) 0 0 0 0;
+  }
+  75%{
+    box-shadow: #ff69b400 0 0 0 16px;
+  }
+}
+.nav-profile-col .active{
+  color: var(--ColorButton);
+}
+
+.profile-render-constant{
+  flex-grow: 1;
+  height: 80%;
+}

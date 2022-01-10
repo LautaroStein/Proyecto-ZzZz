@@ -75,7 +75,7 @@ const Form = (props) => {
                         :
                         <div className="background-image">
                             <h2>Hello, Friend!</h2>
-                            <p>Enter your personal details and start journey with us</p>
+                            <p>Enter your personal details and start a journey with us</p>
                             <Link to="/SignUp">SignUp</Link>
                         </div>
                 }
