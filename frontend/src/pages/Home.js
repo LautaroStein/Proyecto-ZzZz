@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react"
+import { Link } from "react-router-dom"
 // import Footer from '../components/Footer'
 
 const Home = () => {
@@ -24,7 +25,7 @@ const Home = () => {
                     <h1>Discover, collect, and sell awesome NFTs</h1>
                     <p className="text-home-collect">ProyectZzZz is a collection with more than 4500 unique NFTs. You can easly find some NFT ProyectZzZz.</p>
                     <div>
-                        <button>Explore</button>
+                        <button><Link to="/Store">Explore</Link></button>
                         <button>Create</button>
                     </div>
                 </div>
