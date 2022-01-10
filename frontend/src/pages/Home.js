@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react"
 import { Link } from "react-router-dom"
-// import { man } from '../assets/manimage.jpg'
+// import { image } from '/assets/manimage.jpg'
 // import Footer from '../components/Footer'
 
 const Home = () => {
@@ -146,7 +146,9 @@ const Home = () => {
                 <h2>Top Collections of the week</h2>
                 <div className="contenedor-cards-topCollection-home">  
                         <div className="card-topCollection">                       
-                            <div className="card-topCollection-image"></div>
+                            <div style={{backgroundImage:'url(/assets/manimage.jpg)'}} className="card-topCollection-image">
+                                {/* <img src={'/assets/manimage.jpg'} alt="imagen hombre"/> */}
+                                </div>
                             <div className="card-info-topCollection-home">
                                 <h1>User Name</h1>
                                 <p>price$</p>
@@ -154,7 +156,7 @@ const Home = () => {
                             </div>               
                         </div>
                         <div className="card-topCollection">                       
-                            <div className="card-topCollection-image"></div>
+                        <div style={{backgroundImage:'url(/assets/woman1.jpg)'}} className="card-topCollection-image"></div>
                             <div className="card-info-topCollection-home">
                                 <h1>User Name</h1>
                                 <p>price$</p>
@@ -162,7 +164,7 @@ const Home = () => {
                             </div>               
                         </div>
                         <div className="card-topCollection">                       
-                            <div className="card-topCollection-image"></div>
+                        <div style={{backgroundImage:'url(/assets/woman2.jpg)'}} className="card-topCollection-image"></div>
                             <div className="card-info-topCollection-home">
                                 <h1>User Name</h1>
                                 <p>price$</p>

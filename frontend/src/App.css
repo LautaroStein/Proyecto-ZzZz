@@ -1120,5 +1120,11 @@ align-items: center;
   backdrop-filter: opacity(20%);
   border: solid 1.5px rgb(255, 7, 7);
   margin-top:0;
-  box-shadow:  8px 5px 30px #fd3e0454;
+  box-shadow:  8px 5px 30px #fd3e048a;
+  background-position: center;
+  background-size: cover;
 }
+/* .card-topCollection-image img{
+  max-width: 100%;
+  max-height: 100%;
+} */
