@@ -66,7 +66,7 @@ const controllerUser = {
                 if (contraseñaCoincide || password === usuarioExiste.password) {
                     const token = jwt.sign({ ...usuarioExiste }, process.env.SECRET_KEY)
                     res.json({ success: true, response: { token, ...usuarioExiste }, error: null })
-
+                    console.log(res)
                 } else {
                     res.json({ success: false, error: "The password is incorrect" })
                 }
