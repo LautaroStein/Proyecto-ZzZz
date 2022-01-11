@@ -16,7 +16,7 @@ const nftControllers = {
     const nft = req.body
     let respuesta
     try {
-      if (req.user.rol === 'admin' || req.user.rol === 'moderator') {
+      if (req.user.role === 'admin' || req.user.role === 'moderator') {
         respuesta = await new Nft(nft).save()
         res.json(respuesta)
 
@@ -47,7 +47,7 @@ const nftControllers = {
     let nft = req.body;
     let actualizado;
     try {
-      if (req.user.rol === 'admin' || req.user.rol === 'moderator') {
+      if (req.user.role === 'admin' || req.user.role === 'moderator') {
         actualizado = await Nft.findOneAndUpdate({ _id: id }, nft, { new: true });
         res.json({ actualizado: actualizado._id })
       } else {
@@ -63,11 +63,10 @@ const nftControllers = {
     const id = req.params.id;
     let nft;
     try {
-      if (req.user.rol === 'admin' || req.user.rol === 'moderator') {
+      if (req.user.role === 'admin' || req.user.role === 'moderator') {
 
         nft = await Nft.findOneAndDelete({ _id: id });
-
-        res.json({ success: true, nft });
+        res.json({ success: true, deletedNft: nft._id });
       } else {
         res.json({ success: false });
       }
@@ -89,7 +88,7 @@ const nftControllers = {
 
     } catch (error) {
       console.log(error);
-      res.json({ error: 'Error in getNftByUser controller' })
+      res.json({ error: 'Error in the comunication' })
     }
   },
 

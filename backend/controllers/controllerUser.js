@@ -87,7 +87,7 @@ const controllerUser = {
     },
     getUsers: async (req, res) => {
         try {
-            if (req.user.rol === 'admin' || req.user.range === 'moderator') {
+            if (req.user.role === 'admin' || req.user.role === 'moderator') {
                 const users = await User.find()
                 res.json({ success: true, users })
             } else {
@@ -102,7 +102,7 @@ const controllerUser = {
         const userBody = req.body
         let userUpdated
         try {
-            if (req.user.rol === 'admin') {
+            if (req.user.role === 'admin') {
                 const id = req.params.id
                 userUpdated = await User.findOneAndUpdate({ _id: id }, userBody, { new: true })
                 res.json({ success: true, userUpdated })

@@ -31,7 +31,7 @@ const nftReducers = (state = initialState, action) => {
         case 'UPDATE_NFT':
             return {
                 ...state,
-                nft: action.payload
+                nfts: state.nfts.map(nft => nft._id === action.payload.nftId ? { ...nft, ...action.payload.body } : nft)
             }
         case 'GET_USER_NFTS':
             return {
