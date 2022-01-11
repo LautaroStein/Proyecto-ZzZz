@@ -1099,7 +1099,7 @@ img {
   align-items: center;
   justify-content: space-between;
   flex-grow: 1;
-  height: 92.2vh;
+  height: 90vh;
 }
 
 .nav-profile-col {
@@ -1138,3 +1138,240 @@ img {
   flex-grow: 1;
   height: 80%;
 }
+
+/* DASHBOARD */
+.main-dashboard {
+  padding: 2.5rem;
+  height: 100%;
+  width: 100%;
+  overflow: auto;
+  color: rgb(0, 0, 0);
+}
+
+.dashboard-container {
+  flex-grow: 1;
+  height: 100%;
+  margin-bottom: 2rem;
+}
+.dashboard-resume {
+  display: flex;
+  justify-content: center;
+  height: 30%;
+}
+.card-revenue {
+  display: flex;
+  padding: 1rem;
+  height: 100%;
+  margin-right: 1rem;
+  width: 25%;
+
+  background-color: white;
+  border-radius: 15px;
+}
+.card-revenue i {
+  font-size: 4.5rem;
+  margin-right: 1rem;
+  align-self: center;
+}
+.card-total-users {
+  display: flex;
+  padding: 1rem;
+  height: 100%;
+  margin-right: 1rem;
+
+  width: 25%;
+
+  border-radius: 15px;
+  background-color: white;
+}
+.card-total-users i {
+  font-size: 4.5rem;
+  align-self: center;
+  margin-right: 1rem;
+}
+.card-total-sales {
+  background-color: white;
+  border-radius: 15px;
+  display: flex;
+  padding: 1rem;
+  height: 100%;
+  width: 25%;
+}
+.card-total-sales i {
+  font-size: 4.5rem;
+  margin-right: 1rem;
+
+  align-self: center;
+}
+.card-description {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.dashboard-graph {
+  display: flex;
+  color: white;
+  justify-content: center;
+  align-items: center;
+  height: 70%;
+}
+.card-description .card-title {
+  font-size: 0.7rem;
+}
+.main-dashboard::-webkit-scrollbar {
+  width: 8px;
+}
+.main-dashboard::-webkit-scrollbar-track {
+  /* background */
+}
+
+.main-dashboard::-webkit-scrollbar-thumb {
+  background-color: #b903b0;
+  border-radius: 10px;
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
+}
+
+/* *** */
+
+/* MANAGEMENT */
+.management {
+  padding: 2.5rem;
+  height: 100%;
+  width: 100%;
+  overflow: auto;
+  color: rgb(0, 0, 0);
+}
+
+/* NFTS MANAGEMENT */
+.nfts-management {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  margin-bottom: 3rem;
+}
+.action-nft-form {
+  display: flex;
+  justify-content: space-around;
+  margin: 1rem;
+}
+.action-nft-form i {
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+.submit-edit-form {
+  width: 50%;
+  padding: 0.5rem;
+  align-self: center;
+}
+.main-nfts-content {
+  width: 80%;
+  height: 100%;
+}
+.right-side-management {
+  width: 20%;
+  border-radius: 15px;
+  text-align: center;
+  padding: 1rem;
+  margin-left: 1rem;
+  background-color: white;
+}
+.edit-form {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 100%;
+}
+.nft-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 90%;
+}
+.abilities-label {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.abilities-label h2 {
+  font-size: 1rem;
+}
+.abilities-label span i {
+  font-size: 1.2rem;
+  margin: 0.5rem;
+  cursor: pointer;
+}
+.nft-form input {
+  padding: 0.5rem;
+  font-size: 1rem;
+}
+.nfts-search-title {
+  display: flex;
+  height: 20%;
+  padding: 1rem;
+  width: 100%;
+}
+.nfts-search-title h2 {
+  width: 75%;
+  color: white;
+  letter-spacing: 1.5rem;
+  word-spacing: 1rem;
+}
+.nfts-search-title input {
+  height: 40px;
+  padding: 0.2rem;
+}
+.nfts-container {
+  display: flex;
+  flex-wrap: wrap;
+  height: 80%;
+  padding: 1rem;
+  width: 100%;
+  overflow: auto;
+}
+
+.cardy {
+  height: 100%;
+  width: 28%;
+  margin: 0.7rem 1rem;
+  cursor: pointer;
+  padding: 1rem;
+  border-radius: 15px;
+  background-color: white;
+}
+.management::-webkit-scrollbar {
+  width: 8px;
+}
+.management::-webkit-scrollbar-track {
+  /* background */
+}
+
+.management::-webkit-scrollbar-thumb {
+  background-color: #b903b0;
+  border-radius: 10px;
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
+}
+.nfts-container::-webkit-scrollbar {
+  width: 8px;
+}
+.nfts-container::-webkit-scrollbar-track {
+  /* background */
+}
+
+.nfts-container::-webkit-scrollbar-thumb {
+  background-color: #b903b0;
+  border-radius: 10px;
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
+}
+/* END NFTS MANAGEMENT */
+
+/* USERS MANAGEMENT */
+
+.users-management {
+  height: 100%;
+}
+
+/* END USERS MANAGEMENT */
