@@ -1286,8 +1286,8 @@ img {
 .nft-form {
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
-  height: 90%;
+  overflow-y: auto;
+  height: 100%;
 }
 .abilities-label {
   display: flex;
@@ -1372,6 +1372,21 @@ img {
   box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
   -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
 }
+
+.nft-form::-webkit-scrollbar {
+  width: 8px;
+}
+.nft-form::-webkit-scrollbar-track {
+  /* background */
+}
+
+.nft-form::-webkit-scrollbar-thumb {
+  background-color: #41003d;
+  border-radius: 10px;
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
+}
+
 .nfts-container::-webkit-scrollbar {
   width: 8px;
 }

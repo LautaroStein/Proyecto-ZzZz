@@ -4,7 +4,10 @@ const userActions = {
     addNft: (paramNft) => {
         return async (dispatch, getState) => {
             try {
-                const nft = await axios.post('http://localhost:4000/api/nft', paramNft)
+                const token = localStorage.getItem('token')
+                const nft = await axios.post('http://localhost:4000/api/nft', paramNft, {
+                    headers: { 'Authorization': 'Bearer ' + token }
+                })
                 dispatch({ type: 'ADD_NFT', payload: nft.data })
             } catch (error) {
                 console.log(error);
@@ -41,16 +44,20 @@ const userActions = {
                 const nft = await axios.get(`http://localhost:4000/api/nft/${nftId}`, {
                     headers: { 'Authorization': 'Bearer ' + token }
                 })
-                dispatch({ type: 'GET_NFT', payload: nft.data.respuesta })
+                return { nftId: nft.data.respuesta }
             } catch (error) {
                 console.log(error);
             }
         }
     },
     updateNft: (nftId, paramUser) => {
+        console.log(nftId, paramUser);
         return async (dispatch, getState) => {
             try {
-                const nft = await axios.put(`http://localhost:4000/api/nft/${nftId}`, paramUser, { new: true })
+                const token = localStorage.getItem('token')
+                const nft = await axios.put(`http://localhost:4000/api/nft/${nftId}`, paramUser, {
+                    headers: { 'Authorization': 'Bearer ' + token }
+                })
                 dispatch({ type: 'UPDATE_NFT', payload: { nftId: nft.data.actualizado, body: paramUser } })
             } catch (error) {
                 console.log(error);
@@ -71,6 +78,11 @@ const userActions = {
             }
         }
     },
+    filter: (nfts, value) => {
+        return (dispatch, getState) => {
+            dispatch({ type: 'FILTER', payload: { nfts, value } })
+        }
+    }
 }
 
 export default userActions
