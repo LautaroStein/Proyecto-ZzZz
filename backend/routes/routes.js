@@ -2,6 +2,8 @@ const Router = require("express").Router();
 const validador = require("../config/validador");
 const controllerUser = require('../controllers/controllerUser');
 const NftControllers = require("../controllers/NftController");
+const Coinbase =  require("../controllers/CoinbaseController");
+const { Charge } = Coinbase
 const { getAllNft, loadUnNft, modifyAnNft, getOneNft, deleteNft, getNftsByUser } = NftControllers;
 const { newUser, userLoged, authUser } = controllerUser;
 const passport = require('../config/passport')
@@ -20,7 +22,6 @@ Router.route("/nft/:id")
     .get(getOneNft)
     .delete(deleteNft)
 
-
 // Routes of Users
 
 Router.route('/auth/signUp')
@@ -35,6 +36,11 @@ Router.route('/nfts/user/:id')
 Router.route('/user/auth')
     .get(passport.authenticate('jwt', { session: false }), authUser)
 
+
+// Route of Coinbase
+
+Router.route('/create-charge')
+.get(Charge)
 
 
 module.exports = Router

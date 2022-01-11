@@ -14,6 +14,7 @@ const Navigation = (props) => {
     return (
         <>
             <div className="navigation">
+                <img src="./assets/logo.png" alt="logo" style={{height: "100%"}}/>
                 <ul>
                     <li className={props.location.pathname === "/" ? "active" : null}>
                         <Link to="/">
