@@ -25,7 +25,7 @@ const nftControllers = {
       }
 
     } catch (error) {
-
+      console.log(error);
       res.json({ success: false, respuesta: "Oops! error" })
     }
   },
@@ -54,9 +54,8 @@ const nftControllers = {
         res.json({ success: false })
       }
     } catch (error) {
-
+      console.log(error);
     }
-    res.json({ success: actualizado ? true : false });
   },
 
   deleteNft: async (req, res) => {

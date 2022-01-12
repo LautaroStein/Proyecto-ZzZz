@@ -37,12 +37,12 @@ const Admin = (props) => {
     const handlerCreate = () => {
         const createdBody = {}
         nname.current.value !== '' && (createdBody['name'] = nname.current.value)
-        stock.current.value !== '' && (createdBody['type'] = stock.current.value)
-        img.current.value !== '' && (createdBody['clase'] = img.current.value)
-        type.current.value !== '' && (createdBody['stock'] = type.current.value)
-        clase.current.value !== '' && (createdBody['img'] = clase.current.value)
+        type.current.value !== '' && (createdBody['type'] = stock.current.value)
+        clase.current.value !== '' && (createdBody['clase'] = clase.current.value)
+        stock.current.value !== '' && (createdBody['stock'] = stock.current.value)
+        img.current.value !== '' && (createdBody['img'] = img.current.value)
         price.current.value !== '' && (createdBody['price'] = price.current.value)
-        props.addNft(createdBody)
+        props.addNft({ ...createdBody })
     }
     const handlerUpdate = () => {
         const updatedBody = {}
