@@ -3,7 +3,7 @@ const validador = require("../config/validador");
 const controllerUser = require('../controllers/controllerUser');
 const NftControllers = require("../controllers/NftController");
 const { getAllNft, loadUnNft, modifyAnNft, getOneNft, deleteNft, getNftsByUser } = NftControllers;
-const { newUser, userLoged, authUser } = controllerUser;
+const { newUser, userLoged, authUser, editUser } = controllerUser;
 const passport = require('../config/passport')
 
 
@@ -35,6 +35,7 @@ Router.route('/nfts/user/:id')
 Router.route('/user/auth')
     .get(passport.authenticate('jwt', { session: false }), authUser)
 
-
+Router.route('/admin/user/:id')
+    .put(editUser)
 
 module.exports = Router

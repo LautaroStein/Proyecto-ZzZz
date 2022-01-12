@@ -49,6 +49,24 @@ const userActions = {
 
         }
     },
+
+    editUser: (userId, user) => {
+        
+        return async (dispatch, getState) => {
+            try {
+                const token = localStorage.getItem('token')
+                const editedUser = await axios.put(`http://localhost:4000/api/admin/user/${userId}`, user, {
+                    headers: { 'Authorization': 'Bearer ' + token }
+                })
+                dispatch({ type: 'UPDATE_USER', payload: editedUser.data.response })
+
+            } catch (error) {
+                return { msg: 'You must be login' }
+            }
+
+        }
+    },
+
     signIn: (users) => {
         return async (dispatch, getState) => {
             try {

@@ -34,8 +34,6 @@ const User = (props) => {
         await props.editUser(props.user._id, modifyUser)
     }
 
-    console.log(modifyUser)
-
     return (
 
 
@@ -43,7 +41,6 @@ const User = (props) => {
             <div className="user-container">
                 <div className="user-header-container">
                     <div>
-                        <h1>Tu perfil</h1>
                         <div className="edit-user" onClick={() => setModify(!modify)}>Editar</div>
                         <div className="edit-user" onClick={()=>props.logout()}>Cerrar sesión</div>
                     </div>
@@ -56,13 +53,13 @@ const User = (props) => {
                 
                 <form onSubmit={handleRegister}>
                     <div className="user-info-container">
-                        <div><label>First Name:</label><input type="text" placeholder="Name" name="name" defaultValue={modifyUser.name} onChange={handleInputChange} className="user-info-label">{modifyUser.name}</input></div>
-                        <div><label>Last Name:</label><input type="text" placeholder="Last Name" name="lastName" defaultValue={modifyUser.lastName} onChange={handleInputChange} className="user-info-label">{modifyUser.lastName}</input></div>
-                        <div><label>Email:</label><input type="text" placeholder="Email" name="email" defaultValue={modifyUser.email} onChange={handleInputChange} className="user-info-label">{modifyUser.email}</input></div>
-                        <div><label>Phone:</label><input type="text" placeholder="Phone" name="phone" defaultValue={modifyUser.phone} onChange={handleInputChange} className="user-info-label">{modifyUser.phone}</input></div>
-                        <div><label>Image:</label><input type="text" placeholder="Image" name="image" defaultValue={modifyUser.userImg} onChange={handleInputChange} className="user-info-label">{modifyUser.profilePhoto}</input></div>
+                        <div><label>First Name:</label><input type="text" placeholder="Name" name="name" defaultValue={modifyUser.name} onChange={handleInputChange} className="user-info-label"/></div>
+                        <div><label>Last Name:</label><input type="text" placeholder="Last Name" name="lastName" defaultValue={modifyUser.lastName} onChange={handleInputChange} className="user-info-label"/></div>
+                        <div><label>Email:</label><input type="text" placeholder="Email" name="email" defaultValue={modifyUser.email} onChange={handleInputChange} className="user-info-label"/></div>
+                        <div><label>Phone:</label><input type="text" placeholder="Phone" name="phone" defaultValue={modifyUser.phone} onChange={handleInputChange} className="user-info-label"/></div>
+                        <div><label>Image:</label><input type="text" placeholder="Image" name="userImg" defaultValue={modifyUser.userImg} onChange={handleInputChange} className="user-info-label"/></div>
                     </div>
-                    <button type="submit" className="edit-user" onClick={() => setModify(!modify)}>Enviar</button>
+                    <button type="submit" className="edit-user">Enviar</button>
                 </form>
 
                 : 
@@ -72,7 +69,7 @@ const User = (props) => {
                     <div><span>Last Name:</span><div className="user-info-label">{props.user.lastName}</div></div>
                     <div><span>Email:</span><div className="user-info-label">{props.user.email}</div></div>
                     <div><span>Phone:</span><div className="user-info-label">{props.user.phone}</div></div>
-                    <div><span>Image:</span><div className="user-info-label">{props.user.userImg}</div></div>
+                    {/* <div><span>Image:</span><div className="user-info-label">{props.user.userImg}</div></div> */}
                 </div>
 
                 }
@@ -91,7 +88,7 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = {
-    editUser: userActions.updateUser,
+    editUser: userActions.editUser,
     logout: userActions.logout
 }
 
