@@ -1,5 +1,5 @@
 import axios from 'axios'
-const userActions = {
+const nftActions = {
 
     addNft: (paramNft) => {
         return async (dispatch, getState) => {
@@ -87,4 +87,4 @@ const userActions = {
     }
 }
 
-export default userActions
+export default nftActions

@@ -94,5 +94,4 @@ const nftControllers = {
 
 }
 
-
 module.exports = nftControllers;
