@@ -1,17 +1,9 @@
 const User = require('../models/User')
+const Nft = require("../models/Nft");
 const bcryptjs = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 
 const controllerUser = {
-
-    // + al momento de registrar usuarios en nuestra aplicación, 
-    // + hay situaciones que tenemos tener en cuenta  
-    // + cuales son estas situaciones a tener en cuenta ?
-
-    // - 1) que no haya usuarios repetidos
-    // - 2) seguridad de la contraseña
-    // - 3) validacion de datos
-
 
     newUser: async (req, res) => {
 
@@ -50,7 +42,6 @@ const controllerUser = {
 
 
     },
-
     userLoged: async (req, res) => {
 
         const { email, password } = req.body
@@ -124,6 +115,26 @@ const controllerUser = {
     },
 
 
+    // verifyToken : (req, res) => {
+    //     res.json({firstName: req.user.firstName, url:req.user.url, _id:req.user._id})
+    // }
+    favs: async (req, res) => {
+        const { nftId, bool } = req.body
+        console.log(nftId)
+        try {
+            const nft = await Nft.findOneAndUpdate(
+                { _id: nftId },
+                bool ?
+                    { $addToSet: { favs: req.user._id } }
+                    :
+                    { $pull: { favs: req.user._id } },
+                { new: true }
+            )
+            res.json({ success: true, response: { nft: nft }, error: null })
+        } catch (error) {
+            console.log(error)
+        }
+    }
 }
 
 module.exports = controllerUser;

@@ -4,7 +4,7 @@ import nftReducers from './nftReducers'
 
 const mainReducer = combineReducers({
     userReducers,
-    nftReducers
+    nftReducers,
 })
 
 export default mainReducer

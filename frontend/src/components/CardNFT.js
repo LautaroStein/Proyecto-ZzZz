@@ -1,6 +1,11 @@
-import react,{ useState,useEffect } from "react"
+import React,{ useState,useEffect } from "react"
+import userActions from "../redux/actions/userActions";
+import nftActions from "../redux/actions/nftActions";
+import { connect } from "react-redux";
+import { BsFillBookmarkHeartFill} from "react-icons/bs"
 
-const CardNFT = ({name, type, price, img, clase}) => {
+
+const CardNFT = ({name, type, price, img, clase, favs, id, favorite, userId, nft, favClass}) => {
 
 const [color, setColor] = useState("")
 const [backColor, setBackColor] = useState("")
@@ -10,8 +15,30 @@ useEffect(() => {
     clase === "Common" ? setBackColor("rgb(0, 234, 255)") : clase === "Rare" ? setBackColor("rgb(0, 160, 43)") : setBackColor("rgb(143, 7, 136)")
 }, [clase])
 
+const favsAndDisFavs = async() => {
+
+  let fav 
+
+  favorite.some(fav => fav === userId) 
+  ? 
+    fav = {
+      nftId : id,
+      bool:false
+    } 
+  :
+    fav = {
+      nftId : id,
+      bool:true
+    }
+    const retorn =  await favs(fav)
+
+    console.log(retorn)
+    if(retorn.succes){
+      nft()
+    }
+  }
     return (
-        <div className="contenedor-card-nft" style={{border: `6px solid ${color}`}} >
+        <div className={`contenedor-card-nft ${favClass}`} style={{border: `6px solid ${color}`}} >
             <div className="container-nft">
                 <div className="ochenta-nft">
                     <img src={img} alt={name}/>
@@ -26,10 +53,21 @@ useEffect(() => {
                                 <p style={{color:"rgb(141, 141, 141)"}}>Price</p>
                                 <p>{price} ETH</p>
                             </div>
-                            <button className="button-compra-nft" style={{color: `${color}`,borderColor:`${color}`}}>
-                                Buy
-                                <span style={{backgroundColor:`${backColor}`}}></span><span style={{backgroundColor:`${backColor}`}}></span><span style={{backgroundColor:`${backColor}`}}></span><span style={{backgroundColor:`${backColor}`}}></span>
+                            <div>
+                              {
+                                favorite && favorite.some(fav => fav === userId) 
+                                ?
+                                <BsFillBookmarkHeartFill onClick={()=> favsAndDisFavs()} style={{color:`${color}`, fontSize:"30px", cursor:"pointer"}}/>
+                                :
+                                <BsFillBookmarkHeartFill onClick={()=> favsAndDisFavs()} style={{fontSize:"30px", cursor:"pointer"}}/>
+                              }
+                            </div>
+                            <div className="contenedor-buttons-nft">
+                                <button className="button-compra-nft" style={{color: `${color}`,borderColor:`${color}`}}>
+                                  Buy
+                                  <span style={{backgroundColor:`${backColor}`}}></span><span style={{backgroundColor:`${backColor}`}}></span><span style={{backgroundColor:`${backColor}`}}></span><span style={{backgroundColor:`${backColor}`}}></span>
                                 </button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -37,5 +75,16 @@ useEffect(() => {
         </div>
     )
 }
+const mapStateToProps = () => {
+  return {
 
-export default CardNFT
+  }
+}
+const mapDispatchToProps = {
+  favs : userActions.favs,
+  nft : nftActions.getNfts
+}
+
+  
+  export default connect(mapStateToProps, mapDispatchToProps)(CardNFT);
+  
