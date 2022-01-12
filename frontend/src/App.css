@@ -700,6 +700,11 @@ ul li button:hover:nth-child(4) {
   align-items: center;
   justify-content: center;
 }
+
+/* .container-nft {
+  padding: 0.5rem;
+} */
+
 .contenedor-card-nft .container-nft .ochenta-nft{
   height: 95%;
   width: 93%;
@@ -743,11 +748,19 @@ ul li button:hover:nth-child(4) {
   align-items: center;
   justify-content: space-between;
 }
+
+.contenedor-buttons-nft{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 .button-compra-nft{
   font-size: 16px;
   border: 0.3em solid;
   border-radius: 0.5em;
-  width: 12em;
+  width: 9em;
   height: 3em;
   text-transform: uppercase;
   font-weight: bold;
@@ -766,6 +779,31 @@ ul li button:hover:nth-child(4) {
   align-items: center;
   justify-content: center;
 }
+
+.button-fav-nft{
+  font-size: 16px;
+  border: 0.3em solid;
+  border-radius: 0.5em;
+  width: 6em;
+  height: 3em;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-family: sans-serif;
+  letter-spacing: 0.1em;
+  text-align: center;
+  line-height: 3em;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  transition: 0.5s;
+  margin: 0.5em;
+  background: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .button-compra-nft span{
   position: absolute;
   width: 25%;
@@ -916,8 +954,15 @@ align-items: center;
   padding: 0.3rem;
   z-index: 1;
   position: fixed;
+  backdrop-filter: blur(20px);
+  backdrop-filter: opacity(10%);
+}
+.contenedor-carrito button{
+  border-radius: 10px;
 }
 .contenedor-carrito h3{
+  margin-top:1.7rem;
+  margin-bottom:0.5rem;
   text-align: center;
 }
 
@@ -929,7 +974,7 @@ align-items: center;
   width: 100%;
   justify-content: space-around;
   align-items: center;
-
+  
 }
 
 .total-carrito {
@@ -952,7 +997,7 @@ align-items: center;
   height:60px;
   width:60px;
   padding: 0.5rem;
-  margin: 0.5rem;
+  /* margin: 0.5rem; */
   border-radius: 10px;
 }
 
@@ -1012,4 +1057,139 @@ align-items: center;
 .profile-render-constant{
   flex-grow: 1;
   height: 80%;
+}
+
+/* **advanages/home**: */
+
+.contenedor-cards-advantages-home {
+  background-color: rgba(255, 0, 0, 0);
+  display: flex;
+  flex-direction: row;
+  width: 80%;
+  height: 53%;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.card-info-advantages-home {
+  background-color: rgba(0, 128, 0, 0.308);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0.6rem;
+  padding: 0.6rem;
+  min-height: 75%;
+  max-height: 75%;
+  min-width: 20%;
+  max-width: 20%;
+  width: 35%;
+  backdrop-filter: blur(10px);
+  backdrop-filter: opacity(20%);
+  border: solid 1px green;
+  border-radius: 12px;
+  box-shadow:  8px 5px 30px #96faaf4b;
+
+}
+.card-info-advantages-home p{
+  text-align: center;
+  background-color: rgba(255, 192, 203, 0);
+  padding: 0.5rem;
+  margin: 0.5rem;
+}
+.card-info-advantages-home span{
+  color:rgb(143, 175, 144);
+}
+
+.card-advantages-icon {
+  background-color: rgba(36, 102, 6, 0.555);
+  border-radius: 50%;
+  height: 85px;
+  width: 85px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0.6rem;
+  padding: 0.6rem;
+  backdrop-filter: blur(10px);
+  backdrop-filter: opacity(20%);
+  border: solid 1px green;
+  margin-top:0;
+}
+/* **topCollection/home**: */
+
+.contenedor-cards-topCollection-home {
+  background-color: rgba(243, 8, 8, 0);
+  display: flex;
+  flex-direction: row;
+  width: 80%;
+  height: 80%;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.card-topCollection {
+  background-color: rgba(100, 148, 237, 0);
+  /* margin: 1rem; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.card-info-topCollection-home {
+  background-color: rgba(13, 211, 13, 0);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0.6rem;
+  padding: 0.6rem;
+  backdrop-filter: blur(10px);
+  backdrop-filter: opacity(20%);
+
+}
+.card-info-topCollection-home p{
+  text-align: center;
+  background-color: rgba(255, 192, 203, 0);
+  padding: 0.5rem;
+  margin: 0.5rem;
+}
+.card-info-topCollection-home span{
+  color:rgb(143, 175, 144);
+}
+
+.card-topCollection-image {
+  background-color: rgba(40, 95, 14, 0);
+  border-radius: 20px 0 20px 0;
+  height:70%;
+  width: 80%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0.4rem;
+  padding: 0.6rem;
+  backdrop-filter: blur(10px);
+  backdrop-filter: opacity(20%);
+  border: solid 1.5px rgb(255, 7, 7);
+  margin-top:0;
+  box-shadow:  8px 5px 30px #fd3e048a;
+  background-position: center;
+  background-size: cover;
+}
+/* .card-topCollection-image img{
+  max-width: 100%;
+  max-height: 100%;
+} */
+.favClass{
+  height: 500px;
+  width: 30%;
+  margin: 20px;
+}
+.fav-card-nft-heigth{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
 }

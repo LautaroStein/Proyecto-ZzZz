@@ -86,6 +86,20 @@ const userActions = {
             dispatch({ type: 'LOGOUT' })
         }
     },
+    favs: (favs) => {
+        return async (dispatch, getState) => {
+            try{
+                const token = localStorage.getItem('token')
+                const user = await axios.put('http://localhost:4000/api/favs',{...favs},{
+                        headers: { 'Authorization': 'Bearer ' + token }
+                    })
+                console.log(user)
+                return {succes : true}
+            }catch(err){
+                console.log(err)
+            }
+        }
+    }
 }
 
 export default userActions

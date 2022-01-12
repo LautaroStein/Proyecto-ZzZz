@@ -6,46 +6,18 @@ import ScrollContainer from 'react-indiana-drag-scroll'
 
 const Store = (props) => {
 
+
     const [categoria, setCategoria] = useState("All");
     const [rareza, setRareza] = useState("All");
 
     useEffect(() => {
         props.nft()
-    }, [])
+        setNftDefault(props.nfts)
+        setNft(props.nfts)
+    }, [props.nfts])
 
-    const arrayFalso=[
-        {
-            name:"Mordekaiser Dark Start",
-            type:"Gamer",
-            clase:"Common",
-            price:40,
-            img:"https://images-zzz.netlify.app/asstes/Morde.jpeg"
-        },
-        {
-            name:"Awakening Of An Adventurer",
-            clase:"Rare",
-            type:"Cyberpunk",
-            price:100,
-            img:"https://images-zzz.netlify.app/asstes/awakening.jpg"
-        },
-        {
-            name:"Speed Lover",
-            clase:"Mythical",
-            type:"Cyberpunk",
-            price:100,
-            img:"https://images-zzz.netlify.app/asstes/speed.jpg"
-        },
-        {
-            name:"Okuda Geometric",
-            clase:"Rare",
-            type:"Arte",
-            price:78,
-            img:"https://images-zzz.netlify.app/asstes/okuda.jpg"
-        }
-    ]
-
-    const [nftDefault, setNftDefault] = useState(arrayFalso);
-    const [nft, setNft] = useState(arrayFalso);
+    const [nftDefault, setNftDefault] = useState(props.nfts);
+    const [nft, setNft] = useState(props.nfts);
     const [auxiliar, setAuxiliar] = useState(nft)
 
     const fetchear = () => {
@@ -58,8 +30,8 @@ const Store = (props) => {
             setNft(resultado)
             setAuxiliar(resultado)
         }else{
-            setNft(arrayFalso)
-            setAuxiliar(arrayFalso)
+            setNft(props.nfts)
+            setAuxiliar(props.nfts)
         }
     }
     const fetchearRareza = () => {
@@ -70,11 +42,10 @@ const Store = (props) => {
             let resultado = nftDefault.filter((e) => e.type === categoria)
             setAuxiliar(resultado)
         }else{
-            setNft(arrayFalso)
-            setAuxiliar(arrayFalso)
+            setNft(props.nfts)
+            setAuxiliar(props.nfts)
         }
     }
-
 
     return (
         <div>
@@ -98,7 +69,7 @@ const Store = (props) => {
                             {
                             props.nfts.map((element, index) => {
                                 return(
-                                    <CardNFT name={element.name} type={element.type} price={element.price} img={element.img} clase={element.clase} />
+                                    <CardNFT name={element.name} type={element.type} price={element.price} img={element.img} clase={element.clase} id={element._id} favorite={element.favs} userId={props.userId.userID}/>
                                     )
                                 })
                             }
@@ -143,7 +114,8 @@ const Store = (props) => {
 const mapStateToProps = (state) => {
     return (
         {
-            nfts :  state.nftReducers.nfts
+            nfts :  state.nftReducers.nfts,
+            userId : state.userReducers.user
         }
     )
 }

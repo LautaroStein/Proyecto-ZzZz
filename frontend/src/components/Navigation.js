@@ -14,7 +14,7 @@ const Navigation = (props) => {
     return (
         <>
             <div className="navigation">
-                <img src="./assets/logo.png" alt="logo" style={{height: "100%"}}/>
+                {/* <img src="./assets/logo.png" alt="logo" style={{height: "100%"}}/> */}
                 <ul>
                     <li className={props.location.pathname === "/" ? "active" : null}>
                         <Link to="/">
@@ -34,8 +34,8 @@ const Navigation = (props) => {
                             <span className="text-navigation">Market Place</span>
                         </Link>
                     </li>
-                    <li className={props.location.pathname === "/saved" ? "active" : null}>
-                        <Link to="/">
+                    <li className={props.location.pathname === "/Favs" ? "active" : null}>
+                        <Link to="/Favs">
                             <span className="icon-navigation"><BsFillBookmarkHeartFill /></span>
                             <span className="text-navigation">NFT Saved</span>
                         </Link>
