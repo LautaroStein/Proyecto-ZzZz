@@ -5,7 +5,7 @@ const NftControllers = require("../controllers/NftController");
 const Coinbase =  require("../controllers/CoinbaseController");
 const { Charge } = Coinbase
 const { getAllNft, loadUnNft, modifyAnNft, getOneNft, deleteNft, getNftsByUser } = NftControllers;
-const { newUser, userLoged, authUser, favs } = controllerUser;
+const { newUser, userLoged, authUser, favs, getUsers, updateUser } = controllerUser;
 const passport = require('../config/passport')
 
 
@@ -36,6 +36,11 @@ Router.route('/nfts/user/:id')
 Router.route('/user/auth')
     .get(passport.authenticate('jwt', { session: false }), authUser)
 
+Router.route('/admin/users')
+    .get(passport.authenticate('jwt', { session: false }), getUsers)
+
+Router.route('/admin/user/:id')
+    .put(passport.authenticate('jwt', { session: false }), updateUser)
 
 // Favs
 

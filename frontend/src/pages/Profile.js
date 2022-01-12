@@ -5,24 +5,26 @@ import { useState } from "react"
 import User from "../components/Profile/User"
 import Admin from "../components/Profile/Admin"
 import Wallet from "../components/Profile/Wallet"
+import Dashboard from "../components/Profile/Dashboard"
 import Ethereum from "../components/Profile/Ethereum"
-
+import { AiFillDashboard } from 'react-icons/ai'
 const Profile = () => {
 
     const [active, setActive] = useState("user")
 
     return (
         <>
-            <div style={{height:"70px"}} ></div>
+            <div style={{ height: "70px" }} ></div>
             <div className="total-profile-container">
                 <div className="nav-profile-col">
-                    <FaHouseUser onClick={()=>{setActive("user")}} className={active === "user" ? "active" : null}/>
-                    <MdAdminPanelSettings onClick={()=>{setActive("admin")}} className={active === "admin" ? "active" : null}/>
-                    <GiWallet onClick={()=>{setActive("wallet")}} className={active === "wallet" ? "active" : null}/>
-                    <FaEthereum onClick={()=>{setActive("ethereum")}} className={active === "ethereum" ? "active" : null}/>
+                    <FaHouseUser onClick={() => { setActive("user") }} className={active === "user" ? "active" : null} />
+                    <MdAdminPanelSettings onClick={() => { setActive("admin") }} className={active === "admin" ? "active" : null} />
+                    <AiFillDashboard onClick={() => { setActive("dashboard") }} className={active === "dashboard" ? "active" : null} />
+                    <GiWallet onClick={() => { setActive("wallet") }} className={active === "wallet" ? "active" : null} />
+                    <FaEthereum onClick={() => { setActive("ethereum") }} className={active === "ethereum" ? "active" : null} />
                 </div>
                 <div className="profile-render-constant">
-                    {active === "user" ? <User /> : active === "admin" ? <Admin /> : active === "wallet" ? <Wallet /> : <Ethereum />}
+                    {active === "user" ? <User /> : active === "admin" ? <Admin /> : active === "wallet" ? <Wallet /> : active === "ethereum" ? <Ethereum /> : <Dashboard />}
                 </div>
             </div>
         </>

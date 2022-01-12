@@ -12,14 +12,20 @@ const Store = (props) => {
 
     useEffect(() => {
         props.nft()
-        setNftDefault(props.nfts)
-        setNft(props.nfts)
-    }, [props.nfts])
+    }, [])
 
-    const [nftDefault, setNftDefault] = useState(props.nfts);
-    const [nft, setNft] = useState(props.nfts);
+    let arrayFalso = props.nfts
+
+    useEffect(() => {
+        arrayFalso = props.nfts
+        setNftDefault(arrayFalso)
+        setNft(arrayFalso)
+        setAuxiliar(nft)
+    },[props.nfts])
+    console.log(arrayFalso)
+    const [nftDefault, setNftDefault] = useState(arrayFalso);
+    const [nft, setNft] = useState(arrayFalso);
     const [auxiliar, setAuxiliar] = useState(nft)
-
     const fetchear = () => {
         if(categoria !== "All"){
             let resultado = nftDefault.filter((e) => rareza === "All" ? e.type === categoria : e.type === categoria && e.clase === rareza)
@@ -30,8 +36,8 @@ const Store = (props) => {
             setNft(resultado)
             setAuxiliar(resultado)
         }else{
-            setNft(props.nfts)
-            setAuxiliar(props.nfts)
+            setNft(arrayFalso)
+            setAuxiliar(arrayFalso)
         }
     }
     const fetchearRareza = () => {
@@ -42,8 +48,8 @@ const Store = (props) => {
             let resultado = nftDefault.filter((e) => e.type === categoria)
             setAuxiliar(resultado)
         }else{
-            setNft(props.nfts)
-            setAuxiliar(props.nfts)
+            setNft(arrayFalso)
+            setAuxiliar(arrayFalso)
         }
     }
 
@@ -100,7 +106,7 @@ const Store = (props) => {
                         {
                             auxiliar.length > 0 ? auxiliar.map((element, index) => {
                                 return(
-                                    <CardNFT name={element.name} type={element.type} price={element.price} img={element.img} clase={element.clase} />
+                                    <CardNFT name={element.name} type={element.type} price={element.price} img={element.img} clase={element.clase} id={element._id} favorite={element.favs} userId={props.userId.userID} />
                                 )
                             }): <h1>NFT not found</h1>
                         }

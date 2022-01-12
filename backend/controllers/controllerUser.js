@@ -76,9 +76,43 @@ const controllerUser = {
             res.json({ success: false, response: null, error: error })
         }
     },
-    // verifyToken : (req, res) => {
-    //     res.json({firstName: req.user.firstName, url:req.user.url, _id:req.user._id})
-    // }
+    getUsers: async (req, res) => {
+        try {
+            if (req.user.role === 'admin' || req.user.role === 'moderator') {
+                const users = await User.find()
+                res.json({ success: true, users })
+            } else {
+                res.json({ success: false, error: 'Unauthorized User, you must be an admin' })
+            }
+        } catch (error) {
+
+            res.json({ success: false, response: null, error: error })
+        }
+    },
+    updateUser: async (req, res) => {
+        const userBody = req.body
+        let userUpdated
+        try {
+            if (req.user.role === 'admin') {
+                const id = req.params.id
+                userUpdated = await User.findOneAndUpdate({ _id: id }, userBody, { new: true })
+                res.json({ success: true, userUpdated })
+            } else if (req.user.range === 'moderator' || req.user.rol === 'user') {
+                if (!userBody.rol) {
+                    userUpdated = await User.findOneAndUpdate({ _id: req.user._id }, userBody, { new: true })
+                    res.json({ success: true, userUpdated })
+                } else {
+                    res.json({ success: false })
+                }
+
+            } else {
+
+                res.json({ success: false, error: 'Unauthorized User, you must be an admin' })
+            }
+        } catch (error) {
+            res.json({ success: false, response: null, error: error })
+        }
+    },
     favs: async (req, res) => {
         const { nftId, bool } =  req.body
         console.log(nftId)

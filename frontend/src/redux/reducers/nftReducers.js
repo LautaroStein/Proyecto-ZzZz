@@ -1,7 +1,8 @@
 const initialState = {
     nfts: [],
     nft: {},
-    userNfts: []
+    userNfts: [],
+    aux: []
 }
 
 const nftReducers = (state = initialState, action) => {
@@ -10,18 +11,15 @@ const nftReducers = (state = initialState, action) => {
         case 'ADD_NFT':
             return {
                 ...state,
-                nfts: action.payload
+                nfts: [...state.nfts, action.payload]
             }
         case 'GET_NFTS':
             return {
                 ...state,
-                nfts: action.payload
+                nfts: action.payload,
+                aux: action.payload
             }
-        case 'GET_NFT':
-            return {
-                ...state,
-                nft: action.payload
-            }
+
         case 'DELETE_NFT':
             return {
                 ...state,
@@ -31,13 +29,20 @@ const nftReducers = (state = initialState, action) => {
         case 'UPDATE_NFT':
             return {
                 ...state,
-                nft: action.payload
+                nfts: state.nfts.map(nft => nft._id === action.payload.nftId ? { ...nft, ...action.payload.body } : nft)
             }
         case 'GET_USER_NFTS':
             return {
                 ...state,
                 userNfts: action.payload
             }
+        case 'FILTER':
+            const filtrado = action.payload.nfts.filter((nft => nft.name.toLowerCase().trim().startsWith(action.payload.value.toLowerCase())))
+            return {
+                ...state,
+                nfts: filtrado
+            }
+
         default:
             return state
     }
