@@ -1,5 +1,5 @@
 import React from 'react'
-
+import Graph from '../RealTimeGraph/Graph'
 const Dashboard = () => {
     return (
         <section className='main-dashboard'>
@@ -27,9 +27,8 @@ const Dashboard = () => {
                         </div>
                     </div>
                 </div>
-                <div className='dashboard-graph'>
-                    <h2>I am the Graph</h2>
-                </div>
+                <Graph />
+
             </article>
             <article className="dashboard-container">
                 <div className='dashboard-resume'>
@@ -55,9 +54,7 @@ const Dashboard = () => {
                         </div>
                     </div>
                 </div>
-                <div className='dashboard-graph'>
-                    <h2>I am the Graph 2</h2>
-                </div>
+                <Graph />
             </article>
         </section >
     )
