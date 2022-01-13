@@ -67,7 +67,6 @@ const User = (props) => {
                     <div><span>Last Name:</span><div className="user-info-label">{props.user.lastName}</div></div>
                     <div><span>Email:</span><div className="user-info-label">{props.user.email}</div></div>
                     <div><span>Phone:</span><div className="user-info-label">{props.user.phone}</div></div>
-                    {/* <div><span>Image:</span><div className="user-info-label">{props.user.userImg}</div></div> */}
                 </div>
 
                 }
