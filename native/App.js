@@ -1,33 +1,34 @@
-import * as React from 'react';
-import { SafeAreaView, StyleSheet, Text, View } from "react-native";
-import MainStack from "./navigation/MainStack"
+import Test from './Test'
+import { StateProvider } from './src/core/StateProvider';
+import reducer, {initialState} from './src/core/reducer'
+// NavigationContainer es el encargado de escuchar los eventos de navegacion de los navigators 
+import { NavigationContainer } from '@react-navigation/native';
 
+// importaciones de los distintos navigators 👇
+// Stack
+import StackNavigator from './src/navigation/Stack'
+// Drawer
+import DrawerNavigator from './src/navigation/Drawer'
+// BottomTab
+import BottomTabNavigator from './src/navigation/BottomTab'
 
-function App() {
+export  function App() {
+  
   return(
+    <StateProvider initialState={initialState } reducer = {reducer}>
 
-      <SafeAreaView style={{flex: 1}}>
+    {/* Envuelvo mi app dentro del navigation Container 
+    para que esta esté dotada de todas las propiedades de navegación 
+    y poder estar a la escucha de los eventos de navegacion 
+    */}
+
+      <NavigationContainer>
       
-          <MainStack/>
-      
-      </SafeAreaView>
+        {/* <BottomTabNavigator />  */}
+        <DrawerNavigator/>
+        {/* <StackNavigator /> */}
+      </NavigationContainer>
+    </StateProvider> 
   )
-};
-
-const styles = StyleSheet.create({
-
-  container:{
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: "#f0f0f0",
-    flex:1
-  },
-  texto:{ 
-    color: "blue",
-     fontSize:17,
-    padding: "10%"
-  }
-})
-
+}
 export default App
-

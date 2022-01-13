@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
 
     },
     buttonText:{
-        color:"white"
+        color:"black"
     }
 
 })
