@@ -1,5 +1,6 @@
 import CardNFT from "../components/CardNFT"
 
+
 const Store = () => {
     const arrayFalso=[
         {
@@ -31,6 +32,7 @@ const Store = () => {
             img:"https://images-zzz.netlify.app/asstes/okuda.jpg"
         }
     ]
+    console.log(arrayFalso.name)
 
 
     return (
@@ -45,6 +47,10 @@ const Store = () => {
                     <div></div>
                 </div>
             </div>
+
+           
+
+
             <div className="contenedor-top-sellers-store">
                 <div className="sellers">
                     <div className="title-top-sellers">
