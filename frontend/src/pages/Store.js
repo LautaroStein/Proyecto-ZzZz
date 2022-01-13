@@ -58,13 +58,17 @@ const Store = (props) => {
             <div style={{ height: "120px" }} ></div>
             <div className="contenedor-store-public">
                 <div>
-                    <h1>Collect & Sell Your NFT</h1>
+                    <h1>Collect & Sell Your NFTs</h1>
                     <p>Live the new life check it out now.</p>
                 </div>
                 <div>
                     <div></div>
                 </div>
             </div>
+
+           
+
+
             <div className="contenedor-top-sellers-store">
                 <div className="sellers">
                     <div className="title-top-sellers">

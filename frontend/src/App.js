@@ -47,6 +47,7 @@ function App({ user, rdxAuth, rdxLogin, getUserNfts, getNfts }) {
         <Route path="/SignIn" element={user === '' ? <Forms /> : <Navigate replace to="/"/>} />
         <Route path="/SignUp" element={user === '' ? <Forms /> : <Navigate replace to="/"/>} />
         <Route path="*" element={<Home />} />
+        <Route path="/Store" element={<Store/>} />
       </Routes>
       <ToastContainer />
     </BrowserRouter>
