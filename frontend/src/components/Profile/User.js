@@ -13,13 +13,11 @@ const User = (props) => {
 
     const [modify, setModify] = useState(false)
 
-    const [modifyUser, setModifyUser] = useState({
-        name: props.user.name,
-        lastName: props.user.lastName,
-        email: props.user.email,
-        phone: props.user.phone,
-        userImg: props.user.userImg,
-    })
+    console.log(props)
+
+    const [modifyUser, setModifyUser] = useState({})
+
+    console.log(modifyUser)
 
     const handleInputChange = (e) => {
         setModifyUser({

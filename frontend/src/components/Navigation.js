@@ -10,7 +10,6 @@ const Navigation = (props) => {
 
     const [showCart, setShowCart ] = useState(false)
 
-    console.log(props)
     return (
         <>
             <div className="navigation">
