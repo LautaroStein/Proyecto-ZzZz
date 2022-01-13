@@ -1,6 +1,12 @@
 import {StyleSheet } from 'react-native';
 
 export  const styles = StyleSheet.create({
+
+    contenedorFondo:{
+      backgroundColor: "#14141d",
+      flex: 1,
+    },
+
     container: {
       flexDirection: 'row',
       justifyContent: 'space-evenly',

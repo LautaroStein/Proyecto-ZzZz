@@ -1,17 +1,21 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
-import { View, Text} from 'react-native';
+import { View, Text, ScrollView} from 'react-native';
+import {styles} from "../styles/styles"
 
 
 const Stack = createStackNavigator();
 
 
-const Home = ({ navigation }) => {
+const Home = () => {
     return (
-        <View>
-           <Text>Holaaa</Text>
+
+      
+        <ScrollView style={styles.contenedorFondo} >
+           <Text style={styles.text}>Holaaa</Text>
            
-        </View>
+        </ScrollView>
+        
     )
 };
 
