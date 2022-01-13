@@ -6,21 +6,22 @@ import Form from './pages/Form'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { connect } from "react-redux";
-import Nagation from "./components/Nagation"
+import Navigation from "./components/Navigation"
 import userActions from "../src/redux/actions/userActions"
 import { useEffect } from 'react'
 import Profile from './pages/Profile';
 import Game from "./pages/Game"
 import Store from "./pages/Store"
-
-const Navigation = withRouter(Nagation)
+import nftActions from '../src/redux/actions/nftActions'
+const Navigations = withRouter(Navigation)
 const Forms = withRouter(Form)
 
-function App({ user, rdxAuth, rdxLogin }) {
+function App({ user, rdxAuth, rdxLogin, getUserNfts, getNfts }) {
   useEffect(() => {
+    // 
     async function fetchData() {
       const user = await rdxAuth();
-
+      getUserNfts(user.response._id)
       user.error && toast(user.error)
       const userLogged = {
         email: user.response.email,
@@ -29,13 +30,17 @@ function App({ user, rdxAuth, rdxLogin }) {
       user.response && rdxLogin(userLogged)
     }
     localStorage.getItem('token') && fetchData();
-  }, [rdxAuth, rdxLogin])
+    getNfts()
+  }, [rdxAuth, rdxLogin, getUserNfts])// eslint-disable-line react-hooks/exhaustive-deps
+
+
   return (
     <BrowserRouter>
-      <Navigation user={user}/>
+      <Navigations user={user} />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/Profile" element={<Profile/>} />
+        <Route path="/Store" element={<Store/>} />
         <Route path="/Game" element={<Game/>} />
         <Route path="/SignIn" element={user === '' ? <Forms /> : <Navigate replace to="/"/>} />
         <Route path="/SignUp" element={user === '' ? <Forms /> : <Navigate replace to="/"/>} />
@@ -55,6 +60,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = {
   rdxAuth: userActions.isAuth,
-  rdxLogin: userActions.signIn
+  rdxLogin: userActions.signIn,
+  getNfts: nftActions.getNfts,
+  getUserNfts: nftActions.getNftsByUser,
 }
 export default connect(mapStateToProps, mapDispatchToProps)(App);

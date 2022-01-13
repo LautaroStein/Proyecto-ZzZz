@@ -108,6 +108,8 @@ const FiltroStore = () => {
       }
     }
 
+   
+
     if (categoria == "all" && rareza == "all") {
 
       setNft(api.categorias)
@@ -122,7 +124,6 @@ const FiltroStore = () => {
   const fetchearPorNombre = () => {
     let value = BuscarNFT.current.value
 
-   
       let resultado = nft.filter((e) => {
         return e.name.includes(value)
       })

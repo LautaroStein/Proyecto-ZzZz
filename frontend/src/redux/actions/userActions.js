@@ -9,7 +9,7 @@ const userActions = {
                 if (user.data.success && !user.data.error) {
                     localStorage.setItem('token', user.data.response.token)
                     dispatch({ type: 'USER_LOGGED', payload: { userName: user.data.response._doc.name, img: user.data.response._doc.userImg, userID: user.data.response._doc._id } })
-                    return { succes: true }
+                    return { succes: true, userId: user.data.response._doc._id }
                 } else {
                     return { succes: false, error: user.data.errors }
                 }
@@ -57,7 +57,7 @@ const userActions = {
                 if (user.data.success && !user.data.error) {
                     localStorage.setItem('token', user.data.response.token)
                     dispatch({ type: 'USER_LOGGED', payload: { userName: user.data.response._doc.name, img: user.data.response._doc.userImg, userID: user.data.response._doc._id } })
-                    return { succes: true }
+                    return { succes: true, userId: user.data.response._doc._id }
                 } else {
                     return { succes: false, error: user.data.error }
                 }
@@ -87,6 +87,31 @@ const userActions = {
             dispatch({ type: 'LOGOUT' })
         }
     },
+
+    getAllUsers: (id) => {
+        // console.log(id)
+        return async (dispatch, getState) => {
+            let respuesta = await axios.get(`http://localhost:4000/api/users/${id}`)
+            // console.log(respuesta.data.response)
+            dispatch({ type: 'USER_LOGGED', payload: { userName: respuesta.data.response.name, img: respuesta.data.response.userImg, userID: respuesta.data.response._id, favorite: respuesta.data.response.favorite} })
+            return { response: respuesta.data.response }
+        }
+
+    },
+
+    likeItinerary: (idComentario, idUser) => {
+        return async () => {
+            try {
+                let response = await axios.put(`http://localhost:4000/api/user/comentario/likes/${idUser}`, { idComentario })
+
+                return response.data.response
+
+            } catch (error) {
+                console.log(error)
+            }
+
+        }
+    }
 }
 
 export default userActions

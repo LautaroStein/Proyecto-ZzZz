@@ -4,15 +4,6 @@ const jwt = require('jsonwebtoken')
 
 const controllerUser = {
 
-    // + al momento de registrar usuarios en nuestra aplicación, 
-    // + hay situaciones que tenemos tener en cuenta  
-    // + cuales son estas situaciones a tener en cuenta ?
-
-    // - 1) que no haya usuarios repetidos
-    // - 2) seguridad de la contraseña
-    // - 3) validacion de datos
-
-
     newUser: async (req, res) => {
 
         let { name, lastName, email, password, userImg, phone, google, rol } = req.body
@@ -36,11 +27,9 @@ const controllerUser = {
                     rol
                 })
 
-
                 await nuevoUsuario.save()
                 const token = jwt.sign({ ...nuevoUsuario }, process.env.SECRET_KEY)
                 return res.json({ success: true, response: { token, ...nuevoUsuario }, error: null })
-
 
             }
 
@@ -48,6 +37,26 @@ const controllerUser = {
             res.json({ success: false, response: null, error: error })
         }
 
+
+    },
+
+    getAllUsers: async (req, res) => {
+        let id = req.params.id
+        let users
+        let error = null
+        console.log(id)
+        try {
+            users = await  User.findOne({ _id: id })
+        } catch (error) {
+            error = error
+            console.error(error)
+        }
+        res.json({
+            response: error ? 'ERROR' :  users,
+            succes: error ? false : true,
+            error: error
+        })
+   
 
     },
 
@@ -85,6 +94,29 @@ const controllerUser = {
             res.json({ success: false, response: null, error: error })
         }
     },
+
+    likeComment: (req, res) => {
+        let idComentario = req.body
+        console.log(idComentario)
+        // User.findOne({ _id: req.params.id })
+        //     .then((favorito) => {
+
+        //         if (favorito.favorite.includes(idComentario.idComentario)) {
+
+        //             favorito.findOneAndUpdate({ _id: req.params.id }, { $pull: { favorite: idComentario.idComentario } }, { new: true })
+        //                 .then((newComment) => res.json({ success: true, response: newComment.likes }))
+        //                 .catch((error) => console.log(error))
+
+        //         }
+        //         else {
+
+        //             favorito.findOneAndUpdate({ _id: req.params.id }, { $push: {favorite: idComentario.idComentario  } }, { new: true })
+        //                 .then((newComment) => res.json({ success: true, response: newComment.likes }))
+        //                 .catch((error) => console.log(error))
+        //         }
+        //     })
+        //     .catch((error) => res.json({ success: false, response: error }))
+    }
     // verifyToken : (req, res) => {
     //     res.json({firstName: req.user.firstName, url:req.user.url, _id:req.user._id})
     // }

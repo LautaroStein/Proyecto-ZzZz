@@ -1,21 +1,34 @@
 import axios from 'axios'
 const userActions = {
 
-    addNft: (paramUser) => {
+    addNft: (paramNft) => {
         return async (dispatch, getState) => {
             try {
-                const nft = await axios.post('https://mytinerary-moraga.herokuapp.com/api/user/signup', paramUser)
-
+                const nft = await axios.post('http://localhost:4000/api/nft', paramNft)
+                dispatch({ type: 'ADD_NFT', payload: nft.data })
             } catch (error) {
                 console.log(error);
             }
         }
     },
-    getNfts: (paramUser) => {
+    getNfts: () => {
         return async (dispatch, getState) => {
             try {
-                const nft = await axios.get('https://mytinerary-moraga.herokuapp.com/api/user/signup', paramUser)
-
+                const nfts = await axios.get('http://localhost:4000/api/nft')
+                dispatch({ type: 'GET_NFTS', payload: nfts.data.respuesta })
+            } catch (error) {
+                console.log(error);
+            }
+        }
+    },
+    getNftsByUser: (userId) => {
+        return async (dispatch, getState) => {
+            try {
+                const token = localStorage.getItem('token')
+                const nfts = await axios.get(`http://localhost:4000/api/nfts/user/${userId}`, {
+                    headers: { 'Authorization': 'Bearer ' + token }
+                })
+                dispatch({ type: 'GET_USER_NFTS', payload: nfts.data.response })
             } catch (error) {
                 console.log(error);
             }
@@ -24,7 +37,7 @@ const userActions = {
     getNft: (paramUser) => {
         return async (dispatch, getState) => {
             try {
-                const nft = await axios.get('https://mytinerary-moraga.herokuapp.com/api/user/signup', paramUser)
+                // const nft = await axios.get('https://mytinerary-moraga.herokuapp.com/api/user/signup', paramUser)
 
             } catch (error) {
                 console.log(error);
@@ -34,7 +47,7 @@ const userActions = {
     updateNft: (paramUser) => {
         return async (dispatch, getState) => {
             try {
-                const nft = await axios.put('https://mytinerary-moraga.herokuapp.com/api/user/signup', paramUser)
+                // const nft = await axios.put('https://mytinerary-moraga.herokuapp.com/api/user/signup', paramUser)
 
             } catch (error) {
                 console.log(error);
@@ -44,7 +57,7 @@ const userActions = {
     deleteNft: (paramUser) => {
         return async (dispatch, getState) => {
             try {
-                const nft = await axios.delete('https://mytinerary-moraga.herokuapp.com/api/user/signup', paramUser)
+                // const nft = await axios.delete('https://mytinerary-moraga.herokuapp.com/api/user/signup', paramUser)
 
             } catch (error) {
                 console.log(error);
