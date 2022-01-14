@@ -1,11 +1,9 @@
-import { useState, useRef, useEffect } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { connect } from 'react-redux'
 import nftActions from '../../redux/actions/nftActions'
 import offerActions from '../../redux/actions/offerActions'
 
-
-const Admin = (props) => {
-
+const CreateOffer = (props) => {
     const [edit, setEdit] = useState(false)
     const [features, setFeatures] = useState(false)
     const [onCardHover, setOnCardHover] = useState({ bool: false, id: '' })
@@ -64,14 +62,14 @@ const Admin = (props) => {
         // array de los rechazados para posteriormente darlos de baja si no son modificados
         props.offerUpdate(offerId, { valid: 'rejected' })
     }
-
     return (
-        <section className="management">
+
+        <div className="management">
             {/* crud nfts */}
             <article className="nfts-management">
                 <div className='main-nfts-content'>
                     <div className='nfts-search-title'>
-                        <h2>NFTs Management</h2>
+                        <h2>Offer Management</h2>
                         <input type="text" placeholder='search by nft name' onChange={(e) => props.filter(props.aux, e.target.value.trim())} />
                     </div>
                     <div className='nfts-container'>
@@ -131,41 +129,11 @@ const Admin = (props) => {
                     </div>
                     <div className='create-form'></div>
                 </aside>
-            </article>
-            {/* el admin podra ascender algun user*/}
-            <article className="offers-management">
-                <div className='main-offers-content'>
-                    <div className='nfts-search-title'>
-                        <h2>Pending Offers</h2>
-                        <input type="text" placeholder='search by nft name' onChange={(e) => props.filter(props.aux, e.target.value.trim())} />
-                    </div>
-                    <div className='nfts-container'>
-                        {props.offers.length > 0 && props.offers.map(nft =>
-                            nft.valid === 'pending' &&
-                            <div key={nft._id} onMouseEnter={() => setOnCardHover({ bool: true, id: nft._id })} onMouseLeave={() => setOnCardHover({ bool: false, id: nft._id })} style={{ backgroundImage: `url(${nft.img})` }} className="admin-offer-card">
-                                <div className='body-nft-admin-card'>
-                                    <h2>{nft.name}</h2>
-                                    <h2>{nft.price}</h2>
-                                    <h2>{nft.type}</h2>
-                                    <h2>{nft.clase}</h2>
-                                    <h2>{nft.stock}</h2>
-                                </div>
-                                {(onCardHover.bool && onCardHover.id === nft._id) &&
-                                    <div className='management-actions'>
-                                        <button onClick={() => handlerReject(nft._id)}>Reject</button>
-                                        <button onClick={() => handlerAccept(nft._id)}>Accept</button>
-                                    </div>
-                                }
-                            </div>
-                        )}
-                    </div>
-                </div>
-
             </article>
             <article className="nfts-management">
                 <div className='main-nfts-content'>
                     <div className='nfts-search-title'>
-                        <h2>USERS Preview</h2>
+                        <h2>Offer Status</h2>
                         <input type="text" placeholder='search by nft name' onChange={(e) => props.filter(props.aux, e.target.value.trim())} />
                     </div>
                     <div className='nfts-container'>
@@ -226,8 +194,7 @@ const Admin = (props) => {
                     <div className='create-form'></div>
                 </aside>
             </article>
-
-        </section>
+        </div>
     )
 }
 
@@ -248,4 +215,4 @@ const mapStateToProps = (state) => ({
     offers: state.offerReducers.offers
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(Admin)
+export default connect(mapStateToProps, mapDispatchToProps)(CreateOffer)

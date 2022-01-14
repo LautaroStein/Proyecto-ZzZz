@@ -15,7 +15,9 @@ const userSchema = new mongoose.Schema({
         bank: { type: String },
         paymentMethod: { type: Boolean }
     }],
-    role: { type: String, default: 'user' }
+    role: { type: String, default: 'user' },
+    suscription: { type: Boolean, default: false },
+
 })
 
 const User = mongoose.model('user', userSchema)

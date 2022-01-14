@@ -1335,6 +1335,7 @@ img {
   width: 80%;
   height: 100%;
 }
+
 .right-side-management {
   width: 20%;
   border-radius: 15px;
@@ -1867,10 +1868,24 @@ img {
 }
 /* END NFTS MANAGEMENT */
 
+/* OFFERS MANAGEMENT */
+.offers-management {
+  display: flex;
+  flex-direction: row-reverse;
+  width: 100%;
+  margin-bottom: 3rem;
+  height: 100%;
+}
+
+/*END OFFERS MANAGEMENT  */
+
 /* USERS MANAGEMENT */
 
 .users-management {
+  display: flex;
   height: 100%;
+  width: 100%;
+  margin-bottom: 3rem;
 }
 
 /* END USERS MANAGEMENT */
@@ -2376,3 +2391,190 @@ width: 10%;
   color:var(--ColorPrimarioFuerte);
   cursor: pointer;
 }
+/* MARKETPLACE */
+.marketplace-container {
+  height: 90vh;
+  width: 100%;
+}
+.market-nfts-search-title:first-child {
+  width: 20%;
+}
+.market-nfts-search-title:last-child {
+  width: 20%;
+}
+.market-nfts-search-title fieldset {
+  display: flex;
+  width: 60%;
+  color: white;
+  justify-content: space-around;
+}
+.market-nfts-search-title fieldset label {
+  margin-right: 0.5rem;
+}
+.market-nfts-search-title fieldset .checkbox-art {
+  display: flex;
+  width: 33.333333%;
+  align-items: center;
+  justify-content: center;
+}
+.market-nfts-search-title fieldset .checkbox-cyberpunk {
+  display: flex;
+  width: 33.333333%;
+  justify-content: center;
+  align-items: center;
+}
+.market-nfts-search-title fieldset .checkbox-gamer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 33.333333%;
+}
+.marketplace-container h1 {
+  height: 10%;
+  font-size: 2.5rem;
+  width: 100%;
+}
+.marketplace-content {
+  display: flex;
+  height: 90%;
+  width: 100%;
+}
+.offer-container {
+  width: 75%;
+  height: 100%;
+}
+.offer-container .offer-title {
+  height: 10%;
+  text-align: center;
+}
+
+.market-nfts-search-title {
+  height: 15%;
+  width: 100%;
+  display: flex;
+  justify-items: center;
+  align-items: center;
+  justify-content: space-around;
+}
+.market-nfts-search-title input {
+  width: 15%;
+  height: 40px;
+}
+.market-nfts-search-title select {
+  width: 15%;
+  height: 40px;
+}
+.nfts-offer-container {
+  overflow: auto;
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  height: 75%;
+}
+
+.offer-card {
+  padding: 1rem;
+  width: 33.33333333%;
+  height: 50%;
+  color: white;
+}
+.offer-card-header {
+  height: 50%;
+  background-size: cover;
+  background-position: center center;
+  width: 100%;
+}
+.offer-card-header h2 {
+  text-align: center;
+}
+.offer-card-body {
+  height: 30%;
+  width: 100%;
+}
+
+.offer-card-footer {
+  height: 20%;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+.offer-card-footer button {
+  align-self: center;
+  margin-right: 1rem;
+  height: 30px;
+}
+.offer-card-footer h2 {
+  margin-left: 1rem;
+  align-self: center;
+}
+.offer-card-atrr {
+  display: flex;
+  justify-content: space-around;
+  height: 65%;
+}
+
+.offer-card-price {
+  text-align: center;
+  height: 35%;
+}
+
+.solds-container {
+  width: 25%;
+  height: 100%;
+}
+
+.solds-container h2 {
+  text-align: center;
+  height: 10%;
+}
+.nfts-solds-container {
+  display: flex;
+  width: 100%;
+  height: 90%;
+  overflow: auto;
+  flex-wrap: wrap;
+}
+.sold-card {
+  height: 42%;
+  width: 100%;
+  margin: 1rem;
+  border-radius: 15px;
+}
+.sold-card-img {
+  background-position: center;
+  background-size: cover;
+  height: 100%;
+  width: 50%;
+  border-radius: 30%;
+}
+.sold-card-header {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  height: 70%;
+  width: 100%;
+}
+
+.sold-card-body {
+  display: flex;
+  width: 100%;
+}
+.sold-card-atrr {
+  display: flex;
+  justify-content: space-around;
+  height: 100%;
+  width: 100%;
+}
+.sold-card-footer {
+  text-align: center;
+  width: 100%;
+}
+.sold-card-footer h2 {
+  width: 100%;
+}
+
+.nfts-offer-container::-webkit-scrollbar {
+  display: none;
+}
+
+/* END MARKETPLACE */

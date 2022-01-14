@@ -10,19 +10,15 @@ import {
 } from "recharts";
 import { format, parseISO, subDays } from "date-fns";
 import TooltipChart from './TooltipChart'
-const data = [];
-for (let num = 30; num >= 0; num--) {
-    data.push({
-        date: subDays(new Date(), num).toISOString().substr(0, 10),
-        value: 1 + Math.random(),
-    });
-}
-const Graph = () => {
+
+const Graph = (props) => {
+
+
     return (
         <div className='dashboard-graph'>
 
             <ResponsiveContainer width="100%" height="100%">
-                <AreaChart data={data}>
+                <AreaChart data={props.data}>
                     <defs>
                         <linearGradient id="color" x1="0" y1="0" x2="0" y2="1">
                             <stop offset="0%" stopColor="#2451B7" stopOpacity={0.4} />
@@ -53,7 +49,7 @@ const Graph = () => {
                         tickFormatter={(number) => `$${number.toFixed(2)}`}
                     />
 
-                    <Tooltip content={<TooltipChart />} />
+                    <Tooltip />
 
                     <CartesianGrid opacity={0.1} vertical={false} />
                 </AreaChart>
