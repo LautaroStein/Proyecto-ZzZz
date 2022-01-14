@@ -9,7 +9,7 @@ const nftOfferSchema = new mongoose.Schema({
     stock: { type: Number, required: true },
     user: { type: mongoose.Types.ObjectId, ref: 'user' },
     description: { type: String },
-    valid: { type: Boolean, default: false }
+    valid: { type: String, default: 'pending' }
 })
 
 const NftOffer = mongoose.model("nftoffer", nftOfferSchema)

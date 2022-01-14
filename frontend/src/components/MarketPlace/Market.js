@@ -82,7 +82,7 @@ const Market = (props) => {
                             </select>
                         </div>
                         <div className='nfts-offer-container'>
-                            {props.arrayOffers && props.arrayOffers.length > 0 && props.arrayOffers.map(nftOffer => <OfferCard key={nftOffer.price} user={props.user} nftOffer={nftOffer} />)}
+                            {props.arrayOffers && props.arrayOffers.length > 0 && props.arrayOffers.map(nftOffer => <OfferCard key={nftOffer._id} user={props.user} nftOffer={nftOffer} />)}
                             {props.arrayOffers && props.arrayOffers.length === 0 && <h2>No data found</h2>}
                         </div>
                     </div>
