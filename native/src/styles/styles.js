@@ -22,7 +22,6 @@ export  const styles = StyleSheet.create({
     },
 
     cuboRelleno:{
-      
       marginRight:20
     },
       
@@ -35,7 +34,7 @@ export  const styles = StyleSheet.create({
       height: 30,
     },
   text: {
-      color: "white",
+      color: "#fff",
       fontWeight: 'bold',
       textAlign:"justify",
       flex:1,
@@ -43,13 +42,24 @@ export  const styles = StyleSheet.create({
     },
 
   titulos:{
-    color: "white",
-    fontSize:15
+    color: "#fff",
+    fontSize:10,
+    fontWeight: 'bold',
+    margin:5
   },
   subtitulos:{ 
     color: "white",
-    fontSize:12
+    fontSize:14,
+    textAlign:"justify",
+    margin:10
   },
+  building:{
+    margin:10,
+    flex: 1,
+    flexDirection: 'row',
+    alignItems: "center",
+    justifyContent: "center", 
+   },
     separator: {
         marginVertical: 8,
         borderBottomColor: '#737373',
