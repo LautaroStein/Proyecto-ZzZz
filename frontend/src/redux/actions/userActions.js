@@ -72,7 +72,6 @@ const userActions = {
                 const user = await axios.get('http://localhost:4000/api/user/auth', {
                     headers: { 'Authorization': 'Bearer ' + token }
                 })
-                console.log(user)
                 dispatch({ type: 'usuario', payload: { userName: user.data.response.userName, img: user.data.response.img, userID: user.data.response._id } })
                 return { response: user.data.response }
             } catch (error) {

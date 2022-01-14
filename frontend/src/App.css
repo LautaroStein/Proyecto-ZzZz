@@ -330,6 +330,9 @@ ul li button:hover:nth-child(4) {
 .navigation ul li:nth-child(5).active ~ .indicator {
   transform: translateX(calc(81px * 4));
 }
+.navigation ul li:nth-child(6).active ~ .indicator {
+  transform: translateX(calc(81.5px * 5));
+}
 
 .iluminador {
   position: fixed;
@@ -1287,9 +1290,7 @@ img {
 .main-dashboard::-webkit-scrollbar {
   width: 8px;
 }
-.main-dashboard::-webkit-scrollbar-track {
-  /* background */
-}
+
 
 .main-dashboard::-webkit-scrollbar-thumb {
   background-color: #b903b0;
@@ -1410,9 +1411,7 @@ img {
 .management::-webkit-scrollbar {
   width: 8px;
 }
-.management::-webkit-scrollbar-track {
-  /* background */
-}
+
 .body-nft-admin-card {
   height: 90%;
   width: 100%;
@@ -1442,9 +1441,6 @@ img {
 .nft-form::-webkit-scrollbar {
   width: 8px;
 }
-.nft-form::-webkit-scrollbar-track {
-  /* background */
-}
 
 .nft-form::-webkit-scrollbar-thumb {
   background-color: #41003d;
@@ -1456,9 +1452,7 @@ img {
 .nfts-container::-webkit-scrollbar {
   width: 8px;
 }
-.nfts-container::-webkit-scrollbar-track {
-  /* background */
-}
+
 
 .nfts-container::-webkit-scrollbar-thumb {
   background-color: #b903b0;
@@ -1700,9 +1694,7 @@ img {
 .main-dashboard::-webkit-scrollbar {
   width: 8px;
 }
-.main-dashboard::-webkit-scrollbar-track {
-  /* background */
-}
+
 
 .main-dashboard::-webkit-scrollbar-thumb {
   background-color: #b903b0;
@@ -1823,9 +1815,7 @@ img {
 .management::-webkit-scrollbar {
   width: 8px;
 }
-.management::-webkit-scrollbar-track {
-  /* background */
-}
+
 .body-nft-admin-card {
   height: 90%;
   width: 100%;
@@ -1855,9 +1845,7 @@ img {
 .nft-form::-webkit-scrollbar {
   width: 8px;
 }
-.nft-form::-webkit-scrollbar-track {
-  /* background */
-}
+
 
 .nft-form::-webkit-scrollbar-thumb {
   background-color: #41003d;
@@ -1869,9 +1857,7 @@ img {
 .nfts-container::-webkit-scrollbar {
   width: 8px;
 }
-.nfts-container::-webkit-scrollbar-track {
-  /* background */
-}
+
 
 .nfts-container::-webkit-scrollbar-thumb {
   background-color: #b903b0;
@@ -2043,3 +2029,266 @@ img {
   justify-content: center;
   flex-wrap: wrap;
 }
+
+
+/* Shopping */
+
+.contenedor-total-shopping{
+  width:100%;
+  min-height: 90vh;
+  height: 90vh;
+  display: flex;
+  justify-content: space-between;
+}
+.contenedor-left-shopping{
+  width: 63% ;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.contenedor-rigth-shopping{
+  width: 35%;
+  height: 100% - 30px;
+  background-color: #191919;
+  margin-top: 30px;
+  padding: 0 20px 0 20px;
+  display: flex;
+  flex-direction: column;
+}
+.contenedor-left-shopping .shippoing-left-divone{
+  width: 100%;
+  height: 10%;
+  background-color: #191919;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: justify;
+  color: white;
+  padding: 0 20px 0 20px;
+  margin-top: 30px;
+}
+.contenedor-left-shopping .shippoing-left-divtwo{
+  width: 100%;
+  height: 10%;
+  background-color: #191919;
+  display: flex;
+  align-items: center;
+  text-align: justify;
+  color: var(--ColorPrimario);
+  font-size: 1.4em;
+  font-weight: 600;
+  padding: 0 20px 0 20px;
+  margin-top: 30px;
+}
+.contenedor-left-shopping .shippoing-left-divtree{
+  width: 100%;
+  flex-grow: 1;
+  background-color: #191919;
+  overflow-y: auto;
+  color: var(--ColorPrimario);
+  font-size: 1.4em;
+  font-weight: 600;
+  padding: 0 30px 0 30px;
+  margin-top: 30px;
+}
+.contenedor-left-shopping div:nth-child(3) .contenedor-nft-shopping{
+  position: relative;
+  display: flex;
+  height: 40%;
+  width: 100%;
+  border-radius: 20px 0 20px 0;
+  align-items: center;
+  justify-content: flex-start;
+  margin: 20px 0 20px 0;
+  padding: 0 10px 0 10px;
+}
+.delete-card-nft-shopping{
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  color: white;
+  font-size: 1.2em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.img-nft-shopping{
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  max-width: 40%;
+  max-height: 80%;
+  height: 80%;
+  width: 40%;
+  border-radius: 20px 0 20px 0;
+  margin: 0;
+}
+.contenedor-nft-shopping .contenedor-rarezas-shppoing{
+  width: 50%;
+  color: white;
+  font-size: 1em;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  font-weight: 600;
+  height: 80%;
+  margin: 0;
+}
+.contenedor-nft-shopping .contenedor-rarezas-shppoing h2{
+  font-size: 1em;
+  font-weight: 600 ;
+}
+
+.contenedor-nft-shopping div:nth-child(3){
+width: 10%;
+}
+
+.contenedor-rigth-shopping div:nth-child(1){
+  width: 100%;
+  height: 10%;
+  display: flex;
+  align-items: center;
+  color: white;
+}
+.contenedor-rigth-shopping div:nth-child(2){
+  width: 100%;
+  height: 3px;
+  background-color: rgb(20, 20, 20);
+}
+.contenedor-rigth-shopping div:nth-child(3){
+  width: 100%;
+  height: 12%;
+  display: flex;
+  align-items: center;
+  color: white;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+.contenedor-rigth-shopping div:nth-child(3) p {
+  width: 90%;
+}
+.contenedor-rigth-shopping div:nth-child(3) svg{
+  width: 10%;
+  color: var(--ColorPrimario);
+  font-size: 1.5em;
+  cursor: pointer;
+}
+.contenedor-rigth-shopping div:nth-child(3) input {
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.034);
+  border: none;
+  height: 2em;
+  color: white;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.contenedor-rigth-shopping div:nth-child(4){
+  width: 100%;
+  height: 3px;
+  background-color: rgb(20, 20, 20);
+}
+.contenedor-rigth-shopping div:nth-child(5){
+  width: 100%;
+  height: 7%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: white;
+}
+.contenedor-rigth-shopping div:nth-child(5) p:nth-child(2){
+  color: var(--ColorPrimario);
+  font-weight: 700;
+}
+.contenedor-rigth-shopping div:nth-child(6){
+  width: 100%;
+  height: 3px;
+  background-color: rgb(20, 20, 20);
+}
+.contenedor-rigth-shopping div:nth-child(7){
+  width: 100%;
+  height: 20%;
+  color: white;
+  display: flex;
+  align-items: center;
+  font-size: 1.22em;
+  text-align: justify;
+}
+.contenedor-rigth-shopping div:nth-child(8){
+  width: 100%;
+  height: 3px;
+  background-color: rgb(20, 20, 20);
+}
+.contenedor-rigth-shopping div:nth-child(9){
+  width: 100%;
+  height: 10%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color:white;
+  font-size: 1.25em;
+  font-weight: 900;
+  letter-spacing: 2px;
+}
+.contenedor-rigth-shopping div:nth-child(9) p:nth-child(2){
+  color: var(--ColorPrimario);
+}
+.contenedor-rigth-shopping div:nth-child(10){
+  width: 100%;
+  height: 3px;
+  background-color: rgb(20, 20, 20);
+}
+.contenedor-rigth-shopping div:nth-child(11){
+  flex-grow: 1;
+  margin-bottom: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25em;
+  font-weight: 700;
+}
+.contenedor-rigth-shopping div:nth-child(11) p{
+  margin: 5px 0 5px 0;
+}
+
+.contenedor-rigth-shopping div:nth-child(11) p:nth-child(1){
+  width: 100%;
+  height: 15%;
+  background-color: var(--ColorPrimario);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 500ms;
+  border-radius: 10px;
+}
+.contenedor-rigth-shopping div:nth-child(11) p:nth-child(1):hover{
+  background-color: var(--ColorPrimarioFuerte);
+}
+.contenedor-rigth-shopping div:nth-child(11) p:nth-child(2){
+  width: 100%;
+  height: 15%;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content:center;
+}
+.contenedor-rigth-shopping div:nth-child(11) p:nth-child(3){
+  width: 100%;
+  height: 15%;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border-radius: 10px;
+}
+.paypal-button-store{
+  
+}
+
+/* Finish Shopping */

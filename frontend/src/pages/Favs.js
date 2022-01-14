@@ -13,7 +13,6 @@ const Favs = ({nfts, user}) => {
         })
     })
 
-    console.log(favNft)
 
     return (
         <div>

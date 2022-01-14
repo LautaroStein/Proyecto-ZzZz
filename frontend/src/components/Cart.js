@@ -1,4 +1,3 @@
-// import react,{ useState,useEffect } from "react"
 import imagen from '../assets/verdeBackground.jpg'
 import React from "react"
 
