@@ -2292,3 +2292,87 @@ width: 10%;
 }
 
 /* Finish Shopping */
+/* USER TAB*/
+
+.user-cont {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.user-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  background-color: var(--ColorPrimarioFuerte);
+  min-height: 70vh;
+  width: min(90%, 80vw);
+  padding: 2rem;
+  border-radius: 20px;
+}
+
+.user-container div h1 {
+  color: var(--ColorQuinto);
+  font-size: min(10vw, 20vw);
+}
+
+.user-header-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+  padding: 2rem;
+}
+
+.user-info-container {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  color: white; 
+}
+
+.user-info-container div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 1rem;
+}
+
+.user-info-container div div {
+  overflow-x: auto;  
+}
+
+.user-info-container div div::webkit-scrollbar {
+  display: none;
+}
+
+.user-img {
+  display: block;
+  width: max(150px, 250px);
+  height: max(150px, 250px);
+  background-size: cover;
+  background-repeat: no-repeat;
+  border-radius: 50%;
+}
+.user-info-label {
+  padding: 1rem;
+  border: 3px solid white;
+  border-radius: 20px;
+  min-width: 15rem;
+  width: 20rem;
+}
+
+.edit-user {
+  color:white;
+  border: 2px solid white;
+  border-radius: .5rem;
+  padding: .1rem;
+  text-align: center;
+  margin:.3rem;
+}
+
+.edit-user:hover {
+  background-color: white;
+  color:var(--ColorPrimarioFuerte);
+  cursor: pointer;
+}

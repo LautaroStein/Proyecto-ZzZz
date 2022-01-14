@@ -27,23 +27,15 @@ const controllerUser = {
                     google,
                     rol
                 })
-
-
                 await nuevoUsuario.save()
                 const token = jwt.sign({ ...nuevoUsuario }, process.env.SECRET_KEY)
                 return res.json({ success: true, response: { token, ...nuevoUsuario }, error: null })
-
-
             }
-
         } catch (error) {
             res.json({ success: false, response: null, error: error })
         }
-
-
     },
     userLoged: async (req, res) => {
-
         const { email, password } = req.body
         if (email == '' || password == '') {
             return res.json({ success: true, error: "Fields cannot be left empty" })
@@ -57,12 +49,11 @@ const controllerUser = {
                 if (contraseñaCoincide || password === usuarioExiste.password) {
                     const token = jwt.sign({ ...usuarioExiste }, process.env.SECRET_KEY)
                     res.json({ success: true, response: { token, ...usuarioExiste }, error: null })
-
+                    console.log(res)
                 } else {
                     res.json({ success: false, error: "The password is incorrect" })
                 }
             }
-
         } catch (error) {
             console.log(error);
             res.json({ success: false, response: null, error: error })
@@ -129,7 +120,18 @@ const controllerUser = {
         } catch (error) {
             console.log(error)
         }
-    }
+    },
+    editUser: async (req, res) => {
+        let id = req.params.id
+        let user = req.body
+        let update
+        try{
+            update = await User.findOneAndUpdate({_id:id}, user, {new:true})
+        }catch(error){
+            console.error(error)
+        }
+        res.json({success: update ? true : false})
+    },
 }
 
 module.exports = controllerUser;
