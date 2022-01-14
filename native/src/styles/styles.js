@@ -7,7 +7,26 @@ export  const styles = StyleSheet.create({
       flex: 1,
     },
 
-    container: {
+    contenedorGif:{
+      
+      flexDirection: "column",
+      alignItems: "flex-end",
+      padding:10,
+      margin:20
+    },
+    cubo:{
+      flex:1,
+      flexDirection:"row",
+     
+      alignItems: "center",
+    },
+
+    cuboRelleno:{
+      
+      marginRight:20
+    },
+      
+      container: {
       flexDirection: 'row',
       justifyContent: 'space-evenly',
       alignItems: 'center',
@@ -15,12 +34,22 @@ export  const styles = StyleSheet.create({
       width: '100%',
       height: 30,
     },
-    text: {
-      color: "red",
+  text: {
+      color: "white",
       fontWeight: 'bold',
-      textAlign:"center"
-    
+      textAlign:"justify",
+      flex:1,
+      margin:1.5,
     },
+
+  titulos:{
+    color: "white",
+    fontSize:15
+  },
+  subtitulos:{ 
+    color: "white",
+    fontSize:12
+  },
     separator: {
         marginVertical: 8,
         borderBottomColor: '#737373',
