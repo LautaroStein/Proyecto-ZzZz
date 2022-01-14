@@ -5,7 +5,7 @@ const Store = () => {
     return (
         <View>
             <Text style={styles.store}>
-                Mi mercado
+               Store
             </Text>
         </View>
     )
