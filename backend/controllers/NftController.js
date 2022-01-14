@@ -5,6 +5,8 @@ const nftControllers = {
   getAllNft: async (req, res) => {
     try {
       const nfts = await Nft.find()
+      // solo devolver los nfts con validate = true
+      // const filteredNfts = nfts.filter(nft => nft.validate === true)
       res.json({ success: true, respuesta: nfts })
     } catch (error) {
 
@@ -16,7 +18,7 @@ const nftControllers = {
     const nft = req.body
     let respuesta
     try {
-      if (req.user.role === 'admin' || req.user.role === 'moderator') {
+      if (req.user.role === 'admin' || req.user.role === 'moderator' || req.user.suscription) {
         respuesta = await new Nft(nft).save()
         res.json(respuesta)
 

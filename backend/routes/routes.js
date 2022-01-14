@@ -3,12 +3,12 @@ const validador = require("../config/validador");
 const controllerUser = require('../controllers/controllerUser');
 const NftControllers = require("../controllers/NftController");
 const Coinbase = require("../controllers/CoinbaseController");
-const { Charge } = Coinbase
-const { getAllNft, loadUnNft, modifyAnNft, getOneNft, deleteNft, getNftsByUser } = NftControllers;
-const { newUser, userLoged, authUser, favs, getUsers, updateUser } = controllerUser;
+const offerNftController = require('../controllers/offerNftController')
 const passport = require('../config/passport')
-
-
+const { Charge } = Coinbase
+const { newUser, userLoged, authUser, favs, getUsers, updateUser } = controllerUser;
+const { getAllNft, loadUnNft, modifyAnNft, getOneNft, deleteNft, getNftsByUser } = NftControllers;
+const { getAllOffers, postOffer, modifyOffer, getOneOffer, deleteOffer, getOffersByUser } = offerNftController
 
 
 
@@ -32,7 +32,8 @@ Router.route('/auth/signIn')
 
 Router.route('/nfts/user/:id')
     .get(passport.authenticate('jwt', { session: false }), getNftsByUser)
-
+Router.route('/offers/user/:id')
+    .get(passport.authenticate('jwt', { session: false }), getOffersByUser)
 Router.route('/user/auth')
     .get(passport.authenticate('jwt', { session: false }), authUser)
 
@@ -49,6 +50,15 @@ Router.route('/favs')
 
 Router.route('/create-charge')
     .get(Charge)
+
+// Offer ROUTES
+Router.route('/offers')
+    .get(getAllOffers) // publica pero depende del valid (se ve en el controlador)
+    .post(passport.authenticate('jwt', { session: false }), postOffer)
+Router.route("/offer/:id")
+    .get(getOneOffer)
+    .put(passport.authenticate('jwt', { session: false }), modifyOffer)
+    .delete(passport.authenticate('jwt', { session: false }), deleteOffer)
 
 
 module.exports = Router

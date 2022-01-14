@@ -97,8 +97,8 @@ const controllerUser = {
                 const id = req.params.id
                 userUpdated = await User.findOneAndUpdate({ _id: id }, userBody, { new: true })
                 res.json({ success: true, userUpdated })
-            } else if (req.user.range === 'moderator' || req.user.rol === 'user') {
-                if (!userBody.rol) {
+            } else if (req.user.role === 'moderator' || req.user.role === 'user') {
+                if (!userBody.role) {
                     userUpdated = await User.findOneAndUpdate({ _id: req.user._id }, userBody, { new: true })
                     res.json({ success: true, userUpdated })
                 } else {
@@ -129,7 +129,7 @@ const controllerUser = {
         } catch (error) {
             console.log(error)
         }
-    }
+    },
 }
 
 module.exports = controllerUser;
