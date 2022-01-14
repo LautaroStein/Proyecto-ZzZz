@@ -1,4 +1,5 @@
 const User = require('../models/User')
+const Nft = require("../models/Nft");
 const bcryptjs = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 
@@ -34,7 +35,6 @@ const controllerUser = {
             res.json({ success: false, response: null, error: error })
         }
     },
-
     userLoged: async (req, res) => {
         const { email, password } = req.body
         if (email == '' || password == '') {
@@ -78,6 +78,60 @@ const controllerUser = {
         }
         res.json({success: update ? true : false})
     },
+    getUsers: async (req, res) => {
+        try {
+            if (req.user.role === 'admin' || req.user.role === 'moderator') {
+                const users = await User.find()
+                res.json({ success: true, users })
+            } else {
+                res.json({ success: false, error: 'Unauthorized User, you must be an admin' })
+            }
+        } catch (error) {
+
+            res.json({ success: false, response: null, error: error })
+        }
+    },
+    updateUser: async (req, res) => {
+        const userBody = req.body
+        let userUpdated
+        try {
+            if (req.user.role === 'admin') {
+                const id = req.params.id
+                userUpdated = await User.findOneAndUpdate({ _id: id }, userBody, { new: true })
+                res.json({ success: true, userUpdated })
+            } else if (req.user.range === 'moderator' || req.user.rol === 'user') {
+                if (!userBody.rol) {
+                    userUpdated = await User.findOneAndUpdate({ _id: req.user._id }, userBody, { new: true })
+                    res.json({ success: true, userUpdated })
+                } else {
+                    res.json({ success: false })
+                }
+
+            } else {
+
+                res.json({ success: false, error: 'Unauthorized User, you must be an admin' })
+            }
+        } catch (error) {
+            res.json({ success: false, response: null, error: error })
+        }
+    },
+    favs: async (req, res) => {
+        const { nftId, bool } = req.body
+        console.log(nftId)
+        try {
+            const nft = await Nft.findOneAndUpdate(
+                { _id: nftId },
+                bool ?
+                    { $addToSet: { favs: req.user._id } }
+                    :
+                    { $pull: { favs: req.user._id } },
+                { new: true }
+            )
+            res.json({ success: true, response: { nft: nft }, error: null })
+        } catch (error) {
+            console.log(error)
+        }
+    }
 }
 
 module.exports = controllerUser;

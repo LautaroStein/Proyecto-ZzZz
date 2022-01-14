@@ -2,8 +2,10 @@ const Router = require("express").Router();
 const validador = require("../config/validador");
 const controllerUser = require('../controllers/controllerUser');
 const NftControllers = require("../controllers/NftController");
+const Coinbase = require("../controllers/CoinbaseController");
+const { Charge } = Coinbase
 const { getAllNft, loadUnNft, modifyAnNft, getOneNft, deleteNft, getNftsByUser } = NftControllers;
-const { newUser, userLoged, authUser, editUser } = controllerUser;
+const { newUser, userLoged, authUser, favs, getUsers, updateUser, editUser } = controllerUser;
 const passport = require('../config/passport')
 
 
@@ -14,12 +16,11 @@ const passport = require('../config/passport')
 
 Router.route('/nft')
     .get(getAllNft)
-    .post(loadUnNft)
+    .post(passport.authenticate('jwt', { session: false }), loadUnNft)
 Router.route("/nft/:id")
-    .put(modifyAnNft)
     .get(getOneNft)
-    .delete(deleteNft)
-
+    .put(passport.authenticate('jwt', { session: false }), modifyAnNft)
+    .delete(passport.authenticate('jwt', { session: false }), deleteNft)
 
 // Routes of Users
 
@@ -37,5 +38,19 @@ Router.route('/user/auth')
 
 Router.route('/admin/user/:id')
     .put(editUser)
+Router.route('/admin/users')
+    .get(passport.authenticate('jwt', { session: false }), getUsers)
+Router.route('/admin/user/:id')
+    .put(passport.authenticate('jwt', { session: false }), updateUser)
+// Favs
+
+Router.route('/favs')
+    .put(passport.authenticate('jwt', { session: false }), favs)
+
+// Route of Coinbase
+
+Router.route('/create-charge')
+    .get(Charge)
+
 
 module.exports = Router
