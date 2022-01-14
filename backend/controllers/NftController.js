@@ -5,8 +5,6 @@ const nftControllers = {
   getAllNft: async (req, res) => {
     try {
       const nfts = await Nft.find()
-      // solo devolver los nfts con validate = true
-      // const filteredNfts = nfts.filter(nft => nft.validate === true)
       res.json({ success: true, respuesta: nfts })
     } catch (error) {
 
