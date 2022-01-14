@@ -7,34 +7,31 @@ const Store = () => {
             type:"Gamer",
             clase:"Common",
             price:40,
-            img:"https://images-zzz.netlify.app/asstes/Morde.jpeg",
-            id:1
+            img:"https://images-zzz.netlify.app/asstes/Morde.jpeg"
         },
         {
             name:"Awakening Of An Adventurer",
             clase:"Rare",
             type:"Cyberpunk",
             price:100,
-            img:"https://images-zzz.netlify.app/asstes/awakening.jpg",
-            id:2
+            img:"https://images-zzz.netlify.app/asstes/awakening.jpg"
         },
         {
             name:"Speed Lover",
             clase:"Mythical",
             type:"Cyberpunk",
             price:100,
-            img:"https://images-zzz.netlify.app/asstes/speed.jpg",
-            id:3
+            img:"https://images-zzz.netlify.app/asstes/speed.jpg"
         },
         {
             name:"Okuda Geometric",
             clase:"Rare",
             type:"Arte",
             price:78,
-            img:"https://images-zzz.netlify.app/asstes/okuda.jpg",
-            id:4
+            img:"https://images-zzz.netlify.app/asstes/okuda.jpg"
         }
     ]
+    console.log(arrayFalso.name)
 
 
     return (
@@ -49,6 +46,10 @@ const Store = () => {
                     <div></div>
                 </div>
             </div>
+
+           
+
+
             <div className="contenedor-top-sellers-store">
                 <div className="sellers">
                     <div className="title-top-sellers">
@@ -58,7 +59,7 @@ const Store = () => {
                         {
                             arrayFalso.map((element, index) => {
                                 return(
-                                    <CardNFT name={element.name} type={element.type} price={element.price} img={element.img} clase={element.clase} id = {element._id} />
+                                    <CardNFT name={element.name} type={element.type} price={element.price} img={element.img} clase={element.clase} />
                                 )
                             })
                         }
@@ -82,7 +83,7 @@ const Store = () => {
                         {
                             arrayFalso.map((element, index) => {
                                 return(
-                                    <CardNFT name={element.name} type={element.type} price={element.price} img={element.img} clase={element.clase} id = {element.id} />
+                                    <CardNFT name={element.name} type={element.type} price={element.price} img={element.img} clase={element.clase} />
                                 )
                             })
                         }
