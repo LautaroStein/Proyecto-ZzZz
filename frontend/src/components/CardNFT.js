@@ -85,7 +85,7 @@ const favsAndDisFavs = async() => {
                                     draggable: true,
                                     progress: undefined,})
                                 }}}>
-                                  Buy
+                                  Add to Cart
                                   <span style={{backgroundColor:`${backColor}`}}></span><span style={{backgroundColor:`${backColor}`}}></span><span style={{backgroundColor:`${backColor}`}}></span><span style={{backgroundColor:`${backColor}`}}></span>
                                 </button>
                             </div>

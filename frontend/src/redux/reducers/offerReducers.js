@@ -1,6 +1,7 @@
 const initialState = {
     offers: [],
     auxOffers: [],
+    auxOffertsDos: [],
     userOffers: [],
     offer: {}
 }
@@ -18,7 +19,8 @@ const offerReducers = (state = initialState, action) => {
             return {
                 ...state,
                 offers: action.payload,
-                auxOffers: action.payload
+                auxOffers: action.payload,
+                auxOffertsDos : action.payload
             }
         case 'GET_OFFER':
             return {
@@ -32,6 +34,7 @@ const offerReducers = (state = initialState, action) => {
 
             }
         case 'UPDATE_OFFER':
+            console.log(action.payload.offerId);
             return {
                 ...state,
                 offers: state.offers.map(offer => offer._id === action.payload.offerId ? { ...offer, ...action.payload.body } : offer)

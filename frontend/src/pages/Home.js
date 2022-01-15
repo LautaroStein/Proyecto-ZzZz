@@ -19,6 +19,7 @@ const Home = () => {
 
     return (
         <>
+        <div style={{ height: "70px" }} ></div>
         <div className="background-iluminacion">
             <div className="contenedor-home">
                 <div className="contenedor-text-home">
@@ -81,7 +82,7 @@ const Home = () => {
                 </div>
             </div>
         </div>
-        <div className="contenedor-about">
+        <div className="contenedor-about-advantages">
             <div className="contenedor-ocho-about">
                 <p>Advantages</p>
                 <h2>Create and sell your NFTs</h2>
@@ -140,7 +141,7 @@ const Home = () => {
         </div>
 
 
-        <div className="contenedor-about">
+        <div className="contenedor-creators">
             <div className="contenedor-ocho-about">
             <p>CREATORS</p>
                 <h2>Top Collections of the week</h2>
