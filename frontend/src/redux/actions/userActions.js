@@ -8,7 +8,7 @@ const userActions = {
                 console.log(user)
                 if (user.data.success && !user.data.error) {
                     localStorage.setItem('token', user.data.response.token)
-                    dispatch({ type: 'USER_LOGGED', payload: { userName: user.data.response._doc.name, img: user.data.response._doc.userImg, userID: user.data.response._doc._id } })
+                    dispatch({ type: 'USER_LOGGED', payload: user.data.response })
                     return { succes: true, userId: user.data.response._doc._id }
                 } else {
                     return { succes: false, error: user.data.errors }
@@ -39,10 +39,10 @@ const userActions = {
         return async (dispatch, getState) => {
             try {
                 const token = localStorage.getItem('token')
-                const res = await axios.put(`http://localhost:4000/api/admin/user/${userId}`, {
+                const user = await axios.put(`http://localhost:4000/api/admin/user/${userId}`, {
                     headers: { 'Authorization': 'Bearer ' + token }
                 })
-                dispatch({ type: 'UPDATE_USER', payload: { userName: res.data.response.name, img: res.data.response.userImg, userID: res.data.response._id } })
+                dispatch({ type: 'UPDATE_USER', payload: user.data.response })
 
             } catch (error) {
                 return { msg: 'You must be login' }
@@ -50,13 +50,31 @@ const userActions = {
 
         }
     },
+
+    editUser: (userId, user) => {
+        
+        return async (dispatch, getState) => {
+            try {
+                const token = localStorage.getItem('token')
+                const editedUser = await axios.put(`http://localhost:4000/api/admin/user/${userId}`, user, {
+                    headers: { 'Authorization': 'Bearer ' + token }
+                })
+                dispatch({ type: 'UPDATE_USER', payload: editedUser.data.response })
+
+            } catch (error) {
+                return { msg: 'You must be login' }
+            }
+
+        }
+    },
+
     signIn: (users) => {
         return async (dispatch, getState) => {
             try {
                 const user = await axios.post('http://localhost:4000/api/auth/signIn', users)
                 if (user.data.success && !user.data.error) {
                     localStorage.setItem('token', user.data.response.token)
-                    dispatch({ type: 'USER_LOGGED', payload: { userName: user.data.response._doc.name, img: user.data.response._doc.userImg, userID: user.data.response._doc._id } })
+                    dispatch({ type: 'USER_LOGGED', payload: user.data.response._doc })
                     return { succes: true, userId: user.data.response._doc._id }
                 } else {
                     return { succes: false, error: user.data.error }
@@ -74,7 +92,7 @@ const userActions = {
                     headers: { 'Authorization': 'Bearer ' + token }
                 })
                 console.log(user)
-                dispatch({ type: 'usuario', payload: { userName: user.data.response.userName, img: user.data.response.img, userID: user.data.response._id } })
+                dispatch({ type: 'usuario', payload: user.data.response })
                 return { response: user.data.response }
             } catch (error) {
                 return { error: 'Unauthorized user, try login again' }
@@ -87,29 +105,18 @@ const userActions = {
             dispatch({ type: 'LOGOUT' })
         }
     },
-
-    getAllUsers: (id) => {
-        // console.log(id)
+    favs: (favs) => {
         return async (dispatch, getState) => {
-            let respuesta = await axios.get(`http://localhost:4000/api/users/${id}`)
-            // console.log(respuesta.data.response)
-            dispatch({ type: 'USER_LOGGED', payload: { userName: respuesta.data.response.name, img: respuesta.data.response.userImg, userID: respuesta.data.response._id, favorite: respuesta.data.response.favorite} })
-            return { response: respuesta.data.response }
-        }
-
-    },
-
-    likeItinerary: (idComentario, idUser) => {
-        return async () => {
-            try {
-                let response = await axios.put(`http://localhost:4000/api/user/comentario/likes/${idUser}`, { idComentario })
-
-                return response.data.response
-
-            } catch (error) {
-                console.log(error)
+            try{
+                const token = localStorage.getItem('token')
+                const user = await axios.put('http://localhost:4000/api/favs',{...favs},{
+                        headers: { 'Authorization': 'Bearer ' + token }
+                    })
+                console.log(user)
+                return {succes : true}
+            }catch(err){
+                console.log(err)
             }
-
         }
     }
 }

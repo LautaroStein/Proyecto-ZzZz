@@ -1,4 +1,5 @@
 // Importamos createDrawerNavigator
+import {useEffect} from 'react'
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import Home from "../screens/Home"
 import Store from "../screens/Store"
@@ -7,6 +8,9 @@ import NftSaved from "../screens/NftSaved"
 import Cart from "../screens/Cart"
 import Profile from "../screens/Profile"
 
+import nftActions from '../redux/actions/nftActions'
+import userActions from "../redux/actions/userActions"
+import { connect } from "react-redux";
 
 // Instanciamos createDrawerNavigator para obtener todos sus Metodos y Componentes
 const Drawer = createDrawerNavigator();
@@ -15,9 +19,23 @@ const Drawer = createDrawerNavigator();
 // DrawerNavigator es el navigator que vamos a exportar y va a ser el encargado 
 // de mostrar las distintas vistas mediante eventos de navegación y las distintas pantallas
 // declaradas en el mismo, tambien es totalmente modificable su estilo y su forma de interaccion.-
-const DrawerNavigator = ()=>{
+const DrawerNavigator = ({ user, rdxAuth, rdxLogin, getUserNfts, getNfts })=>{
 
-
+    useEffect(() => {
+        // 
+        async function fetchData() {
+            const user = await rdxAuth();
+            getUserNfts(user.response._id)
+            user.error && toast(user.error)
+            const userLogged = {
+                email: user.response.email,
+                password: user.response.password
+            }
+            user.response && rdxLogin(userLogged)
+        }
+        localStorage.getItem('token') && fetchData();
+        getNfts()
+    }, [rdxAuth, rdxLogin, getUserNfts])// eslint-disable-line react-hooks/exhaustive-deps
 
 
     return (
@@ -32,4 +50,17 @@ const DrawerNavigator = ()=>{
     )
 }
 
-export default DrawerNavigator;
+const mapStateToProps = (state) => {
+    return {
+      user: state.userReducers.user
+    }
+  }
+  
+  const mapDispatchToProps = {
+    rdxAuth: userActions.isAuth,
+    rdxLogin: userActions.signIn,
+    getNfts: nftActions.getNfts,
+    getUserNfts: nftActions.getNftsByUser,
+  }
+
+export default connect(mapStateToProps, mapDispatchToProps)(DrawerNavigator);

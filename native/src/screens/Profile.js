@@ -3,6 +3,8 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import SignIn from '../components/SignIn'
 import SignUp from '../components/SignUp'
 import ComponenteUno from '../components/ComponenteUno'
+import { useDispatch } from "react-redux"
+
 
 // Instanciamos createBottomTabNavigator para obtener todos sus Metodos y Componentes
 const Tab = createBottomTabNavigator();
@@ -13,13 +15,17 @@ const Tab = createBottomTabNavigator();
 // declaradas en el mismo, tambien es totalmente modificable su estilo y su forma de interaccion.-
 
 const Profile = ({ navigation}) => {
+
+    const dispatch = useDispatch()
+
     return (
         <Tab.Navigator>
 
         {/* <Tab.Screen name="nose" component={ComponenteUno} /> */}
         {/* <Tab.Screen name="C_Dos" component={ComponenteDos} /> */}
-        <Tab.Screen name="SignUp" component={SignUp} />
         <Tab.Screen name="Signin" component={SignIn} />
+        <Tab.Screen name="SignUp" component={SignUp} />
+        
 
     </Tab.Navigator>
     )

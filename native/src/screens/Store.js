@@ -1,26 +1,61 @@
 import React from 'react';
-// import { View, Text, StyleSheet } from 'react-native'
-import { Text, TextInput, View, ScrollView, TouchableHighlight, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Text, ScrollView, StyleSheet, Image } from 'react-native'
 
 const Store = () => {
     return (
-        <View>
-            <Text style={styles.store}>
-                Mi mercado
-            </Text>
+        <ScrollView style={storeStyle.mainView}>
+        <View style={storeStyle.view}>
+            <Text style={storeStyle.title}>Collect & Sell Your NFTs</Text>
+            <Image source={require('../../assets/mineria.png')} style={storeStyle.imagenMineria} />
+            <Text style={storeStyle.title}>Live the new life check it out now.</Text>
         </View>
+        <View style={storeStyle.view2}>
+            <Text style={storeStyle.title2}>Top Sellers</Text>
+            <Image source={require('../../assets/mineria.png')} style={storeStyle.imagenMineria} />
+        </View>
+        <View style={storeStyle.view3}>
+            <Text style={storeStyle.title2}>All</Text>
+            <Image source={require('../../assets/mineria.png')} style={storeStyle.imagenMineria} />
+        </View>
+    </ScrollView>
     )
 }
 
-export default Store
 
-const styles = StyleSheet.create({
-
-    store:{
-        padding: 10,
-        backgroundColor:"#f9f9f9",
-        fontSize: 50
-    }
-
-
+const storeStyle = StyleSheet.create({
+    mainView:{
+        backgroundColor:'black',
+    },
+    view:{
+        backgroundColor:'black',
+    },
+    view2:{
+        backgroundColor:'black',
+        marginTop:'1rem',
+    },
+    view3:{
+        backgroundColor:'black',
+        marginTop:'1rem',
+    },
+    title:{
+        color:'white',
+        width: '100%',
+        height:'0.5rem',
+        textAlign: 'center',
+        margin: '1rem'
+    },
+    title2:{
+        color:'white',
+        width: '100%',
+        height:'0.5rem',
+        textAlign: 'left',
+        margin: '1rem'
+    },
+    imagenMineria:{
+        width: '100px',
+        height: '100px',
+        alignSelf: 'center',
+    },
+    
 })
+export default Store

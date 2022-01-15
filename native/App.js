@@ -4,6 +4,10 @@ import reducer, {initialState} from './src/core/reducer'
 // NavigationContainer es el encargado de escuchar los eventos de navegacion de los navigators 
 import { NavigationContainer } from '@react-navigation/native';
 
+import { createStore, applyMiddleware } from "redux"
+import { Provider } from "react-redux";
+import thunk from "redux-thunk";
+import mainReducer from './src/redux/reducers/mainReducer';
 // importaciones de los distintos navigators 👇
 // Stack
 import StackNavigator from './src/navigation/Stack'
@@ -12,10 +16,12 @@ import DrawerNavigator from './src/navigation/Drawer'
 // BottomTab
 import BottomTabNavigator from './src/navigation/BottomTab'
 
+const reduxStore = createStore(mainReducer, applyMiddleware(thunk))
+
 export  function App() {
   
   return(
-    <StateProvider initialState={initialState } reducer = {reducer}>
+    <Provider store={reduxStore} >
 
     {/* Envuelvo mi app dentro del navigation Container 
     para que esta esté dotada de todas las propiedades de navegación 
@@ -28,7 +34,7 @@ export  function App() {
         <DrawerNavigator/>
         {/* <StackNavigator /> */}
       </NavigationContainer>
-    </StateProvider> 
+    </Provider> 
   )
 }
 export default App

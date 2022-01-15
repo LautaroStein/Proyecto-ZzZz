@@ -27,12 +27,12 @@ const userReducers = (state = initialState, action) => {
             }
         case 'UPDATE_USER':
             return {
-                ...state,
-                user: action.payload
+                user: {...state.user, ...action.payload}
             }
         default:
             return state
     }
+
 
 }
 

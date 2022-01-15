@@ -1,4 +1,5 @@
 const User = require('../models/User')
+const Nft = require("../models/Nft");
 const bcryptjs = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 
@@ -26,42 +27,16 @@ const controllerUser = {
                     google,
                     rol
                 })
-
                 await nuevoUsuario.save()
                 const token = jwt.sign({ ...nuevoUsuario }, process.env.SECRET_KEY)
                 return res.json({ success: true, response: { token, ...nuevoUsuario }, error: null })
-
             }
-
         } catch (error) {
             res.json({ success: false, response: null, error: error })
         }
-
-
     },
-
-    getAllUsers: async (req, res) => {
-        let id = req.params.id
-        let users
-        let error = null
-        console.log(id)
-        try {
-            users = await  User.findOne({ _id: id })
-        } catch (error) {
-            error = error
-            console.error(error)
-        }
-        res.json({
-            response: error ? 'ERROR' :  users,
-            succes: error ? false : true,
-            error: error
-        })
-   
-
-    },
-
+    
     userLoged: async (req, res) => {
-
         const { email, password } = req.body
         if (email == '' || password == '') {
             return res.json({ success: true, error: "Fields cannot be left empty" })
@@ -75,12 +50,11 @@ const controllerUser = {
                 if (contraseñaCoincide || password === usuarioExiste.password) {
                     const token = jwt.sign({ ...usuarioExiste }, process.env.SECRET_KEY)
                     res.json({ success: true, response: { token, ...usuarioExiste }, error: null })
-
+                    console.log(res)
                 } else {
                     res.json({ success: false, error: "The password is incorrect" })
                 }
             }
-
         } catch (error) {
             console.log(error);
             res.json({ success: false, response: null, error: error })
@@ -94,34 +68,71 @@ const controllerUser = {
             res.json({ success: false, response: null, error: error })
         }
     },
+    editUser: async (req, res) => {
+        let id = req.params.id
+        let user = req.body
+        let update
+        try{
+             update = await User.findOneAndUpdate({_id:id}, user, {new:true})
+        }catch(error){
+            console.error(error)
+        }
+        res.json({success: update ? true : false})
+    },
+    getUsers: async (req, res) => {
+        try {
+            if (req.user.role === 'admin' || req.user.role === 'moderator') {
+                const users = await User.find()
+                res.json({ success: true, users })
+            } else {
+                res.json({ success: false, error: 'Unauthorized User, you must be an admin' })
+            }
+        } catch (error) {
 
-    likeComment: (req, res) => {
-        let idComentario = req.body
-        console.log(idComentario)
-        // User.findOne({ _id: req.params.id })
-        //     .then((favorito) => {
+            res.json({ success: false, response: null, error: error })
+        }
+    },
+    updateUser: async (req, res) => {
+        const userBody = req.body
+        let userUpdated
+        try {
+            if (req.user.role === 'admin') {
+                const id = req.params.id
+                userUpdated = await User.findOneAndUpdate({ _id: id }, userBody, { new: true })
+                res.json({ success: true, userUpdated })
+            } else if (req.user.range === 'moderator' || req.user.rol === 'user') {
+                if (!userBody.rol) {
+                    userUpdated = await User.findOneAndUpdate({ _id: req.user._id }, userBody, { new: true })
+                    res.json({ success: true, userUpdated })
+                } else {
+                    res.json({ success: false })
+                }
 
-        //         if (favorito.favorite.includes(idComentario.idComentario)) {
+            } else {
 
-        //             favorito.findOneAndUpdate({ _id: req.params.id }, { $pull: { favorite: idComentario.idComentario } }, { new: true })
-        //                 .then((newComment) => res.json({ success: true, response: newComment.likes }))
-        //                 .catch((error) => console.log(error))
-
-        //         }
-        //         else {
-
-        //             favorito.findOneAndUpdate({ _id: req.params.id }, { $push: {favorite: idComentario.idComentario  } }, { new: true })
-        //                 .then((newComment) => res.json({ success: true, response: newComment.likes }))
-        //                 .catch((error) => console.log(error))
-        //         }
-        //     })
-        //     .catch((error) => res.json({ success: false, response: error }))
+                res.json({ success: false, error: 'Unauthorized User, you must be an admin' })
+            }
+        } catch (error) {
+            res.json({ success: false, response: null, error: error })
+        }
+    },
+    favs: async (req, res) => {
+        const { nftId, bool } = req.body
+        console.log(nftId)
+        try {
+            const nft = await Nft.findOneAndUpdate(
+                { _id: nftId },
+                bool ?
+                    { $addToSet: { favs: req.user._id } }
+                    :
+                    { $pull: { favs: req.user._id } },
+                { new: true }
+            )
+            res.json({ success: true, response: { nft: nft }, error: null })
+        } catch (error) {
+            console.log(error)
+        }
     }
-    // verifyToken : (req, res) => {
-    //     res.json({firstName: req.user.firstName, url:req.user.url, _id:req.user._id})
-    // }
-
-
 }
 
 module.exports = controllerUser;

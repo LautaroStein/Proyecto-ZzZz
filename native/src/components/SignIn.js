@@ -1,13 +1,33 @@
 import React, { useState } from 'react';
 import { Text, TextInput, View, ScrollView, TouchableHighlight, StyleSheet, TouchableOpacity } from 'react-native';
 import { useDispatch } from "react-redux"
+import userAction from "../redux/actions/userActions"
+import toasty from "./Toast";
 const SignIn = (props) => {
 
   const {navigate} = props.navigation;
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const Dispatch = useDispatch()
-  const action =  () => email !== '' && password !== '' ? navigate('C_Uno') : alert("Completa los campos")
+  
+  const dispatch = useDispatch()
+  
+  const action = async  () => {
+    if (email == "" || password == ""){
+      toasty('error','Fields cannot be left empty')
+    }else{
+      const user = {
+        email: email,
+        password: password
+    }
+      let resultado = await dispatch(userAction.signIn(user))
+      
+      if(resultado.succes == false){
+        toasty('error',resultado.error)
+      }else{
+        toasty('success','Welcome back')
+      }
+    }
+  }
 
   return (
     <ScrollView style={{padding: 10}}>

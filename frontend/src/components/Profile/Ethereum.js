@@ -1,7 +1,10 @@
+import Graph from "../RealTimeGraph/Graph"
+
 const Ethereum = () => {
     return (
-        <div>
-            <h1>Ethereum</h1>
+        <div className="etherum-history">
+            <h1>ETH HISTORY</h1>
+            <Graph />
         </div>
     )
 }
