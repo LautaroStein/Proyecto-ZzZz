@@ -10,7 +10,6 @@ const Admin = (props) => {
     const [features, setFeatures] = useState(false)
     const [onCardHover, setOnCardHover] = useState({ bool: false, id: '' })
     const [editNft, setEditNft] = useState('')
-    const [actualOffers, setActualOffers] = useState([])
     const nname = useRef(null)
     const type = useRef(null)
     const clase = useRef(null)
@@ -26,6 +25,14 @@ const Admin = (props) => {
     const handlerSetCreate = () => {
 
         setEdit(false)
+        setTimeout(() => {
+            nname.current.value = ""
+            type.current.value = ""
+            clase.current.value = ""
+            img.current.value = ""
+            price.current.value = ""
+            stock.current.value = ""
+        }, 1)
     }
     const handlerDelete = (nftId) => {
         props.deleteNft(nftId)
@@ -62,6 +69,13 @@ const Admin = (props) => {
         editNft.nftId.price && (updatedBody['price'] = editNft.nftId.price)
 
         props.updateNft(editNft.nftId._id, { ...updatedBody, valid: 'pending' })
+
+        editNft.nftId.name = ""
+        editNft.nftId.type = ""
+        editNft.nftId.img = ""
+        editNft.nftId.clase = ""
+        editNft.nftId.stock = ""
+        editNft.nftId.price = ""
 
     }
 
@@ -102,7 +116,7 @@ const Admin = (props) => {
                     <div className='edit-form'>
                         <h2><span>{edit ? 'Edit' : 'Create'}</span> NFT Form</h2>
                         <div className='nft-form'>
-                            {features ?
+                            {(features && edit) ?
                                 (editNft.nftId) &&
                                 <>
                                     <h3>Elemental Features</h3>
@@ -144,11 +158,12 @@ const Admin = (props) => {
             <article className="offers-management">
                 <div className='main-offers-content'>
                     <div className='nfts-search-title'>
-                        <h2>Offers</h2>
+                        <h2>Pending Offers</h2>
                         <input type="text" placeholder='search by nft name' onChange={(e) => props.filter(props.aux, e.target.value.trim())} />
                     </div>
                     <div className='nfts-container'>
                         {(props.offers && props.offers.length > 0) && props.offers.map(nft =>
+                            nft.valid === 'pending' &&
                             <div key={nft._id} onMouseEnter={() => setOnCardHover({ bool: true, id: nft._id })} onMouseLeave={() => setOnCardHover({ bool: false, id: nft._id })} style={{ backgroundImage: `url(${nft.img})` }} className="admin-offer-card">
                                 <div className='body-nft-admin-card'>
                                     <h2>{nft.name}</h2>
@@ -156,9 +171,8 @@ const Admin = (props) => {
                                     <h2>{nft.type}</h2>
                                     <h2>{nft.clase}</h2>
                                     <h2>{nft.stock}</h2>
-                                    <h2>{nft.valid === 'pending' ? 'pending' : nft.valid === 'accepted' ? 'accepted' : 'rejected'}</h2>
                                 </div>
-                                {(onCardHover.bool && onCardHover.id === nft._id && nft.valid === 'pending') &&
+                                {(onCardHover.bool && onCardHover.id === nft._id) &&
                                     <div className='management-actions'>
                                         <button onClick={() => handlerReject(nft._id)}>Reject</button>
                                         <button onClick={() => handlerAccept(nft._id)}>Accept</button>

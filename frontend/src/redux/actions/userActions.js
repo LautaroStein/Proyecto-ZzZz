@@ -7,7 +7,7 @@ const userActions = {
                 const user = await axios.post('http://localhost:4000/api/auth/signUp', paramUser)
                 if (user.data.success && !user.data.error) {
                     localStorage.setItem('token', user.data.response.token)
-                    dispatch({ type: 'USER_LOGGED', payload: { userName: user.data.response._doc.name, img: user.data.response._doc.userImg, userID: user.data.response._doc._id } })
+                    dispatch({ type: 'USER_LOGGED', payload: { userName: user.data.response._doc.name, img: user.data.response._doc.userImg, userID: user.data.response._doc._id, sub: user.data.response._doc.suscription } })
                     return { succes: true, userId: user.data.response._doc._id }
                 } else {
                     return { succes: false, error: user.data.errors }
@@ -72,7 +72,7 @@ const userActions = {
                 const user = await axios.post('http://localhost:4000/api/auth/signIn', users)
                 if (user.data.success && !user.data.error) {
                     localStorage.setItem('token', user.data.response.token)
-                    dispatch({ type: 'USER_LOGGED', payload: { userName: user.data.response._doc.name, img: user.data.response._doc.userImg, userID: user.data.response._doc._id } })
+                    dispatch({ type: 'USER_LOGGED', payload: { userName: user.data.response._doc.name, img: user.data.response._doc.userImg, userID: user.data.response._doc._id, sub: user.data.response._doc.suscription } })
                     return { succes: true, userId: user.data.response._doc._id }
                 } else {
                     return { succes: false, error: user.data.error }
@@ -89,7 +89,7 @@ const userActions = {
                 const user = await axios.get('http://localhost:4000/api/user/auth', {
                     headers: { 'Authorization': 'Bearer ' + token }
                 })
-                dispatch({ type: 'usuario', payload: { userName: user.data.response.userName, img: user.data.response.img, userID: user.data.response._id } })
+                dispatch({ type: 'usuario', payload: { userName: user.data.response.userName, img: user.data.response.img, userID: user.data.response._id, sub: user.data.response.suscription } })
                 return { response: user.data.response }
             } catch (error) {
                 return { error: 'Unauthorized user, try login again' }

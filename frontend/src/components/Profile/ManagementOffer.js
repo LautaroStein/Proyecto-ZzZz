@@ -1,9 +1,11 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useRef, useState } from 'react'
 import { connect } from 'react-redux'
-import nftActions from '../../redux/actions/nftActions'
 import offerActions from '../../redux/actions/offerActions'
+import userActions from '../../redux/actions/userActions'
+import { useNavigate } from 'react-router-dom'
 
 const CreateOffer = (props) => {
+    const navigate = useNavigate()
     const [edit, setEdit] = useState(false)
     const [features, setFeatures] = useState(false)
     const [onCardHover, setOnCardHover] = useState({ bool: false, id: '' })
@@ -20,11 +22,14 @@ const CreateOffer = (props) => {
 
     const handlerSetCreate = () => {
         setEdit(false)
-        nname.current.value = ""
-        type.current.value = ""
-        clase.current.value = ""
-        img.current.value = ""
-        price.current.value = ""
+        setTimeout(() => {
+            nname.current.value = ""
+            type.current.value = ""
+            clase.current.value = ""
+            img.current.value = ""
+            price.current.value = ""
+        }, 1)
+
 
     }
     const handlerDelete = (nftId) => {
@@ -62,6 +67,23 @@ const CreateOffer = (props) => {
         editNft.nftId.img = ''
         editNft.nftId.price = ''
     }
+    const subHandlder = async () => {
+        props.updateSub(props.user.userID, { suscription: true })
+        // refresh de pagina
+    }
+
+    if (!props.user.sub) {
+        return (
+            <div style={{ backgroundImage: 'url(/assets/subscribe.jpeg)', backgroundSize: 'cover', height: '100%', width: '100%', backgroundPosition: 'center' }}>
+
+                <h2 style={{ color: 'white', width: '100%', height: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>You need subscribe to our web, click <button onClick={subHandlder}>here</button></h2>
+            </div>
+        )
+    }
+
+
+
+
     return (
 
         <div className="management">
@@ -134,7 +156,8 @@ const mapDispatchToProps = {
     updateNft: offerActions.updateOffer,
     addNft: offerActions.addOffer,
     getOffersByUser: offerActions.getOffersByUser,
-    getOffers: offerActions.getOffers
+    getOffers: offerActions.getOffers,
+    updateSub: userActions.updateUser,
 }
 const mapStateToProps = (state) => ({
     userOffers: state.offerReducers.userOffers,

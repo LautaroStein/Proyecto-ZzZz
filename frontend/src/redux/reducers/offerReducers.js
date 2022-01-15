@@ -29,6 +29,7 @@ const offerReducers = (state = initialState, action) => {
         case 'UPDATE_OFFER':
             return {
                 ...state,
+                offers: state.offers.map(offer => offer._id === action.payload.offerId ? { ...offer, ...action.payload.body } : offer),
                 userOffers: state.userOffers.map(offer => offer._id === action.payload.offerId ? { ...offer, ...action.payload.body } : offer)
             }
         case 'GET_USER_OFFERS':

@@ -58,7 +58,6 @@ const nftActions = {
                 const offer = await axios.put(`http://localhost:4000/api/offer/${offerId}`, paramOffer, {
                     headers: { 'Authorization': 'Bearer ' + token }
                 })
-                console.log(offer.data.offerUpdatedId, paramOffer);
                 dispatch({ type: 'UPDATE_OFFER', payload: { offerId: offer.data.offerUpdatedId, body: paramOffer } })
             } catch (error) {
                 console.log(error);
