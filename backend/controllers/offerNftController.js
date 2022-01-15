@@ -1,6 +1,35 @@
 const NftOffer = require("../models/NftOffer");
 
 const offerNftController = {
+
+
+    getOffersByDay: async (req, res) => {
+        NftOffer.aggregate(
+            [
+                {
+                    "$group": {
+                        "_id": {
+                            "year": { "$year": "$date" },
+                            "month": { "$month": "$date" },
+                            "day": { "$dayOfMonth": "$date" }
+                        },
+                        "count": { $sum: 1 }
+                    }
+                }
+            ],
+            function (err, result) {
+                const procceced = result.map(element => {
+                    let obj = {
+                        date: `${element._id.day}/${element._id.month}/${element._id.year}`,
+                        value: element.count
+                    }
+                    return obj
+                })
+                //  se deja el objeto listo para enviar al grafico
+                res.json({ data: procceced })
+            }
+        );
+    },
     // controlador publico pero depende de la validacion (depende del rol lo que se MUESTRA por ende se controla en el frontend)
     getAllOffers: async (req, res) => {
         try {
@@ -49,8 +78,10 @@ const offerNftController = {
                 if (req.user.role === 'user') {
                     // no debe permitir cambiar la validez de la oferta 
                     if (!req.body.valid) {
-                        offer = await NftOffer.findOneAndUpdate({ user: req.user._id }, offerBody, { new: true });
+                        offer = await NftOffer.findOneAndUpdate({ _id: id }, offerBody, { new: true });
                         res.json({ offerUpdatedId: offer._id })
+                    } else {
+                        res.json({ msg: 'Error' })
                     }
                 } else {
                     offer = await NftOffer.findOneAndUpdate({ _id: id }, offerBody, { new: true });
@@ -69,20 +100,25 @@ const offerNftController = {
         const id = req.params.id;
         let offerDeleted;
         try {
+
+            const offer = await NftOffer.findOne({ _id: id })
             if (req.user.role === 'admin' || req.user.role === 'moderator' || req.user.suscription) {
 
-                if (!req.user.offers.includes(id) && req.user.role === 'user') return res.json({ msg: 'Incorrect user' });
-
-                if (req.user.role === 'user' && req.user.offers.includes(id)) {
+                if (req.user.role === 'user') {
+                    // no debe permitir cambiar la validez de la oferta 
+                    if (offer.user.toString() === req.user._id.toString()) {
+                        offerDeleted = await NftOffer.findOneAndDelete({ _id: id });
+                        res.json({ offerUpdatedId: offer._id })
+                    } else {
+                        res.json({ msg: 'Error' })
+                    }
+                } else if (req.user.role === 'admin' || req.user.role === 'moderator') {
                     offerDeleted = await NftOffer.findOneAndDelete({ _id: id });
-                    res.json({ success: true, deletedOfferId: offerDeleted._id });
-                } else {
-                    offerDeleted = await NftOffer.findOneAndDelete({ _id: id });
-                    res.json({ success: true, deletedOfferId: offerDeleted._id });
+                    res.json({ offerUpdatedId: offerDeleted._id })
                 }
 
             } else {
-                res.json({ success: false });
+                res.json({ success: false })
             }
         } catch (error) {
             console.log(error);
@@ -93,7 +129,7 @@ const offerNftController = {
         const id = req.params.id
         try {
             if (req.user.role === 'admin' || req.user.role === 'moderator' || req.user.suscription) {
-                const offersByUser = await NftOffer.find({ users: id }).populate('user')
+                const offersByUser = await NftOffer.find({ user: id }).populate('user')
                 res.json({ succes: true, response: offersByUser })
 
             } else {

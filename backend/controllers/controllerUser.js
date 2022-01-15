@@ -4,7 +4,67 @@ const bcryptjs = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 
 const controllerUser = {
+    getUsersByDay: async (req, res) => {
+        User.aggregate(
+            [
+                {
+                    "$group": {
+                        "_id": {
+                            "year": { "$year": "$date" },
+                            "month": { "$month": "$date" },
+                            "day": { "$dayOfMonth": "$date" }
+                        },
+                        "count": { $sum: 1 }
+                    }
+                }
+            ],
+            function (err, result) {
+                const procceced = result.map(element => {
+                    let obj = {
+                        date: `${element._id.day}/${element._id.month}/${element._id.year}`,
+                        value: element.count
+                    }
+                    return obj
+                })
+                //  se deja el objeto listo para enviar al grafico
+                res.json({ data: procceced })
+            }
+        );
+    },
+    getSuscriptionByDay: async (req, res) => {
+        User.aggregate(
+            [
+                {
+                    "$group": {
+                        "_id": {
+                            date: {
+                                "year": { "$year": "$date" },
+                                "month": { "$month": "$date" },
+                                "day": { "$dayOfMonth": "$date" }
+                            },
+                            subscription: "$suscription"
+                        },
+                        "count": { $sum: 1 }
+                    }
+                }
+            ],
+            function (err, result) {
+                const filteredResult = result.filter(element => element._id.subscription)
 
+                const procceced = filteredResult.map(element => {
+
+                    let obj = {
+                        date: `${element._id.date.day}/${element._id.date.month}/${element._id.date.year}`,
+                        value: element.count
+                    }
+                    return obj
+
+                })
+                //  se deja el objeto listo para enviar al grafico
+                res.json({ data: procceced })
+            }
+        );
+    },
     newUser: async (req, res) => {
 
         let { name, lastName, email, password, userImg, phone, google, rol } = req.body
@@ -90,26 +150,34 @@ const controllerUser = {
         }
     },
     updateUser: async (req, res) => {
+        const id = req.params.id
         const userBody = req.body
         let userUpdated
         try {
-            if (req.user.role === 'admin') {
-                const id = req.params.id
-                userUpdated = await User.findOneAndUpdate({ _id: id }, userBody, { new: true })
-                res.json({ success: true, userUpdated })
-            } else if (req.user.role === 'moderator' || req.user.role === 'user') {
+            if (req.user.role === 'admin' || req.user.role === 'moderator') {
+                if (req.user.role === 'moderator' && id !== req.user.id) {
+                    userUpdated = await User.findOneAndUpdate({ _id: id }, userBody, { new: true })
+                    res.json({ success: true, response: userUpdated })
+                } else if (req.user.role === 'admin') {
+                    userUpdated = await User.findOneAndUpdate({ _id: id }, userBody, { new: true })
+                    res.json({ success: true, response: userUpdated })
+
+                } else {
+                    res.json({ success: false, response: null })
+                }
+            } else if (req.user.role === 'user') {
                 if (!userBody.role) {
                     userUpdated = await User.findOneAndUpdate({ _id: req.user._id }, userBody, { new: true })
-                    res.json({ success: true, userUpdated })
+                    res.json({ success: true, response: userUpdated })
                 } else {
                     res.json({ success: false })
                 }
 
             } else {
-
                 res.json({ success: false, error: 'Unauthorized User, you must be an admin' })
             }
         } catch (error) {
+            console.log('error');
             res.json({ success: false, response: null, error: error })
         }
     },

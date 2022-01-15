@@ -1,8 +1,7 @@
 const initialState = {
-    offers: [],
     auxOffers: [],
     userOffers: [],
-    offer: {}
+    offers: []
 }
 
 const offerReducers = (state = initialState, action) => {
@@ -17,25 +16,20 @@ const offerReducers = (state = initialState, action) => {
         case 'GET_OFFERS':
             return {
                 ...state,
-                offers: action.payload,
-                auxOffers: action.payload
-            }
-        case 'GET_OFFER':
-            return {
-                ...state,
-                offer: action.payload
+                auxOffers: action.payload,
+                offers: action.payload
             }
         case 'DELETE_OFFER':
             return {
                 ...state,
-                offers: state.offers.filter(offerId => offerId._id !== action.payload)
+                offers: state.offers.filter(offerId => offerId._id !== action.payload), // fast
+                // userOffers: state.userOffers.filter(offerId => offerId._id !== action.payload) // lento, porque existe un for dentro de otro , primero recorre el array de offers totales para encontrar la oferta, y luego otro array de las ofertas del usuario, convirtiendose en una funcion de O(n) y no O(n^2), lo que implica un menor costo
 
             }
         case 'UPDATE_OFFER':
-            console.log(action.payload.offerId);
             return {
                 ...state,
-                offers: state.offers.map(offer => offer._id === action.payload.offerId ? { ...offer, ...action.payload.body } : offer)
+                userOffers: state.userOffers.map(offer => offer._id === action.payload.offerId ? { ...offer, ...action.payload.body } : offer)
             }
         case 'GET_USER_OFFERS':
             return {

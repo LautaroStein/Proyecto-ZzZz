@@ -1215,14 +1215,53 @@ img {
 }
 
 .dashboard-container {
-  flex-grow: 1;
-  height: 100%;
+  height: 90vh;
+  width: 90vw;
   margin-bottom: 4rem;
+}
+.historical-main-content {
+  width: 100%;
+  height: 100%;
+}
+.dashboard-main-content {
+  width: 100%;
+  height: 90%;
+}
+.historical-current {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 10%;
+  align-items: center;
+}
+.historical-current h2 {
+  color: white;
 }
 .dashboard-resume {
   display: flex;
   justify-content: center;
   height: 30%;
+}
+.graphs-container {
+  width: 100%;
+  height: 70%;
+}
+.graphs-container h2 {
+  color: white;
+  letter-spacing: 1rem;
+  margin-bottom: 1rem;
+}
+.users-graph {
+  height: 100%;
+  width: 100%;
+}
+.offers-graph {
+  width: 100%;
+  height: 100%;
+}
+.subs-graph {
+  height: 100%;
+  width: 100%;
 }
 .card-revenue {
   display: flex;
@@ -1457,9 +1496,6 @@ img {
 .nfts-container::-webkit-scrollbar {
   width: 8px;
 }
-.nfts-container::-webkit-scrollbar-track {
-  /* background */
-}
 
 .nfts-container::-webkit-scrollbar-thumb {
   background-color: #b903b0;
@@ -1472,9 +1508,35 @@ img {
 /* USERS MANAGEMENT */
 
 .users-management {
+  display: flex;
   height: 100%;
+  width: 100%;
+  margin-bottom: 3rem;
 }
 
+.admin-user-card {
+  height: 75%;
+  width: 28.5%;
+  margin: 0.7rem 1rem;
+  background-position: center;
+  background-size: cover;
+  background-color: #1b2845;
+  padding: 1rem;
+  border-radius: 15px;
+}
+.user-search-title {
+  display: flex;
+  height: 20%;
+  padding: 1rem;
+  width: 100%;
+}
+.user-search-title h2 {
+  width: 75%;
+  text-align: center;
+  color: white;
+  letter-spacing: 0.7rem;
+  word-spacing: 0.5rem;
+}
 /* END USERS MANAGEMENT */
 
 /* GRAPH */
@@ -1482,6 +1544,7 @@ img {
   border-radius: 0.25rem;
   background: #26313c;
   color: #fff;
+  margin-left: 1.5rem;
   padding: 1rem;
   box-shadow: 15px 30px 40px 5px rgba(0, 0, 0, 0.5);
   text-align: center;
@@ -1904,17 +1967,6 @@ img {
   width: 100%;
 }
 /*END OFFERS MANAGEMENT  */
-
-/* USERS MANAGEMENT */
-
-.users-management {
-  display: flex;
-  height: 100%;
-  width: 100%;
-  margin-bottom: 3rem;
-}
-
-/* END USERS MANAGEMENT */
 
 /* GRAPH */
 .tooltip {
