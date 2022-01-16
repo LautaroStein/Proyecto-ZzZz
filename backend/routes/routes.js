@@ -6,9 +6,17 @@ const Coinbase = require("../controllers/CoinbaseController");
 const offerNftController = require('../controllers/offerNftController')
 const passport = require('../config/passport')
 const { Charge } = Coinbase
+const { newUser, userLoged, authUser, favs, getUsers, updateUser, getUsersByDay, getSuscriptionByDay } = controllerUser;
 const { getAllNft, loadUnNft, modifyAnNft, getOneNft, deleteNft, getNftsByUser } = NftControllers;
-const { newUser, userLoged, authUser, favs, getUsers, updateUser, editUser } = controllerUser;
-const { getAllOffers, postOffer, modifyOffer, getOneOffer, deleteOffer, getOffersByUser } = offerNftController
+const { getAllOffers, postOffer, modifyOffer, getOneOffer, deleteOffer, getOffersByUser, getOffersByDay } = offerNftController
+
+// stadistics controllers
+Router.route('/usersByDay')
+    .get(getUsersByDay)
+Router.route('/suscriptionByDay')
+    .get(getSuscriptionByDay)
+Router.route('/offersByDay')
+    .get(getOffersByDay)
 
 // Routes of NFT
 
@@ -50,9 +58,6 @@ Router.route('/favs')
 
 Router.route('/create-charge')
     .get(Charge)
-
-Router.route('/admin/user/:id')
-    .put(editUser)
 
 // Offer ROUTES
 Router.route('/offers')

@@ -8,15 +8,12 @@ import {
     Tooltip,
     CartesianGrid,
 } from "recharts";
-import { format, parseISO, subDays } from "date-fns";
 import TooltipChart from './TooltipChart'
 
 const Graph = (props) => {
-
-
     return (
-        <div className='dashboard-graph'>
 
+        <div className='dashboard-graph'>
             <ResponsiveContainer width="100%" height="100%">
                 <AreaChart data={props.data}>
                     <defs>
@@ -32,24 +29,16 @@ const Graph = (props) => {
                         dataKey="date"
                         axisLine={false}
                         tickLine={false}
-                        tickFormatter={(str) => {
-                            const date = parseISO(str);
-                            if (date.getDate() % 7 === 0) {
-                                return format(date, "MMM, d");
-                            }
-                            return "";
-                        }}
                     />
 
                     <YAxis
                         datakey="value"
                         axisLine={false}
                         tickLine={false}
-                        tickCount={8}
-                        tickFormatter={(number) => `$${number.toFixed(2)}`}
+                        tickCount={5}
                     />
 
-                    <Tooltip />
+                    <Tooltip dashboard={props.dashboard} content={<TooltipChart />} />
 
                     <CartesianGrid opacity={0.1} vertical={false} />
                 </AreaChart>

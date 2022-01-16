@@ -27,7 +27,8 @@ const userReducers = (state = initialState, action) => {
             }
         case 'UPDATE_USER':
             return {
-                user: {...state.user, ...action.payload}
+                ...state,
+                users: state.users.map(user => user._id === action.payload.userId ? { ...user, ...action.payload.body } : user)
             }
         default:
             return state

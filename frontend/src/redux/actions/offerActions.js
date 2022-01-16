@@ -45,7 +45,7 @@ const nftActions = {
                 const offer = await axios.get(`http://localhost:4000/api/offer/${nftId}`, {
                     headers: { 'Authorization': 'Bearer ' + token }
                 })
-                dispatch({ type: 'GET_OFFER', payload: offer.data.response })
+                return { nftId: offer.data.response }
             } catch (error) {
                 console.log(error);
             }
@@ -58,7 +58,6 @@ const nftActions = {
                 const offer = await axios.put(`http://localhost:4000/api/offer/${offerId}`, paramOffer, {
                     headers: { 'Authorization': 'Bearer ' + token }
                 })
-                console.log(offer.data.response);
                 dispatch({ type: 'UPDATE_OFFER', payload: { offerId: offer.data.offerUpdatedId, body: paramOffer } })
             } catch (error) {
                 console.log(error);

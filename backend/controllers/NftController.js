@@ -17,7 +17,7 @@ const nftControllers = {
     let respuesta
     try {
       if (req.user.role === 'admin' || req.user.role === 'moderator' || req.user.suscription) {
-        respuesta = await new Nft({ nft }).save()
+        respuesta = await new Nft(nft).save()
         res.json(respuesta)
 
       } else {
