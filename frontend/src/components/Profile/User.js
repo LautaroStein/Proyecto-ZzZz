@@ -1,8 +1,10 @@
 import {useEffect, useState} from 'react'
 import {connect} from 'react-redux'
 import userActions from '../../redux/actions/userActions'
+// import SubmitImg from '../SubmitImg';
 
 const User = (props) => {
+    console.log(props)
     useEffect(() => {
         window.scrollTo({
           top: 0,
@@ -13,11 +15,7 @@ const User = (props) => {
 
     const [modify, setModify] = useState(false)
 
-    console.log(props)
-
     const [modifyUser, setModifyUser] = useState({})
-
-    console.log(modifyUser)
 
     const handleInputChange = (e) => {
         setModifyUser({
@@ -44,7 +42,7 @@ const User = (props) => {
                     </div>
                     
                     {!props.user && <div className="user-img" style={{backgroundImage: `URL("https://www.batiburrillo.net/wp-content/uploads/2019/07/Ampliacio%CC%81n-de-imagen-en-li%CC%81nea-sin-perder-calidad.jpg")`}}></div>}
-                    {props.user && <div className="user-img" style={{backgroundImage: `URL(${props.user.userImg})`}}></div>}
+                    {props.user && <div className="user-img" style={{backgroundImage: `URL(${props.user.img})`}}></div>}
                 </div>
 
                 {modify ? 
@@ -63,10 +61,11 @@ const User = (props) => {
                 : 
                 
                 <div className="user-info-container">
-                    <div><span>First Name:</span><div className="user-info-label">{props.user.name}</div></div>
+                    <div><span>First Name:</span><div className="user-info-label">{props.user.userName}</div></div>
                     <div><span>Last Name:</span><div className="user-info-label">{props.user.lastName}</div></div>
                     <div><span>Email:</span><div className="user-info-label">{props.user.email}</div></div>
                     <div><span>Phone:</span><div className="user-info-label">{props.user.phone}</div></div>
+                    {/* <SubmitImg /> */}
                 </div>
 
                 }

@@ -116,6 +116,8 @@ const Game = (props) => {
         }
     }, [isUserTurn])// eslint-disable-line react-hooks/exhaustive-deps
 
+    console.log(props.rdxNftsByUser)
+
     return (
         <div className='main-content'>
             {!isSelected &&

@@ -122,6 +122,8 @@ const Market = (props) => {
         print ? props.filter(print) : props.getOffers()
     }
 
+console.log(view)
+
     return (
         <div className='contenedor-todo-market'>
             <div style={{ height: "70px" }} ></div>

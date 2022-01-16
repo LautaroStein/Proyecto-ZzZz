@@ -11,7 +11,7 @@ const OfferCard = (props) => {
     }, [clase])
 
     return (
-        props.nftOffer.valid === 'accepted' ?
+        user && props.nftOffer.valid === 'accepted' ?
             <div className='card-container-offert-accept' style={{border: `6px solid ${color}`}}>
                 <div className='card-container-offert-img'><img src={img} alt={name}/></div>
                 <div className='card-container-offert-text'>

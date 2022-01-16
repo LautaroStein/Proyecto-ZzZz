@@ -1,7 +1,8 @@
-import React, { useRef } from 'react'
+import React, { useRef, useState } from 'react'
 import { toast } from 'react-toastify';
 import nftActions from '../redux/actions/nftActions'
 import { connect } from 'react-redux'
+import {app} from '../fb'
 
 const SignUp = (props) => {
 
@@ -9,9 +10,31 @@ const SignUp = (props) => {
     const inputLastName = useRef()
     const inputUserMail = useRef()
     const inputPassword = useRef()
-    const inputImagenUser = useRef()
     const inputPhoneNumber = useRef()
+    const [url, setUrl] = useState("")
 
+    const  generateRandomString = (num) => {
+        const characters ='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+        let result1 = ''
+        for(let i = 0; i < num; i++){
+            result1 += Math.random().toString(36).substring(0,num);       
+        }
+
+        return result1;
+    }
+
+    const archivoHandler = async (e) => {
+
+        const archivo = e.target.files[0]
+        const storageRef = app.storage().ref()
+        const archivoPath = storageRef.child(generateRandomString(10) + archivo.name)
+        await archivoPath.put(archivo)
+        console.log("archivo cargado:", archivo.name)
+        const enlaceUrl = await archivoPath.getDownloadURL()
+        setUrl(enlaceUrl)
+
+    }   
+    console.log(url)
 
     const handleSubmitInputs = async (e) => {
         e.preventDefault()
@@ -21,7 +44,7 @@ const SignUp = (props) => {
             lastName: inputLastName.current.value,
             email: inputUserMail.current.value,
             password: inputPassword.current.value,
-            userImg: inputImagenUser.current.value,
+            userImg: url,
             phone: inputPhoneNumber.current.value
         }
 
@@ -53,7 +76,6 @@ const SignUp = (props) => {
             inputLastName.current.value = ""
             inputUserMail.current.value = ""
             inputPassword.current.value = ""
-            inputImagenUser.current.value = ""
             inputPhoneNumber.current.value = ""
         }
     }
@@ -66,7 +88,7 @@ const SignUp = (props) => {
                 <input type="text" name="lastName" ref={inputLastName} placeholder="Last name" />
                 <input type="email" name="userMail" ref={inputUserMail} placeholder="Email" />
                 <input type="password" name="password" ref={inputPassword} placeholder="Password" />
-                <input type="text" name="imagenUser" ref={inputImagenUser} placeholder="Profile picture image Url" />
+                <input type="file" onChange={archivoHandler} />
                 <input type="text" name="phoneNumberUser" ref={inputPhoneNumber} placeholder="2974758745" />
                 <button type='submit'>Sign Up</button>
             </form>
