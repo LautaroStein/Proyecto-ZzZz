@@ -4,7 +4,6 @@ import { AiFillHome, AiFillAppstore, AiOutlineShoppingCart } from "react-icons/a
 import { BsFillBookmarkHeartFill } from "react-icons/bs";
 import { BiStore } from "react-icons/bi";
 import { FaUserAlt } from "react-icons/fa";
-import Cart from './Cart'
 
 const Navigation = (props) => {
 
@@ -45,16 +44,15 @@ const Navigation = (props) => {
                             <span className="text-navigation">Profile</span>
                         </Link>
                     </li>
-                    <li>
-                        <a onClick={() => setShowCart(!showCart)} style={{ cursor: "pointer" }}>
-                            <span className="icon-navigation"><AiOutlineShoppingCart /></span>
+                    <li className={props.location.pathname === "/Cart" ? "active" : null}>
+                        <Link to="/Cart">
+                            <span className="icon-navigation"><AiOutlineShoppingCart/></span>
                             <span className="text-navigation">Shopping Cart</span>
-                        </a>
+                        </Link>
                     </li>
                     <div className="indicator"></div>
                 </ul>
             </div>
-            {showCart ? <Cart /> : null}
         </>
     )
 }

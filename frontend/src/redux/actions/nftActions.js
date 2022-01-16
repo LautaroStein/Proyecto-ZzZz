@@ -9,7 +9,6 @@ const nftActions = {
                 const nft = await axios.post('http://localhost:4000/api/nft', paramNft, {
                     headers: { 'Authorization': 'Bearer ' + token }
                 })
-                console.log(nft);
                 dispatch({ type: 'ADD_NFT', payload: nft.data })
             } catch (error) {
                 console.log(error);

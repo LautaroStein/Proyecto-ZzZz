@@ -1,24 +1,29 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 
 const OfferCard = (props) => {
+    
+    const {clase, date, img, name, price, user, _id, type } = props.nftOffer
+    
+    const [color, setColor] = useState("")
+
+    useEffect(() => {
+        clase === "Common" ? setColor("rgba( 0, 232, 255, 0.25 )") : clase === "Rare" ? setColor("rgba( 0, 160, 42, 0.55 )") : setColor("rgba( 143, 7, 136, 0.55 )")
+    }, [clase])
+
     return (
         props.nftOffer.valid === 'accepted' ?
-            <div className='offer-card'>
-                <div className='offer-card-header' style={{ backgroundImage: `url(${props.nftOffer.img})` }}>
-                    <h2>{props.nftOffer.name}</h2>
-                </div>
-                <div className='offer-card-body'>
-                    <div className='offer-card-atrr'>
-                        <h2>{props.nftOffer.clase}</h2>
-                        <h2>{props.nftOffer.type}</h2>
+            <div className='card-container-offert-accept' style={{border: `6px solid ${color}`}}>
+                <div className='card-container-offert-img'><img src={img} alt={name}/></div>
+                <div className='card-container-offert-text'>
+                    <div>
+                        <img src={user.userImg} alt={user.name}/>
+                        <p>@{user.name}</p>
                     </div>
-                    <div className='offer-card-price'>
-                        <h2>{props.nftOffer.price}</h2>
+                    <p>{name} - {type}</p>
+                    <p>{price} ETH</p>
+                    <div>
+                        <p>Buy</p>
                     </div>
-                </div>
-                <div className='offer-card-footer'>
-                    <h2>{props.user.userName}</h2>
-                    <button>view more</button>
                 </div>
             </div> : null
 

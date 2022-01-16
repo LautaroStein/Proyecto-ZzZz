@@ -14,6 +14,7 @@ import Game from "./pages/Game"
 import Store from "./pages/Store"
 import nftActions from '../src/redux/actions/nftActions'
 import Favs from './pages/Favs'
+import Cart from './pages/Cart'
 import Market from './components/MarketPlace/Market';
 const Navigations = withRouter(Navigation)
 const Forms = withRouter(Form)
@@ -45,9 +46,10 @@ function App({ user, rdxAuth, rdxLogin, getUserNfts, getNfts }) {
         <Route path="/Store" element={<Store />} />
         <Route path="/Game" element={<Game />} />
         <Route path="/Favs" element={<Favs />} />
+        <Route path="/Cart" element={<Cart/>} />
+        <Route path='/Market' element={<Market />} />
         <Route path="/SignIn" element={user === '' ? <Forms /> : <Navigate replace to="/" />} />
         <Route path="/SignUp" element={user === '' ? <Forms /> : <Navigate replace to="/" />} />
-        <Route path='/Market' element={<Market />} />
         <Route path="*" element={<Home />} />
       </Routes>
       <ToastContainer />

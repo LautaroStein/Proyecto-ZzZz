@@ -1,5 +1,6 @@
 const initialState = {
     auxOffers: [],
+    auxOffertsDos: [],
     userOffers: [],
     offers: []
 }
@@ -14,6 +15,14 @@ const offerReducers = (state = initialState, action) => {
                 auxOffers: [...state.offers, action.payload]
             }
         case 'GET_OFFERS':
+            let arrayAcepted = action.payload.filter(card => card.valid === "accepted")
+            return {
+                ...state,
+                offers: action.payload,
+                auxOffers: action.payload,
+                auxOffertsDos : arrayAcepted
+            }
+        case 'GET_OFFER':
             return {
                 ...state,
                 auxOffers: action.payload,

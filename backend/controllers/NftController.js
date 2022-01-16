@@ -90,7 +90,7 @@ const nftControllers = {
       res.json({ error: 'Error in the comunication' })
     }
   },
-
+  
 
 }
 

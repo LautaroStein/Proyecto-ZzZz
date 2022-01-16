@@ -18,8 +18,6 @@ Router.route('/suscriptionByDay')
 Router.route('/offersByDay')
     .get(getOffersByDay)
 
-
-
 // Routes of NFT
 
 Router.route('/nft')
@@ -40,8 +38,10 @@ Router.route('/auth/signIn')
 
 Router.route('/nfts/user/:id')
     .get(passport.authenticate('jwt', { session: false }), getNftsByUser)
+
 Router.route('/offers/user/:id')
     .get(passport.authenticate('jwt', { session: false }), getOffersByUser)
+
 Router.route('/user/auth')
     .get(passport.authenticate('jwt', { session: false }), authUser)
 
@@ -63,10 +63,10 @@ Router.route('/create-charge')
 Router.route('/offers')
     .get(getAllOffers) // publica pero depende del valid (se ve en el controlador)
     .post(passport.authenticate('jwt', { session: false }), postOffer)
+
 Router.route("/offer/:id")
     .get(getOneOffer)
     .put(passport.authenticate('jwt', { session: false }), modifyOffer)
     .delete(passport.authenticate('jwt', { session: false }), deleteOffer)
-
 
 module.exports = Router
