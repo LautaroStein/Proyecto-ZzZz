@@ -68,8 +68,8 @@ const Game = (props) => {
     const attackHandler = (attack) => {
         const damage = Math.floor(attack.damage + ((Math.random() * ((bootNft.features.hp / 2) - 1)) + 1))
         bootNft.features.hp -= damage
-
         setStoryteller(`The NFT ${userNft.name} attacks with ${attack.name} and his damaga was ${damage}`)
+
         // si cuando ataca la vida del bootNft es menor o igual que cero , el usuario gana
         if (bootNft.features.hp <= 0) {
             // se pregunta si quiere volver a jugar, ganaste loco boludo
@@ -91,6 +91,7 @@ const Game = (props) => {
 
             })
         } else {
+
             animated.current.style.transition = 'transform 1s'
             animated.current.style.transform = 'translate(280px,-120px)'
             setTimeout(() => {
