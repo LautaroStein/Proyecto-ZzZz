@@ -90,6 +90,7 @@ export default function App() {
             }
 
             if (data.product_id === pair) {
+                // capturar el price
                 setprice(data.price);
             }
         };
