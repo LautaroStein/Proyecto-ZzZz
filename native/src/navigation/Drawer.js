@@ -21,21 +21,21 @@ const Drawer = createDrawerNavigator();
 // declaradas en el mismo, tambien es totalmente modificable su estilo y su forma de interaccion.-
 const DrawerNavigator = ({ user, rdxAuth, rdxLogin, getUserNfts, getNfts })=>{
 
-    useEffect(() => {
-        // 
-        async function fetchData() {
-            const user = await rdxAuth();
-            getUserNfts(user.response._id)
-            user.error && toast(user.error)
-            const userLogged = {
-                email: user.response.email,
-                password: user.response.password
-            }
-            user.response && rdxLogin(userLogged)
-        }
-        localStorage.getItem('token') && fetchData();
-        getNfts()
-    }, [rdxAuth, rdxLogin, getUserNfts])// eslint-disable-line react-hooks/exhaustive-deps
+    // useEffect(() => {
+    //     // 
+    //     async function fetchData() {
+    //         const user = await rdxAuth();
+    //         getUserNfts(user.response._id)
+    //         user.error && toast(user.error)
+    //         const userLogged = {
+    //             email: user.response.email,
+    //             password: user.response.password
+    //         }
+    //         user.response && rdxLogin(userLogged)
+    //     }
+    //     localStorage.getItem('token') && fetchData();
+    //     getNfts()
+    // }, [rdxAuth, rdxLogin, getUserNfts])// eslint-disable-line react-hooks/exhaustive-deps
 
 
     return (

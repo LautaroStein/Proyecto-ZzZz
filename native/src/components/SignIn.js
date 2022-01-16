@@ -11,6 +11,8 @@ const SignIn = (props) => {
   
   const dispatch = useDispatch()
   
+ 
+
   const action = async  () => {
     if (email == "" || password == ""){
       toasty('error','Fields cannot be left empty')
@@ -25,6 +27,8 @@ const SignIn = (props) => {
         toasty('error',resultado.error)
       }else{
         toasty('success','Welcome back')
+        navigate('Home')
+
       }
     }
   }
@@ -76,7 +80,9 @@ const styles = StyleSheet.create({
   },
   touchableHighlight:{
     padding: 10, 
-    borderRadius:10
+    borderRadius:10,
+    backgroundColor: "red"
+    
   }
   
 })

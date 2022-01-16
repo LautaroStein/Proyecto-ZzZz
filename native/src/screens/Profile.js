@@ -2,8 +2,6 @@ import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import SignIn from '../components/SignIn'
 import SignUp from '../components/SignUp'
-import ComponenteUno from '../components/ComponenteUno'
-import { useDispatch } from "react-redux"
 
 
 // Instanciamos createBottomTabNavigator para obtener todos sus Metodos y Componentes
@@ -16,8 +14,7 @@ const Tab = createBottomTabNavigator();
 
 const Profile = ({ navigation}) => {
 
-    const dispatch = useDispatch()
-
+    
     return (
         <Tab.Navigator>
 

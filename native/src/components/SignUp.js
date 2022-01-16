@@ -152,6 +152,7 @@ const SignUp = (props) => {
         toasty('error', resultado.error)
       } else {
         toasty('success', 'User successfully registered')
+        navigate('Home')
       }
     }
   }
@@ -230,7 +231,8 @@ const styles = StyleSheet.create({
   },
   touchableHighlight: {
     padding: 10,
-    borderRadius: 10
+    borderRadius: 10,
+    backgroundColor: "red"
   }
 
 })
