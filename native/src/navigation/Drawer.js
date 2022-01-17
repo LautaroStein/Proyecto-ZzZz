@@ -7,6 +7,7 @@ import MarketPlace from "../screens/MarketPlace"
 import NftSaved from "../screens/NftSaved"
 import Cart from "../screens/Cart"
 import Profile from "../screens/Profile"
+import Logout from "../components/Logout" 
 
 import nftActions from '../redux/actions/nftActions'
 import userActions from "../redux/actions/userActions"
@@ -46,6 +47,7 @@ const DrawerNavigator = ({ user, rdxAuth, rdxLogin, getUserNfts, getNfts })=>{
               <Drawer.Screen name="NFT Saved" component={NftSaved} />
               <Drawer.Screen name="Cart" component={Cart} />
               <Drawer.Screen name="Profile" component={Profile} />
+              <Drawer.Screen name="Logout" component={Logout} />
         </Drawer.Navigator>
     )
 }
