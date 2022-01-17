@@ -19,6 +19,7 @@ const Home = () => {
 
     return (
         <>
+        <div style={{ height: "70px" }} ></div>
         <div className="background-iluminacion">
             <div className="contenedor-home">
                 <div className="contenedor-text-home">
@@ -81,14 +82,14 @@ const Home = () => {
                 </div>
             </div>
         </div>
-        <div className="contenedor-about">
+        <div className="contenedor-about-advantages">
             <div className="contenedor-ocho-about">
                 <p>Advantages</p>
                 <h2>Create and sell your NFTs</h2>
                 <div className="contenedor-cards-advantages-home">
                         <div className="card-info-advantages-home">
                        <div className="card-advantages-icon">
-                       <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-wallet" width="36" height="36" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                       <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-wallet" width="36" height="36" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
                         <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                         <path d="M17 8v-3a1 1 0 0 0 -1 -1h-10a2 2 0 0 0 0 4h12a1 1 0 0 1 1 1v3m0 4v3a1 1 0 0 1 -1 1h-12a2 2 0 0 1 -2 -2v-12" />
                         <path d="M20 12v4h-4a2 2 0 0 1 0 -4h4" />
@@ -99,7 +100,7 @@ const Home = () => {
                         </div>               
                         <div className="card-info-advantages-home">
                         <div className="card-advantages-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-box" width="36" height="36" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-box" width="36" height="36" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
                             <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                             <polyline points="12 3 20 7.5 20 16.5 12 21 4 16.5 4 7.5 12 3" />
                             <line x1="12" y1="12" x2="20" y2="7.5" />
@@ -112,7 +113,7 @@ const Home = () => {
                         </div>               
                         <div className="card-info-advantages-home">
                         <div className="card-advantages-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-photo" width="36" height="36" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-photo" width="36" height="36" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
                         <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                         <line x1="15" y1="8" x2="15.01" y2="8" />
                         <rect x="4" y="4" width="16" height="16" rx="3" />
@@ -125,7 +126,7 @@ const Home = () => {
                         </div>               
                         <div className="card-info-advantages-home">
                         <div className="card-advantages-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-tags" width="36" height="36" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-tags" width="36" height="36" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
                             <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                             <path d="M7.859 6h-2.834a2.025 2.025 0 0 0 -2.025 2.025v2.834c0 .537 .213 1.052 .593 1.432l6.116 6.116a2.025 2.025 0 0 0 2.864 0l2.834 -2.834a2.025 2.025 0 0 0 0 -2.864l-6.117 -6.116a2.025 2.025 0 0 0 -1.431 -.593z" />
                             <path d="M17.573 18.407l2.834 -2.834a2.025 2.025 0 0 0 0 -2.864l-7.117 -7.116" />
@@ -140,7 +141,7 @@ const Home = () => {
         </div>
 
 
-        <div className="contenedor-about">
+        <div className="contenedor-creators">
             <div className="contenedor-ocho-about">
             <p>CREATORS</p>
                 <h2>Top Collections of the week</h2>

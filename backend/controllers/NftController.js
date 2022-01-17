@@ -16,7 +16,7 @@ const nftControllers = {
     const nft = req.body
     let respuesta
     try {
-      if (req.user.role === 'admin' || req.user.role === 'moderator') {
+      if (req.user.role === 'admin' || req.user.role === 'moderator' || req.user.suscription) {
         respuesta = await new Nft(nft).save()
         res.json(respuesta)
 
@@ -90,7 +90,7 @@ const nftControllers = {
       res.json({ error: 'Error in the comunication' })
     }
   },
-
+  
 
 }
 

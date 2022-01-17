@@ -2,7 +2,6 @@
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import Home from "../screens/Home"
 import Store from "../screens/Store"
-import MarketPlace from "../screens/MarketPlace"
 import NftSaved from "../screens/NftSaved"
 import Cart from "../screens/Cart"
 import Profile from "../screens/Profile"
@@ -24,7 +23,6 @@ const DrawerNavigator = ()=>{
         <Drawer.Navigator>
               <Drawer.Screen name="Home" component={Home} />
               <Drawer.Screen name="Official Store" component={Store} />
-              <Drawer.Screen name="Market Place" component={MarketPlace} />
               <Drawer.Screen name="NFT Saved" component={NftSaved} />
               <Drawer.Screen name="Cart" component={Cart} />
               <Drawer.Screen name="Profile" component={Profile} />

@@ -23,7 +23,7 @@ const nftSchema = new mongoose.Schema({
             userId: { type: mongoose.Types.ObjectId, ref: 'user' }
         }]
     },
-    favs: [{ type: mongoose.Types.ObjectId, ref: 'user' }]
+    favs: [{ type: mongoose.Types.ObjectId, ref: 'user' }],
 })
 
 const Nft = mongoose.model("nft", nftSchema)

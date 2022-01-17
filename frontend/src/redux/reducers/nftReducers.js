@@ -10,7 +10,8 @@ const nftReducers = (state = initialState, action) => {
         case 'ADD_NFT':
             return {
                 ...state,
-                nfts: [...state.nfts, action.payload]
+                nfts: [...state.nfts, action.payload],
+                aux: [...state.nfts, action.payload]
             }
         case 'GET_NFTS':
             return {

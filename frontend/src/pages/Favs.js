@@ -13,8 +13,6 @@ const Favs = ({nfts, user}) => {
         })
     })
 
-    console.log(favNft)
-
     return (
         <div>
             <div style={{height:"120px"}} ></div>
