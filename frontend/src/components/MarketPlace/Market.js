@@ -1,7 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react'
 import OfferCard from './OfferCard'
-import SoldCard from './SoldCard'
-import { MdOutlineDesignServices, MdAutoFixNormal,MdClass } from "react-icons/md"
+import { MdOutlineDesignServices, MdAutoFixNormal, MdClass } from "react-icons/md"
 import { GiSteampunkGoggles } from "react-icons/gi"
 import { BiGame, BiArrowToLeft, BiArrowFromLeft } from "react-icons/bi"
 import { FaEthereum } from "react-icons/fa"
@@ -46,48 +45,48 @@ const recentActivity = [
         day: '29-05'
     },
 ]
-const recentOrdenado =  recentActivity.reverse()
+const recentOrdenado = recentActivity.reverse()
 const topCreators = [
     {
-        name:"test",
-        userImg:"https://img.freepik.com/foto-gratis/joven-confiado_1098-20868.jpg?size=626&ext=jpg",
-        pays:43
+        name: "test",
+        userImg: "https://img.freepik.com/foto-gratis/joven-confiado_1098-20868.jpg?size=626&ext=jpg",
+        pays: 43
     },
     {
-        name:"test2",
-        userImg:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQ_LU8Fhj8GrIGESFrsUYUJ4G4VFm9-cJEgNI3dQWye_o5cCIcsg1Eaw1S3HtDZarPa8g&usqp=CAU",
-        pays:236
+        name: "test2",
+        userImg: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQ_LU8Fhj8GrIGESFrsUYUJ4G4VFm9-cJEgNI3dQWye_o5cCIcsg1Eaw1S3HtDZarPa8g&usqp=CAU",
+        pays: 236
     },
     {
-        name:"test3",
-        userImg:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSh-XPULQngwzwNZF9P7djLl7woHsjn3rVSruV05LYDmvBweV-L_uf4G1h6TfDtSLiRQ3U&usqp=CAU",
-        pays:85
+        name: "test3",
+        userImg: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSh-XPULQngwzwNZF9P7djLl7woHsjn3rVSruV05LYDmvBweV-L_uf4G1h6TfDtSLiRQ3U&usqp=CAU",
+        pays: 85
     },
     {
-        name:"test4",
-        userImg:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSDF7WaLGD8EMA-d-ACEcltvvu5G07QXqbP9RLBePzLGXh-G5lseKAJnQygAvIeYkQb49k&usqp=CAU",
-        pays:1922
+        name: "test4",
+        userImg: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSDF7WaLGD8EMA-d-ACEcltvvu5G07QXqbP9RLBePzLGXh-G5lseKAJnQygAvIeYkQb49k&usqp=CAU",
+        pays: 1922
     },
     {
-        name:"test5",
-        userImg:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSUlvCx-8kdl8uKcICVemL4Jzas7T2IFrbUyTzJbkRN0lVhBvohDhj1GyxdrEHD3oLWnNw&usqp=CAU",
-        pays:382801
+        name: "test5",
+        userImg: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSUlvCx-8kdl8uKcICVemL4Jzas7T2IFrbUyTzJbkRN0lVhBvohDhj1GyxdrEHD3oLWnNw&usqp=CAU",
+        pays: 382801
     }
 ]
-let ordenado = topCreators.sort((a,b)=> b.pays - a.pays)
+let ordenado = topCreators.sort((a, b) => b.pays - a.pays)
 const Market = (props) => {
     console.log(ordenado)
     const [filterView, setFilterView] = useState(false)
-    const [select, setSelect] = useState({art:false, cyber:false, gamer:false})
+    const [select, setSelect] = useState({ art: false, cyber: false, gamer: false })
     const [view, setView] = useState({})
     useEffect(() => {
         props.getOffers()
     }, [])
     useEffect(() => {
-        let aleatorio = Math.random()*(props.auxOffertsDos.length)
+        let aleatorio = Math.random() * (props.auxOffertsDos.length)
         aleatorio = Math.floor(aleatorio)
         setView(props.auxOffertsDos[aleatorio])
-    },[props.auxOffertsDos])
+    }, [props.auxOffertsDos])
     const nname = useRef()
     const gamer = useRef()
     const cyberpunk = useRef()
@@ -122,7 +121,7 @@ const Market = (props) => {
         print ? props.filter(print) : props.getOffers()
     }
 
-console.log(view)
+    console.log(view)
 
     return (
         <div className='contenedor-todo-market'>
@@ -137,21 +136,21 @@ console.log(view)
                         <span>E</span>
                         <span>R</span>
                         <div className={`${filterView ? "filter-view-activer" : "filtros-ocultos-market"}`}>
-                            <input type="text" placeholder='search by name' ref={nname} onChange={handlerFilter} className='input-filter-market'/>
+                            <input type="text" placeholder='search by name' ref={nname} onChange={handlerFilter} className='input-filter-market' />
                             <div className='checkbox-art'>
-                                <label htmlFor="art" className={`${select.art ? "select-art-checked" : null}`}><MdOutlineDesignServices/></label>
+                                <label htmlFor="art" className={`${select.art ? "select-art-checked" : null}`}><MdOutlineDesignServices /></label>
                                 <p>Art</p>
-                                <input name="art" ref={art} onChange={handlerFilter} onClick={()=>{setSelect({...select,art:!select.art})}} value='art' id="art" type="checkbox" />
+                                <input name="art" ref={art} onChange={handlerFilter} onClick={() => { setSelect({ ...select, art: !select.art }) }} value='art' id="art" type="checkbox" />
                             </div>
                             <div className='checkbox-cyberpunk'>
                                 <label htmlFor="cyberpunk" className={`${select.cyber ? "select-cyber-checked" : null}`}><GiSteampunkGoggles /></label>
                                 <p>CyberPunk</p>
-                                <input name='cyberpunk' onChange={handlerFilter} ref={cyberpunk} onClick={()=>{setSelect({...select,cyber:!select.cyber})}} value='cyberpunk' id="cyberpunk" type="checkbox" />
+                                <input name='cyberpunk' onChange={handlerFilter} ref={cyberpunk} onClick={() => { setSelect({ ...select, cyber: !select.cyber }) }} value='cyberpunk' id="cyberpunk" type="checkbox" />
                             </div>
                             <div className='checkbox-gamer'>
                                 <label htmlFor="gamer" className={`${select.gamer ? "select-gamer-checked" : null}`}><BiGame /></label>
                                 <p>Gamer</p>
-                                <input name='gamer' ref={gamer} onChange={handlerFilter} onClick={()=>{setSelect({...select,gamer:!select.gamer})}} value='gamer' id='gamer' type="checkbox" />
+                                <input name='gamer' ref={gamer} onChange={handlerFilter} onClick={() => { setSelect({ ...select, gamer: !select.gamer }) }} value='gamer' id='gamer' type="checkbox" />
                             </div>
                             <select onChange={handlerFilter} ref={classes} className='select-market-place'>
                                 <option defaultValue>All</option>
@@ -161,50 +160,50 @@ console.log(view)
                             </select>
                         </div>
                     </div>
-                    {filterView ? <BiArrowToLeft onClick={() => setFilterView(!filterView)} className='arrow-cierre-filter-market'/> : <BiArrowFromLeft onClick={() => setFilterView(!filterView)} className='arrow-cierre-filter-market'/>}
+                    {filterView ? <BiArrowToLeft onClick={() => setFilterView(!filterView)} className='arrow-cierre-filter-market' /> : <BiArrowFromLeft onClick={() => setFilterView(!filterView)} className='arrow-cierre-filter-market' />}
                 </div>
                 <div className='section-mid-martket-container-total'>
                     {props.auxOffertsDos && props.auxOffertsDos.length > 0 && view && view.user &&
-                    <div className='container-nft-ofert-hero'>
-                        <div className='img-nft-container-ofert-hero'>
-                            <img src={view.img} alt={view.name}/>
-                        </div>
-                        <div className='contenedor-nft-text-hero-ofert'>
-                            <h2>{view.name}</h2>
-                            <div className='contenedor-nft-user-hero-ofert'>
-                                <div>
-                                    <img src={view.user.userImg} alt={view.user.name}/>
-                                </div>
-                                <div>
-                                    <p>{view.user.name} {view.user.lastName}</p>
-                                    <p>@{view.user.name}</p>
-                                </div>
+                        <div className='container-nft-ofert-hero'>
+                            <div className='img-nft-container-ofert-hero'>
+                                <img src={view.img} alt={view.name} />
                             </div>
-                            <div className='price-container-nft-market-hero'>
-                                <p>Price for NFT</p>
-                                <p><FaEthereum /> {view.price} ETH</p>
-                            </div>
-                            <div className='contenedor-clases-nft-market-ofert'>
-                                <div className='clases-nft-market-ofert'>
-                                    <div><MdClass /></div>
+                            <div className='contenedor-nft-text-hero-ofert'>
+                                <h2>{view.name}</h2>
+                                <div className='contenedor-nft-user-hero-ofert'>
                                     <div>
-                                        <p>class</p>
-                                        <p>{view.clase}</p>
+                                        <img src={view.user.userImg} alt={view.user.name} />
+                                    </div>
+                                    <div>
+                                        <p>{view.user.name} {view.user.lastName}</p>
+                                        <p>@{view.user.name}</p>
                                     </div>
                                 </div>
-                                <div className='clases-nft-market-ofert'>
-                                    <div><MdAutoFixNormal /></div>
-                                    <div>
-                                        <p>type</p>
-                                        <p>{view.type}</p>
+                                <div className='price-container-nft-market-hero'>
+                                    <p>Price for NFT</p>
+                                    <p><FaEthereum /> {view.price} ETH</p>
+                                </div>
+                                <div className='contenedor-clases-nft-market-ofert'>
+                                    <div className='clases-nft-market-ofert'>
+                                        <div><MdClass /></div>
+                                        <div>
+                                            <p>class</p>
+                                            <p>{view.clase}</p>
+                                        </div>
+                                    </div>
+                                    <div className='clases-nft-market-ofert'>
+                                        <div><MdAutoFixNormal /></div>
+                                        <div>
+                                            <p>type</p>
+                                            <p>{view.type}</p>
+                                        </div>
                                     </div>
                                 </div>
+                                <div className='button-nft-market-ofert'>
+                                    <p>Buy</p>
+                                </div>
                             </div>
-                            <div className='button-nft-market-ofert'>
-                                <p>Buy</p>
-                            </div>
-                        </div>
-                    </div>}
+                        </div>}
                     <div className='container-nft-trading-action'>
                         <h2>Trading Auctions</h2>
                         {props.arrayOffers && props.arrayOffers.length > 0 && props.arrayOffers.map(nftOffer => <OfferCard key={nftOffer._id} user={props.user} nftOffer={nftOffer} />)}
@@ -234,8 +233,8 @@ console.log(view)
                     <div className='creator-nft-offerts'>
                         <h2>Top Creators</h2>
                         {
-                            ordenado.map((e, i)=> {
-                                return(
+                            ordenado.map((e, i) => {
+                                return (
                                     i < 3 &&
                                     <div key={i} className='creators-content-market'>
                                         <p>{1 + i++}</p>

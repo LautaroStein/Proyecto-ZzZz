@@ -3000,7 +3000,46 @@ width: 10%;
   align-items: center;
   justify-content: center;
 } 
+.position-cienporciento{
+  width:100vw;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.322);
+  z-index:1;
+  display:flex;
+  align-items: center;
+  justify-content: center;
+}
+.modal-market-place-pagos{
+  z-index:9999;
+  width: 60vw;
+  height: 70vh;
+  background-color: white;
+  border-radius: 20px;
+}
 
+/* Wallet */
+
+.no-estas-en-store{
+  height: auto;
+}
+
+.container-wallet-profile-total{
+  width: calc(100% -70px);
+  height: 90%;
+  padding: 0 20px;
+  overflow: auto;
+}
+.container-wallet-profile-total h2{
+  color: white;
+  font-weight: 900;
+  font-size: 1.5em;
+  height: 15%;
+  display: flex;
+  align-items: center;
+}
 
 
 

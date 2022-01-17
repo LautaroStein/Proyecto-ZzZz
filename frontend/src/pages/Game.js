@@ -20,7 +20,7 @@ const Game = (props) => {
     const [stage, setStage] = useState('')
     const animated = useRef()
     const animatedBoot = useRef()
-
+    const [time, setTime] = useState(false)
     useEffect(() => {
         const pickRandomStage = Math.floor((Math.random() * (4) + 1))
         const arrayEscenarios = ["/assets/stage-1.jfif", "/assets/stage-2.jpg", "/assets/stage-3.jpg", "/assets/stage-4.png", "/assets/stage-5.jpg"]
@@ -29,7 +29,9 @@ const Game = (props) => {
         setbootNft(filteredBoots[rdn])
         filteredBoots[rdn] && setBootHp(filteredBoots[rdn].features.hp)
         setStage(arrayEscenarios[pickRandomStage])
-
+        setTimeout(() => {
+            setTime(true)
+        }, 1000)
     }, [props.rdxNfts])// eslint-disable-line react-hooks/exhaustive-deps
 
     const handlerChoice = (nftSelected) => {
@@ -157,7 +159,9 @@ const Game = (props) => {
                     <>
                         <h2 className='choice-title'>Welcome "userName", Choose your NFT</h2>
                         <div className='choice-nfts-card'>
-                            {props.rdxNftsByUser.length === 0 ? <div className="nfts-loading-container"><div className="nfts-loading" style={{ backgroundImage: `url(/assets/loading_gif.gif)` }} /></div> : <Carousel choice={handlerChoice} nfts={props.rdxNftsByUser} />}
+                            {props.rdxNftsByUser === '' && <div className="nfts-loading-container"><div className="nfts-loading" style={{ backgroundImage: `url(/assets/loading_gif.gif)` }} ><h2>Calling your NFT Army, please wait...</h2> </div></div>}
+                            {((props.rdxNftsByUser.length === 0) && time) && <h2>You must have a gamer nft for feel the power</h2>}
+                            {(props.rdxNftsByUser.length > 0) && <Carousel choice={handlerChoice} nfts={props.rdxNftsByUser} />}
                         </div>
                     </>
                 }
