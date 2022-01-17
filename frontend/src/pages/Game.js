@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useRef } from 'react'
 import { connect } from 'react-redux'
-import UserHealth from '../components/Game/UserHealth'
-import BootHealth from '../components/Game/BootHealth'
+import UserFeatures from '../components/Game/UserFeatures'
+import BootFeatures from '../components/Game/BootFeatures'
 import Swal from 'sweetalert2'
 import { useNavigate } from 'react-router-dom'
 import Carousel from '../components/Game/Carousel'
@@ -12,38 +12,66 @@ const Game = (props) => {
     const [userNft, setUserNft] = useState('')
     const [bootNft, setbootNft] = useState('')
     const [isSelected, setIsSelected] = useState(false)
-    const [escenario, setEscenario] = useState('')
     const [isUserTurn, setIsUserTurn] = useState(true)
     const [userAttacked, setUserAttacked] = useState(false)
     const [userHp, setUserHp] = useState()
     const [bootHp, setBootHp] = useState()
-
+    const [storyteller, setStoryteller] = useState('')
+    const [stage, setStage] = useState('')
+    const animated = useRef()
+    const animatedBoot = useRef()
+    const [time, setTime] = useState(false)
     useEffect(() => {
-
-        const rdn = Math.floor((Math.random() * ((props.rdxNfts.length - 1) + 1)))
-        setbootNft(props.rdxNfts[rdn])
-        props.rdxNfts[rdn] && setBootHp(props.rdxNfts[rdn].features.hp)
-
+        const pickRandomStage = Math.floor((Math.random() * (4) + 1))
+        const arrayEscenarios = ["/assets/stage-1.jfif", "/assets/stage-2.jpg", "/assets/stage-3.jpg", "/assets/stage-4.png", "/assets/stage-5.jpg"]
+        const filteredBoots = props.rdxNfts.filter(boot => boot.type === "Gamer")
+        const rdn = Math.floor((Math.random() * ((filteredBoots.length - 1) + 1)))
+        setbootNft(filteredBoots[rdn])
+        filteredBoots[rdn] && setBootHp(filteredBoots[rdn].features.hp)
+        setStage(arrayEscenarios[pickRandomStage])
+        setTimeout(() => {
+            setTime(true)
+        }, 1000)
     }, [props.rdxNfts])// eslint-disable-line react-hooks/exhaustive-deps
 
     const handlerChoice = (nftSelected) => {
-        setUserHp(props.rdxNftsByUser[nftSelected].features.hp)
-        setUserNft(props.rdxNftsByUser[nftSelected])
+        const filterChoice = props.rdxNftsByUser.findIndex(nft => nft.name === nftSelected)
+        setUserHp(props.rdxNftsByUser[filterChoice].features.hp)
+        setUserNft(props.rdxNftsByUser[filterChoice])
         setIsSelected(true)
-    }
 
+    }
+    const leaveHandler = () => {
+        Swal.fire({
+            title: 'Are you sure want to leave?',
+            showDenyButton: true,
+            confirmButtonText: 'Yes',
+            denyButtonText: `Still fighting`,
+        }).then((result) => {
+            if (result.isConfirmed) {
+                initialState()
+                navigate('/')
+            } else if (result.isDenied) {
+
+            }
+
+        })
+    }
     const initialState = () => {
-        const rdn = Math.floor((Math.random() * ((props.rdxNfts.length - 1) + 1)))
+        const filteredBoots = props.rdxNfts.filter(boot => boot.type === "Gamer")
+        const rdn = Math.floor((Math.random() * ((filteredBoots.length - 1) + 1)))
+
         setIsSelected(false) // set aux user (nft inicial) y aux boot
         setUserAttacked(false)
         userNft.features.hp = userHp
         bootNft.features.hp = bootHp
-        setbootNft(props.rdxNfts[rdn])
+        setbootNft(filteredBoots[rdn])
     }
     const attackHandler = (attack) => {
         const damage = Math.floor(attack.damage + ((Math.random() * ((bootNft.features.hp / 2) - 1)) + 1))
         bootNft.features.hp -= damage
-        console.log('user damage: ' + damage);
+        setStoryteller(`The NFT ${userNft.name} attacks with ${attack.name} and his damaga was ${damage}`)
+
         // si cuando ataca la vida del bootNft es menor o igual que cero , el usuario gana
         if (bootNft.features.hp <= 0) {
             // se pregunta si quiere volver a jugar, ganaste loco boludo
@@ -65,17 +93,21 @@ const Game = (props) => {
 
             })
         } else {
-            setUserAttacked(true)
+
+            animated.current.style.transition = 'transform 1s'
+            animated.current.style.transform = 'translate(280px,-120px)'
             setTimeout(() => {
-                setIsUserTurn(false)
+                animated.current.style.transition = 'transform 1s'
+                animated.current.style.transform = 'translate(0px,0px)'
             }, 1000)
+            setTimeout(() => {
+                setUserAttacked(true)
+                setIsUserTurn(false)
+            }, 4000)
         }
     }
     useEffect(() => {
-        if (isUserTurn) {
-
-            // user selecciona habilidad y le quita hp al rival
-        } else {
+        if (!isUserTurn) {
             // es turno del boot y le quita vida al nft del usuario
 
             const rdnAttack = Math.floor((Math.random() * ((bootNft.features.habilities.length - 1) + 1)))
@@ -83,6 +115,13 @@ const Game = (props) => {
             const damage = Math.floor(attack.damage + ((Math.random() * ((userNft.features.hp / 2) - 1)) + 1))
             userNft.features.hp -= damage
             // si cuando ataca la vida del userNft es menor o igual que cero , el usuario gana
+            setStoryteller(`The NFT '${bootNft.name}' attacks with '${attack.name}' and his damage was ${damage}`)
+            animatedBoot.current.style.transition = 'transform 1s'
+            animatedBoot.current.style.transform = 'translate(-280px,120px)'
+            setTimeout(() => {
+                animatedBoot.current.style.transition = 'transform 1s'
+                animatedBoot.current.style.transform = 'translate(0px,0px)'
+            }, 1000)
             if (userNft.features.hp <= 0) {
                 // se pregunta si quiere volver a jugar y se muestra un mensaje , Re papafrita loco
                 userNft.features.hp = 0
@@ -102,59 +141,83 @@ const Game = (props) => {
                     }
                 })
             } else {
-
                 setTimeout(() => {
                     setUserAttacked(false)
                     setIsUserTurn(true)
-                }, 1000)
+                }, 4000)
             }
         }
     }, [isUserTurn])// eslint-disable-line react-hooks/exhaustive-deps
 
+    console.log(props.rdxNftsByUser)
+
     return (
-        <div className='main-content'>
-            {!isSelected &&
-                <>
-                    <h2 className='choice-title'>Choice your NFT</h2>
-                    <div className='choice-nfts-card'>
-                        {props.rdxNftsByUser.length === 0 ? <div className="nfts-loading-container"><div className="nfts-loading" style={{ backgroundImage: `url(/assets/loading_gif.gif)` }} /></div> : <Carousel choice={handlerChoice} nfts={props.rdxNftsByUser} />}
-                    </div>
-                </>
-            }
-            {isSelected &&
-                <div className={escenario}>
-                    {/* call random escenario */}
-                    <h1 style={{ textAlign: 'center', fontSize: '4rem' }}>Combat {userNft.features.name} v/s {bootNft.features.name} </h1>
-                    <div style={{ textAlign: 'center', height: '90%', width: '100%', display: 'flex' }}>
-                        <div style={{ justifyItems: 'center', fontSize: '10rem', height: '100%', width: '50%', display: 'flex', flexDirection: 'column' }}>
-                            {/* call userNFt component */}
-                            <div className=''>{userNft.features.name}</div>
-                            {/* habilities */}
+        <>
+            <div style={{ height: "70px" }} ></div>
+            <div className='main-content'>
+                {!isSelected &&
+                    <>
+                        <h2 className='choice-title'>Welcome "userName", Choose your NFT</h2>
+                        <div className='choice-nfts-card'>
+                            {props.rdxNftsByUser === '' && <div className="nfts-loading-container"><div className="nfts-loading" style={{ backgroundImage: `url(/assets/loading_gif.gif)` }} ><h2>Calling your NFT Army, please wait...</h2> </div></div>}
+                            {((props.rdxNftsByUser.length === 0) && time) && <h2>You must have a gamer nft for feel the power</h2>}
+                            {(props.rdxNftsByUser.length > 0) && <Carousel choice={handlerChoice} nfts={props.rdxNftsByUser} />}
+                        </div>
+                    </>
+                }
+                {(isSelected) &&
+                    <div className='main-content-battle'>
+                        <div className='stage' style={{ backgroundImage: `url(${stage})` }}>
+                            <div className='arena-battle' >
+                                <div className='boot-box'>
+                                    <BootFeatures features={bootNft} />
+                                    <div className='nft-img-container-boot'>
+                                        <div ref={animated} className='nft-img' style={{ backgroundImage: `url(${userNft.img})` }}></div>
+                                        <div className='nft-stage-container'>
+
+                                            <div className='nft-stage'></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className='user-box' >
+                                    <div className='nft-img-container-boot'>
+
+                                        {bootNft && <div ref={animatedBoot} className='nft-img' style={{ backgroundImage: `url(${bootNft.img})` }}></div>}
+                                        <div className='nft-stage-container'>
+
+                                            <div className='nft-stage'></div>
+                                        </div>
+                                    </div>
+
+                                    {userNft && <UserFeatures features={userNft} />}
+                                </div>
+                            </div>
                             {!userAttacked &&
-                                <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                                    <div className=''>{userNft.features.habilities.map(hability => <button key={hability.name} style={{ marginRight: '5px', width: '120px', cursor: 'pointer' }} onClick={() => attackHandler(hability)}>{hability.name}</button>)}</div>
+                                <div className='abilities-container'>
+
+                                    {userNft && userNft.features.habilities.map(hability => <button className='ability-action' key={hability.name} onClick={() => attackHandler(hability)}>{hability.name}</button>)}
+                                    <div className='option-panel'>
+                                        {!userAttacked && <button onClick={leaveHandler}>Abandonar</button>}
+                                    </div>
                                 </div>
                             }
-                            {/** healty nft */}
-                            <UserHealth healty={userNft.features.hp} maxhealty={userNft.features.maxHp} />
-                            <div>{userNft.features.hp}</div>
-                        </div>
-                        <div style={{ alignItems: 'center', fontSize: '10rem', height: '100%', width: '50%', display: 'flex', flexDirection: 'column' }}>
-                            {/* call bootNFt */}
-                            <div className=''>{bootNft.features.name}</div>
-                            {/** healty nft */}
-                            <BootHealth healty={bootNft.features.hp} maxhealty={bootNft.features.maxHp} />
-                            {<div>{bootNft.features.hp}</div>}
+                            {userAttacked &&
+                                <div className='storyteller'>
+                                    <p>{storyteller}</p>
+                                </div>
+                            }
+
                         </div>
                     </div>
-                </div>
-            }
-        </div>
+                }
+            </div>
+        </>
 
     )
 }
 const mapStateToProps = (state) => ({
     rdxNfts: state.nftReducers.nfts,
     rdxNftsByUser: state.nftReducers.userNfts,
+    rdxuser: state.userReducers.user
 })
 export default connect(mapStateToProps, null)(Game)

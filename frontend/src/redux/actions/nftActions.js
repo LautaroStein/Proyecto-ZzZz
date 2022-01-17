@@ -1,10 +1,14 @@
 import axios from 'axios'
-const userActions = {
+const nftActions = {
 
     addNft: (paramNft) => {
         return async (dispatch, getState) => {
+
             try {
-                const nft = await axios.post('http://localhost:4000/api/nft', paramNft)
+                const token = localStorage.getItem('token')
+                const nft = await axios.post('http://localhost:4000/api/nft', paramNft, {
+                    headers: { 'Authorization': 'Bearer ' + token }
+                })
                 dispatch({ type: 'ADD_NFT', payload: nft.data })
             } catch (error) {
                 console.log(error);
@@ -34,36 +38,51 @@ const userActions = {
             }
         }
     },
-    getNft: (paramUser) => {
+    getNft: (nftId) => {
         return async (dispatch, getState) => {
             try {
-                // const nft = await axios.get('https://mytinerary-moraga.herokuapp.com/api/user/signup', paramUser)
+                const token = localStorage.getItem('token')
+                const nft = await axios.get(`http://localhost:4000/api/nft/${nftId}`, {
+                    headers: { 'Authorization': 'Bearer ' + token }
+                })
+                return { nftId: nft.data.respuesta }
+            } catch (error) {
+                console.log(error);
+            }
+        }
+    },
+    updateNft: (nftId, paramUser) => {
+        return async (dispatch, getState) => {
+            try {
+                const token = localStorage.getItem('token')
+                const nft = await axios.put(`http://localhost:4000/api/nft/${nftId}`, paramUser, {
+                    headers: { 'Authorization': 'Bearer ' + token }
+                })
+                dispatch({ type: 'UPDATE_NFT', payload: { nftId: nft.data.actualizado, body: paramUser } })
+            } catch (error) {
+                console.log(error);
+            }
+        }
+    },
+    deleteNft: (nftId) => {
+        return async (dispatch, getState) => {
+            try {
+                const token = localStorage.getItem('token')
+                const nft = await axios.delete(`http://localhost:4000/api/nft/${nftId}`, {
+                    headers: { 'Authorization': 'Bearer ' + token }
+                })
+                dispatch({ type: 'DELETE_NFT', payload: nft.data.deletedNft })
 
             } catch (error) {
                 console.log(error);
             }
         }
     },
-    updateNft: (paramUser) => {
-        return async (dispatch, getState) => {
-            try {
-                // const nft = await axios.put('https://mytinerary-moraga.herokuapp.com/api/user/signup', paramUser)
-
-            } catch (error) {
-                console.log(error);
-            }
+    filter: (nfts, value) => {
+        return (dispatch, getState) => {
+            dispatch({ type: 'FILTER', payload: { nfts, value } })
         }
-    },
-    deleteNft: (paramUser) => {
-        return async (dispatch, getState) => {
-            try {
-                // const nft = await axios.delete('https://mytinerary-moraga.herokuapp.com/api/user/signup', paramUser)
-
-            } catch (error) {
-                console.log(error);
-            }
-        }
-    },
+    }
 }
 
-export default userActions
+export default nftActions

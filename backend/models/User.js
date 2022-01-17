@@ -8,14 +8,10 @@ const userSchema = new mongoose.Schema({
     userImg: { type: String, required: true },
     phone: { type: Number, required: true },
     google: { type: Boolean, default: false },
-    payments: [{
-        number: { type: Number },
-        name: { type: String },
-        expiration: { type: Number },
-        bank: { type: String },
-        paymentMethod: { type: Boolean }
-    }],
-    rol: { type: String, default: 'user' }
+    role: { type: String, default: 'user' },
+    suscription: { type: Boolean, default: false },
+    date: { type: Date, default: Date.now },
+    sales: { type: Number, default: 0 }
 })
 
 const User = mongoose.model('user', userSchema)

@@ -1,8 +1,11 @@
 import React, {useState,useEffect}from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import { View, Text, ScrollView, Image} from 'react-native';
-import {styles} from "../styles/styles"
-
+import {styles} from "../styles/styles";
+import Svg1 from "../assets/Svg1";
+import Svg2 from "../assets/Svg2";
+import Svg3 from "../assets/Svg3";
+import Svg4 from "../assets/Svg4";
 
 const Stack = createStackNavigator();
 
@@ -96,6 +99,33 @@ const Home = () => {
                             style={{width: 125, height:125, margin:15, borderRadius:20, position: 'absolute', left:-100,opacity:0.5}}
                         />
                 </View>
+            </View>
+            
+            <View >
+             <View>
+                <Text style={styles.titulos}>Advantages</Text>
+                <Text style={styles.subtitulos}>Create and sell your NFTs</Text>
+            </View>
+            <View style={styles.cartas}>
+                <Svg1 style={styles.svg}/>
+                    <Text style={styles.titulos}>Set up your wallet</Text>
+                    <Text style={styles.text}>Once you've set up your wallet, connect it to ProyectZzZz by clicking the wallet icon in the top right corner. Learn about the wallets we support</Text>
+            </View>
+            <View style={styles.cartas}>
+                <Svg2 style={styles.svg}/>
+                    <Text style={styles.titulos}>Create your collection</Text>
+                    <Text style={styles.text}>Click My Collections and set up your collection. Add social links, a description, profile & banner images, and set a secondary sales fee.</Text>
+            </View>
+            <View style={styles.cartas}>
+                <Svg3 style={styles.svg}/>
+                    <Text style={styles.titulos}>Add your NFTs</Text>
+                    <Text style={styles.text}>Upload your work, add a title and description, and customize your NFTs with properties, stats, and unlockable content.</Text>
+            </View>
+            <View style={styles.cartas}>
+                <Svg4 style={styles.svg}/>
+                    <Text style={styles.titulos}>List them for sale</Text>
+                    <Text style={styles.text}>Choose between auctions, fixed-price listings, and declining-price listings. You choose how you want to sell your NFTs, and we help you sell them!</Text>
+            </View>
             </View>
         </View>
 

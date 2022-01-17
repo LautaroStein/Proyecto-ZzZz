@@ -43,7 +43,7 @@ export  const styles = StyleSheet.create({
 
   titulos:{
     color: "#fff",
-    fontSize:10,
+    fontSize:12,
     fontWeight: 'bold',
     margin:5
   },
@@ -67,4 +67,18 @@ export  const styles = StyleSheet.create({
         width:"20%"
         
       },
+  cartas:{
+    flex: 1,
+    backgroundColor: "#1f1f36",
+    margin:10,
+    borderRadius:25,
+    padding: 10,
+    alignItems: "center",
+  },
+  svg:{
+    backgroundColor: "#8f0788",
+    borderRadius:25,
+    padding:10,
+    
+  }
   });
