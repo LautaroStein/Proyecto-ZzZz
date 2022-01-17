@@ -74,7 +74,7 @@ const Store = (props) => {
                             {
                                 props.nfts.map((element, index) => {
                                     return (
-                                        <CardNFT name={element.name} type={element.type} price={element.price} img={element.img} clase={element.clase} id={element._id} favorite={element.favs} userId={props.userId.userID} />
+                                        <CardNFT name={element.name} type={element.type} price={element.price} img={element.img} clase={element.clase} id={element._id} favorite={element.favs} userId={props.userId.userID} store={true}/>
                                     )
                                 })
                             }
@@ -106,7 +106,7 @@ const Store = (props) => {
                             {
                                 auxiliar.length > 0 ? auxiliar.map((element, index) => {
                                     return (
-                                        <CardNFT name={element.name} type={element.type} price={element.price} img={element.img} clase={element.clase} id={element._id} favorite={element.favs} userId={props.userId.userID} />
+                                        <CardNFT name={element.name} type={element.type} price={element.price} img={element.img} clase={element.clase} id={element._id} favorite={element.favs} userId={props.userId.userID} store={true}/>
                                     )
                                 }) : <h1>NFT not found</h1>
                             }
