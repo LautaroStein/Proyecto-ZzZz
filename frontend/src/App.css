@@ -1369,7 +1369,6 @@ img {
   width: 8px;
 }
 
-
 .main-dashboard::-webkit-scrollbar-thumb {
   background-color: #b903b0;
   border-radius: 10px;
@@ -1800,7 +1799,6 @@ img {
   width: 8px;
 }
 
-
 .main-dashboard::-webkit-scrollbar-thumb {
   background-color: #b903b0;
   border-radius: 10px;
@@ -1951,7 +1949,6 @@ img {
   width: 8px;
 }
 
-
 .nft-form::-webkit-scrollbar-thumb {
   background-color: #41003d;
   border-radius: 10px;
@@ -1962,7 +1959,6 @@ img {
 .nfts-container::-webkit-scrollbar {
   width: 8px;
 }
-
 
 .nfts-container::-webkit-scrollbar-thumb {
   background-color: #b903b0;
@@ -2405,9 +2401,9 @@ width: 10%;
   cursor: pointer;
   border-radius: 10px;
 }
-.paypal-button-store{
+/* .paypal-button-store{
   
-}
+} */
 
 /* Finish Shopping */
 /* USER TAB*/

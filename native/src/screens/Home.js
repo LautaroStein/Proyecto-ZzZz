@@ -9,7 +9,7 @@ const Stack = createStackNavigator();
 const Home = ({ navigation }) => {
     return (
         <View>
-           <Text>Holaaa</Text>
+           <Text>Hola</Text>
            
         </View>
     )

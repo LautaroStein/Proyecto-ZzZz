@@ -8,6 +8,7 @@ const userSchema = new mongoose.Schema({
     userImg: { type: String, required: true },
     phone: { type: Number, required: true },
     google: { type: Boolean, default: false },
+    favorite: { type: Array },
     payments: [{
         number: { type: Number },
         name: { type: String },

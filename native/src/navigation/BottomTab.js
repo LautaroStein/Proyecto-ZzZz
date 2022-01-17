@@ -18,9 +18,11 @@ const BottomTabNavigator = ()=>{
 
     return (
         <Tab.Navigator>
+
             <Tab.Screen name="C_Uno" component={ComponenteUno} />
             <Tab.Screen name="C_Dos" component={ComponenteDos} />
             <Tab.Screen name="SignUp" component={SignUp} />
+            <Tab.Screen name="Signin" component={SignIn} />
 
         </Tab.Navigator>
     )
