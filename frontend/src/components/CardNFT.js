@@ -5,8 +5,9 @@ import { connect } from "react-redux";
 import { BsFillBookmarkHeartFill} from "react-icons/bs"
 import cartActions from "../redux/actions/cartActions";
 import { toast } from 'react-toastify';
+import { Link } from "react-router-dom"
 
-const CardNFT = ({name, type, price, img, clase, favs, id, favorite, userId, nft, favClass, addNftToCart, nfts, cart, store}) => {
+const CardNFT = ({name, type, price, img, clase, favs, id, favorite, userId, nft, favClass, addNftToCart, nfts, cart, store, publicos, propiedad, updateNft}) => {
 
 const [color, setColor] = useState("")
 const [backColor, setBackColor] = useState("")
@@ -16,7 +17,15 @@ useEffect(() => {
     clase === "Common" ? setBackColor("rgb(0, 234, 255)") : clase === "Rare" ? setBackColor("rgb(0, 160, 43)") : setBackColor("rgb(143, 7, 136)")
 }, [clase])
 
+const HandlerUnPublish = (id) => {
+  updateNft(id, { public : false })
+}
+const HandlerPublic = (id) => {
+  updateNft(id, { public : true })
+}
+
 const favsAndDisFavs = async() => {
+
 
   let fav 
 
@@ -66,7 +75,8 @@ const favsAndDisFavs = async() => {
                                     }
                                   </div>
                                   <div className="contenedor-buttons-nft">
-                                      <button className="button-compra-nft" style={{color: `${color}`,borderColor:`${color}`}} onClick={()=>{if(cart.some(element => element._id === id)){
+                                      {propiedad.some(e => e === userId) ? <Link to="/Profile"className="button-compra-nft" style={{color: `${color}`,borderColor:`${color}`, textDecoration: "none"}}>Go to NFT</Link> :
+                                        <button className="button-compra-nft" style={{color: `${color}`,borderColor:`${color}`}} onClick={()=>{if(cart.some(element => element._id === id)){
                                         toast.warning('NFT Already added to your cart', {
                                           position: "top-right",
                                           autoClose: 1500,
@@ -89,11 +99,14 @@ const favsAndDisFavs = async() => {
                                         }}}>
                                         Add to Cart
                                         <span style={{backgroundColor:`${backColor}`}}></span><span style={{backgroundColor:`${backColor}`}}></span><span style={{backgroundColor:`${backColor}`}}></span><span style={{backgroundColor:`${backColor}`}}></span>
-                                      </button>
+                                      </button>}
                                   </div>
                               </div>
                             </>
                             : null}
+                          {publicos !== "no" ? publicos ? <button onClick={() => HandlerUnPublish(id)}className="botton-public-nft-action">UnPublish</button> : <button onClick={() => HandlerPublic(id)} className="botton-public-nft-action">Public</button> : null
+
+                          }
                     </div>
                 </div>
             </div>

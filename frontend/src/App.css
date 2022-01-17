@@ -697,8 +697,35 @@ ul li button:hover:nth-child(4) {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  position: relative;
 }
-
+.botton-public-nft-action{
+  position: absolute;
+  width: 40%;
+  right: 0;
+  bottom: 0;
+  font-size: 16px;
+  border: 0.3em solid var(--ColorDesctacar);
+  color: var(--ColorDesctacar);
+  border-radius: 0.5em;
+  width: 9em;
+  height: 3em;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-family: sans-serif;
+  letter-spacing: 0.1em;
+  text-align: center;
+  line-height: 3em;
+  overflow: hidden;
+  z-index: 1;
+  transition: 0.5s;
+  margin: 1em;
+  background: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 /* .container-nft {
   padding: 0.5rem;
 } */

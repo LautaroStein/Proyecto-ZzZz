@@ -4,8 +4,9 @@ import nftActions from "../../redux/actions/nftActions"
 import offerActions from "../../redux/actions/offerActions"
 import ScrollContainer from 'react-indiana-drag-scroll'
 import CardNFT from "../CardNFT"
+import OfferCard from "../MarketPlace/OfferCard"
 
-const Wallet = ({user, getNft, userNfts, userOffers, getOffersByUser}) => {
+const Wallet = ({user, getNft, userNfts, userOffers, getOffersByUser, updateNft}) => {
 
     console.log(user, userNfts, userOffers)
 
@@ -15,45 +16,44 @@ const Wallet = ({user, getNft, userNfts, userOffers, getOffersByUser}) => {
     }, [])
 
 
+
     return (
         <div className="container-wallet-profile-total">
             <h2>Your unics NFTs collections</h2>
             <ScrollContainer className="container">
-                {userNfts &&
-                    userNfts.map(e => {
-                        return(
-                            <CardNFT name={e.name} type={e.type} price={e.price} img={e.img} clase={e.clase} id={e._id} favorite={e.favs} store={false} />
-                        )
-                    })
-                }
+                <div style={{ display: "flex" }} >
+                    {userNfts &&
+                        userNfts.map(e => {
+                            return(
+                                <CardNFT name={e.name} type={e.type} price={e.price} img={e.img} clase={e.clase} id={e._id} favorite={e.favs} store={false} publicos={"no"}/>
+                            )
+                        })
+                    }
+                </div>
             </ScrollContainer>
             <h2>Your offerts public NFTs </h2>
-            <div>
+            <ScrollContainer className="container">
                 {userOffers && 
                 userOffers.map(e => {
                     return(
                         e.public ?
-                        <div>
-                            <h3>{e.name}</h3>
-                        </div>
+                        <CardNFT name={e.name} type={e.type} price={e.price} img={e.img} clase={e.clase} id={e._id} favorite={e.favs} store={false} publicos={true} updateNft={updateNft}/>
                         : null
                     )
                 })}
-            </div>
+            </ScrollContainer>
             <h2>Your offerts NFTs dont post</h2>
-            <div>
+            <ScrollContainer className="container">
                 {userOffers &&
                 userOffers.map(e => {
                     return(
                         e.public ? null : 
-                        <div>
-                            <h3>{e.name}</h3>
-                        </div>
+                        <CardNFT name={e.name} type={e.type} price={e.price} img={e.img} clase={e.clase} id={e._id} store={false} publicos={false} updateNft={updateNft}/>
                     )
                 })
                     
                 }
-            </div>
+            </ScrollContainer>
         </div>
     )
 }
@@ -68,7 +68,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = {
     getNft : nftActions.getNftsByUser,
-    getOffersByUser : offerActions.getOffersByUser
+    getOffersByUser : offerActions.getOffersByUser,
+    updateNft : offerActions.updateOffer
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Wallet)
