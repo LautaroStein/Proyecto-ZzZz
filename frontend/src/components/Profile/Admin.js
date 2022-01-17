@@ -1,8 +1,11 @@
 import { useState, useRef, useEffect } from 'react'
 import { connect } from 'react-redux'
 import nftActions from '../../redux/actions/nftActions'
-
-
+import offerActions from '../../redux/actions/offerActions'
+import userActions from '../../redux/actions/userActions'
+import { RiFlashlightFill } from 'react-icons/ri'
+import { BsCardChecklist } from 'react-icons/bs'
+import Swal from 'sweetalert2'
 
 const Admin = (props) => {
 
@@ -19,13 +22,20 @@ const Admin = (props) => {
 
     useEffect(() => {
         props.getNfts()
+        props.getOffers()
+        props.getUsers()
     }, [])
-
-    const arrayUsers = [{ name: 'user 1' }, { name: 'user 2' }, { name: 'user 3' }, { name: 'user 4' }, { name: 'user 5' }, { name: 'user 6' }, { name: 'user 7' }, { name: 'user 8' }]
-
     const handlerSetCreate = () => {
 
         setEdit(false)
+        setTimeout(() => {
+            nname.current.value = ""
+            type.current.value = ""
+            clase.current.value = ""
+            img.current.value = ""
+            price.current.value = ""
+            stock.current.value = ""
+        }, 1)
     }
     const handlerDelete = (nftId) => {
         props.deleteNft(nftId)
@@ -34,15 +44,23 @@ const Admin = (props) => {
         const nft = await props.getNft(nftId)
         setEditNft(nft)
     }
+    const handlerAscend = (userId) => {
+        console.log(userId);
+        props.updateUser(userId, { role: 'moderator' })
+    }
+    const handlerDescend = (userId) => {
+        props.updateUser(userId, { role: 'user' })
+    }
     const handlerCreate = () => {
         const createdBody = {}
         nname.current.value !== '' && (createdBody['name'] = nname.current.value)
-        type.current.value !== '' && (createdBody['type'] = stock.current.value)
+        type.current.value !== '' && (createdBody['type'] = type.current.value)
         clase.current.value !== '' && (createdBody['clase'] = clase.current.value)
         stock.current.value !== '' && (createdBody['stock'] = stock.current.value)
         img.current.value !== '' && (createdBody['img'] = img.current.value)
         price.current.value !== '' && (createdBody['price'] = price.current.value)
         props.addNft({ ...createdBody })
+
     }
     const handlerUpdate = () => {
         const updatedBody = {}
@@ -56,18 +74,70 @@ const Admin = (props) => {
 
         props.updateNft(editNft.nftId._id, { ...updatedBody })
 
+        editNft.nftId.name = ""
+        editNft.nftId.type = ""
+        editNft.nftId.img = ""
+        editNft.nftId.clase = ""
+        editNft.nftId.stock = ""
+        editNft.nftId.price = ""
+
     }
+
+    const handlerAccept = async (offerId) => {
+        const res = await props.offerUpdate(offerId, { valid: 'accepted' })
+        if (res.success) {
+            Swal.fire({
+                position: 'top',
+                icon: 'success',
+                title: 'The nft was accepted !',
+                showConfirmButton: false,
+                timer: 1500
+            })
+        } else {
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Something went wrong!',
+                footer: '<a href="">Why do I have this issue?</a>'
+            })
+        }
+
+    }
+    const handlerReject = async (offerId) => {
+        // array de los rechazados para posteriormente darlos de baja si no son modificados
+        const res = props.offerUpdate(offerId, { valid: 'rejected' })
+    }
+
     return (
         <section className="management">
             {/* crud nfts */}
+            <div className='presentacion-admin-container'>
+                <h1>Hi Admin/Mod!</h1>
+                <div className='container-imguno-presentacion-admin'>
+                    <div className='container-presentacion-button'>
+                        <div>
+                            <RiFlashlightFill />
+                        </div>
+                    </div>
+                    <p>Create a new NFT in Official Store</p>
+                </div>
+                <div className='container-imgdos-presentacion-admin'>
+                    <div className='container-presentacion-button'>
+                        <div>
+                            <BsCardChecklist />
+                        </div>
+                    </div>
+                    <p>Accept the new NFT offers every day, to have the most updated NFT Marketplace</p>
+                </div>
+            </div>
             <article className="nfts-management">
                 <div className='main-nfts-content'>
                     <div className='nfts-search-title'>
                         <h2>NFTs Management</h2>
-                        <input type="text" placeholder='search by nft name' onChange={(e) => props.filter(props.aux, e.target.value.trim())} />
+                        <input type="text" placeholder='Search by NFT Name' onChange={(e) => props.filter(props.aux, e.target.value.trim())} />
                     </div>
                     <div className='nfts-container'>
-                        {props.nfts.length > 0 && props.nfts.map(nft =>
+                        {(props.nfts && props.nfts.length > 0) && props.nfts.map(nft =>
                             <div key={nft._id} onMouseEnter={() => setOnCardHover({ bool: true, id: nft._id })} onMouseLeave={() => setOnCardHover({ bool: false, id: nft._id })} style={{ backgroundImage: `url(${nft.img})` }} className="cardy">
                                 <div className='body-nft-admin-card'>
                                     <h2>{nft.name}</h2>
@@ -84,18 +154,18 @@ const Admin = (props) => {
                 </div>
                 <aside className="right-side-management">
                     <div className='edit-form'>
-                        <h2><span>{edit ? 'Edit' : 'Create'}</span> NFT Form</h2>
+                        <h2><span>{edit ? 'Edit ' : 'Create '}</span> NFT Form</h2>
                         <div className='nft-form'>
-                            {features ?
+                            {(features && edit) ?
                                 (editNft.nftId) &&
                                 <>
                                     <h3>Elemental Features</h3>
-                                    <input type="text" placeholder='name' value={editNft.nftId.name} onChange={(e) => setEditNft({ nftId: { name: e.target.value, _id: editNft.nftId._id, features: '' } })} />
-                                    <input type="text" placeholder="type" value={editNft.nftId.type} onChange={(e) => setEditNft({ nftId: { type: e.target.value, _id: editNft.nftId._id, features: '' } })} />
-                                    <input type="text" placeholder="class" value={editNft.nftId.clase} onChange={(e) => setEditNft({ nftId: { clase: e.target.value, _id: editNft.nftId._id, features: '' } })} />
-                                    <input type="text" placeholder="img" value={editNft.nftId.img} onChange={(e) => setEditNft({ nftId: { img: e.target.value, _id: editNft.nftId._id, features: '' } })} />
-                                    <input min='0' type="number" placeholder="price" value={editNft.nftId.price} onChange={(e) => setEditNft({ nftId: { price: e.target.value, _id: editNft.nftId._id, features: '' } })} />
-                                    <input min='0' type="number" placeholder="stock" value={editNft.nftId.stock} onChange={(e) => setEditNft({ nftId: { stock: e.target.value, _id: editNft.nftId._id, features: '' } })} />
+                                    <input type="text" placeholder='Name' value={editNft.nftId.name} onChange={(e) => setEditNft({ nftId: { name: e.target.value, _id: editNft.nftId._id, features: '' } })} />
+                                    <input type="text" placeholder="Type" value={editNft.nftId.type} onChange={(e) => setEditNft({ nftId: { type: e.target.value, _id: editNft.nftId._id, features: '' } })} />
+                                    <input type="text" placeholder="Class" value={editNft.nftId.clase} onChange={(e) => setEditNft({ nftId: { clase: e.target.value, _id: editNft.nftId._id, features: '' } })} />
+                                    <input type="text" placeholder="Img" value={editNft.nftId.img} onChange={(e) => setEditNft({ nftId: { img: e.target.value, _id: editNft.nftId._id, features: '' } })} />
+                                    <input min='0' type="number" placeholder="Price" value={editNft.nftId.price} onChange={(e) => setEditNft({ nftId: { price: e.target.value, _id: editNft.nftId._id, features: '' } })} />
+                                    <input min='0' type="number" placeholder="Stock" value={editNft.nftId.stock} onChange={(e) => setEditNft({ nftId: { stock: e.target.value, _id: editNft.nftId._id, features: '' } })} />
                                     {editNft.nftId.features.hp &&
                                         <>
                                             <h3>Game Features</h3>
@@ -104,12 +174,12 @@ const Admin = (props) => {
                                     }
                                 </> :
                                 <>
-                                    <input type="text" placeholder='name' ref={nname} />
-                                    <input type="text" placeholder="type" ref={type} />
-                                    <input type="text" placeholder="class" ref={clase} />
-                                    <input type="text" placeholder="img" ref={img} />
-                                    <input min='0' type="number" placeholder="price" ref={price} />
-                                    <input min='0' type="number" placeholder="stock" ref={stock} />
+                                    <input type="text" placeholder='Name' ref={nname} />
+                                    <input type="text" placeholder="Type" ref={type} />
+                                    <input type="text" placeholder="Class" ref={clase} />
+                                    <input type="text" placeholder="Img" ref={img} />
+                                    <input min='0' type="number" placeholder="Price" ref={price} />
+                                    <input min='0' type="number" placeholder="Stock" ref={stock} />
 
                                 </>
                             }
@@ -124,17 +194,71 @@ const Admin = (props) => {
                     <div className='create-form'></div>
                 </aside>
             </article>
-            {/* el admin podra ascender algun user*/}
-            <article className="users-management">
-                <div className='main-users-content'>
-                    <div className='users-search-title'>
-                        <h2>NFTs management</h2>
-                        <input type="text" />
+            <article className="offers-management">
+                <div className='main-offers-content'>
+                    <div className='nfts-search-title'>
+                        <h2>Pending Offers</h2>
+                        <input type="text" placeholder='search by nft name' onChange={(e) => props.filter(props.aux, e.target.value.trim())} />
                     </div>
-                    <div className='users-container'>
-                        {arrayUsers.map(user =>
-                            <div style={{ backgroundImage: 'url(/assets/lauty2.png)' }} className="cardy">
-                                <div>{user.name}</div>
+                    <div className='nfts-container'>
+                        {(props.offers && props.offers.length > 0) && props.offers.map(nft =>
+                            nft.valid === 'pending' &&
+                            <div key={nft._id} onMouseEnter={() => setOnCardHover({ bool: true, id: nft._id })} onMouseLeave={() => setOnCardHover({ bool: false, id: nft._id })} style={{ backgroundImage: `url(${nft.img})` }} className="admin-offer-card">
+                                <div className='body-nft-admin-card'>
+                                    <h2>{nft.name}</h2>
+                                    <h2>{nft.price}</h2>
+                                    <h2>{nft.type}</h2>
+                                    <h2>{nft.clase}</h2>
+                                    <h2>{nft.stock}</h2>
+                                </div>
+                                {(onCardHover.bool && onCardHover.id === nft._id) &&
+                                    <div className='management-actions'>
+                                        <button onClick={() => handlerReject(nft._id)}>Reject</button>
+                                        <button onClick={() => handlerAccept(nft._id)}>Accept</button>
+                                    </div>
+                                }
+                            </div>
+                        )}
+                    </div>
+                </div>
+            </article>
+            <article className="offers-management">
+                <div className='main-nfts-content'>
+                    <div className='user-search-title'>
+                        <h2>Users Preview</h2>
+                    </div>
+                    <div className='nfts-container'>
+                        {props.users && props.users.length > 0 && props.users.map(nft =>
+                            nft.role === 'user' &&
+                            <div key={nft._id} onMouseEnter={() => setOnCardHover({ bool: true, id: nft._id })} onMouseLeave={() => setOnCardHover({ bool: false, id: nft._id })} style={{ backgroundImage: `url(${nft.userImg})` }} className="admin-user-card">
+                                <div className='body-nft-admin-card'>
+                                    <h2>{nft.name}</h2>
+                                </div>
+                                {(onCardHover.bool && onCardHover.id === nft._id) &&
+                                    <div className='management-actions'>
+                                        <button onClick={() => handlerAscend(nft._id)}>Ascend</button>
+                                    </div>
+                                }
+                            </div>
+                        )}
+                    </div>
+                </div>
+                <div className='main-nfts-content'>
+                    <div className='user-search-title'>
+                        <h2>Moderators Preview</h2>
+                    </div>
+                    <div className='nfts-container'>
+                        {(props.users && props.users.length > 0) && props.users.map(nft =>
+                            nft.role === 'moderator' &&
+                            <div key={nft._id} onMouseEnter={() => setOnCardHover({ bool: true, id: nft._id })} onMouseLeave={() => setOnCardHover({ bool: false, id: nft._id })} style={{ backgroundImage: `url(${nft.userImg})` }} className="admin-user-card">
+                                <div className='body-nft-admin-card'>
+                                    <h2>{nft.name}</h2>
+                                </div>
+                                {(onCardHover.bool && onCardHover.id === nft._id) &&
+                                    <div className='management-actions'>
+                                        <button onClick={() => handlerDescend(nft._id)}>Descend</button>
+                                    </div>
+                                }
                             </div>
                         )}
                     </div>
@@ -151,11 +275,17 @@ const mapDispatchToProps = {
     updateNft: nftActions.updateNft,
     filter: nftActions.filter,
     addNft: nftActions.addNft,
+    getOffers: offerActions.getOffers,
+    offerUpdate: offerActions.updateOffer,
+    getUsers: userActions.getUsers,
+    updateUser: userActions.updateUser
 }
 const mapStateToProps = (state) => ({
     nfts: state.nftReducers.nfts,
     nft: state.nftReducers.nft,
-    aux: state.nftReducers.aux
+    aux: state.nftReducers.aux,
+    offers: state.offerReducers.offers,
+    users: state.userReducers.users
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Admin)

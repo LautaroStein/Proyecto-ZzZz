@@ -22,7 +22,6 @@ const Store = (props) => {
         setNft(arrayFalso)
         setAuxiliar(nft)
     }, [props.nfts])
-    console.log(arrayFalso)
     const [nftDefault, setNftDefault] = useState(arrayFalso);
     const [nft, setNft] = useState(arrayFalso);
     const [auxiliar, setAuxiliar] = useState(nft)
@@ -79,7 +78,7 @@ const Store = (props) => {
                             {
                                 props.nfts.map((element, index) => {
                                     return (
-                                        <CardNFT name={element.name} type={element.type} price={element.price} img={element.img} clase={element.clase} id={element._id} favorite={element.favs} userId={props.userId.userID} />
+                                        <CardNFT name={element.name} type={element.type} price={element.price} img={element.img} clase={element.clase} id={element._id} favorite={element.favs} userId={props.userId.userID} store={true}/>
                                     )
                                 })
                             }
@@ -106,15 +105,17 @@ const Store = (props) => {
                             </select>
                         </div>
                     </div>
-                    <div className="contenedor-top-sellers-cards">
-                        {
-                            auxiliar.length > 0 ? auxiliar.map((element, index) => {
-                                return (
-                                    <CardNFT name={element.name} type={element.type} price={element.price} img={element.img} clase={element.clase} id={element._id} favorite={element.favs} userId={props.userId.userID} />
-                                )
-                            }) : <h1>NFT not found</h1>
-                        }
-                    </div>
+                    <ScrollContainer className="container">
+                        <div style={{ display: "flex" }} >
+                            {
+                                auxiliar.length > 0 ? auxiliar.map((element, index) => {
+                                    return (
+                                        <CardNFT name={element.name} type={element.type} price={element.price} img={element.img} clase={element.clase} id={element._id} favorite={element.favs} userId={props.userId.userID} store={true}/>
+                                    )
+                                }) : <h1>NFT not found</h1>
+                            }
+                        </div>
+                    </ScrollContainer>
                 </div>
             </div>
         </div>

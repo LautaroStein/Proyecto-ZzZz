@@ -7,7 +7,11 @@ import Admin from "../components/Profile/Admin"
 import Wallet from "../components/Profile/Wallet"
 import Dashboard from "../components/Profile/Dashboard"
 import Ethereum from "../components/Profile/Ethereum"
+import ManagementOffer from '../components/Profile/ManagementOffer'
 import { AiFillDashboard } from 'react-icons/ai'
+import { IoDuplicate } from "react-icons/io5";
+import Lumn from '../components/Lumn'
+
 const Profile = () => {
 
     const [active, setActive] = useState("user")
@@ -20,12 +24,15 @@ const Profile = () => {
                     <FaHouseUser onClick={() => { setActive("user") }} className={active === "user" ? "active" : null} />
                     <MdAdminPanelSettings onClick={() => { setActive("admin") }} className={active === "admin" ? "active" : null} />
                     <AiFillDashboard onClick={() => { setActive("dashboard") }} className={active === "dashboard" ? "active" : null} />
+
                     <GiWallet onClick={() => { setActive("wallet") }} className={active === "wallet" ? "active" : null} />
+                    <IoDuplicate onClick={() => { setActive("managementOffer") }} className={active === "managementOffer" ? "active" : null} />
                     <FaEthereum onClick={() => { setActive("ethereum") }} className={active === "ethereum" ? "active" : null} />
                 </div>
                 <div className="profile-render-constant">
-                    {active === "user" ? <User /> : active === "admin" ? <Admin /> : active === "wallet" ? <Wallet /> : active === "ethereum" ? <Ethereum /> : <Dashboard />}
+                    {active === "user" ? <User /> : active === "admin" ? <Admin /> : active === "wallet" ? <Wallet /> : active === "ethereum" ? <Ethereum /> : active === "managementOffer" ? <ManagementOffer /> : <Dashboard />}
                 </div>
+                <Lumn />
             </div>
         </>
     )

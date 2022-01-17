@@ -247,6 +247,7 @@ ul li button:hover:nth-child(4) {
 }
 .navigation {
   position: fixed;
+  top: 0;
   height: 70px;
   background-color: var(--ColorPrimarioFuerte);
   display: flex;
@@ -329,6 +330,9 @@ ul li button:hover:nth-child(4) {
 }
 .navigation ul li:nth-child(5).active ~ .indicator {
   transform: translateX(calc(81px * 4));
+}
+.navigation ul li:nth-child(6).active ~ .indicator {
+  transform: translateX(calc(81.5px * 5));
 }
 
 .iluminador {
@@ -994,7 +998,10 @@ ul li button:hover:nth-child(4) {
   display: flex;
   flex-direction: column;
   width: 60%;
-  background-color: rgba(2, 92, 134, 0.658);
+  background-position: center;
+  background-size: cover;
+  border-radius: 15px;
+  align-self: center;
   height: 85%;
 }
 .arena-battle {
@@ -1003,8 +1010,17 @@ ul li button:hover:nth-child(4) {
   width: 100%;
 }
 .storyteller {
+  font-weight: bold;
+  padding: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgb(248, 214, 214);
+  background-color: rgba(42, 106, 122, 0.473);
+  box-shadow: rgba(102, 91, 91, 0.555) 1px 10px 15px;
   width: 100%;
   height: 20%;
+  font-size: 1rem;
 }
 .boot-box {
   display: flex;
@@ -1035,11 +1051,26 @@ ul li button:hover:nth-child(4) {
   justify-content: space-around;
   height: 20%;
 }
+.option-panel button {
+  cursor: pointer;
+  font-weight: bold;
+  padding: 0.5rem;
+  color: rgb(173, 102, 102);
+  background-color: rgba(63, 6, 6, 0.541);
+  box-shadow: rgba(250, 1, 1, 0.555) 1px 10px 15px;
+  height: 65px;
+}
 .ability-action {
-  padding: 1rem;
+  padding: 0.5rem;
+  width: 20%;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #004c75;
+  box-shadow: black 1px 10px 15px;
+  margin-right: 0.5rem;
   cursor: pointer;
   height: 65px;
-  background-color: transparent;
+  background-color: rgba(255, 255, 255, 0.541);
 }
 .health-container {
   width: 60%;
@@ -1072,7 +1103,18 @@ ul li button:hover:nth-child(4) {
   height: 100%;
   border-radius: 20px;
 }
-
+/* animations */
+@keyframes nftUserAttacks {
+  0% {
+    opacity: 0;
+    transform: translate(250px, 250px);
+  }
+  50% {
+    transform: translate(500px, 500px);
+  }
+  100% {
+  }
+}
 /* END ARENA BATTLE */
 
 /*  */
@@ -1156,139 +1198,8 @@ img {
   background-color: rgb(223, 130, 10);
   padding: 0.5rem;
 }
-
 /* ********* */
 
-.total-profile-container {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-grow: 1;
-  height: 90vh;
-}
-
-.nav-profile-col {
-  width: 70px;
-  height: 60vh;
-  background-color: var(--ColorPrimarioFuerte);
-  border-radius: 0 20px 20px 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
-}
-.nav-profile-col svg {
-  font-size: 1.5em;
-  color: rgb(146, 146, 146);
-  cursor: pointer;
-  transition: all 1000ms;
-}
-.nav-profile-col svg:hover {
-  animation: pulse 1500ms infinite;
-  border-radius: 50%;
-}
-@keyframes pulse {
-  0% {
-    box-shadow: var(--ColorButton) 0 0 0 0;
-  }
-  75% {
-    box-shadow: #ff69b400 0 0 0 16px;
-  }
-}
-.nav-profile-col .active {
-  color: var(--ColorButton);
-}
-
-.profile-render-constant {
-  flex-grow: 1;
-  height: 80%;
-}
-
-/* USER TAB*/
-
-.user-cont {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.user-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  background-color: var(--ColorPrimarioFuerte);
-  min-height: 70vh;
-  width: min(90%, 80vw);
-  padding: 2rem;
-  border-radius: 20px;
-}
-
-.user-container div h1 {
-  color: var(--ColorQuinto);
-  font-size: min(10vw, 20vw);
-}
-
-.user-header-container {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-evenly;
-  padding: 2rem;
-}
-
-.user-info-container {
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: space-around;
-  color: white; 
-}
-
-.user-info-container div {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 1rem;
-}
-
-.user-info-container div div {
-  overflow-x: auto;  
-}
-
-.user-info-container div div::webkit-scrollbar {
-  display: none;
-}
-
-.user-img {
-  display: block;
-  width: max(150px, 250px);
-  height: max(150px, 250px);
-  background-size: cover;
-  background-repeat: no-repeat;
-  border-radius: 50%;
-}
-.user-info-label {
-  padding: 1rem;
-  border: 3px solid white;
-  border-radius: 20px;
-  min-width: 15rem;
-  width: 20rem;
-}
-
-.edit-user {
-  color:white;
-  border: 2px solid white;
-  border-radius: .5rem;
-  padding: .1rem;
-  text-align: center;
-  margin:.3rem;
-}
-
-.edit-user:hover {
-  background-color: white;
-  color:var(--ColorPrimarioFuerte);
-  cursor: pointer;
-}
 /* DASHBOARD */
 .main-dashboard {
   padding: 2.5rem;
@@ -1299,14 +1210,53 @@ img {
 }
 
 .dashboard-container {
-  flex-grow: 1;
-  height: 100%;
+  height: 90vh;
+  width: 90vw;
   margin-bottom: 4rem;
+}
+.historical-main-content {
+  width: 100%;
+  height: 100%;
+}
+.dashboard-main-content {
+  width: 100%;
+  height: 90%;
+}
+.historical-current {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 10%;
+  align-items: center;
+}
+.historical-current h2 {
+  color: white;
 }
 .dashboard-resume {
   display: flex;
   justify-content: center;
   height: 30%;
+}
+.graphs-container {
+  width: 100%;
+  height: 70%;
+}
+.graphs-container h2 {
+  color: white;
+  letter-spacing: 1rem;
+  margin-bottom: 1rem;
+}
+.users-graph {
+  height: 100%;
+  width: 100%;
+}
+.offers-graph {
+  width: 100%;
+  height: 100%;
+}
+.subs-graph {
+  height: 100%;
+  width: 100%;
 }
 .card-revenue {
   display: flex;
@@ -1381,106 +1331,94 @@ img {
 
 /* *** */
 
-/* MANAGEMENT */
-.management {
-  padding: 2.5rem;
-  height: 100%;
+
+/* USERS MANAGEMENT */
+
+.presentacion-admin-container{
   width: 100%;
-  overflow: auto;
-  color: rgb(0, 0, 0);
+  height: 400px;
+  display: flex;
+  flex-wrap: wrap;
+}
+.presentacion-admin-container h1{
+  font-weight: 900;
+  font-size: 1.5em;
+  color: white;
+  width: 100%;
+  height: 15%;
+  display: flex;
+  align-items: center;
+}
+.container-imguno-presentacion-admin{
+  background-image: url("./assets/diseño-admin-1.png");
+  background-position:bottom;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 33%;
+  height: 70%;
+  border-radius: 20px;
+  margin: 0 5px 0 0;
+  padding:1em;
+}
+.container-imgdos-presentacion-admin{
+  background-image: url("./assets/diseño-admin-2.png"); 
+  background-position: bottom;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 500px;
+  height: 70%;
+  border-radius: 20px; 
+  padding:1em;
+}
+.container-presentacion-button{
+  width: 50%;
+  height: 50%;
+  display: flex;
+  align-items: flex-end;
+}
+.container-presentacion-button div{
+  width: 40px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.287);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+}
+.container-presentacion-button div svg{
+  width: 80%;
+  height: 80%;
+}
+.container-imguno-presentacion-admin p{
+  width: 70%;
+  height: 40%;
+  font-weight: 800;
+  font-size: 1.2em;
+  color: white;
+  display: flex;
+  align-items: center;
+}
+.container-imgdos-presentacion-admin p {
+  width: 50%;
+  height: 50%;
+  font-weight: 800;
+  font-size: 1.2em;
+  color: white;
+  display: flex;
+  align-items: center;
 }
 
-/* NFTS MANAGEMENT */
-.nfts-management {
+.users-management {
   display: flex;
   height: 100%;
   width: 100%;
   margin-bottom: 3rem;
 }
-.action-nft-form {
-  display: flex;
-  justify-content: space-around;
-  margin: 1rem;
-}
-.action-nft-form i {
-  font-size: 1.5rem;
-  cursor: pointer;
-}
-.submit-edit-form {
-  width: 50%;
-  padding: 0.5rem;
-  align-self: center;
-}
-.main-nfts-content {
-  width: 80%;
-  height: 100%;
-}
-.right-side-management {
-  width: 20%;
-  border-radius: 15px;
-  text-align: center;
-  padding: 1rem;
-  margin-left: 1rem;
-  background-color: white;
-}
-.edit-form {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  width: 100%;
-}
-.nft-form {
-  display: flex;
-  flex-direction: column;
-  overflow-y: auto;
-  height: 100%;
-}
-.abilities-label {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.abilities-label h2 {
-  font-size: 1rem;
-}
-.abilities-label span i {
-  font-size: 1.2rem;
-  margin: 0.5rem;
-  cursor: pointer;
-}
-.nft-form input {
-  padding: 0.5rem;
-  font-size: 1rem;
-}
-.nfts-search-title {
-  display: flex;
-  height: 20%;
-  padding: 1rem;
-  width: 100%;
-}
-.nfts-search-title h2 {
-  width: 75%;
-  color: white;
-  letter-spacing: 1.5rem;
-  word-spacing: 1rem;
-}
-.nfts-search-title input {
-  height: 40px;
-  padding: 0.2rem;
-}
-.nfts-container {
-  display: flex;
-  flex-wrap: wrap;
-  height: 80%;
-  padding: 1rem;
-  width: 100%;
-  overflow: auto;
-}
 
-.cardy {
-  height: 100%;
-  width: 28%;
+.admin-user-card {
+  height: 75%;
+  width: 28.5%;
   margin: 0.7rem 1rem;
   background-position: center;
   background-size: cover;
@@ -1488,65 +1426,19 @@ img {
   padding: 1rem;
   border-radius: 15px;
 }
-.management::-webkit-scrollbar {
-  width: 8px;
-}
-
-.body-nft-admin-card {
-  height: 90%;
+.user-search-title {
+  display: flex;
+  height: 20%;
+  padding: 1rem;
   width: 100%;
 }
-.body-nft-admin-card h2 {
+.user-search-title h2 {
+  width: 75%;
   text-align: center;
   color: white;
+  letter-spacing: 0.7rem;
+  word-spacing: 0.5rem;
 }
-.management-actions {
-  width: 100%;
-  height: 10%;
-  display: flex;
-  justify-content: center;
-}
-.management-actions button {
-  cursor: pointer;
-  width: 30%;
-  margin-right: 0.5rem;
-}
-.management::-webkit-scrollbar-thumb {
-  background-color: #b903b0;
-  border-radius: 10px;
-  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
-}
-
-.nft-form::-webkit-scrollbar {
-  width: 8px;
-}
-
-.nft-form::-webkit-scrollbar-thumb {
-  background-color: #41003d;
-  border-radius: 10px;
-  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
-}
-
-.nfts-container::-webkit-scrollbar {
-  width: 8px;
-}
-
-.nfts-container::-webkit-scrollbar-thumb {
-  background-color: #b903b0;
-  border-radius: 10px;
-  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
-}
-/* END NFTS MANAGEMENT */
-
-/* USERS MANAGEMENT */
-
-.users-management {
-  height: 100%;
-}
-
 /* END USERS MANAGEMENT */
 
 /* GRAPH */
@@ -1554,6 +1446,7 @@ img {
   border-radius: 0.25rem;
   background: #26313c;
   color: #fff;
+  margin-left: 1.5rem;
   padding: 1rem;
   box-shadow: 15px 30px 40px 5px rgba(0, 0, 0, 0.5);
   text-align: center;
@@ -1651,7 +1544,7 @@ img {
   align-items: center;
   justify-content: space-between;
   flex-grow: 1;
-  height: 90vh;
+  height: calc(100vh - 70px);
 }
 
 .nav-profile-col {
@@ -1688,7 +1581,8 @@ img {
 
 .profile-render-constant {
   flex-grow: 1;
-  height: 80%;
+  height: 90%;
+  width: calc(100% - 70px);
 }
 
 /* DASHBOARD */
@@ -1785,7 +1679,7 @@ img {
 
 /* MANAGEMENT */
 .management {
-  padding: 2.5rem;
+  padding: 0 1.5rem;
   height: 100%;
   width: 100%;
   overflow: auto;
@@ -1810,33 +1704,52 @@ img {
 }
 .submit-edit-form {
   width: 50%;
-  padding: 0.5rem;
+  padding: 1rem;
   align-self: center;
+  background-color: var(--ColorDesctacar);
+  border: none;
+  color: white;
+  font-weight: 800;
+  border-radius: 10px;
 }
 .main-nfts-content {
   width: 80%;
   height: 100%;
 }
 .right-side-management {
-  width: 20%;
+  width: 35%;
   border-radius: 15px;
   text-align: center;
-  padding: 1rem;
   margin-left: 1rem;
-  background-color: white;
 }
 .edit-form {
-  height: 100%;
+  height: 95%;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  padding: 10px 0;
   justify-content: space-around;
   width: 100%;
+  background-color: #191919;
+  border-radius: 20px 0;
+  color: white;
+}
+.edit-form h2{
+  height: 10%;
+  width: 90%;
+  margin-bottom: 0.7em;
+  display: flex;
+  align-items: center;
+  font-weight: 900;
+  font-size: 1.5em;
+  justify-content: space-evenly;
 }
 .nft-form {
   display: flex;
   flex-direction: column;
   overflow-y: auto;
   height: 100%;
+  width: 90%;
 }
 .abilities-label {
   display: flex;
@@ -1854,22 +1767,33 @@ img {
 .nft-form input {
   padding: 0.5rem;
   font-size: 1rem;
+  margin-bottom: 0.7em;
+  border: none;
+  border-radius: 10px 0;
+  color: white;
+  background-color: rgba(255, 255, 255, 0.034);
 }
 .nfts-search-title {
   display: flex;
-  height: 20%;
-  padding: 1rem;
+  height: 15%;
   width: 100%;
+  align-items: center;
 }
 .nfts-search-title h2 {
   width: 75%;
+  font-weight: 900;
+  font-size: 1.5em;
   color: white;
-  letter-spacing: 1.5rem;
-  word-spacing: 1rem;
+  display: flex;
+  align-items: center;
 }
 .nfts-search-title input {
-  height: 40px;
+  height: 60%;
+  border: none;
+  border-radius: 20px 0 20px 0;
+  color: white;
   padding: 0.2rem;
+  background-color: rgba(255, 255, 255, 0.034);
 }
 .nfts-container {
   display: flex;
@@ -1878,12 +1802,13 @@ img {
   padding: 1rem;
   width: 100%;
   overflow: auto;
+  justify-content: space-around;
 }
 
 .cardy {
   height: 100%;
-  width: 28%;
-  margin: 0.7rem 1rem;
+  width: 45%;
+  margin-bottom: 0.7em;
   background-position: center;
   background-size: cover;
   background-color: #1b2845;
@@ -1910,8 +1835,13 @@ img {
 }
 .management-actions button {
   cursor: pointer;
-  width: 30%;
+  width: 40%;
   margin-right: 0.5rem;
+  border: none;
+  color: white;
+  font-size: 0.9em;
+  border-radius: 10px;
+  background-color: var(--ColorDesctacar);
 }
 .management::-webkit-scrollbar-thumb {
   background-color: #b903b0;
@@ -1943,13 +1873,28 @@ img {
 }
 /* END NFTS MANAGEMENT */
 
-/* USERS MANAGEMENT */
-
-.users-management {
+/* OFFERS MANAGEMENT */
+.offers-management {
+  display: flex;
+  width: 100%;
+  margin-bottom: 5rem;
   height: 100%;
 }
-
-/* END USERS MANAGEMENT */
+.admin-offer-card {
+  height: 90%;
+  width: 22.5%;
+  margin: 0.7rem 1rem;
+  background-position: center;
+  background-size: cover;
+  background-color: #1b2845;
+  padding: 1rem;
+  border-radius: 15px;
+}
+.main-offers-content {
+  height: 100%;
+  width: 100%;
+}
+/*END OFFERS MANAGEMENT  */
 
 /* GRAPH */
 .tooltip {
@@ -1975,58 +1920,67 @@ img {
 /* END GRAPH */
 /* **advanages/home**: */
 
+.contenedor-about-advantages{
+  width: 100%;
+  height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .contenedor-cards-advantages-home {
   background-color: rgba(255, 0, 0, 0);
   display: flex;
   flex-direction: row;
-  width: 80%;
-  height: 53%;
+  width: 100%;
+  height: 73%;
   justify-content: space-evenly;
   align-items: center;
 }
 
 .card-info-advantages-home {
-  background-color: rgba(0, 128, 0, 0.308);
+  background-color: rgba(255, 255, 255, 0.034) ;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: 0.6rem;
-  padding: 0.6rem;
-  min-height: 75%;
-  max-height: 75%;
-  min-width: 20%;
-  max-width: 20%;
+  margin: 0.5rem;
+  padding: 10px;
   width: 35%;
-  backdrop-filter: blur(10px);
-  backdrop-filter: opacity(20%);
-  border: solid 1px green;
+  height: 80%;
   border-radius: 12px;
-  box-shadow: 8px 5px 30px #96faaf4b;
+}
+.card-info-advantages-home h3{
+  height: 13%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 }
 .card-info-advantages-home p {
   text-align: center;
   background-color: rgba(255, 192, 203, 0);
   padding: 0.5rem;
   margin: 0.5rem;
+  height: 40%;
+  text-align: center;
+  font-weight: 300;
 }
 .card-info-advantages-home span {
-  color: rgb(143, 175, 144);
+  color: var(--ColorButton);
+  font-weight: 800;
 }
 
 .card-advantages-icon {
-  background-color: rgba(36, 102, 6, 0.555);
+  background-color: rgba(93, 32, 70, 0.459);
   border-radius: 50%;
-  height: 85px;
-  width: 85px;
+  height: 65px;
+  width: 65px;
   display: flex;
   justify-content: center;
   align-items: center;
   margin: 0.6rem;
   padding: 0.6rem;
-  backdrop-filter: blur(10px);
-  backdrop-filter: opacity(20%);
-  border: solid 1px green;
   margin-top: 0;
 }
 /* **topCollection/home**: */
@@ -2035,7 +1989,7 @@ img {
   background-color: rgba(243, 8, 8, 0);
   display: flex;
   flex-direction: row;
-  width: 80%;
+  width: 100%;
   height: 80%;
   justify-content: space-evenly;
   align-items: center;
@@ -2064,36 +2018,26 @@ img {
 }
 .card-info-topCollection-home p {
   text-align: center;
-  background-color: rgba(255, 192, 203, 0);
-  padding: 0.5rem;
   margin: 0.5rem;
+  font-size: 1em;
+  color: var(--color-black-3);
 }
 .card-info-topCollection-home span {
   color: rgb(143, 175, 144);
 }
-
 .card-topCollection-image {
-  background-color: rgba(40, 95, 14, 0);
   border-radius: 20px 0 20px 0;
   height: 70%;
-  width: 80%;
+  width: 95%;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 0.4rem;
-  padding: 0.6rem;
-  backdrop-filter: blur(10px);
-  backdrop-filter: opacity(20%);
-  border: solid 1.5px rgb(255, 7, 7);
   margin-top: 0;
-  box-shadow: 8px 5px 30px #fd3e048a;
   background-position: center;
   background-size: cover;
+  border: 3px solid var(--ColorButton);
 }
-/* .card-topCollection-image img{
-  max-width: 100%;
-  max-height: 100%;
-} */
+
 .favClass {
   height: 500px;
   width: 30%;
@@ -2105,3 +2049,1145 @@ img {
   justify-content: center;
   flex-wrap: wrap;
 }
+
+/* Shopping */
+
+.contenedor-total-shopping{
+  width:100%;
+  min-height: 90vh;
+  height: 90vh;
+  display: flex;
+  justify-content: space-between;
+}
+.contenedor-left-shopping{
+  width: 63% ;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.contenedor-rigth-shopping{
+  width: 35%;
+  height: 100% - 30px;
+  background-color: #191919;
+  margin-top: 30px;
+  padding: 0 20px 0 20px;
+  display: flex;
+  flex-direction: column;
+}
+.contenedor-left-shopping .shippoing-left-divone{
+  width: 100%;
+  height: 10%;
+  background-color: #191919;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: justify;
+  color: white;
+  padding: 0 20px 0 20px;
+  margin-top: 30px;
+}
+.contenedor-left-shopping .shippoing-left-divtwo{
+  width: 100%;
+  height: 10%;
+  background-color: #191919;
+  display: flex;
+  align-items: center;
+  text-align: justify;
+  color: var(--ColorPrimario);
+  font-size: 1.4em;
+  font-weight: 600;
+  padding: 0 20px 0 20px;
+  margin-top: 30px;
+}
+.contenedor-left-shopping .shippoing-left-divtree{
+  width: 100%;
+  flex-grow: 1;
+  background-color: #191919;
+  overflow-y: auto;
+  color: var(--ColorPrimario);
+  font-size: 1.4em;
+  font-weight: 600;
+  padding: 0 30px 0 30px;
+  margin-top: 30px;
+}
+.contenedor-left-shopping div:nth-child(3) .contenedor-nft-shopping{
+  position: relative;
+  display: flex;
+  height: 40%;
+  width: 100%;
+  border-radius: 20px 0 20px 0;
+  align-items: center;
+  justify-content: flex-start;
+  margin: 20px 0 20px 0;
+  padding: 0 10px 0 10px;
+}
+.delete-card-nft-shopping{
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  color: white;
+  font-size: 1.2em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.img-nft-shopping{
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  max-width: 40%;
+  max-height: 80%;
+  height: 80%;
+  width: 40%;
+  border-radius: 20px 0 20px 0;
+  margin: 0;
+}
+.contenedor-nft-shopping .contenedor-rarezas-shppoing{
+  width: 50%;
+  color: white;
+  font-size: 1em;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  font-weight: 600;
+  height: 80%;
+  margin: 0;
+}
+.contenedor-nft-shopping .contenedor-rarezas-shppoing h2{
+  font-size: 1em;
+  font-weight: 600 ;
+}
+
+.contenedor-nft-shopping div:nth-child(3){
+width: 10%;
+}
+
+.contenedor-rigth-shopping div:nth-child(1){
+  width: 100%;
+  height: 10%;
+  display: flex;
+  align-items: center;
+  color: white;
+}
+.contenedor-rigth-shopping div:nth-child(2){
+  width: 100%;
+  height: 3px;
+  background-color: rgb(20, 20, 20);
+}
+.contenedor-rigth-shopping div:nth-child(3){
+  width: 100%;
+  height: 12%;
+  display: flex;
+  align-items: center;
+  color: white;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+.contenedor-rigth-shopping div:nth-child(3) p {
+  width: 90%;
+}
+.contenedor-rigth-shopping div:nth-child(3) svg{
+  width: 10%;
+  color: var(--ColorPrimario);
+  font-size: 1.5em;
+  cursor: pointer;
+}
+.contenedor-rigth-shopping div:nth-child(3) input {
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.034);
+  border: none;
+  height: 2em;
+  color: white;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.contenedor-rigth-shopping div:nth-child(4){
+  width: 100%;
+  height: 3px;
+  background-color: rgb(20, 20, 20);
+}
+.contenedor-rigth-shopping div:nth-child(5){
+  width: 100%;
+  height: 7%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: white;
+}
+.contenedor-rigth-shopping div:nth-child(5) p:nth-child(2){
+  color: var(--ColorPrimario);
+  font-weight: 700;
+}
+.contenedor-rigth-shopping div:nth-child(6){
+  width: 100%;
+  height: 3px;
+  background-color: rgb(20, 20, 20);
+}
+.contenedor-rigth-shopping div:nth-child(7){
+  width: 100%;
+  height: 20%;
+  color: white;
+  display: flex;
+  align-items: center;
+  font-size: 1.22em;
+  text-align: justify;
+}
+.contenedor-rigth-shopping div:nth-child(8){
+  width: 100%;
+  height: 3px;
+  background-color: rgb(20, 20, 20);
+}
+.contenedor-rigth-shopping div:nth-child(9){
+  width: 100%;
+  height: 10%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color:white;
+  font-size: 1.25em;
+  font-weight: 900;
+  letter-spacing: 2px;
+}
+.contenedor-rigth-shopping div:nth-child(9) p:nth-child(2){
+  color: var(--ColorPrimario);
+}
+.contenedor-rigth-shopping div:nth-child(10){
+  width: 100%;
+  height: 3px;
+  background-color: rgb(20, 20, 20);
+}
+.contenedor-rigth-shopping div:nth-child(11){
+  flex-grow: 1;
+  margin-bottom: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25em;
+  font-weight: 700;
+}
+.contenedor-rigth-shopping div:nth-child(11) p{
+  margin: 5px 0 5px 0;
+}
+
+.contenedor-rigth-shopping div:nth-child(11) p:nth-child(1){
+  width: 100%;
+  height: 15%;
+  background-color: var(--ColorPrimario);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 500ms;
+  border-radius: 10px;
+}
+.contenedor-rigth-shopping div:nth-child(11) p:nth-child(1):hover{
+  background-color: var(--ColorPrimarioFuerte);
+}
+.contenedor-rigth-shopping div:nth-child(11) p:nth-child(2){
+  width: 100%;
+  height: 15%;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content:center;
+}
+.contenedor-rigth-shopping div:nth-child(11) p:nth-child(3){
+  width: 100%;
+  height: 15%;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border-radius: 10px;
+}
+.paypal-button-store{
+  
+}
+
+/* Finish Shopping */
+/* USER TAB*/
+
+.user-cont {
+  display: flex;
+  justify-content: center;
+  overflow: auto;
+  height: 100%;
+}
+
+.user-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  background-color: var(--color-black-2);
+  height: 100vh;
+  width: min(90%, 80vw);
+  border-radius: 20px;
+}
+
+.user-container div h1 {
+  color: var(--ColorQuinto);
+  font-size: min(10vw, 20vw);
+}
+
+.user-header-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+  padding: 2rem;
+}
+
+.user-info-container {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  color: white; 
+  height: 40vh;
+}
+
+.user-info-container div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 40%;
+}
+
+.user-info-container div div {
+  overflow-x: auto;  
+  width: 70%;
+}
+
+.user-info-container div div::webkit-scrollbar {
+  display: none;
+}
+
+.user-img {
+  display: block;
+  width: max(150px, 250px);
+  height: max(150px, 250px);
+  background-size: cover;
+  background-repeat: no-repeat;
+  border-radius: 50%;
+}
+.user-info-label {
+  padding: 1rem;
+  border: 3px solid white;
+  border-radius: 20px;
+  width: 70%;
+}
+
+.edit-user {
+  color:white;
+  border: 2px solid white;
+  border-radius: .5rem;
+  padding: .1rem;
+  text-align: center;
+  margin:.3rem;
+  background: none;
+}
+
+.edit-user:hover {
+  background-color: white;
+  color:var(--ColorPrimarioFuerte);
+  cursor: pointer;
+}
+/* MARKETPLACE */
+.contenedor-todo-market{
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.marketplace-container {
+  flex-grow:1;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+.filter-containter-total-market{
+  width: 7%;
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: space-between;
+  transition: ease-in-out 1000ms;
+}
+.container-filter-market{
+  width: 70%;
+  height: 100%;
+  background-color: #191919;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  color: white;
+  border-radius: 0 30px 30px 0;
+  transition: ease-in-out 1000ms;
+}
+.container-filter-market span {
+  color: var(--ColorButton);
+  font-weight: 800;
+}
+.filter-view-activer-market-total-container{
+  width: 30%;
+  transition: ease-in-out 1000ms;
+}
+.filtros-ocultos-market{
+  width: 0;
+  height: 0;
+  opacity: 0;
+  transform:translateX(-200px) ;
+}
+.filter-view-activer{
+  opacity: 1;
+  width: 80%;
+  transition: ease-in-out 1200ms;
+}
+.filter-view-activer-market{
+  width: 87%;
+  transition: ease-in-out 1000ms;
+  justify-content: flex-start;
+}
+.filter-view-activer-market span{
+  opacity: 0;
+  transition: ease-in-out 1000ms;
+  display: none;
+}
+.input-filter-market{
+  margin: 20px 0 10px;
+  height: 40px;
+  width: 100%;
+  border-radius: 0 20px 0 20px;
+  border: none;
+  color: white;
+  background-color: rgba(255, 255, 255, 0.034);
+}
+.checkbox-art{
+  width: 100%;
+  height: 40px;
+  display: flex;
+  align-items: center;
+}
+.checkbox-art input{
+  display: none;
+}
+.checkbox-art label{
+  width: 30px;
+  height: 30px;
+  background-color: white;
+  display: flex;
+  border-radius: 10px 0 10px 0;
+  margin-right: 10px;
+}
+.checkbox-art .select-art-checked{
+  background-color: var(--ColorPrimario);
+}
+.checkbox-art label svg{
+  color: var(--ColorDesctacar);
+  height: 100%;
+  width: 100%;
+}
+.checkbox-art .select-art-checked svg{
+  color: white;
+}
+.checkbox-cyberpunk{
+  width: 100%;
+  height: 40px;
+  display: flex;
+  align-items: center;
+}
+.checkbox-cyberpunk input{
+  display: none;
+}
+.checkbox-cyberpunk label{
+  width: 30px;
+  height: 30px;
+  background-color: white;
+  display: flex;
+  border-radius: 10px 0 10px 0;
+  margin-right: 10px;
+}
+.checkbox-cyberpunk .select-cyber-checked{
+  background-color: var(--ColorPrimario);
+}
+.checkbox-cyberpunk label svg{
+  color: var(--ColorDesctacar);
+  height: 100%;
+  width: 100%;
+}
+.checkbox-cyberpunk .select-cyber-checked svg{
+  color: white;
+}
+.checkbox-gamer{
+  width: 100%;
+  height: 40px;
+  display: flex;
+  align-items: center;
+}
+.checkbox-gamer input{
+  display: none;
+}
+.checkbox-gamer label{
+  width: 30px;
+  height: 30px;
+  background-color: white;
+  display: flex;
+  border-radius: 10px 0 10px 0;
+  margin-right: 10px;
+}
+.checkbox-gamer .select-gamer-checked{
+  background-color: var(--ColorPrimario);
+}
+.checkbox-gamer label svg{
+  color: var(--ColorDesctacar);
+  height: 100%;
+  width: 100%;
+}
+.checkbox-gamer .select-gamer-checked svg{
+  color: white;
+}
+.select-market-place{
+  margin: 20px 0 10px;
+  height: 40px;
+  width: 100%;
+  border-radius: 0 20px 0 20px;
+  border: none;
+  color: white;
+  background-color: rgba(255, 255, 255, 0.034);
+}
+.select-market-place option{
+  background-color: rgb(44, 44, 44);
+  border: none;
+}
+.arrow-cierre-filter-market{
+  width: 40px;
+  height: 40px;
+  color: var(--ColorButton);
+  animation: arrow 2s infinite;
+}
+@keyframes arrow {
+  0%{
+    transform: translateX(0);
+  }
+  75%{
+    transform: translateX(10px);
+  }
+  100%{
+    transform: translateX(0);
+  }
+}
+.section-mid-martket-container-total{
+  width: 65%;
+  height: 93vh;
+  overflow-y: scroll;
+  padding-top: 20px;
+}
+.container-nft-ofert-hero{
+  width: 100%;
+  height: 400px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 20px;
+  background-color: white;
+  padding: 0 3%;
+  margin-top: 30px;
+}
+.img-nft-container-ofert-hero{
+  width: 45%;
+  height: 90%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-black-2);
+  border-radius: 10px;
+}
+.img-nft-container-ofert-hero img{
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+}
+.contenedor-nft-text-hero-ofert{
+  width: 51.5%;
+  height: 88%;
+  display: flex;
+  flex-direction: column;
+}
+.contenedor-nft-text-hero-ofert h2{
+  width: 100%;
+  height: 15%;
+  display: flex;
+  align-items: center;
+  font-weight: 800;
+  font-size: 2em;
+  letter-spacing: 2px;
+}
+.contenedor-nft-user-hero-ofert{
+  width: 100%;
+  height: 20%;
+  display: flex;
+  align-items: center;
+}
+.contenedor-nft-user-hero-ofert div:nth-child(1){
+  width: 60px;
+  height: 60px;
+  background: var(--color-black-2);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 10px;
+}
+.contenedor-nft-user-hero-ofert div:nth-child(1) img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+.contenedor-nft-user-hero-ofert div:nth-child(2){
+  height: 60%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+.contenedor-nft-user-hero-ofert div:nth-child(2) p:nth-child(1){
+  font-weight: 800;
+  font-size: 1.1em;
+  letter-spacing: 1px;
+}
+.contenedor-nft-user-hero-ofert div:nth-child(2) p:nth-child(2){
+  color: #404040;
+  font-weight: 700;
+}
+.price-container-nft-market-hero{
+  width: 100%;
+  height: 25%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.price-container-nft-market-hero p:nth-child(1){
+  font-size: 1em;
+  color: var(--color-black-2);
+  font-weight: 700;
+}
+.price-container-nft-market-hero p:nth-child(2){
+  width: 50%;
+  height: 50%;
+  display: flex;
+  align-items: center;
+  font-weight: 800;
+  font-size: 1.6em;
+  letter-spacing: 1.5px;
+}
+.contenedor-clases-nft-market-ofert{
+  width: 100%;
+  height: 20%;
+  display: flex;
+  align-items: center;
+}
+.clases-nft-market-ofert{
+  width: 35%;
+  height: 90%;
+  margin-right: 10px;
+  display: flex;
+  align-items: center;
+}
+.clases-nft-market-ofert div:nth-child(1){
+  height: 60px;
+  width: 60px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-black-2);
+  color: white;
+  margin-right: 5px;
+}
+.clases-nft-market-ofert div:nth-child(1) svg{
+  height: 60%;
+  width: 60%;
+}
+.clases-nft-market-ofert div:nth-child(2){
+  flex-grow: 1;
+}
+.clases-nft-market-ofert div:nth-child(2) p:nth-child(1){
+  color: var(--color-black-2);
+  font-weight: 700;
+}
+.clases-nft-market-ofert div:nth-child(2) p:nth-child(2){
+  font-weight: 900;
+  letter-spacing: 2px;
+  font-size: 1.1em;
+}
+.button-nft-market-ofert{
+  width: 100%;
+  height: 20%;
+  display: flex;
+  align-items: center;
+}
+.button-nft-market-ofert p {
+  height: 70%;
+  width: 45%;
+  background-color: var(--color-black-2);
+  border-radius: 10px;
+  color: white;
+  font-weight: 900;
+  font-size: 1.2em;
+  letter-spacing: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.container-nft-trading-action{
+  width: 100%;
+  flex-grow: 1;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding-bottom: 20px;
+}
+.container-nft-trading-action h2{
+  width: 100%;
+  height: 80px;
+  color: white;
+  display: flex;
+  align-items: center;
+}
+.card-container-offert-accept{
+  width: 48%;
+  height: 650px;
+  border-radius: 40px 0 40px 0;
+  background-color: var(--color-black-2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px 0;
+}
+.card-container-offert-img{
+  width: 95%;
+  height: 65%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--ColorFondo);
+  border-radius: 20px 0 20px 0;
+}
+.card-container-offert-img img{
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 20px 0 20px 0;
+}
+.card-container-offert-text{
+  flex-grow: 1;
+  width: 95%;
+  color: white;
+}
+.card-container-offert-text div:nth-child(1){
+  width: 100%;
+  height: 30%;
+  display: flex;
+  align-items: center;
+}
+.card-container-offert-text div:nth-child(1) img{
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: var(--ColorFondo);
+  object-fit: cover;
+}
+.card-container-offert-text div:nth-child(1) p{
+  color: rgb(109, 108, 108);
+  margin-left: 10px;
+  letter-spacing: 1.5px;
+  font-weight: 800;
+  font-size: 1.1em;
+}
+.card-container-offert-text p:nth-child(2){
+  width: 100%;
+  height: 20%;
+  display: flex;
+  align-items: center;
+  font-weight: 900;
+  font-size: 2em;
+  letter-spacing: 1px;
+}
+.card-container-offert-text p:nth-child(3){
+  width: 100%;
+  height: 20%;
+  display: flex;
+  align-items: center;
+  font-weight: 700;
+  font-size: 1.1em;
+  letter-spacing: 1.2px;
+}
+.card-container-offert-text div:nth-child(4){
+  width: 100%;
+  height: 30%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+.card-container-offert-text div:nth-child(4) p{
+  width: 40%;
+  height: 90%;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 20px 0 20px 0;
+  font-weight: 900;
+  font-size: 1.3em;
+  letter-spacing: 1.5px;
+  color: black;
+}
+.recent-creator-container-offerts{
+  width: 28%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  transition: ease-in-out 1000ms;
+}
+.recent-activity-offerts{
+  width: 90%;
+  height: 60%;
+  padding-top: 30px;
+}
+.creator-nft-offerts{
+  width: 90%;
+  height: 40%;
+  padding-bottom: 30px;
+  color: white;
+}
+.title-recent-activity{
+  width: 100%;
+  height: 15%;
+  display: flex;
+  align-items: center;
+  color: white;
+  font-size: 2em;
+}
+.contenedor-recent-activity-nft{
+  width: 100%;
+  height: 20%;
+  display: flex;
+  align-items: center;
+  transform: translateX(0);
+  transition: ease-in-out 800ms;
+}
+.contenedor-recent-activity-nft:hover{
+  background: var(--color-black-2);
+  transition: all 800ms;
+}
+.contenedor-recent-activity-nft div:nth-child(1){
+  width: 80px;
+  height: 80px;
+  background-color: var(--ColorContenedores);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+}
+.contenedor-recent-activity-nft div:nth-child(1) img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+}
+.contenedor-recent-activity-nft div:nth-child(2){
+  flex-grow: 1;
+  height: 80px;
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: column;
+  margin-left: 10px;
+  color: white;
+  font-weight: 800;
+  font-size: 1.2em;
+  letter-spacing: 1.5px;
+}
+.contenedor-recent-activity-nft div:nth-child(2) p {
+  font-weight: 600;
+  color: rgb(155, 155, 155);
+}
+.filteractive-container-none{
+  width: 0;
+  opacity: 0;
+  position: fixed;
+  top: 0;
+  right: 0;
+  transition: ease-in-out 1000ms;
+  transform: translateX(200px);
+}
+.creator-nft-offerts h2{
+  width: 100%;
+  height: 15%;
+  display: flex;
+  align-items: center;
+  font-size: 2em;
+  font-weight: 900;
+}
+.creator-nft-offerts .creators-content-market{
+  width: 100%;
+  height: 30%;
+  display: flex;
+  align-items:center;
+}
+.creator-nft-offerts .creators-content-market p{
+  width: 15%;
+  height: 90%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5em;
+  font-weight: 900;
+}
+.creator-nft-offerts .creators-content-market div:nth-child(2){
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.creator-nft-offerts .creators-content-market div:nth-child(2) img{
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+.creator-nft-offerts .creators-content-market div:nth-child(3){
+  flex-grow: 1;
+  height: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  margin-left: 10px;
+}
+.creator-nft-offerts .creators-content-market div:nth-child(3) p{
+  width: 100%;
+  justify-content: flex-start;
+  align-items: flex-start;
+  height: auto;
+  font-weight: 600;
+  font-size: 1.2em;
+  color: rgb(184, 184, 184);
+}
+.creator-nft-offerts .creators-content-market div:nth-child(3) h3{
+  font-weight: 800;
+  font-size: 1.4em;
+  letter-spacing: 1.5px;
+}
+
+/* END MARKETPLACE */
+.contenedor-creators{
+  width: 100%;
+  height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+} 
+.position-cienporciento{
+  width:100vw;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.322);
+  z-index:1;
+  display:flex;
+  align-items: center;
+  justify-content: center;
+}
+.modal-market-place-pagos{
+  z-index:9999;
+  width: 60vw;
+  height: 70vh;
+  background-color: white;
+  border-radius: 20px;
+}
+
+/* Wallet */
+
+.no-estas-en-store{
+  height: auto;
+}
+
+.container-wallet-profile-total{
+  width: calc(100% -70px);
+  height: 90%;
+  padding: 0 20px;
+  overflow: auto;
+}
+.container-wallet-profile-total h2{
+  color: white;
+  font-weight: 900;
+  font-size: 1.5em;
+  height: 15%;
+  display: flex;
+  align-items: center;
+}
+
+
+
+
+
+
+
+
+
+
+
+/* Responsive */
+
+/* Width */
+@media (max-width: 930px) {
+  .total-about div:nth-child(2) h3{
+    width: 100%;
+  }
+  .contenedor-about-advantages{
+    height: 85vh;
+  }
+  .card-info-topCollection-home{
+    padding: 0;
+  }
+  .contenedor-cards-topCollection-home{
+    height: 90%;
+  }
+}
+@media (max-width: 830px){
+  .card-info-advantages-home p{
+    flex-grow:1;
+  }
+}
+@media (max-width: 803px){
+  .contenedor-about-advantages{
+    height: 100vh;
+  }
+  .contenedor-cards-advantages-home{
+    height: 83%;
+    flex-wrap: wrap;
+  }
+  .card-info-advantages-home{
+    height: 48% !important;
+    width: 48%;
+    margin: 0;
+  }
+}
+@media (max-width: 787px){
+  .texto-nft-home h2{
+    width: 70%;
+  }
+  .contenedor-about-advantages{
+    margin-top: 30px;
+  }
+}
+@media (max-width: 687px){
+  .contenedor-home{
+    flex-wrap: wrap;
+  }
+  .contenedor-text-home{
+    width: 80%;
+    padding-top: 30px;
+  }
+  .contenedor-nft{
+    display: none;
+  }
+}
+@media (max-width: 662px){
+  .total-about div:nth-child(2){
+    width: 50%;
+    height: 100%;
+  }
+  .contenedor-ocho-about h2{
+    text-align: center;
+  }
+}
+@media (max-width: 600px){
+  .total-about{
+    flex-wrap: wrap;
+  }
+  .total-about div{
+    width: 100%;
+    height: 45%;
+  }
+  .total-about div div:nth-child(1){
+    width:100%;
+    height: 80%;
+    background-image: url("./assets/aboutreves.jpeg");
+  }
+  .total-about div div:nth-child(2){
+    height: 170px !important;
+    width: 170px !important;
+    top: 30%;
+    right: 33%;
+  }
+  .contenedor-about{
+    height: 130vh;
+  }
+  .total-about div:nth-child(2){
+    width: 100%;
+    height: 50%;
+  }
+  .contenedor-about-advantages{
+    margin-top: 0;
+  }
+  .contenedor-ocho-about{
+    height: 95%;
+  }
+}
+
+
+
+
+
+/* Height */
+@media (max-height: 700px){
+  .background-iluminacion{
+    height: 80vh;
+  }
+  .contenedor-home{
+    height: 100%;
+  }
+  .contenedor-nft{
+    height: 95%;
+  }
+  .contenedor-text-home{
+    height: 80%;
+  }
+  .total-about div:nth-child(2) h3{
+    font-size: 2em;
+  }
+  .total-about div:nth-child(2) p{
+    font-size: 1em;
+  }
+  .card-info-advantages-home{
+    height: 90%;
+  }
+  .card-info-topCollection-home{
+    height: 30%;
+    font-size: 0.8em;
+  }
+  .card-info-topCollection-home p {
+    margin: 0;
+  }
+  .card-info-advantages-home p{
+    flex-grow:1;
+  }
+  .total-about div div:nth-child(2){
+    height: 200px;
+    width: 200px;
+  }
+}
+
+
+
