@@ -51,7 +51,10 @@ const CardNFTNative = () =>{   return (
                     <Text style={CardNFTNativeStyle.text}>Type:</Text>
                     <Text style={CardNFTNativeStyle.text}>price:</Text>
             </View>
-            <Button style={CardNFTNativeStyle.button} title="Add to cart" />
+            <View style={CardNFTNativeStyle.contenedorButtons}>
+                <Button style={CardNFTNativeStyle.button} title="Add to favourites 🤍" />
+                <Button style={CardNFTNativeStyle.button} title="Add to cart" />
+            </View>
         </View>
 )}
 //         <view style={`contenedor-card-nft ${favClass}`} style={{border: `6px solid ${color}`}} >
@@ -152,6 +155,16 @@ const CardNFTNativeStyle = StyleSheet.create({
         alignSelf: 'center',
         
     },
+    contenedorButtons:{
+        width:'95%',
+        padding:'0.5rem',
+        display: 'flex',
+        flexDirection:'row',
+        justifyContent:'space-around',
+        // backgroundColor:'red',
+        alignSelf: 'center',
+        
+    },
     text:{
         color:'white',
         alignSelf: 'center',
@@ -163,10 +176,11 @@ const CardNFTNativeStyle = StyleSheet.create({
         alignSelf: 'center',
     },
     button:{
-        width: '200px',
-        height: '200px',
-        alignSelf: 'center',
-        backgroundColor:'red',
+        padding: '0.5rem',
+        // width: '200px',
+    //     height: '200px',
+    //     alignSelf: 'center',
+    //     backgroundColor:'red',
     },
 })
 
