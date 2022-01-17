@@ -1,11 +1,12 @@
 import React, { useState, useRef, useEffect } from 'react'
 import OfferCard from './OfferCard'
 import { MdOutlineDesignServices, MdAutoFixNormal, MdClass } from "react-icons/md"
-import { GiSteampunkGoggles } from "react-icons/gi"
+import { GiPorcupinefish, GiSteampunkGoggles } from "react-icons/gi"
 import { BiGame, BiArrowToLeft, BiArrowFromLeft } from "react-icons/bi"
 import { FaEthereum } from "react-icons/fa"
 import { connect } from 'react-redux'
 import offerActions from '../../redux/actions/offerActions'
+import transactionActions from '../../redux/actions/transactionActions'
 
 const recentActivity = [
     {
@@ -75,13 +76,17 @@ const topCreators = [
 ]
 let ordenado = topCreators.sort((a, b) => b.pays - a.pays)
 const Market = (props) => {
-    console.log(ordenado)
     const [filterView, setFilterView] = useState(false)
     const [select, setSelect] = useState({ art: false, cyber: false, gamer: false })
     const [view, setView] = useState({})
     useEffect(() => {
         props.getOffers()
+        props.getRecents()
+        props.getTopCreators()
     }, [])
+
+    console.log(props.recents);
+    console.log(props.topCreators);
     useEffect(() => {
         let aleatorio = Math.random() * (props.auxOffertsDos.length)
         aleatorio = Math.floor(aleatorio)
@@ -120,8 +125,6 @@ const Market = (props) => {
         }
         print ? props.filter(print) : props.getOffers()
     }
-
-    console.log(view)
 
     return (
         <div className='contenedor-todo-market'>
@@ -214,16 +217,16 @@ const Market = (props) => {
                     <div className='recent-activity-offerts'>
                         <h2 className='title-recent-activity'>Recent Activity</h2>
                         {
-                            recentOrdenado.map((element, i) => {
+                            props.recents.length > 0 && props.recents.map((element, i) => {
                                 return (
                                     i < 4 &&
                                     <div className='contenedor-recent-activity-nft' key={i}>
                                         <div>
-                                            <img src={element.img} alt={element.name} />
+                                            <img src={element.transaction[0].img} alt={element.transaction[0].name} />
                                         </div>
                                         <div>
-                                            <h3>{element.name}</h3>
-                                            <p>{element.paymentRecived}ETH * {element.day}</p>
+                                            <h3>{element.transaction[0].name}</h3>
+                                            <p>{element.mount}ETH * {element.date}</p>
                                         </div>
                                     </div>
                                 )
@@ -233,15 +236,15 @@ const Market = (props) => {
                     <div className='creator-nft-offerts'>
                         <h2>Top Creators</h2>
                         {
-                            ordenado.map((e, i) => {
+                            props.topCreators.map((e, i) => {
                                 return (
                                     i < 3 &&
                                     <div key={i} className='creators-content-market'>
                                         <p>{1 + i++}</p>
-                                        <div><img src={e.userImg} /></div>
+                                        <div><img src={e.transaction[0].userImg} /></div>
                                         <div>
-                                            <h3>{e.name}</h3>
-                                            <p>+ {e.pays} ETH</p>
+                                            <h3>{e.transaction[0].name}</h3>
+                                            <p>+ {e.mount} ETH</p>
                                         </div>
                                     </div>
                                 )
@@ -256,14 +259,18 @@ const Market = (props) => {
 
 const mapDispatchToProps = {
     getOffers: offerActions.getOffers,
-    filter: offerActions.filter
+    filter: offerActions.filter,
+    getRecents: transactionActions.getRecents,
+    getTopCreators: transactionActions.getMostCreators
 }
 
 const mapStateToProps = (state) => ({
     arrayOffers: state.offerReducers.offers,
     auxOffers: state.offerReducers.auxOffers,
     auxOffertsDos: state.offerReducers.auxOffertsDos,
-    user: state.userReducers.user
+    user: state.userReducers.user,
+    recents: state.transactionReducers.recents,
+    topCreators: state.transactionReducers.topCreators
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Market)

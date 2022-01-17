@@ -1,7 +1,7 @@
 const initialState = {
     recents: [],
     topCreators: [],
-    transactions: []
+    transactions: [] // por el momento no se toca
 }
 
 const transactionReducers = (state = initialState, action) => {
@@ -15,10 +15,9 @@ const transactionReducers = (state = initialState, action) => {
         case 'GET_RECENTS':
             return {
                 ...state,
-                offers: [...state.offers, action.payload],
-                auxOffers: [...state.offers, action.payload]
+                recents: action.payload
             }
-        case 'GET_CREATORS':
+        case 'GET_TOP_CREATOR':
             return {
                 ...state,
                 topCreators: action.payload
