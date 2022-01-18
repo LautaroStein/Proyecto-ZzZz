@@ -1,8 +1,9 @@
-// import React,{ useState,useEffect } from "react"
+import React,{ useState,useEffect } from "react"
 import { View, Text, Button, StyleSheet, Image } from 'react-native'
-// // import userActions from "../redux/actions/userActions";
-// // import nftActions from "../redux/actions/nftActions";
-// // import { connect } from "react-redux";
+import userActions from "../redux/actions/userActions";
+import nftActions from "../redux/actions/nftActions";
+// import cartActions from "../redux/actions/cartActions";
+import { connect } from "react-redux";
 // import { BsFillBookmarkHeartFill} from "react-icons/bs"
 // // import cartActions from "../redux/actions/cartActions";
 // // import { toast } from 'react-toastify';
@@ -40,16 +41,28 @@ import { View, Text, Button, StyleSheet, Image } from 'react-native'
 //     }
 //   }
 
-const CardNFTNative = () =>{   return (
+const CardNFTNative = ({name, type, price, img, clase, favs, id, favorite, userId, nft, favClass, addNftToCart, nfts, cart, store, publicos, propiedad, updateNft, index}) =>{  
+    
+
+const [color, setColor] = useState("")
+const [backColor, setBackColor] = useState("")
+
+useEffect(() => {
+    clase === "Common" ? setColor("rgba( 0, 232, 255, 0.25 )") : clase === "Rare" ? setColor("rgba( 0, 160, 42, 0.55 )") : setColor("rgba( 143, 7, 136, 0.55 )")
+    clase === "Common" ? setBackColor("rgb(0, 234, 255)") : clase === "Rare" ? setBackColor("rgb(0, 160, 43)") : setBackColor("rgb(143, 7, 136)")
+}, [clase])
+    
+    
+    return (
         <View style={CardNFTNativeStyle.contenedor}>
             <View style={CardNFTNativeStyle.contenedorTitulo}>
-                <Text style={CardNFTNativeStyle.text}>CardNFTNative</Text>
+                <Text style={CardNFTNativeStyle.text}>{name}</Text>
             </View>
-            <Image style={CardNFTNativeStyle.imagenNft} source={require('../../assets/nftHardcore.gif')}  />
+            <Image style={CardNFTNativeStyle.imagenNft} source={{uri:{img}}}  key={index}/>
             <View style={CardNFTNativeStyle.contenedorDatos}>
-                    <Text style={CardNFTNativeStyle.text}>Class:</Text>
-                    <Text style={CardNFTNativeStyle.text}>Type:</Text>
-                    <Text style={CardNFTNativeStyle.text}>price:</Text>
+                    <Text style={CardNFTNativeStyle.text}>Class:{clase}</Text>
+                    <Text style={CardNFTNativeStyle.text}>Type:{type}</Text>
+                    <Text style={CardNFTNativeStyle.text}>price:{price}</Text>
             </View>
             <View style={CardNFTNativeStyle.contenedorButtons}>
                 <Button style={CardNFTNativeStyle.button} title="Add to favourites 🤍" />
@@ -185,6 +198,18 @@ const CardNFTNativeStyle = StyleSheet.create({
 })
 
 
-export default CardNFTNative
+const mapStateToProps = (state) => {
+    return {
+      nfts : state.nftReducers.nfts,
+    //   cart : state.cartReducers.cart
+    }
+  }
+  const mapDispatchToProps = {
+    favs : userActions.favs,
+    nft : nftActions.getNfts,
+    // addNftToCart : cartActions.addNftToCart
+  }
+  
+  export default connect(mapStateToProps, mapDispatchToProps)(CardNFTNative);
   
 
