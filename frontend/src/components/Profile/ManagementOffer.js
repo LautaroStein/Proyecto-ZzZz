@@ -6,7 +6,6 @@ import { useNavigate } from 'react-router-dom'
 import Swal from 'sweetalert2'
 
 const CreateOffer = (props) => {
-    const navigate = useNavigate()
     const [edit, setEdit] = useState(false)
     const [features, setFeatures] = useState(false)
     const [onCardHover, setOnCardHover] = useState({ bool: false, id: '' })

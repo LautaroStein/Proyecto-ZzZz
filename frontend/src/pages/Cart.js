@@ -24,7 +24,6 @@ const Cart = ({ cart, clearCartAll, deleteOneNFT, setTotalPrice }) => {
         return subTotal = subTotal + item.price
     })
 
-    console.log(subTotal)
 
     const discountes = () => {
         if (descounts.some(item => item === discount)) {

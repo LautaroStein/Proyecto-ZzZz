@@ -58,7 +58,7 @@ const OfferCard = (props) => {
                         </div>
                         <div className='market-modal-right-column'>
                             <div className='market-modal-payments'>
-                                <PayPal mount={price} active='offer' seller={{ userId: user._id, offerId: _id }} />
+                                <PayPal mount={price} active='offer' seller={{ userId: user._id, offerId: _id, name }} />
                             </div>
 
                         </div>

@@ -21,6 +21,8 @@ const Game = (props) => {
     const animated = useRef()
     const animatedBoot = useRef()
     const [time, setTime] = useState(false)
+
+
     useEffect(() => {
         const pickRandomStage = Math.floor((Math.random() * (4) + 1))
         const arrayEscenarios = ["/assets/stage-1.jfif", "/assets/stage-2.jpg", "/assets/stage-3.jpg", "/assets/stage-4.png", "/assets/stage-5.jpg"]
@@ -71,6 +73,7 @@ const Game = (props) => {
         const damage = Math.floor(attack.damage + ((Math.random() * ((bootNft.features.hp / 2) - 1)) + 1))
         bootNft.features.hp -= damage
         setStoryteller(`The NFT ${userNft.name} attacks with ${attack.name} and his damaga was ${damage}`)
+        setUserAttacked(true)
 
         // si cuando ataca la vida del bootNft es menor o igual que cero , el usuario gana
         if (bootNft.features.hp <= 0) {
@@ -88,6 +91,8 @@ const Game = (props) => {
                     initialState()
                 } else if (result.isDenied) {
                     navigate('/')
+                    initialState()
+                } else {
                     initialState()
                 }
 
@@ -138,6 +143,8 @@ const Game = (props) => {
                     } else if (result.isDenied) {
                         navigate('/')
                         initialState()
+                    } else {
+                        initialState()
                     }
                 })
             } else {
@@ -149,7 +156,6 @@ const Game = (props) => {
         }
     }, [isUserTurn])// eslint-disable-line react-hooks/exhaustive-deps
 
-    console.log(props.rdxNftsByUser)
 
     return (
         <>
@@ -197,7 +203,7 @@ const Game = (props) => {
 
                                     {userNft && userNft.features.habilities.map(hability => <button className='ability-action' key={hability.name} onClick={() => attackHandler(hability)}>{hability.name}</button>)}
                                     <div className='option-panel'>
-                                        {!userAttacked && <button onClick={leaveHandler}>Abandonar</button>}
+                                        {!userAttacked && <button onClick={leaveHandler}>Leave</button>}
                                     </div>
                                 </div>
                             }

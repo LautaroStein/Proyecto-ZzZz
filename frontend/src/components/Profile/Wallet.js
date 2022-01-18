@@ -5,9 +5,8 @@ import offerActions from "../../redux/actions/offerActions"
 import ScrollContainer from 'react-indiana-drag-scroll'
 import CardNFT from "../CardNFT"
 
-const Wallet = ({user, getNft, userNfts, userOffers, getOffersByUser}) => {
+const Wallet = ({ user, getNft, userNfts, userOffers, getOffersByUser }) => {
 
-    console.log(user, userNfts, userOffers)
 
     useEffect(() => {
         getNft(user.userID)
@@ -21,7 +20,7 @@ const Wallet = ({user, getNft, userNfts, userOffers, getOffersByUser}) => {
             <ScrollContainer className="container">
                 {userNfts &&
                     userNfts.map(e => {
-                        return(
+                        return (
                             <CardNFT name={e.name} type={e.type} price={e.price} img={e.img} clase={e.clase} id={e._id} favorite={e.favs} store={false} />
                         )
                     })
@@ -29,29 +28,29 @@ const Wallet = ({user, getNft, userNfts, userOffers, getOffersByUser}) => {
             </ScrollContainer>
             <h2>Your offerts public NFTs </h2>
             <div>
-                {userOffers && 
-                userOffers.map(e => {
-                    return(
-                        e.public ?
-                        <div>
-                            <h3>{e.name}</h3>
-                        </div>
-                        : null
-                    )
-                })}
+                {userOffers &&
+                    userOffers.map(e => {
+                        return (
+                            e.public ?
+                                <div>
+                                    <h3>{e.name}</h3>
+                                </div>
+                                : null
+                        )
+                    })}
             </div>
             <h2>Your offerts NFTs dont post</h2>
             <div>
                 {userOffers &&
-                userOffers.map(e => {
-                    return(
-                        e.public ? null : 
-                        <div>
-                            <h3>{e.name}</h3>
-                        </div>
-                    )
-                })
-                    
+                    userOffers.map(e => {
+                        return (
+                            e.public ? null :
+                                <div>
+                                    <h3>{e.name}</h3>
+                                </div>
+                        )
+                    })
+
                 }
             </div>
         </div>
@@ -60,15 +59,15 @@ const Wallet = ({user, getNft, userNfts, userOffers, getOffersByUser}) => {
 
 const mapStateToProps = (state) => {
     return {
-        user : state.userReducers.user,
-        userNfts : state.nftReducers.userNfts,
-        userOffers : state.offerReducers.userOffers
+        user: state.userReducers.user,
+        userNfts: state.nftReducers.userNfts,
+        userOffers: state.offerReducers.userOffers
     }
 }
 
 const mapDispatchToProps = {
-    getNft : nftActions.getNftsByUser,
-    getOffersByUser : offerActions.getOffersByUser
+    getNft: nftActions.getNftsByUser,
+    getOffersByUser: offerActions.getOffersByUser
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Wallet)

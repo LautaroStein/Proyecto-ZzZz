@@ -79,7 +79,6 @@ function testing() {
             const number = await webDriver.findElement(By.css('#root > div.total-profile-container > div.profile-render-constant > section > article > div.dashboard-resume > div.card-total-users > div > h2.card-amount')).getText()
             assert.strictEqual(Number(number), 12)
             webDriver.quit()
-            // await webDriver.findElement(By.name('email')).sendKeys(credenciales.email)
         })
 
     })

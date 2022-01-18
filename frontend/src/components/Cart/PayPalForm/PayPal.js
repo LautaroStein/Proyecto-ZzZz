@@ -41,9 +41,9 @@ const PayPal = ({ total, cart, user, updateNft, active, mount, seller, addTransa
         return actions.order.create({
             purchase_units: [
                 {
-                    description: 'descript',
+                    description: descript.length > 15 ? descript : `Your buy was ${seller.name}`,
                     amount: {
-                        value: mount
+                        value: mount ? mount : total
                     }
                 }
             ]
@@ -73,7 +73,6 @@ const PayPal = ({ total, cart, user, updateNft, active, mount, seller, addTransa
                     case 'subscription':
                         break;
                     case 'offer':
-                        console.log('Entro!');
                         const transaction = {
                             userBuyer: user.userID,
                             userSeller: seller.userId,
@@ -82,18 +81,6 @@ const PayPal = ({ total, cart, user, updateNft, active, mount, seller, addTransa
                         }
                         addTransaction(transaction)
                         updateOffer(seller.offerId, { public: false, user: user.userID })
-
-
-                        //  1.- se crea una TRANSACTION
-                        //  2.- necesito cambiar el USER del nftOffer(id) a USER del que esta conectado
-                        //  3.- el atributo PUBLIC del nftOffer pasa a false
-                        /*obj transaction = {
-                            "userBuyer": "user conectado",
-                            "userSeller": "user vendedor",
-                            "nftOffer": "61e1b003cfe38f821cf69ca2",
-                            "mount": 2500
-                          }  
-                        */
 
                         break;
                     default:
