@@ -5,9 +5,6 @@ const express = require('express')
 const cors = require("cors")
 const Router = require("./routes/routes")
 require('./config/database')
-const { Client } = require('coinbase-commerce-node')
-
-Client.init(process.env.COINBASE_API_KEY)
 
 const app = express()
 

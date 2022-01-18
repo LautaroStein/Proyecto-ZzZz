@@ -2,11 +2,9 @@ const Router = require("express").Router();
 const validador = require("../config/validador");
 const controllerUser = require('../controllers/controllerUser');
 const NftControllers = require("../controllers/NftController");
-const Coinbase = require("../controllers/CoinbaseController");
 const offerNftController = require('../controllers/offerNftController')
 const transactionController = require('../controllers/transactionController')
 const passport = require('../config/passport')
-const { Charge } = Coinbase
 const { newUser, userLoged, authUser, favs, getUsers, updateUser, getUsersByDay, getSuscriptionByDay } = controllerUser;
 const { getAllNft, loadUnNft, modifyAnNft, getOneNft, deleteNft, getNftsByUser } = NftControllers;
 const { getAllOffers, postOffer, modifyOffer, getOneOffer, deleteOffer, getOffersByUser, getOffersByDay } = offerNftController
@@ -55,11 +53,6 @@ Router.route('/admin/user/:id')
 
 Router.route('/favs')
     .put(passport.authenticate('jwt', { session: false }), favs)
-
-// Route of Coinbase
-
-Router.route('/create-charge')
-    .get(Charge)
 
 // Offer ROUTES
 Router.route('/offers')
