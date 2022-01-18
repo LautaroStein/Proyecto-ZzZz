@@ -4,6 +4,7 @@ import { AiFillHome, AiFillAppstore, AiOutlineShoppingCart } from "react-icons/a
 import { BsFillBookmarkHeartFill } from "react-icons/bs";
 import { BiStore } from "react-icons/bi";
 import { FaUserAlt } from "react-icons/fa";
+import { SiRiotgames } from "react-icons/si";
 
 const Navigation = (props) => {
 
@@ -38,16 +39,22 @@ const Navigation = (props) => {
                             <span className="text-navigation">NFT Saved</span>
                         </Link>
                     </li>
-                    <li className={props.location.pathname === "/SignUp" || props.location.pathname === "/SignIn" || props.location.pathname === "/Profile" ? "active" : null}>
-                        <Link to={props.user !== "" ? "/Profile" : "/SignIn"}>
-                            <span className="icon-navigation"><FaUserAlt /></span>
-                            <span className="text-navigation">Profile</span>
+                    <li className={props.location.pathname === "/Game" ? "active" : null}>
+                        <Link to="/Game">
+                            <span className="icon-navigation"><SiRiotgames /></span>
+                            <span className="text-navigation">Game</span>
                         </Link>
                     </li>
                     <li className={props.location.pathname === "/Cart" ? "active" : null}>
                         <Link to="/Cart">
                             <span className="icon-navigation"><AiOutlineShoppingCart/></span>
                             <span className="text-navigation">Shopping Cart</span>
+                        </Link>
+                    </li>
+                    <li className={props.location.pathname === "/SignUp" || props.location.pathname === "/SignIn" || props.location.pathname === "/Profile" ? "active" : null}>
+                        <Link to={props.user !== "" ? "/Profile" : "/SignIn"}>
+                            <span className="icon-navigation"><FaUserAlt /></span>
+                            <span className="text-navigation">Profile</span>
                         </Link>
                     </li>
                     <div className="indicator"></div>

@@ -11,6 +11,7 @@ const CreateOffer = (props) => {
     const [features, setFeatures] = useState(false)
     const [onCardHover, setOnCardHover] = useState({ bool: false, id: '' })
     const [editNft, setEditNft] = useState('')
+    const [formTimeReal, setFormTimeReal] = useState({name: "", type: "Art", class:"Common", img: "", price: 0 })
 
     const nname = useRef(null)
     const type = useRef(null)
@@ -144,12 +145,11 @@ const CreateOffer = (props) => {
                                     <input min='0' type="number" placeholder="price" value={editNft.nftId.price} onChange={(e) => setEditNft({ nftId: { price: e.target.value, _id: editNft.nftId._id } })} />
                                 </> :
                                 <>
-                                    <input type="text" placeholder='name' ref={nname} />
-                                    <input type="text" placeholder="type" ref={type} />
+                                    <input type="text" placeholder='name' ref={nname} onChange={(e)=> setFormTimeReal({...formTimeReal, name:e.target.value})}/>
+                                    <input type="text" placeholder="type" ref={type} onChange={(e)=> setFormTimeReal({...formTimeReal, type:e.target.value})}/>
                                     <input type="text" placeholder="class" ref={clase} />
                                     <input type="text" placeholder="img" ref={img} />
                                     <input min='0' type="number" placeholder="price" ref={price} />
-
                                 </>
                             }
                         </div>
