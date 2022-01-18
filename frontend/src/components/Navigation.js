@@ -7,7 +7,6 @@ import { FaUserAlt } from "react-icons/fa";
 import { SiRiotgames } from "react-icons/si";
 
 const Navigation = (props) => {
-
     const [showCart, setShowCart] = useState(false)
     const [check, setCheck] = useState(false)
 
@@ -48,7 +47,7 @@ const Navigation = (props) => {
                     </li>
                     <li className={props.location.pathname === "/Cart" ? "active" : null}>
                         <Link to="/Cart">
-                            <span className="icon-navigation"><AiOutlineShoppingCart/></span>
+                            <span className="icon-navigation"><AiOutlineShoppingCart /></span>
                             <span className="text-navigation">Shopping Cart</span>
                         </Link>
                     </li>
