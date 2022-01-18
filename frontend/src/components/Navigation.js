@@ -9,6 +9,7 @@ import { SiRiotgames } from "react-icons/si";
 const Navigation = (props) => {
 
     const [showCart, setShowCart] = useState(false)
+    const [check, setCheck] = useState(false)
 
     return (
         <>
@@ -60,6 +61,19 @@ const Navigation = (props) => {
                     <div className="indicator"></div>
                 </ul>
             </div>
+            <input class="menu-icon" type="checkbox" id="menu-icon" name="menu-icon" checked={check} onClick={() => setCheck(`${check ? false : true}`)}/>
+            <label for="menu-icon"></label>
+            <nav class="nav"> 		
+                <ul class="pt-5">
+                    <li><Link to="/" onClick={() => setCheck(false)}>Home</Link></li>
+                    <li><Link to="/Store" onClick={() => setCheck(false)}>Official Store</Link></li>
+                    <li><Link to="/Market" onClick={() => setCheck(false)}>Market Place</Link></li>
+                    <li><Link to="/Favs" onClick={() => setCheck(false)}>NFT Saved</Link></li>
+                    <li><Link to="/Game" onClick={() => setCheck(false)}>Game</Link></li>
+                    <li><Link to="/Cart" onClick={() => setCheck(false)}>Shopping Cart</Link></li>
+                    <li><Link to={props.user !== "" ? "/Profile" : "/SignIn"} onClick={() => setCheck(false)}>Profile</Link></li>
+                </ul>
+            </nav>
         </>
     )
 }

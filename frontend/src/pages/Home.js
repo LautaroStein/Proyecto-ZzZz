@@ -1,15 +1,20 @@
 import React, { useState, useEffect } from "react"
 import { Link } from "react-router-dom"
 import Lumn from "../components/Lumn"
-// import { image } from '/assets/manimage.jpg'
+import { connect } from "react-redux"
+import transactionActions from '../redux/actions/transactionActions'
 // import Footer from '../components/Footer'
 
-const Home = () => {
+const Home = (props) => {
 
     const [asset, setAsset] = useState('./assets/9778e9361fabdb7fd6eded5ec35102f5.gif')
     const [enter, setEnter] = useState(false)
     const [play, setPLay] = useState(false)
     const [offsetY, setOffsetY] = useState(0)
+
+    useEffect(() => {
+        props.getTopCreators()
+    },[])
 
     return (
         <>
@@ -136,33 +141,20 @@ const Home = () => {
             <p>CREATORS</p>
                 <h2>Top Collections of the week</h2>
                 <div className="contenedor-cards-topCollection-home">  
-                        <div className="card-topCollection">                       
-                            <div style={{backgroundImage:'url(/assets/manimage.jpg)'}} className="card-topCollection-image">
-                                {/* <img src={'/assets/manimage.jpg'} alt="imagen hombre"/> */}
+                        {props.topCreators && props.topCreators.map((e, i) => {
+                            return (
+                                    i < 3 &&
+                                <div className="card-topCollection">                       
+                                    <div style={{backgroundImage:`url(${e.transaction[0].userImg})`}} className="card-topCollection-image"></div>
+                                    <div className="card-info-topCollection-home">
+                                        <h1>{e.transaction[0].name}</h1>
+                                        <p>+ {e.mount} ETH</p>
+                                        <p>The NFT & Defi farming initiative built on Ethereum (ETH) blockechain in OpenBid</p>
+                                    </div>               
                                 </div>
-                            <div className="card-info-topCollection-home">
-                                <h1>User Name</h1>
-                                <p>price$</p>
-                                <p>The NFT & Defi farming initiative built on Ethereum (ETH) blockechain in OpenBid</p>
-                            </div>               
-                        </div>
-                        <div className="card-topCollection">                       
-                        <div style={{backgroundImage:'url(/assets/woman1.jpg)'}} className="card-topCollection-image"></div>
-                            <div className="card-info-topCollection-home">
-                                <h1>User Name</h1>
-                                <p>price$</p>
-                                <p>The NFT & Defi farming initiative built on Ethereum (ETH) blockechain in OpenBid</p>
-                            </div>               
-                        </div>
-                        <div className="card-topCollection">                       
-                        <div style={{backgroundImage:'url(/assets/woman2.jpg)'}} className="card-topCollection-image"></div>
-                            <div className="card-info-topCollection-home">
-                                <h1>User Name</h1>
-                                <p>price$</p>
-                                <p>The NFT & Defi farming initiative built on Ethereum (ETH) blockechain in OpenBid</p>
-                            </div>               
-                        </div>
-                 </div>
+                            )})
+                        }
+                </div>
              </div>
         </div>
        
@@ -170,5 +162,13 @@ const Home = () => {
         </>
     )
 }
+const mapStateToProps = (state) => {
+    return{
+    topCreators: state.transactionReducers.topCreators
+    }
+}
+const mapDispatchToProps = {
+    getTopCreators: transactionActions.getMostCreators
+}
 
-export default Home
+export default connect(mapStateToProps, mapDispatchToProps)(Home)

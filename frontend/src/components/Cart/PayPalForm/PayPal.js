@@ -41,7 +41,7 @@ const PayPal = ({ total, cart, user, updateNft, active, mount, seller, addTransa
         return actions.order.create({
             purchase_units: [
                 {
-                    description: descript.length > 15 ? descript : `Your buy was ${seller.name}`,
+                    description: 'Compraste',
                     amount: {
                         value: mount ? mount : total
                     }
@@ -87,10 +87,17 @@ const PayPal = ({ total, cart, user, updateNft, active, mount, seller, addTransa
                     default:
                         new Error('Invalid option')
                 }
-                if(transaction.status === "COMPLETED"){
+
+                if (cart.length > 1) {
+                    cart.forEach(item => {
+                        updateNft(item._id, { stock: item.stock - 1, users: [...item.users, user.userID] })
+                    })
+                } else {
+                    updateNft(cart[0]._id, { stock: cart[0].stock - 1, users: [...cart[0].users, user.userID] })
+                }
+                if (transaction.status === "COMPLETED") {
                     clearCartAll && clearCartAll()
                 }
-
             })
         // se actualiza el offerNFT
     }
