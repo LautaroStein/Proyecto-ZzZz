@@ -2,7 +2,7 @@ import React, { useRef, useState } from 'react'
 import { toast } from 'react-toastify';
 import nftActions from '../redux/actions/nftActions'
 import { connect } from 'react-redux'
-import {app} from '../fb'
+import { app } from '../fb'
 
 const SignUp = (props) => {
 
@@ -12,12 +12,12 @@ const SignUp = (props) => {
     const inputPassword = useRef()
     const inputPhoneNumber = useRef()
     const [url, setUrl] = useState("")
-
-    const  generateRandomString = (num) => {
-        const characters ='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    const [imgLoad, setImgLoad] = useState(false)
+    const generateRandomString = (num) => {
+        const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
         let result1 = ''
-        for(let i = 0; i < num; i++){
-            result1 += Math.random().toString(36).substring(0,num);       
+        for (let i = 0; i < num; i++) {
+            result1 += Math.random().toString(36).substring(0, num);
         }
 
         return result1;
@@ -32,9 +32,10 @@ const SignUp = (props) => {
         console.log("archivo cargado:", archivo.name)
         const enlaceUrl = await archivoPath.getDownloadURL()
         setUrl(enlaceUrl)
-
-    }   
-    console.log(url)
+        setTimeout(() => {
+            setImgLoad(true)
+        }, 3000)
+    }
 
     const handleSubmitInputs = async (e) => {
         e.preventDefault()
@@ -88,7 +89,7 @@ const SignUp = (props) => {
                 <input type="text" name="lastName" ref={inputLastName} placeholder="Last name" />
                 <input type="email" name="userMail" ref={inputUserMail} placeholder="Email" />
                 <input type="password" name="password" ref={inputPassword} placeholder="Password" />
-                <input type="file" onChange={archivoHandler} />
+                {imgLoad && <input type="file" onChange={archivoHandler} />}
                 <input type="text" name="phoneNumberUser" ref={inputPhoneNumber} placeholder="2974758745" />
                 <button type='submit'>Sign Up</button>
             </form>

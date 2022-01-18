@@ -1,38 +1,37 @@
 import { BsArrowDownCircle, BsFileEaselFill } from "react-icons/bs"
-import { useEffect, useState} from "react"
+import { useEffect, useState } from "react"
 import { connect } from "react-redux"
 import CardNFT from "../components/Cart/CardNFT"
 import cartActions from "../redux/actions/cartActions"
 import PayPal from "../components/Cart/PayPalForm/PayPal"
 
-const Cart = ({cart, clearCartAll, deleteOneNFT, setTotalPrice}) => {
+const Cart = ({ cart, clearCartAll, deleteOneNFT, setTotalPrice }) => {
 
-    const [ code, setCode ] =  useState(false)
-    const [ discount, setDiscount ] = useState("")
-    
-    const descounts = [ "#246FIRSTPURCHASENFTCART", "#AGUANTELOSNFT2022", "ESTASFULLPICADOPAA" ]
-    
+    const [code, setCode] = useState(false)
+    const [discount, setDiscount] = useState("")
+
+    const descounts = ["#246FIRSTPURCHASENFTCART", "#AGUANTELOSNFT2022", "ESTASFULLPICADOPAA"]
+
     let subTotal = 0
 
-    const [ total, setTotal ] = useState(subTotal)
+    const [total, setTotal] = useState(subTotal)
 
-    useEffect(()=> {
+    useEffect(() => {
         discountes()
     }, [cart, subTotal])
-    
+
     cart.forEach(item => {
         return subTotal = subTotal + item.price
-    })   
+    })
 
-    console.log(subTotal)
 
     const discountes = () => {
-        if(descounts.some(item => item === discount)){
-            setTotal(subTotal - (subTotal * 0.1)) 
-        }else{
+        if (descounts.some(item => item === discount)) {
+            setTotal(subTotal - (subTotal * 0.1))
+        } else {
             setTotal(subTotal)
         }
-    }   
+    }
 
     useEffect(() => {
         setTotalPrice(total)
@@ -54,8 +53,8 @@ const Cart = ({cart, clearCartAll, deleteOneNFT, setTotalPrice}) => {
                 <div className="contenedor-rigth-shopping">
                     <div><h2>SUMMARY</h2></div>
                     <div></div>
-                    <div><p>DO YOU HAVE A PROMO CODE?</p><BsArrowDownCircle onClick={()=> { setCode(!code) }}/>
-                    {code ?<><input type="text" placeholder="#246FIRSTPURCHASENFTCART" onChange={(e)=> setDiscount(e.target.value)}></input><button onClick={()=> discountes()} style={{heigth:"40px", width: "40px"}}>enter</button></> : null }
+                    <div><p>DO YOU HAVE A PROMO CODE?</p><BsArrowDownCircle onClick={() => { setCode(!code) }} />
+                        {code ? <><input type="text" placeholder="#246FIRSTPURCHASENFTCART" onChange={(e) => setDiscount(e.target.value)}></input><button onClick={() => discountes()} style={{ heigth: "40px", width: "40px" }}>enter</button></> : null}
                     </div>
                     <div></div>
                     <div><p>SUBTOTAL</p><p>${subTotal}</p></div>
@@ -65,7 +64,7 @@ const Cart = ({cart, clearCartAll, deleteOneNFT, setTotalPrice}) => {
                     <div><p>TOTAL</p><p>${total}</p></div>
                     <div></div>
                     <div>
-                        <PayPal clearCartAll={clearCartAll}/>
+                        <PayPal clearCartAll={clearCartAll} active='shopping'/>
                     </div>
                 </div>
             </div>
@@ -75,13 +74,13 @@ const Cart = ({cart, clearCartAll, deleteOneNFT, setTotalPrice}) => {
 
 const mapStateToProps = (state) => {
     return {
-        cart : state.cartReducers.cart,
+        cart: state.cartReducers.cart,
     }
 }
 const mapDispatchToProps = {
-    clearCartAll : cartActions.removeAllFromCart,
-    deleteOneNFT : cartActions.removeOneFromCart,
-    setTotalPrice : cartActions.setTotalPrice
+    clearCartAll: cartActions.removeAllFromCart,
+    deleteOneNFT: cartActions.removeOneFromCart,
+    setTotalPrice: cartActions.setTotalPrice
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Cart)

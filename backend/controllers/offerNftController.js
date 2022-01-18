@@ -7,13 +7,18 @@ const offerNftController = {
         NftOffer.aggregate(
             [
                 {
-                    "$group": {
+                    $group: {
                         "_id": {
                             "year": { "$year": "$date" },
                             "month": { "$month": "$date" },
                             "day": { "$dayOfMonth": "$date" }
                         },
                         "count": { $sum: 1 }
+                    }
+                },
+                {
+                    $sort: {
+                        _id: 1
                     }
                 }
             ],

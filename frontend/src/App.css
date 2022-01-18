@@ -1352,7 +1352,6 @@ img {
   width: 8px;
 }
 
-
 .main-dashboard::-webkit-scrollbar-thumb {
   background-color: #b903b0;
   border-radius: 10px;
@@ -1362,16 +1361,15 @@ img {
 
 /* *** */
 
-
 /* USERS MANAGEMENT */
 
-.presentacion-admin-container{
+.presentacion-admin-container {
   width: 100%;
   height: 400px;
   display: flex;
   flex-wrap: wrap;
 }
-.presentacion-admin-container h1{
+.presentacion-admin-container h1 {
   font-weight: 900;
   font-size: 1.5em;
   color: white;
@@ -1380,34 +1378,34 @@ img {
   display: flex;
   align-items: center;
 }
-.container-imguno-presentacion-admin{
+.container-imguno-presentacion-admin {
   background-image: url("./assets/diseño-admin-1.png");
-  background-position:bottom;
+  background-position: bottom;
   background-repeat: no-repeat;
   background-size: cover;
   width: 33%;
   height: 70%;
   border-radius: 20px;
   margin: 0 5px 0 0;
-  padding:1em;
+  padding: 1em;
 }
-.container-imgdos-presentacion-admin{
-  background-image: url("./assets/diseño-admin-2.png"); 
+.container-imgdos-presentacion-admin {
+  background-image: url("./assets/diseño-admin-2.png");
   background-position: bottom;
   background-repeat: no-repeat;
   background-size: cover;
   width: 500px;
   height: 70%;
-  border-radius: 20px; 
-  padding:1em;
+  border-radius: 20px;
+  padding: 1em;
 }
-.container-presentacion-button{
+.container-presentacion-button {
   width: 50%;
   height: 50%;
   display: flex;
   align-items: flex-end;
 }
-.container-presentacion-button div{
+.container-presentacion-button div {
   width: 40px;
   height: 40px;
   background: rgba(255, 255, 255, 0.287);
@@ -1417,11 +1415,11 @@ img {
   justify-content: center;
   border-radius: 10px;
 }
-.container-presentacion-button div svg{
+.container-presentacion-button div svg {
   width: 80%;
   height: 80%;
 }
-.container-imguno-presentacion-admin p{
+.container-imguno-presentacion-admin p {
   width: 70%;
   height: 40%;
   font-weight: 800;
@@ -1699,7 +1697,6 @@ img {
   width: 8px;
 }
 
-
 .main-dashboard::-webkit-scrollbar-thumb {
   background-color: #b903b0;
   border-radius: 10px;
@@ -1766,7 +1763,7 @@ img {
   border-radius: 20px 0;
   color: white;
 }
-.edit-form h2{
+.edit-form h2 {
   height: 10%;
   width: 90%;
   margin-bottom: 0.7em;
@@ -1886,7 +1883,6 @@ img {
   width: 8px;
 }
 
-
 .nft-form::-webkit-scrollbar-thumb {
   background-color: #41003d;
   border-radius: 10px;
@@ -1897,7 +1893,6 @@ img {
 .nfts-container::-webkit-scrollbar {
   width: 8px;
 }
-
 
 .nfts-container::-webkit-scrollbar-thumb {
   background-color: #b903b0;
@@ -1954,7 +1949,7 @@ img {
 /* END GRAPH */
 /* **advanages/home**: */
 
-.contenedor-about-advantages{
+.contenedor-about-advantages {
   width: 100%;
   height: 70vh;
   display: flex;
@@ -1973,7 +1968,7 @@ img {
 }
 
 .card-info-advantages-home {
-  background-color: rgba(255, 255, 255, 0.034) ;
+  background-color: rgba(255, 255, 255, 0.034);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -1984,7 +1979,7 @@ img {
   height: 80%;
   border-radius: 12px;
 }
-.card-info-advantages-home h3{
+.card-info-advantages-home h3 {
   height: 13%;
   display: flex;
   align-items: center;
@@ -2086,20 +2081,20 @@ img {
 
 /* Shopping */
 
-.contenedor-total-shopping{
-  width:100%;
+.contenedor-total-shopping {
+  width: 100%;
   min-height: 90vh;
   height: 90vh;
   display: flex;
   justify-content: space-between;
 }
-.contenedor-left-shopping{
-  width: 63% ;
+.contenedor-left-shopping {
+  width: 63%;
   height: 100%;
   display: flex;
   flex-direction: column;
 }
-.contenedor-rigth-shopping{
+.contenedor-rigth-shopping {
   width: 35%;
   height: 100% - 30px;
   background-color: #191919;
@@ -2109,7 +2104,7 @@ img {
   flex-direction: column;
   overflow: auto;
 }
-.contenedor-left-shopping .shippoing-left-divone{
+.contenedor-left-shopping .shippoing-left-divone {
   width: 100%;
   height: 10%;
   background-color: #191919;
@@ -2121,7 +2116,7 @@ img {
   padding: 0 20px 0 20px;
   margin-top: 30px;
 }
-.contenedor-left-shopping .shippoing-left-divtwo{
+.contenedor-left-shopping .shippoing-left-divtwo {
   width: 100%;
   height: 10%;
   background-color: #191919;
@@ -2134,7 +2129,7 @@ img {
   padding: 0 20px 0 20px;
   margin-top: 30px;
 }
-.contenedor-left-shopping .shippoing-left-divtree{
+.contenedor-left-shopping .shippoing-left-divtree {
   width: 100%;
   flex-grow: 1;
   background-color: #191919;
@@ -2145,7 +2140,7 @@ img {
   padding: 0 30px 0 30px;
   margin-top: 30px;
 }
-.contenedor-left-shopping div:nth-child(3) .contenedor-nft-shopping{
+.contenedor-left-shopping div:nth-child(3) .contenedor-nft-shopping {
   position: relative;
   display: flex;
   height: 40%;
@@ -2156,7 +2151,7 @@ img {
   margin: 20px 0 20px 0;
   padding: 0 10px 0 10px;
 }
-.delete-card-nft-shopping{
+.delete-card-nft-shopping {
   position: absolute;
   top: 0;
   right: 0;
@@ -2169,7 +2164,7 @@ img {
   align-items: center;
   justify-content: center;
 }
-.img-nft-shopping{
+.img-nft-shopping {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -2180,7 +2175,7 @@ img {
   border-radius: 20px 0 20px 0;
   margin: 0;
 }
-.contenedor-nft-shopping .contenedor-rarezas-shppoing{
+.contenedor-nft-shopping .contenedor-rarezas-shppoing {
   width: 50%;
   color: white;
   font-size: 1em;
@@ -2191,28 +2186,28 @@ img {
   height: 80%;
   margin: 0;
 }
-.contenedor-nft-shopping .contenedor-rarezas-shppoing h2{
+.contenedor-nft-shopping .contenedor-rarezas-shppoing h2 {
   font-size: 1em;
-  font-weight: 600 ;
+  font-weight: 600;
 }
 
-.contenedor-nft-shopping div:nth-child(3){
-width: 10%;
+.contenedor-nft-shopping div:nth-child(3) {
+  width: 10%;
 }
 
-.contenedor-rigth-shopping div:nth-child(1){
+.contenedor-rigth-shopping div:nth-child(1) {
   width: 100%;
   height: 10%;
   display: flex;
   align-items: center;
   color: white;
 }
-.contenedor-rigth-shopping div:nth-child(2){
+.contenedor-rigth-shopping div:nth-child(2) {
   width: 100%;
   height: 3px;
   background-color: rgb(20, 20, 20);
 }
-.contenedor-rigth-shopping div:nth-child(3){
+.contenedor-rigth-shopping div:nth-child(3) {
   width: 100%;
   height: 12%;
   display: flex;
@@ -2224,7 +2219,7 @@ width: 10%;
 .contenedor-rigth-shopping div:nth-child(3) p {
   width: 90%;
 }
-.contenedor-rigth-shopping div:nth-child(3) svg{
+.contenedor-rigth-shopping div:nth-child(3) svg {
   width: 10%;
   color: var(--ColorPrimario);
   font-size: 1.5em;
@@ -2253,7 +2248,7 @@ width: 10%;
   height: 3px;
   background-color: rgb(20, 20, 20);
 }
-.contenedor-rigth-shopping div:nth-child(5){
+.contenedor-rigth-shopping div:nth-child(5) {
   width: 100%;
   height: 7%;
   display: flex;
@@ -2261,16 +2256,16 @@ width: 10%;
   justify-content: space-between;
   color: white;
 }
-.contenedor-rigth-shopping div:nth-child(5) p:nth-child(2){
+.contenedor-rigth-shopping div:nth-child(5) p:nth-child(2) {
   color: var(--ColorPrimario);
   font-weight: 700;
 }
-.contenedor-rigth-shopping div:nth-child(6){
+.contenedor-rigth-shopping div:nth-child(6) {
   width: 100%;
   height: 3px;
   background-color: rgb(20, 20, 20);
 }
-.contenedor-rigth-shopping div:nth-child(7){
+.contenedor-rigth-shopping div:nth-child(7) {
   width: 100%;
   height: 20%;
   color: white;
@@ -2279,31 +2274,31 @@ width: 10%;
   font-size: 1.22em;
   text-align: justify;
 }
-.contenedor-rigth-shopping div:nth-child(8){
+.contenedor-rigth-shopping div:nth-child(8) {
   width: 100%;
   height: 3px;
   background-color: rgb(20, 20, 20);
 }
-.contenedor-rigth-shopping div:nth-child(9){
+.contenedor-rigth-shopping div:nth-child(9) {
   width: 100%;
   height: 10%;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  color:white;
+  color: white;
   font-size: 1.25em;
   font-weight: 900;
   letter-spacing: 2px;
 }
-.contenedor-rigth-shopping div:nth-child(9) p:nth-child(2){
+.contenedor-rigth-shopping div:nth-child(9) p:nth-child(2) {
   color: var(--ColorPrimario);
 }
-.contenedor-rigth-shopping div:nth-child(10){
+.contenedor-rigth-shopping div:nth-child(10) {
   width: 100%;
   height: 3px;
   background-color: rgb(20, 20, 20);
 }
-.contenedor-rigth-shopping div:nth-child(11){
+.contenedor-rigth-shopping div:nth-child(11) {
   flex-grow: 1;
   margin-bottom: 30px;
   display: flex;
@@ -2313,11 +2308,11 @@ width: 10%;
   font-size: 1.25em;
   font-weight: 700;
 }
-.contenedor-rigth-shopping div:nth-child(11) p{
+.contenedor-rigth-shopping div:nth-child(11) p {
   margin: 5px 0 5px 0;
 }
 
-.contenedor-rigth-shopping div:nth-child(11) p:nth-child(1){
+.contenedor-rigth-shopping div:nth-child(11) p:nth-child(1) {
   width: 100%;
   height: 15%;
   background-color: var(--ColorPrimario);
@@ -2329,18 +2324,18 @@ width: 10%;
   transition: all 500ms;
   border-radius: 10px;
 }
-.contenedor-rigth-shopping div:nth-child(11) p:nth-child(1):hover{
+.contenedor-rigth-shopping div:nth-child(11) p:nth-child(1):hover {
   background-color: var(--ColorPrimarioFuerte);
 }
-.contenedor-rigth-shopping div:nth-child(11) p:nth-child(2){
+.contenedor-rigth-shopping div:nth-child(11) p:nth-child(2) {
   width: 100%;
   height: 15%;
   color: white;
   display: flex;
   align-items: center;
-  justify-content:center;
+  justify-content: center;
 }
-.contenedor-rigth-shopping div:nth-child(11) p:nth-child(3){
+.contenedor-rigth-shopping div:nth-child(11) p:nth-child(3) {
   width: 100%;
   height: 15%;
   background-color: white;
@@ -2350,8 +2345,7 @@ width: 10%;
   cursor: pointer;
   border-radius: 10px;
 }
-.paypal-button-store{
-  
+.paypal-button-store {
 }
 
 /* Finish Shopping */
@@ -2391,7 +2385,7 @@ width: 10%;
   display: flex;
   flex-flow: row wrap;
   justify-content: space-around;
-  color: white; 
+  color: white;
   height: 40vh;
 }
 
@@ -2403,7 +2397,7 @@ width: 10%;
 }
 
 .user-info-container div div {
-  overflow-x: auto;  
+  overflow-x: auto;
   width: 70%;
 }
 
@@ -2427,34 +2421,34 @@ width: 10%;
 }
 
 .edit-user {
-  color:white;
+  color: white;
   border: 2px solid white;
-  border-radius: .5rem;
-  padding: .1rem;
+  border-radius: 0.5rem;
+  padding: 0.1rem;
   text-align: center;
-  margin:.3rem;
+  margin: 0.3rem;
   background: none;
 }
 
 .edit-user:hover {
   background-color: white;
-  color:var(--ColorPrimarioFuerte);
+  color: var(--ColorPrimarioFuerte);
   cursor: pointer;
 }
 /* MARKETPLACE */
-.contenedor-todo-market{
+.contenedor-todo-market {
   height: 100vh;
   width: 100%;
   display: flex;
   flex-direction: column;
 }
 .marketplace-container {
-  flex-grow:1;
+  flex-grow: 1;
   width: 100%;
   display: flex;
   align-items: center;
 }
-.filter-containter-total-market{
+.filter-containter-total-market {
   width: 7%;
   display: flex;
   height: 100%;
@@ -2462,7 +2456,7 @@ width: 10%;
   justify-content: space-between;
   transition: ease-in-out 1000ms;
 }
-.container-filter-market{
+.container-filter-market {
   width: 70%;
   height: 100%;
   background-color: #191919;
@@ -2478,32 +2472,32 @@ width: 10%;
   color: var(--ColorButton);
   font-weight: 800;
 }
-.filter-view-activer-market-total-container{
+.filter-view-activer-market-total-container {
   width: 30%;
   transition: ease-in-out 1000ms;
 }
-.filtros-ocultos-market{
+.filtros-ocultos-market {
   width: 0;
   height: 0;
   opacity: 0;
-  transform:translateX(-200px) ;
+  transform: translateX(-200px);
 }
-.filter-view-activer{
+.filter-view-activer {
   opacity: 1;
   width: 80%;
   transition: ease-in-out 1200ms;
 }
-.filter-view-activer-market{
+.filter-view-activer-market {
   width: 87%;
   transition: ease-in-out 1000ms;
   justify-content: flex-start;
 }
-.filter-view-activer-market span{
+.filter-view-activer-market span {
   opacity: 0;
   transition: ease-in-out 1000ms;
   display: none;
 }
-.input-filter-market{
+.input-filter-market {
   margin: 20px 0 10px;
   height: 40px;
   width: 100%;
@@ -2512,16 +2506,16 @@ width: 10%;
   color: white;
   background-color: rgba(255, 255, 255, 0.034);
 }
-.checkbox-art{
+.checkbox-art {
   width: 100%;
   height: 40px;
   display: flex;
   align-items: center;
 }
-.checkbox-art input{
+.checkbox-art input {
   display: none;
 }
-.checkbox-art label{
+.checkbox-art label {
   width: 30px;
   height: 30px;
   background-color: white;
@@ -2529,27 +2523,27 @@ width: 10%;
   border-radius: 10px 0 10px 0;
   margin-right: 10px;
 }
-.checkbox-art .select-art-checked{
+.checkbox-art .select-art-checked {
   background-color: var(--ColorPrimario);
 }
-.checkbox-art label svg{
+.checkbox-art label svg {
   color: var(--ColorDesctacar);
   height: 100%;
   width: 100%;
 }
-.checkbox-art .select-art-checked svg{
+.checkbox-art .select-art-checked svg {
   color: white;
 }
-.checkbox-cyberpunk{
+.checkbox-cyberpunk {
   width: 100%;
   height: 40px;
   display: flex;
   align-items: center;
 }
-.checkbox-cyberpunk input{
+.checkbox-cyberpunk input {
   display: none;
 }
-.checkbox-cyberpunk label{
+.checkbox-cyberpunk label {
   width: 30px;
   height: 30px;
   background-color: white;
@@ -2557,27 +2551,27 @@ width: 10%;
   border-radius: 10px 0 10px 0;
   margin-right: 10px;
 }
-.checkbox-cyberpunk .select-cyber-checked{
+.checkbox-cyberpunk .select-cyber-checked {
   background-color: var(--ColorPrimario);
 }
-.checkbox-cyberpunk label svg{
+.checkbox-cyberpunk label svg {
   color: var(--ColorDesctacar);
   height: 100%;
   width: 100%;
 }
-.checkbox-cyberpunk .select-cyber-checked svg{
+.checkbox-cyberpunk .select-cyber-checked svg {
   color: white;
 }
-.checkbox-gamer{
+.checkbox-gamer {
   width: 100%;
   height: 40px;
   display: flex;
   align-items: center;
 }
-.checkbox-gamer input{
+.checkbox-gamer input {
   display: none;
 }
-.checkbox-gamer label{
+.checkbox-gamer label {
   width: 30px;
   height: 30px;
   background-color: white;
@@ -2585,18 +2579,18 @@ width: 10%;
   border-radius: 10px 0 10px 0;
   margin-right: 10px;
 }
-.checkbox-gamer .select-gamer-checked{
+.checkbox-gamer .select-gamer-checked {
   background-color: var(--ColorPrimario);
 }
-.checkbox-gamer label svg{
+.checkbox-gamer label svg {
   color: var(--ColorDesctacar);
   height: 100%;
   width: 100%;
 }
-.checkbox-gamer .select-gamer-checked svg{
+.checkbox-gamer .select-gamer-checked svg {
   color: white;
 }
-.select-market-place{
+.select-market-place {
   margin: 20px 0 10px;
   height: 40px;
   width: 100%;
@@ -2605,34 +2599,34 @@ width: 10%;
   color: white;
   background-color: rgba(255, 255, 255, 0.034);
 }
-.select-market-place option{
+.select-market-place option {
   background-color: rgb(44, 44, 44);
   border: none;
 }
-.arrow-cierre-filter-market{
+.arrow-cierre-filter-market {
   width: 40px;
   height: 40px;
   color: var(--ColorButton);
   animation: arrow 2s infinite;
 }
 @keyframes arrow {
-  0%{
+  0% {
     transform: translateX(0);
   }
-  75%{
+  75% {
     transform: translateX(10px);
   }
-  100%{
+  100% {
     transform: translateX(0);
   }
 }
-.section-mid-martket-container-total{
+.section-mid-martket-container-total {
   width: 65%;
   height: 93vh;
   overflow-y: scroll;
   padding-top: 20px;
 }
-.container-nft-ofert-hero{
+.container-nft-ofert-hero {
   width: 100%;
   height: 400px;
   display: flex;
@@ -2643,7 +2637,7 @@ width: 10%;
   padding: 0 3%;
   margin-top: 30px;
 }
-.img-nft-container-ofert-hero{
+.img-nft-container-ofert-hero {
   width: 45%;
   height: 90%;
   display: flex;
@@ -2652,19 +2646,19 @@ width: 10%;
   background-color: var(--color-black-2);
   border-radius: 10px;
 }
-.img-nft-container-ofert-hero img{
+.img-nft-container-ofert-hero img {
   height: 100%;
   width: 100%;
   object-fit: cover;
   border-radius: 10px;
 }
-.contenedor-nft-text-hero-ofert{
+.contenedor-nft-text-hero-ofert {
   width: 51.5%;
   height: 88%;
   display: flex;
   flex-direction: column;
 }
-.contenedor-nft-text-hero-ofert h2{
+.contenedor-nft-text-hero-ofert h2 {
   width: 100%;
   height: 15%;
   display: flex;
@@ -2673,13 +2667,13 @@ width: 10%;
   font-size: 2em;
   letter-spacing: 2px;
 }
-.contenedor-nft-user-hero-ofert{
+.contenedor-nft-user-hero-ofert {
   width: 100%;
   height: 20%;
   display: flex;
   align-items: center;
 }
-.contenedor-nft-user-hero-ofert div:nth-child(1){
+.contenedor-nft-user-hero-ofert div:nth-child(1) {
   width: 60px;
   height: 60px;
   background: var(--color-black-2);
@@ -2689,40 +2683,40 @@ width: 10%;
   justify-content: center;
   margin-right: 10px;
 }
-.contenedor-nft-user-hero-ofert div:nth-child(1) img{
+.contenedor-nft-user-hero-ofert div:nth-child(1) img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   border-radius: 50%;
 }
-.contenedor-nft-user-hero-ofert div:nth-child(2){
+.contenedor-nft-user-hero-ofert div:nth-child(2) {
   height: 60%;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
 }
-.contenedor-nft-user-hero-ofert div:nth-child(2) p:nth-child(1){
+.contenedor-nft-user-hero-ofert div:nth-child(2) p:nth-child(1) {
   font-weight: 800;
   font-size: 1.1em;
   letter-spacing: 1px;
 }
-.contenedor-nft-user-hero-ofert div:nth-child(2) p:nth-child(2){
+.contenedor-nft-user-hero-ofert div:nth-child(2) p:nth-child(2) {
   color: #404040;
   font-weight: 700;
 }
-.price-container-nft-market-hero{
+.price-container-nft-market-hero {
   width: 100%;
   height: 25%;
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
-.price-container-nft-market-hero p:nth-child(1){
+.price-container-nft-market-hero p:nth-child(1) {
   font-size: 1em;
   color: var(--color-black-2);
   font-weight: 700;
 }
-.price-container-nft-market-hero p:nth-child(2){
+.price-container-nft-market-hero p:nth-child(2) {
   width: 50%;
   height: 50%;
   display: flex;
@@ -2731,20 +2725,20 @@ width: 10%;
   font-size: 1.6em;
   letter-spacing: 1.5px;
 }
-.contenedor-clases-nft-market-ofert{
+.contenedor-clases-nft-market-ofert {
   width: 100%;
   height: 20%;
   display: flex;
   align-items: center;
 }
-.clases-nft-market-ofert{
+.clases-nft-market-ofert {
   width: 35%;
   height: 90%;
   margin-right: 10px;
   display: flex;
   align-items: center;
 }
-.clases-nft-market-ofert div:nth-child(1){
+.clases-nft-market-ofert div:nth-child(1) {
   height: 60px;
   width: 60px;
   border-radius: 10px;
@@ -2755,23 +2749,23 @@ width: 10%;
   color: white;
   margin-right: 5px;
 }
-.clases-nft-market-ofert div:nth-child(1) svg{
+.clases-nft-market-ofert div:nth-child(1) svg {
   height: 60%;
   width: 60%;
 }
-.clases-nft-market-ofert div:nth-child(2){
+.clases-nft-market-ofert div:nth-child(2) {
   flex-grow: 1;
 }
-.clases-nft-market-ofert div:nth-child(2) p:nth-child(1){
+.clases-nft-market-ofert div:nth-child(2) p:nth-child(1) {
   color: var(--color-black-2);
   font-weight: 700;
 }
-.clases-nft-market-ofert div:nth-child(2) p:nth-child(2){
+.clases-nft-market-ofert div:nth-child(2) p:nth-child(2) {
   font-weight: 900;
   letter-spacing: 2px;
   font-size: 1.1em;
 }
-.button-nft-market-ofert{
+.button-nft-market-ofert {
   width: 100%;
   height: 20%;
   display: flex;
@@ -2790,7 +2784,7 @@ width: 10%;
   align-items: center;
   justify-content: center;
 }
-.container-nft-trading-action{
+.container-nft-trading-action {
   width: 100%;
   flex-grow: 1;
   display: flex;
@@ -2798,14 +2792,14 @@ width: 10%;
   justify-content: space-between;
   padding-bottom: 20px;
 }
-.container-nft-trading-action h2{
+.container-nft-trading-action h2 {
   width: 100%;
   height: 80px;
   color: white;
   display: flex;
   align-items: center;
 }
-.card-container-offert-accept{
+.card-container-offert-accept {
   width: 48%;
   height: 650px;
   border-radius: 40px 0 40px 0;
@@ -2815,7 +2809,7 @@ width: 10%;
   align-items: center;
   padding: 10px 0;
 }
-.card-container-offert-img{
+.card-container-offert-img {
   width: 95%;
   height: 65%;
   display: flex;
@@ -2824,38 +2818,38 @@ width: 10%;
   background-color: var(--ColorFondo);
   border-radius: 20px 0 20px 0;
 }
-.card-container-offert-img img{
+.card-container-offert-img img {
   height: 100%;
   width: 100%;
   object-fit: cover;
   border-radius: 20px 0 20px 0;
 }
-.card-container-offert-text{
+.card-container-offert-text {
   flex-grow: 1;
   width: 95%;
   color: white;
 }
-.card-container-offert-text div:nth-child(1){
+.card-container-offert-text div:nth-child(1) {
   width: 100%;
   height: 30%;
   display: flex;
   align-items: center;
 }
-.card-container-offert-text div:nth-child(1) img{
+.card-container-offert-text div:nth-child(1) img {
   width: 50px;
   height: 50px;
   border-radius: 50%;
   background-color: var(--ColorFondo);
   object-fit: cover;
 }
-.card-container-offert-text div:nth-child(1) p{
+.card-container-offert-text div:nth-child(1) p {
   color: rgb(109, 108, 108);
   margin-left: 10px;
   letter-spacing: 1.5px;
   font-weight: 800;
   font-size: 1.1em;
 }
-.card-container-offert-text p:nth-child(2){
+.card-container-offert-text p:nth-child(2) {
   width: 100%;
   height: 20%;
   display: flex;
@@ -2864,7 +2858,7 @@ width: 10%;
   font-size: 2em;
   letter-spacing: 1px;
 }
-.card-container-offert-text p:nth-child(3){
+.card-container-offert-text p:nth-child(3) {
   width: 100%;
   height: 20%;
   display: flex;
@@ -2873,14 +2867,14 @@ width: 10%;
   font-size: 1.1em;
   letter-spacing: 1.2px;
 }
-.card-container-offert-text div:nth-child(4){
+.card-container-offert-text div:nth-child(4) {
   width: 100%;
   height: 30%;
   display: flex;
   align-items: center;
   justify-content: flex-end;
 }
-.card-container-offert-text div:nth-child(4) p{
+.card-container-offert-text div:nth-child(4) p {
   width: 40%;
   height: 90%;
   background-color: white;
@@ -2893,7 +2887,7 @@ width: 10%;
   letter-spacing: 1.5px;
   color: black;
 }
-.recent-creator-container-offerts{
+.recent-creator-container-offerts {
   width: 28%;
   height: 100%;
   display: flex;
@@ -2901,18 +2895,18 @@ width: 10%;
   flex-direction: column;
   transition: ease-in-out 1000ms;
 }
-.recent-activity-offerts{
+.recent-activity-offerts {
   width: 90%;
   height: 60%;
   padding-top: 30px;
 }
-.creator-nft-offerts{
+.creator-nft-offerts {
   width: 90%;
   height: 40%;
   padding-bottom: 30px;
   color: white;
 }
-.title-recent-activity{
+.title-recent-activity {
   width: 100%;
   height: 15%;
   display: flex;
@@ -2920,7 +2914,7 @@ width: 10%;
   color: white;
   font-size: 2em;
 }
-.contenedor-recent-activity-nft{
+.contenedor-recent-activity-nft {
   width: 100%;
   height: 20%;
   display: flex;
@@ -2928,11 +2922,11 @@ width: 10%;
   transform: translateX(0);
   transition: ease-in-out 800ms;
 }
-.contenedor-recent-activity-nft:hover{
+.contenedor-recent-activity-nft:hover {
   background: var(--color-black-2);
   transition: all 800ms;
 }
-.contenedor-recent-activity-nft div:nth-child(1){
+.contenedor-recent-activity-nft div:nth-child(1) {
   width: 80px;
   height: 80px;
   background-color: var(--ColorContenedores);
@@ -2941,13 +2935,13 @@ width: 10%;
   justify-content: center;
   border-radius: 10px;
 }
-.contenedor-recent-activity-nft div:nth-child(1) img{
+.contenedor-recent-activity-nft div:nth-child(1) img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   border-radius: 10px;
 }
-.contenedor-recent-activity-nft div:nth-child(2){
+.contenedor-recent-activity-nft div:nth-child(2) {
   flex-grow: 1;
   height: 80px;
   display: flex;
@@ -2963,7 +2957,7 @@ width: 10%;
   font-weight: 600;
   color: rgb(155, 155, 155);
 }
-.filteractive-container-none{
+.filteractive-container-none {
   width: 0;
   opacity: 0;
   position: fixed;
@@ -2972,7 +2966,7 @@ width: 10%;
   transition: ease-in-out 1000ms;
   transform: translateX(200px);
 }
-.creator-nft-offerts h2{
+.creator-nft-offerts h2 {
   width: 100%;
   height: 15%;
   display: flex;
@@ -2980,13 +2974,13 @@ width: 10%;
   font-size: 2em;
   font-weight: 900;
 }
-.creator-nft-offerts .creators-content-market{
+.creator-nft-offerts .creators-content-market {
   width: 100%;
   height: 30%;
   display: flex;
-  align-items:center;
+  align-items: center;
 }
-.creator-nft-offerts .creators-content-market p{
+.creator-nft-offerts .creators-content-market p {
   width: 15%;
   height: 90%;
   display: flex;
@@ -2995,7 +2989,7 @@ width: 10%;
   font-size: 1.5em;
   font-weight: 900;
 }
-.creator-nft-offerts .creators-content-market div:nth-child(2){
+.creator-nft-offerts .creators-content-market div:nth-child(2) {
   width: 80px;
   height: 80px;
   border-radius: 50%;
@@ -3003,13 +2997,13 @@ width: 10%;
   align-items: center;
   justify-content: center;
 }
-.creator-nft-offerts .creators-content-market div:nth-child(2) img{
+.creator-nft-offerts .creators-content-market div:nth-child(2) img {
   height: 100%;
   width: 100%;
   object-fit: cover;
   border-radius: 50%;
 }
-.creator-nft-offerts .creators-content-market div:nth-child(3){
+.creator-nft-offerts .creators-content-market div:nth-child(3) {
   flex-grow: 1;
   height: 80%;
   display: flex;
@@ -3017,7 +3011,7 @@ width: 10%;
   justify-content: space-evenly;
   margin-left: 10px;
 }
-.creator-nft-offerts .creators-content-market div:nth-child(3) p{
+.creator-nft-offerts .creators-content-market div:nth-child(3) p {
   width: 100%;
   justify-content: flex-start;
   align-items: flex-start;
@@ -3026,53 +3020,130 @@ width: 10%;
   font-size: 1.2em;
   color: rgb(184, 184, 184);
 }
-.creator-nft-offerts .creators-content-market div:nth-child(3) h3{
+.creator-nft-offerts .creators-content-market div:nth-child(3) h3 {
   font-weight: 800;
   font-size: 1.4em;
   letter-spacing: 1.5px;
 }
 
-/* END MARKETPLACE */
-.contenedor-creators{
+.contenedor-creators {
   width: 100%;
   height: 90vh;
   display: flex;
   align-items: center;
   justify-content: center;
-} 
-.position-cienporciento{
-  width:100vw;
+}
+.position-cienporciento {
+  width: 100vw;
   height: 100vh;
   position: absolute;
   top: 0;
   left: 0;
   background-color: rgba(0, 0, 0, 0.322);
-  z-index:1;
-  display:flex;
+  z-index: 1;
+  display: flex;
   align-items: center;
   justify-content: center;
 }
-.modal-market-place-pagos{
-  z-index:9999;
+.modal-market-place-pagos {
+  z-index: 9999;
   width: 60vw;
   height: 70vh;
-  background-color: white;
+  display: flex;
+  background-color: #14141d;
   border-radius: 20px;
+  align-items: center;
+  padding: 1rem;
 }
+
+.market-modal-left-column {
+  height: 80%;
+  display: flex;
+  padding: 1rem;
+  background-color: #191919;
+  width: 70%;
+}
+.modal-nft-header {
+  height: 70%;
+  width: 100%;
+  background-position: center;
+  background-size: cover;
+}
+.modal-nft-body-left {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.modal-nft-main-body {
+  height: 80%;
+  width: 100%;
+  display: flex;
+}
+.modal-nft-body h2 {
+  height: 20%;
+  display: flex;
+  justify-content: center;
+  font-size: 1.2rem;
+  width: 100%;
+}
+.modal-nft-body {
+  height: 30%;
+  width: 100%;
+  padding: 1rem;
+}
+.market-modal-right-column {
+  display: flex;
+  justify-items: center;
+  align-items: center;
+  height: 80%;
+  border-left: 5px solid #ffffff46;
+  border-top: 5px solid #ffffff46;
+  border-bottom: 5px solid #ffffff46;
+  border-right: 5px solid #ffffff46;
+  background-color: #191919;
+
+  padding: 1rem;
+  width: 30%;
+}
+
+.market-modal-nft-card {
+  width: 100%;
+  height: 100%;
+}
+.market-modal-payments {
+  width: 100%;
+  display: flex;
+  overflow-y: auto;
+  justify-content: center;
+  height: 100%;
+}
+/* .market-modal-payments > * {
+  height: 100%;
+  width: 100%;
+  display: flex;
+} */
+
+/* .dom-ready {
+  margin-top:50px;
+} */
+
+/* END MARKETPLACE */
 
 /* Wallet */
 
-.no-estas-en-store{
+.no-estas-en-store {
   height: auto;
 }
 
-.container-wallet-profile-total{
+.container-wallet-profile-total {
   width: calc(100% -70px);
   height: 90%;
   padding: 0 20px;
   overflow: auto;
 }
-.container-wallet-profile-total h2{
+.container-wallet-profile-total h2 {
   color: white;
   font-weight: 900;
   font-size: 1.5em;
@@ -3081,153 +3152,139 @@ width: 10%;
   align-items: center;
 }
 
-
-
-
-
-
-
-
-
-
-
 /* Responsive */
 
 /* Width */
 @media (max-width: 930px) {
-  .total-about div:nth-child(2) h3{
+  .total-about div:nth-child(2) h3 {
     width: 100%;
   }
-  .contenedor-about-advantages{
+  .contenedor-about-advantages {
     height: 85vh;
   }
-  .card-info-topCollection-home{
+  .card-info-topCollection-home {
     padding: 0;
   }
-  .contenedor-cards-topCollection-home{
+  .contenedor-cards-topCollection-home {
     height: 90%;
   }
 }
-@media (max-width: 830px){
-  .card-info-advantages-home p{
-    flex-grow:1;
+@media (max-width: 830px) {
+  .card-info-advantages-home p {
+    flex-grow: 1;
   }
 }
-@media (max-width: 803px){
-  .contenedor-about-advantages{
+@media (max-width: 803px) {
+  .contenedor-about-advantages {
     height: 100vh;
   }
-  .contenedor-cards-advantages-home{
+  .contenedor-cards-advantages-home {
     height: 83%;
     flex-wrap: wrap;
   }
-  .card-info-advantages-home{
+  .card-info-advantages-home {
     height: 48% !important;
     width: 48%;
     margin: 0;
   }
 }
-@media (max-width: 787px){
-  .texto-nft-home h2{
+@media (max-width: 787px) {
+  .texto-nft-home h2 {
     width: 70%;
   }
-  .contenedor-about-advantages{
+  .contenedor-about-advantages {
     margin-top: 30px;
   }
 }
-@media (max-width: 687px){
-  .contenedor-home{
+@media (max-width: 687px) {
+  .contenedor-home {
     flex-wrap: wrap;
   }
-  .contenedor-text-home{
+  .contenedor-text-home {
     width: 80%;
     padding-top: 30px;
   }
-  .contenedor-nft{
+  .contenedor-nft {
     display: none;
   }
 }
-@media (max-width: 662px){
-  .total-about div:nth-child(2){
+@media (max-width: 662px) {
+  .total-about div:nth-child(2) {
     width: 50%;
     height: 100%;
   }
-  .contenedor-ocho-about h2{
+  .contenedor-ocho-about h2 {
     text-align: center;
   }
 }
-@media (max-width: 600px){
-  .total-about{
+@media (max-width: 600px) {
+  .total-about {
     flex-wrap: wrap;
   }
-  .total-about div{
+  .total-about div {
     width: 100%;
     height: 45%;
   }
-  .total-about div div:nth-child(1){
-    width:100%;
+  .total-about div div:nth-child(1) {
+    width: 100%;
     height: 80%;
     background-image: url("./assets/aboutreves.jpeg");
   }
-  .total-about div div:nth-child(2){
+  .total-about div div:nth-child(2) {
     height: 170px !important;
     width: 170px !important;
     top: 30%;
     right: 33%;
   }
-  .contenedor-about{
+  .contenedor-about {
     height: 130vh;
   }
-  .total-about div:nth-child(2){
+  .total-about div:nth-child(2) {
     width: 100%;
     height: 50%;
   }
-  .contenedor-about-advantages{
+  .contenedor-about-advantages {
     margin-top: 0;
   }
-  .contenedor-ocho-about{
+  .contenedor-ocho-about {
     height: 95%;
   }
 }
 
-
-
-
-
 /* Height */
-@media (max-height: 700px){
-  .background-iluminacion{
+@media (max-height: 700px) {
+  .background-iluminacion {
     height: 80vh;
   }
-  .contenedor-home{
+  .contenedor-home {
     height: 100%;
   }
-  .contenedor-nft{
+  .contenedor-nft {
     height: 95%;
   }
-  .contenedor-text-home{
+  .contenedor-text-home {
     height: 80%;
   }
-  .total-about div:nth-child(2) h3{
+  .total-about div:nth-child(2) h3 {
     font-size: 2em;
   }
-  .total-about div:nth-child(2) p{
+  .total-about div:nth-child(2) p {
     font-size: 1em;
   }
-  .card-info-advantages-home{
+  .card-info-advantages-home {
     height: 90%;
   }
-  .card-info-topCollection-home{
+  .card-info-topCollection-home {
     height: 30%;
     font-size: 0.8em;
   }
   .card-info-topCollection-home p {
     margin: 0;
   }
-  .card-info-advantages-home p{
-    flex-grow:1;
+  .card-info-advantages-home p {
+    flex-grow: 1;
   }
-  .total-about div div:nth-child(2){
+  .total-about div div:nth-child(2) {
     height: 200px;
     width: 200px;
   }
@@ -3235,6 +3292,3 @@ width: 10%;
     height: 80%;
   }
 }
-
-
-
