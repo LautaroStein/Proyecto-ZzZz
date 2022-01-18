@@ -9,7 +9,12 @@ const nftActions = {
                 const offer = await axios.post('http://localhost:4000/api/offers', paramOffer, {
                     headers: { 'Authorization': 'Bearer ' + token }
                 })
-                dispatch({ type: 'ADD_OFFER', payload: offer.data.response })
+                if (offer.data.response) {
+                    dispatch({ type: 'ADD_OFFER', payload: offer.data.response })
+                    return { success: true }
+                } else {
+                    return { success: false }
+                }
             } catch (error) {
                 console.log(error);
             }
@@ -58,7 +63,14 @@ const nftActions = {
                 const offer = await axios.put(`http://localhost:4000/api/offer/${offerId}`, paramOffer, {
                     headers: { 'Authorization': 'Bearer ' + token }
                 })
-                dispatch({ type: 'UPDATE_OFFER', payload: { offerId: offer.data.offerUpdatedId, body: paramOffer } })
+                console.log(offer)
+                if (offer.data.offerUpdatedId) {
+                    dispatch({ type: 'UPDATE_OFFER', payload: { offerId: offer.data.offerUpdatedId, body: paramOffer } })
+                    return { success: true }
+                } else {
+                    return { success: false }
+                }
+
             } catch (error) {
                 console.log(error);
             }

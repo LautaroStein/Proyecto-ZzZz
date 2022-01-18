@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react"
 import { Link } from "react-router-dom"
+import Lumn from "../components/Lumn"
 // import { image } from '/assets/manimage.jpg'
 // import Footer from '../components/Footer'
 
@@ -9,13 +10,6 @@ const Home = () => {
     const [enter, setEnter] = useState(false)
     const [play, setPLay] = useState(false)
     const [offsetY, setOffsetY] = useState(0)
-    const handleScroll = () => setOffsetY(window.pageYOffset)
-
-    useEffect(() => {
-        window.addEventListener("scroll", handleScroll);
-
-        return () => window.removeEventListener("scroll", handleScroll);
-    },[])
 
     return (
         <>
@@ -61,9 +55,7 @@ const Home = () => {
                     </div>
                 </div>
             </div>
-                <div className='iluminador' style={ { transform : `translateY(${ offsetY * 0.4 }px) translateX(${ offsetY * 0.7 }px) scale(${offsetY > 50 ? 1.2 : 1 })`, transition: "transform 1.5s"} }></div>
-                <div className='iluminador2'style={ { transform : `translateY(${ -offsetY * 0.6 }px) translateX(${ -offsetY * 0.4 }px)` } } ></div>
-                <div className='iluminador3'style={ { transform : `translateY(${ -offsetY * 0.05 }px) translateX(${ -offsetY * 0.05 }px) scale(${offsetY > 10 ? 1.2 : 0.7 }`, transition: "transform 1.5s" } }></div>
+            <Lumn />
         </div>
         <div className="contenedor-about">
             <div className="contenedor-ocho-about">
@@ -139,8 +131,6 @@ const Home = () => {
                  </div>
              </div>
         </div>
-
-
         <div className="contenedor-creators">
             <div className="contenedor-ocho-about">
             <p>CREATORS</p>
@@ -172,7 +162,6 @@ const Home = () => {
                                 <p>The NFT & Defi farming initiative built on Ethereum (ETH) blockechain in OpenBid</p>
                             </div>               
                         </div>
-                              
                  </div>
              </div>
         </div>

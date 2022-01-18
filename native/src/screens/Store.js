@@ -11,20 +11,17 @@ const Store = () => {
                     <Image source={require('../../assets/mineria.png')} style={storeStyle.imagenMineria} />
                     <Text style={storeStyle.titleWelcome}>Live the new life check it out now.</Text>
                 </View>
-                <View style={storeStyle.view2}>
+                
+                {/* <View style={storeStyle.view2}>
                     <Text style={storeStyle.title2}>Top Sales</Text>
-                        {/* <Swiper> */}
-                            {/* <View> */}
-                                {/* <CardNFTNative/> */}
-                            {/* </View>                            */}
-                        {/* </Swiper> */}
+                       
                 <View>
                     <View>
                                 <CardNFTNative/>
-                    {/* <Image source={require('../../assets/mineria.png')} style={storeStyle.imagenMineria} /> */}
                     </View>
                 </View>
-                </View>
+                </View> */}
+
                 <View style={storeStyle.view3}>
                     <Text style={storeStyle.title2}>All</Text>
                                 <CardNFTNative/>
@@ -44,10 +41,10 @@ const storeStyle = StyleSheet.create({
         // display: 'flex',
         // flexDirection:'row',
     },
-    view2:{
-        backgroundColor:'black',
-        marginTop:'1rem',
-    },
+    // view2:{
+    //     backgroundColor:'black',
+    //     marginTop:'1rem',
+    // },
     view3:{
         backgroundColor:'black',
         marginTop:'1rem',
@@ -68,14 +65,14 @@ const storeStyle = StyleSheet.create({
         fontSize:'0.3rem',
         fontWeight:'bold',
     },
-    title2:{
-        fontWeight:'bold',
-        fontSize:'1rem',
-        color:'white',
-        width: '100%',
-        textAlign: 'left',
-        margin: '1rem'
-    },
+    // title2:{
+    //     fontWeight:'bold',
+    //     fontSize:'1rem',
+    //     color:'white',
+    //     width: '100%',
+    //     textAlign: 'left',
+    //     margin: '1rem'
+    // },
     imagenMineria:{
         width: '100px',
         height: '100px',

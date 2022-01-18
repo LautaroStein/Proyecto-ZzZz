@@ -10,6 +10,7 @@ import Ethereum from "../components/Profile/Ethereum"
 import ManagementOffer from '../components/Profile/ManagementOffer'
 import { AiFillDashboard } from 'react-icons/ai'
 import { IoDuplicate } from "react-icons/io5";
+import Lumn from '../components/Lumn'
 
 const Profile = () => {
 
@@ -31,6 +32,7 @@ const Profile = () => {
                 <div className="profile-render-constant">
                     {active === "user" ? <User /> : active === "admin" ? <Admin /> : active === "wallet" ? <Wallet /> : active === "ethereum" ? <Ethereum /> : active === "managementOffer" ? <ManagementOffer /> : <Dashboard />}
                 </div>
+                <Lumn />
             </div>
         </>
     )

@@ -8,7 +8,15 @@ const userActions = {
                 console.log(user)
                 if (user.data.success && !user.data.error) {
                     localStorage.setItem('token', user.data.response.token)
-                    dispatch({ type: 'USER_LOGGED', payload: { userName: user.data.response._doc.name, img: user.data.response._doc.userImg, userID: user.data.response._doc._id, sub: user.data.response._doc.suscription, role: user.data.response.role } })
+                    dispatch({ type: 'USER_LOGGED', payload: { 
+                        userName: user.data.response._doc.name,
+                        lastName: user.data.response._doc.lastName, 
+                        email: user.data.response._doc.email, 
+                        phone: user.data.response._doc.phone, 
+                        img: user.data.response._doc.userImg, 
+                        userID: user.data.response._doc._id, 
+                        sub: user.data.response._doc.suscription, 
+                        role: user.data.response.role } })
                     return { succes: true, userId: user.data.response._doc._id }
                 } else {
                     return { succes: false, error: user.data.errors }
@@ -71,9 +79,19 @@ const userActions = {
         return async (dispatch, getState) => {
             try {
                 const user = await axios.post('http://localhost:4000/api/auth/signIn', users)
+                console.log(user)
                 if (user.data.success && !user.data.error) {
                     localStorage.setItem('token', user.data.response.token)
-                    dispatch({ type: 'USER_LOGGED', payload: { userName: user.data.response._doc.name, img: user.data.response._doc.userImg, userID: user.data.response._doc._id, sub: user.data.response._doc.suscription, role: user.data.response.role } })
+                    dispatch({ type: 'USER_LOGGED', payload: { 
+                        userName: user.data.response._doc.name, 
+                        lastName: user.data.response._doc.lastName, 
+                        email: user.data.response._doc.email, 
+                        phone: user.data.response._doc.phone, 
+                        img: user.data.response._doc.userImg, 
+                        userID: user.data.response._doc._id, 
+                        sub: user.data.response._doc.suscription, 
+                        role: user.data.response._doc.role 
+                    }})
                     return { succes: true, userId: user.data.response._doc._id }
                 } else {
                     return { succes: false, error: user.data.error }

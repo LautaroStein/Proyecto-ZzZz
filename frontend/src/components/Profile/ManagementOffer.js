@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import offerActions from '../../redux/actions/offerActions'
 import userActions from '../../redux/actions/userActions'
 import { useNavigate } from 'react-router-dom'
+import Swal from 'sweetalert2'
 
 const CreateOffer = (props) => {
     const navigate = useNavigate()
@@ -10,6 +11,7 @@ const CreateOffer = (props) => {
     const [features, setFeatures] = useState(false)
     const [onCardHover, setOnCardHover] = useState({ bool: false, id: '' })
     const [editNft, setEditNft] = useState('')
+    const [formTimeReal, setFormTimeReal] = useState({name: "", type: "Art", class:"Common", img: "", price: 0 })
 
     const nname = useRef(null)
     const type = useRef(null)
@@ -41,7 +43,7 @@ const CreateOffer = (props) => {
         setEditNft(nft)
 
     }
-    const handlerCreate = () => {
+    const handlerCreate = async () => {
         const createdBody = {}
         nname.current.value !== '' && (createdBody['name'] = nname.current.value)
         type.current.value !== '' && (createdBody['type'] = type.current.value)
@@ -50,7 +52,23 @@ const CreateOffer = (props) => {
         price.current.value !== '' && (createdBody['price'] = price.current.value)
 
 
-        props.addNft({ ...createdBody, user: props.user.userID })
+        const res = await props.addNft({ ...createdBody, user: props.user.userID })
+        if (res.success) {
+            Swal.fire({
+                position: 'top',
+                icon: 'success',
+                title: 'The nft was Created !',
+                showConfirmButton: false,
+                timer: 1500
+            })
+        } else {
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Something went wrong!',
+                footer: '<a href="">Why do I have this issue?</a>'
+            })
+        }
 
     }
     const handlerUpdate = () => {
@@ -60,7 +78,7 @@ const CreateOffer = (props) => {
         editNft.nftId.clase && (updatedBody['clase'] = editNft.nftId.clase)
         editNft.nftId.img && (updatedBody['img'] = editNft.nftId.img)
         editNft.nftId.price && (updatedBody['price'] = editNft.nftId.price)
-        props.updateNft(editNft.nftId._id, { ...updatedBody })
+        props.updateNft(editNft.nftId._id, { ...updatedBody, valid: 'pending' })
         editNft.nftId.name = ''
         editNft.nftId.type = ''
         editNft.nftId.clase = ''
@@ -127,12 +145,11 @@ const CreateOffer = (props) => {
                                     <input min='0' type="number" placeholder="price" value={editNft.nftId.price} onChange={(e) => setEditNft({ nftId: { price: e.target.value, _id: editNft.nftId._id } })} />
                                 </> :
                                 <>
-                                    <input type="text" placeholder='name' ref={nname} />
-                                    <input type="text" placeholder="type" ref={type} />
+                                    <input type="text" placeholder='name' ref={nname} onChange={(e)=> setFormTimeReal({...formTimeReal, name:e.target.value})}/>
+                                    <input type="text" placeholder="type" ref={type} onChange={(e)=> setFormTimeReal({...formTimeReal, type:e.target.value})}/>
                                     <input type="text" placeholder="class" ref={clase} />
                                     <input type="text" placeholder="img" ref={img} />
                                     <input min='0' type="number" placeholder="price" ref={price} />
-
                                 </>
                             }
                         </div>

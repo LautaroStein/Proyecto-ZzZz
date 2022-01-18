@@ -3,6 +3,9 @@ import { connect } from 'react-redux'
 import nftActions from '../../redux/actions/nftActions'
 import offerActions from '../../redux/actions/offerActions'
 import userActions from '../../redux/actions/userActions'
+import { RiFlashlightFill } from 'react-icons/ri'
+import { BsCardChecklist } from 'react-icons/bs'
+import Swal from 'sweetalert2'
 
 const Admin = (props) => {
 
@@ -57,6 +60,7 @@ const Admin = (props) => {
         img.current.value !== '' && (createdBody['img'] = img.current.value)
         price.current.value !== '' && (createdBody['price'] = price.current.value)
         props.addNft({ ...createdBody })
+
     }
     const handlerUpdate = () => {
         const updatedBody = {}
@@ -68,7 +72,7 @@ const Admin = (props) => {
         editNft.nftId.img && (updatedBody['img'] = editNft.nftId.img)
         editNft.nftId.price && (updatedBody['price'] = editNft.nftId.price)
 
-        props.updateNft(editNft.nftId._id, { ...updatedBody, valid: 'pending' })
+        props.updateNft(editNft.nftId._id, { ...updatedBody })
 
         editNft.nftId.name = ""
         editNft.nftId.type = ""
@@ -79,22 +83,58 @@ const Admin = (props) => {
 
     }
 
-    const handlerAccept = (offerId) => {
-        props.offerUpdate(offerId, { valid: 'accepted' })
+    const handlerAccept = async (offerId) => {
+        const res = await props.offerUpdate(offerId, { valid: 'accepted' })
+        if (res.success) {
+            Swal.fire({
+                position: 'top',
+                icon: 'success',
+                title: 'The nft was accepted !',
+                showConfirmButton: false,
+                timer: 1500
+            })
+        } else {
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Something went wrong!',
+                footer: '<a href="">Why do I have this issue?</a>'
+            })
+        }
+
     }
-    const handlerReject = (offerId) => {
+    const handlerReject = async (offerId) => {
         // array de los rechazados para posteriormente darlos de baja si no son modificados
-        props.offerUpdate(offerId, { valid: 'rejected' })
+        const res = props.offerUpdate(offerId, { valid: 'rejected' })
     }
 
     return (
         <section className="management">
             {/* crud nfts */}
+            <div className='presentacion-admin-container'>
+                <h1>Hi Admin/Mod!</h1>
+                <div className='container-imguno-presentacion-admin'>
+                    <div className='container-presentacion-button'>
+                        <div>
+                            <RiFlashlightFill />
+                        </div>
+                    </div>
+                    <p>Create a new NFT in Official Store</p>
+                </div>
+                <div className='container-imgdos-presentacion-admin'>
+                    <div className='container-presentacion-button'>
+                        <div>
+                            <BsCardChecklist />
+                        </div>
+                    </div>
+                    <p>Accept the new NFT offers every day, to have the most updated NFT Marketplace</p>
+                </div>
+            </div>
             <article className="nfts-management">
                 <div className='main-nfts-content'>
                     <div className='nfts-search-title'>
                         <h2>NFTs Management</h2>
-                        <input type="text" placeholder='search by nft name' onChange={(e) => props.filter(props.aux, e.target.value.trim())} />
+                        <input type="text" placeholder='Search by NFT Name' onChange={(e) => props.filter(props.aux, e.target.value.trim())} />
                     </div>
                     <div className='nfts-container'>
                         {(props.nfts && props.nfts.length > 0) && props.nfts.map(nft =>
@@ -114,18 +154,18 @@ const Admin = (props) => {
                 </div>
                 <aside className="right-side-management">
                     <div className='edit-form'>
-                        <h2><span>{edit ? 'Edit' : 'Create'}</span> NFT Form</h2>
+                        <h2><span>{edit ? 'Edit ' : 'Create '}</span> NFT Form</h2>
                         <div className='nft-form'>
                             {(features && edit) ?
                                 (editNft.nftId) &&
                                 <>
                                     <h3>Elemental Features</h3>
-                                    <input type="text" placeholder='name' value={editNft.nftId.name} onChange={(e) => setEditNft({ nftId: { name: e.target.value, _id: editNft.nftId._id, features: '' } })} />
-                                    <input type="text" placeholder="type" value={editNft.nftId.type} onChange={(e) => setEditNft({ nftId: { type: e.target.value, _id: editNft.nftId._id, features: '' } })} />
-                                    <input type="text" placeholder="class" value={editNft.nftId.clase} onChange={(e) => setEditNft({ nftId: { clase: e.target.value, _id: editNft.nftId._id, features: '' } })} />
-                                    <input type="text" placeholder="img" value={editNft.nftId.img} onChange={(e) => setEditNft({ nftId: { img: e.target.value, _id: editNft.nftId._id, features: '' } })} />
-                                    <input min='0' type="number" placeholder="price" value={editNft.nftId.price} onChange={(e) => setEditNft({ nftId: { price: e.target.value, _id: editNft.nftId._id, features: '' } })} />
-                                    <input min='0' type="number" placeholder="stock" value={editNft.nftId.stock} onChange={(e) => setEditNft({ nftId: { stock: e.target.value, _id: editNft.nftId._id, features: '' } })} />
+                                    <input type="text" placeholder='Name' value={editNft.nftId.name} onChange={(e) => setEditNft({ nftId: { name: e.target.value, _id: editNft.nftId._id, features: '' } })} />
+                                    <input type="text" placeholder="Type" value={editNft.nftId.type} onChange={(e) => setEditNft({ nftId: { type: e.target.value, _id: editNft.nftId._id, features: '' } })} />
+                                    <input type="text" placeholder="Class" value={editNft.nftId.clase} onChange={(e) => setEditNft({ nftId: { clase: e.target.value, _id: editNft.nftId._id, features: '' } })} />
+                                    <input type="text" placeholder="Img" value={editNft.nftId.img} onChange={(e) => setEditNft({ nftId: { img: e.target.value, _id: editNft.nftId._id, features: '' } })} />
+                                    <input min='0' type="number" placeholder="Price" value={editNft.nftId.price} onChange={(e) => setEditNft({ nftId: { price: e.target.value, _id: editNft.nftId._id, features: '' } })} />
+                                    <input min='0' type="number" placeholder="Stock" value={editNft.nftId.stock} onChange={(e) => setEditNft({ nftId: { stock: e.target.value, _id: editNft.nftId._id, features: '' } })} />
                                     {editNft.nftId.features.hp &&
                                         <>
                                             <h3>Game Features</h3>
@@ -134,12 +174,12 @@ const Admin = (props) => {
                                     }
                                 </> :
                                 <>
-                                    <input type="text" placeholder='name' ref={nname} />
-                                    <input type="text" placeholder="type" ref={type} />
-                                    <input type="text" placeholder="class" ref={clase} />
-                                    <input type="text" placeholder="img" ref={img} />
-                                    <input min='0' type="number" placeholder="price" ref={price} />
-                                    <input min='0' type="number" placeholder="stock" ref={stock} />
+                                    <input type="text" placeholder='Name' ref={nname} />
+                                    <input type="text" placeholder="Type" ref={type} />
+                                    <input type="text" placeholder="Class" ref={clase} />
+                                    <input type="text" placeholder="Img" ref={img} />
+                                    <input min='0' type="number" placeholder="Price" ref={price} />
+                                    <input min='0' type="number" placeholder="Stock" ref={stock} />
 
                                 </>
                             }
@@ -148,13 +188,12 @@ const Admin = (props) => {
                             <i onClick={handlerSetCreate} className="fas fa-plus-circle"></i>
                         </div>
 
-                        {!edit && <button onClick={handlerCreate} className='submit-edit-form'>Create</button>}
-                        {edit && <button onClick={handlerUpdate} className='submit-edit-form'>Update</button>}
+                        {!edit && <button onClick={() => handlerCreate()} className='submit-edit-form'>Create</button>}
+                        {edit && <button onClick={() => handlerUpdate()} className='submit-edit-form'>Update</button>}
                     </div>
                     <div className='create-form'></div>
                 </aside>
             </article>
-            {/* el admin podra ascender algun user*/}
             <article className="offers-management">
                 <div className='main-offers-content'>
                     <div className='nfts-search-title'>
@@ -182,7 +221,6 @@ const Admin = (props) => {
                         )}
                     </div>
                 </div>
-
             </article>
             <article className="offers-management">
                 <div className='main-nfts-content'>
@@ -225,10 +263,6 @@ const Admin = (props) => {
                         )}
                     </div>
                 </div>
-            </article>
-            <article className="nfts-management">
-
-
             </article>
         </section>
     )

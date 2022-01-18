@@ -4,11 +4,13 @@ const controllerUser = require('../controllers/controllerUser');
 const NftControllers = require("../controllers/NftController");
 const Coinbase = require("../controllers/CoinbaseController");
 const offerNftController = require('../controllers/offerNftController')
+const transactionController = require('../controllers/transactionController')
 const passport = require('../config/passport')
 const { Charge } = Coinbase
 const { newUser, userLoged, authUser, favs, getUsers, updateUser, getUsersByDay, getSuscriptionByDay } = controllerUser;
 const { getAllNft, loadUnNft, modifyAnNft, getOneNft, deleteNft, getNftsByUser } = NftControllers;
 const { getAllOffers, postOffer, modifyOffer, getOneOffer, deleteOffer, getOffersByUser, getOffersByDay } = offerNftController
+const { getRecents, postTransaction, getMaxCreator } = transactionController
 
 // stadistics controllers
 Router.route('/usersByDay')
@@ -72,4 +74,11 @@ Router.route("/offer/:id")
     .put(passport.authenticate('jwt', { session: false }), modifyOffer)
     .delete(passport.authenticate('jwt', { session: false }), deleteOffer)
 
+
+// TRANSACTION 
+Router.route('/recents')
+    .get(getRecents)
+Router.route('/transactions')
+    .post(passport.authenticate('jwt', { session: false }), postTransaction)
+    .get(getMaxCreator)
 module.exports = Router
