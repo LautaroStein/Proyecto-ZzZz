@@ -18,8 +18,8 @@ const Navigations = withRouter(Navigation)
 const Forms = withRouter(Form)
 
 function App({ user, rdxAuth, rdxLogin, getUserNfts, getNfts }) {
+  
   useEffect(() => {
-    // 
     async function fetchData() {
       const user = await rdxAuth();
       getUserNfts(user.response._id)

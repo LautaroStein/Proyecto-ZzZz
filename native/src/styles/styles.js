@@ -22,4 +22,20 @@ export  const styles = StyleSheet.create({
         width:"20%"
         
       },
+    drawerContainer: {
+      backgroundColor: '#001a33',
+      flexDirection: 'column',
+      justifyContent: 'center',
+      alignItems: 'center',
+      height: 80,
+    },
+    drawerTitle: {
+      color: 'white',
+      fontWeight: 'bold',
+      
+    },
+    drawerName: {
+      color: '#96faaf',
+      fontWeight: 'bold',
+    }
   });
