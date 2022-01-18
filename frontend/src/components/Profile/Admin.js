@@ -195,8 +195,8 @@ const Admin = (props) => {
                             <i onClick={handlerSetCreate} className="fas fa-plus-circle"></i>
                         </div>
 
-                        {!edit && <button onClick={handlerCreate} className='submit-edit-form'>Create</button>}
-                        {edit && <button onClick={handlerUpdate} className='submit-edit-form'>Update</button>}
+                        {!edit && <button onClick={() => handlerCreate()} className='submit-edit-form'>Create</button>}
+                        {edit && <button onClick={() => handlerUpdate()} className='submit-edit-form'>Update</button>}
                     </div>
                     <div className='create-form'></div>
                 </aside>

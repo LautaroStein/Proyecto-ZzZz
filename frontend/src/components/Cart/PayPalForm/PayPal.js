@@ -9,7 +9,7 @@ import offerActions from '../../../redux/actions/offerActions'
 
 
 
-const PayPal = ({ total, cart, user, updateNft, active, mount, seller, addTransaction, updateOffer }) => {
+const PayPal = ({ total, cart, user, updateNft, active, mount, seller, addTransaction, updateOffer, clearCartAll }) => {
 
     const [orderID, setOrderID] = useState(false)
     const [ErrorMessage, setErrorMessage] = useState("");
@@ -41,7 +41,7 @@ const PayPal = ({ total, cart, user, updateNft, active, mount, seller, addTransa
         return actions.order.create({
             purchase_units: [
                 {
-                    description: descript.length > 15 ? descript : `Your buy was ${seller.name}`,
+                    description: 'Compraste',
                     amount: {
                         value: mount ? mount : total
                     }
@@ -56,6 +56,7 @@ const PayPal = ({ total, cart, user, updateNft, active, mount, seller, addTransa
                 const { payer } = details;
                 console.log('Capture result', details, JSON.stringify(details, null, 2))
                 var transaction = details.purchase_units[0].payments.captures[0];
+                console.log(transaction.status)
                 alert('Transaction' + transaction.status + ':' + transaction.id)
                 setOrderID(transaction.id)
                 switch (active) {
@@ -87,9 +88,18 @@ const PayPal = ({ total, cart, user, updateNft, active, mount, seller, addTransa
                         new Error('Invalid option')
                 }
 
+                if (cart.length > 1) {
+                    cart.forEach(item => {
+                        updateNft(item._id, { stock: item.stock - 1, users: [...item.users, user.userID] })
+                    })
+                } else {
+                    updateNft(cart[0]._id, { stock: cart[0].stock - 1, users: [...cart[0].users, user.userID] })
+                }
+                if (transaction.status === "COMPLETED") {
+                    clearCartAll && clearCartAll()
+                }
             })
         // se actualiza el offerNFT
-
     }
     const onCancel = (data) => {
         console.log('you have cancelled the payment', data)

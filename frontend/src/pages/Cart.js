@@ -64,7 +64,7 @@ const Cart = ({ cart, clearCartAll, deleteOneNFT, setTotalPrice }) => {
                     <div><p>TOTAL</p><p>${total}</p></div>
                     <div></div>
                     <div>
-                        <PayPal active='shopping' />
+                        <PayPal clearCartAll={clearCartAll} active='shopping' />
                     </div>
                 </div>
             </div>
