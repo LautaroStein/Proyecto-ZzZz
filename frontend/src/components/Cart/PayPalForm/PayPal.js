@@ -2,7 +2,14 @@ import React, { useEffect, useState } from "react";
 import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 import { connect } from "react-redux"
 import nftActions from '../../../redux/actions/nftActions'
-const PayPal = ({ total, cart, user, updateNft, offerNft }) => {
+import transactionActions from '../../../redux/actions/transactionActions'
+import offerActions from '../../../redux/actions/offerActions'
+
+
+
+
+
+const PayPal = ({ total, cart, user, updateNft, active, mount, seller, addTransaction, updateOffer }) => {
 
     const [orderID, setOrderID] = useState(false)
     const [ErrorMessage, setErrorMessage] = useState("");
@@ -16,9 +23,10 @@ const PayPal = ({ total, cart, user, updateNft, offerNft }) => {
                 descript += `,${item.name}`
             })
 
-        } else {
+        } else if (cart.length === 1 && cart) {
             descript = `${cart[0].name}`
         }
+
         PayPalCheckOut()
 
     }, [total])
@@ -33,9 +41,9 @@ const PayPal = ({ total, cart, user, updateNft, offerNft }) => {
         return actions.order.create({
             purchase_units: [
                 {
-                    description: descript,
+                    description: 'descript',
                     amount: {
-                        value: total
+                        value: mount
                     }
                 }
             ]
@@ -50,15 +58,48 @@ const PayPal = ({ total, cart, user, updateNft, offerNft }) => {
                 var transaction = details.purchase_units[0].payments.captures[0];
                 alert('Transaction' + transaction.status + ':' + transaction.id)
                 setOrderID(transaction.id)
-                if (cart.length > 1) {
+                switch (active) {
+                    case 'shopping':
+                        if (cart.length > 1) {
 
-                    cart.forEach(item => {
-                        updateNft(item._id, { stock: item.stock - 1, users: [...item.users, user.userID] })
-                    })
+                            cart.forEach(item => {
+                                updateNft(item._id, { stock: item.stock - 1, users: [...item.users, user.userID] })
+                            })
 
-                } else {
-                    updateNft(cart[0]._id, { stock: cart[0].stock - 1, users: [...cart[0].users, user.userID] })
+                        } else {
+                            updateNft(cart[0]._id, { stock: cart[0].stock - 1, users: [...cart[0].users, user.userID] })
+                        }
+                        break;
+                    case 'subscription':
+                        break;
+                    case 'offer':
+                        console.log('Entro!');
+                        const transaction = {
+                            userBuyer: user.userID,
+                            userSeller: seller.userId,
+                            nftOffer: seller.offerId,
+                            mount: mount
+                        }
+                        addTransaction(transaction)
+                        updateOffer(seller.offerId, { public: false, user: user.userID })
+
+
+                        //  1.- se crea una TRANSACTION
+                        //  2.- necesito cambiar el USER del nftOffer(id) a USER del que esta conectado
+                        //  3.- el atributo PUBLIC del nftOffer pasa a false
+                        /*obj transaction = {
+                            "userBuyer": "user conectado",
+                            "userSeller": "user vendedor",
+                            "nftOffer": "61e1b003cfe38f821cf69ca2",
+                            "mount": 2500
+                          }  
+                        */
+
+                        break;
+                    default:
+                        new Error('Invalid option')
                 }
+
             })
         // se actualiza el offerNFT
 
@@ -97,6 +138,8 @@ const mapStateToProps = (state) => {
     }
 }
 const mapDispatchToProps = {
-    updateNft: nftActions.updateNft
+    updateNft: nftActions.updateNft,
+    updateOffer: offerActions.updateOffer,
+    addTransaction: transactionActions.addTransaction
 }
 export default connect(mapStateToProps, mapDispatchToProps)(PayPal)

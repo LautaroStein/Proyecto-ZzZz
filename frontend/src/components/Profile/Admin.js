@@ -61,6 +61,13 @@ const Admin = (props) => {
         price.current.value !== '' && (createdBody['price'] = price.current.value)
         props.addNft({ ...createdBody })
 
+        nname.current.value = ''
+        type.current.value = ''
+        clase.current.value = ''
+        stock.current.value = ''
+        img.current.value = ''
+        price.current.value = ''
+
     }
     const handlerUpdate = () => {
         const updatedBody = {}
