@@ -1,6 +1,7 @@
 // Importamos createDrawerNavigator
 import {useEffect} from 'react'
-import { createDrawerNavigator } from '@react-navigation/drawer';
+import { Text, View } from "react-native"
+import { createDrawerNavigator, DrawerContentScrollView, DrawerItemList } from '@react-navigation/drawer';
 import Home from "../screens/Home"
 import Store from "../screens/Store"
 import NftSaved from "../screens/NftSaved"
@@ -8,18 +9,17 @@ import Cart from "../screens/Cart"
 import Profile from "../screens/Profile"
 import Logout from "../components/Logout" 
 
+import AsyncStorage from '@react-native-async-storage/async-storage'
+
 import nftActions from '../redux/actions/nftActions'
 import userActions from "../redux/actions/userActions"
 import { connect } from "react-redux";
 
-// Instanciamos createDrawerNavigator para obtener todos sus Metodos y Componentes
+import { styles } from '../styles/styles';
+
 const Drawer = createDrawerNavigator();
 
-
-// DrawerNavigator es el navigator que vamos a exportar y va a ser el encargado 
-// de mostrar las distintas vistas mediante eventos de navegación y las distintas pantallas
-// declaradas en el mismo, tambien es totalmente modificable su estilo y su forma de interaccion.-
-const DrawerNavigator = ({ user, rdxAuth, rdxLogin, getUserNfts, getNfts })=>{
+const DrawerNavigator = (props)=>{
 
     // useEffect(() => {
     //     // 
@@ -33,19 +33,53 @@ const DrawerNavigator = ({ user, rdxAuth, rdxLogin, getUserNfts, getNfts })=>{
     //         }
     //         user.response && rdxLogin(userLogged)
     //     }
-    //     localStorage.getItem('token') && fetchData();
+    //     AsyncStorage.getItem('token') && fetchData();
     //     getNfts()
     // }, [rdxAuth, rdxLogin, getUserNfts])// eslint-disable-line react-hooks/exhaustive-deps
 
+    useEffect(() => {
+      getData()
+    },[])
+
+    const getData = async () => {
+      const token = await AsyncStorage.getItem('token')
+      if (token) {
+        props.logInAsync(token)
+      }
+    }
+
+    const CustomDrawerContent = (props) => {
+      return (
+        <DrawerContentScrollView {...props}>
+          <View style={styles.drawerContainer}>
+            <Text style={styles.drawerTitle}>Welcome to ProjectZzZz</Text>
+            {props.token ? <Text style={styles.drawerName}>{props.user.name}</Text> : null}
+          </View>
+          <DrawerItemList {...props}/>
+        </DrawerContentScrollView>
+      )
+    }
 
     return (
-        <Drawer.Navigator>
+        <Drawer.Navigator 
+        drawerContent={props => <CustomDrawerContent {...props}/>}
+        screenOptions={{
+          drawerStyle:{
+            backgroundColor: '#14141d',
+          },
+          drawerActiveBackgroundColor:"#1f1f36",
+          drawerInactiveTintColor: 'white',
+          drawerContentStyle:{
+                margin: 45,
+               backgroundColor:'white'}
+        }}
+        >
               <Drawer.Screen name="Home" component={Home} />
               <Drawer.Screen name="Official Store" component={Store} />
               <Drawer.Screen name="NFT Saved" component={NftSaved} />
               <Drawer.Screen name="Cart" component={Cart} />
               <Drawer.Screen name="Profile" component={Profile} />
-              <Drawer.Screen name="Logout" component={Logout} />
+              {props.token ? <Drawer.Screen name="Logout" component={Logout} /> : null}
         </Drawer.Navigator>
     )
 }
@@ -57,10 +91,9 @@ const mapStateToProps = (state) => {
   }
   
   const mapDispatchToProps = {
-    rdxAuth: userActions.isAuth,
-    rdxLogin: userActions.signIn,
-    getNfts: nftActions.getNfts,
-    getUserNfts: nftActions.getNftsByUser,
+    logInAsync: userActions.logInAsync,
+    
   }
 
-export default connect(mapStateToProps, mapDispatchToProps)(DrawerNavigator);
+export default connect(mapStateToProps, mapDispatchToProps)(DrawerNavigator)
+
