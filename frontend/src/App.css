@@ -3464,6 +3464,9 @@ img {
   display: flex;
   align-items: center;
 }
+.menu-icon:checked + label, .menu-icon:not(:checked) + label{
+  display: none;
+}
 
 /* Responsive */
 
@@ -3575,6 +3578,9 @@ img {
   }
   .nav ul li a {
     font-size: 5vh;
+  }
+  .menu-icon:checked + label, .menu-icon:not(:checked) + label{
+    display: block;
   }
 }
 
