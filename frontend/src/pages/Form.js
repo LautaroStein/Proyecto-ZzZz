@@ -5,15 +5,73 @@ import { connect } from "react-redux"
 import userActions from "../redux/actions/userActions"
 import { GoogleLogin } from 'react-google-login';
 import { BsFacebook, BsInstagram, BsGoogle } from "react-icons/bs";
+import { toast } from 'react-toastify';
 
 const Form = (props) => {
 
-    const responseGoogle = (response) => {
-        let googleUser = {
+    const responseGoogle = async (response) => {
+        const googleLoginUser = {
             email: response.profileObj.email,
             password: response.profileObj.googleId,
             google: true,
         }
+        const googleRegisterUser = {
+            email: response.profileObj.email,
+            password: response.profileObj.googleId,
+            name: response.profileObj.givenName,
+            lastName: response.profileObj.familyName,
+            userImg: response.profileObj.imageUrl,
+            phone: "111111111"
+        }
+        if (props.location.pathname === "/SignIn") {
+            const userResponse = await props.login(googleLoginUser)
+            userResponse.succes
+                ?
+                toast.success('Welcom to the NFT world', {
+                    position: "top-right",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                })
+
+                : toast.warn(userResponse.error, {
+                    position: "top-right",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                });
+        } else {
+            const userResponse = await props.signup(googleRegisterUser)
+            userResponse.succes
+                ?
+                toast.success('Welcom to the NFT world', {
+                    position: "top-right",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                })
+
+                : toast.warn(userResponse.error, {
+                    position: "top-right",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                });
+
+        }
+
     }
 
 

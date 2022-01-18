@@ -20,7 +20,7 @@ const offerReducers = (state = initialState, action) => {
                 ...state,
                 offers: action.payload,
                 auxOffers: action.payload,
-                auxOffertsDos : arrayAcepted
+                auxOffertsDos: arrayAcepted
             }
         case 'GET_OFFER':
             return {

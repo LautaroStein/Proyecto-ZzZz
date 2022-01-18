@@ -7,7 +7,7 @@ const userActions = {
                 const user = await axios.post('http://localhost:4000/api/auth/signUp', paramUser)
                 if (user.data.success && !user.data.error) {
                     localStorage.setItem('token', user.data.response.token)
-                    dispatch({ type: 'USER_LOGGED', payload: { userName: user.data.response._doc.name, img: user.data.response._doc.userImg, userID: user.data.response._doc._id, sub: user.data.response._doc.suscription, role: user.data.response.role } })
+                    dispatch({ type: 'USER_LOGGED', payload: { userName: user.data.response._doc.name, img: user.data.response._doc.userImg, userID: user.data.response._doc._id, sub: user.data.response._doc.suscription, role: user.data.response._doc.role } })
                     return { succes: true, userId: user.data.response._doc._id }
                 } else {
                     return { succes: false, error: user.data.errors }

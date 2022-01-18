@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import nftActions from '../../redux/actions/nftActions'
 import offerActions from '../../redux/actions/offerActions'
 import userActions from '../../redux/actions/userActions'
+import Swal from 'sweetalert2'
 
 const Admin = (props) => {
 
@@ -57,6 +58,7 @@ const Admin = (props) => {
         img.current.value !== '' && (createdBody['img'] = img.current.value)
         price.current.value !== '' && (createdBody['price'] = price.current.value)
         props.addNft({ ...createdBody })
+
     }
     const handlerUpdate = () => {
         const updatedBody = {}
@@ -68,7 +70,7 @@ const Admin = (props) => {
         editNft.nftId.img && (updatedBody['img'] = editNft.nftId.img)
         editNft.nftId.price && (updatedBody['price'] = editNft.nftId.price)
 
-        props.updateNft(editNft.nftId._id, { ...updatedBody, valid: 'pending' })
+        props.updateNft(editNft.nftId._id, { ...updatedBody })
 
         editNft.nftId.name = ""
         editNft.nftId.type = ""
@@ -79,12 +81,29 @@ const Admin = (props) => {
 
     }
 
-    const handlerAccept = (offerId) => {
-        props.offerUpdate(offerId, { valid: 'accepted' })
+    const handlerAccept = async (offerId) => {
+        const res = await props.offerUpdate(offerId, { valid: 'accepted' })
+        if (res.success) {
+            Swal.fire({
+                position: 'top',
+                icon: 'success',
+                title: 'The nft was accepted !',
+                showConfirmButton: false,
+                timer: 1500
+            })
+        } else {
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Something went wrong!',
+                footer: '<a href="">Why do I have this issue?</a>'
+            })
+        }
+
     }
-    const handlerReject = (offerId) => {
+    const handlerReject = async (offerId) => {
         // array de los rechazados para posteriormente darlos de baja si no son modificados
-        props.offerUpdate(offerId, { valid: 'rejected' })
+        const res = props.offerUpdate(offerId, { valid: 'rejected' })
     }
 
     return (
