@@ -34,7 +34,7 @@ const SignIn = (props) => {
   }
 
   return (
-    <ScrollView style={{padding: 10}}>
+    <ScrollView style={styles.container}>
       <View style={styles.centerItems}>
 
         <TextInput
@@ -56,7 +56,7 @@ const SignIn = (props) => {
       <View style={styles.centerItems}>
 
         <TouchableOpacity onPress={action} style={styles.touchableHighlight} activeOpacity={0.2} underlayColor="gray">
-          <Text> Sign In </Text>
+          <Text style={styles.buttonText}> Sign In </Text>
         </TouchableOpacity>
 
       </View>
@@ -65,13 +65,18 @@ const SignIn = (props) => {
 }
 
 const styles = StyleSheet.create({
+  container: {
+    backgroundColor: "#14141d" ,
+    padding: 10,
+  },
   textInput:{
     height: 40,
-    width:'70%',
-    borderBottomWidth:2,
-    borderBottomColor:'red',
-    borderStyle:'solid', 
-    marginBottom:50
+    width: '70%',
+    color: 'white',
+    borderBottomWidth: 2,
+    borderBottomColor: '#8f0788',
+    borderStyle: 'solid',
+    marginBottom: 50,
   },
   centerItems:{
     width:'100%', 
@@ -81,9 +86,12 @@ const styles = StyleSheet.create({
   touchableHighlight:{
     padding: 10, 
     borderRadius:10,
-    backgroundColor: "red"
-    
-  }
+    backgroundColor: "#b903b0" 
+  },
+  buttonText: {
+    fontWeight: "bold",
+    color: 'white',
+  },
   
 })
 

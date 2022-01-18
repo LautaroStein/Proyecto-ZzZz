@@ -1,31 +1,22 @@
 import React from 'react';
 import { View, Text, ScrollView, StyleSheet, Image } from 'react-native'
-import CardNFTNative from '../components/CardNftNative';
-// import Swiper from 'react-native-swiper'
 
 const Store = () => {
     return (
         <ScrollView style={storeStyle.mainView}>
-                <View style={storeStyle.view}>
-                    <Text style={storeStyle.titleWelcome}>Collect & Sell Your NFTs</Text>
-                    <Image source={require('../../assets/mineria.png')} style={storeStyle.imagenMineria} />
-                    <Text style={storeStyle.titleWelcome}>Live the new life check it out now.</Text>
-                </View>
-                
-                {/* <View style={storeStyle.view2}>
-                    <Text style={storeStyle.title2}>Top Sales</Text>
-                       
-                <View>
-                    <View>
-                                <CardNFTNative/>
-                    </View>
-                </View>
-                </View> */}
-
-                <View style={storeStyle.view3}>
-                    <Text style={storeStyle.title2}>All</Text>
-                                <CardNFTNative/>
-                </View>
+        <View style={storeStyle.view}>
+            <Text style={storeStyle.title}>Collect & Sell Your NFTs</Text>
+            <Image source={require('../../assets/mineria.png')} style={storeStyle.imagenMineria} />
+            <Text style={storeStyle.title}>Live the new life check it out now.</Text>
+        </View>
+        <View style={storeStyle.view2}>
+            <Text style={storeStyle.title2}>Top Sellers</Text>
+            <Image source={require('../../assets/mineria.png')} style={storeStyle.imagenMineria} />
+        </View>
+        <View style={storeStyle.view3}>
+            <Text style={storeStyle.title2}>All</Text>
+            <Image source={require('../../assets/mineria.png')} style={storeStyle.imagenMineria} />
+        </View>
     </ScrollView>
     )
 }
@@ -37,42 +28,29 @@ const storeStyle = StyleSheet.create({
     },
     view:{
         backgroundColor:'black',
-        margin:'0.5rem',        
-        // display: 'flex',
-        // flexDirection:'row',
     },
-    // view2:{
-    //     backgroundColor:'black',
-    //     marginTop:'1rem',
-    // },
-    view3:{
+    view2:{
         backgroundColor:'black',
         marginTop:'1rem',
     },
-    titleWelcome:{
-        color:'white',
-        width: '100%',
-        height:'0.5rem',
-        textAlign: 'center',
-        margin: '1rem',
+    view3:{
+        backgroundColor:'black',
+        marginTop:'1rem',
     },
     title:{
         color:'white',
         width: '100%',
         height:'0.5rem',
         textAlign: 'center',
-        margin: '1rem',
-        fontSize:'0.3rem',
-        fontWeight:'bold',
+        margin: '1rem'
     },
-    // title2:{
-    //     fontWeight:'bold',
-    //     fontSize:'1rem',
-    //     color:'white',
-    //     width: '100%',
-    //     textAlign: 'left',
-    //     margin: '1rem'
-    // },
+    title2:{
+        color:'white',
+        width: '100%',
+        height:'0.5rem',
+        textAlign: 'left',
+        margin: '1rem'
+    },
     imagenMineria:{
         width: '100px',
         height: '100px',

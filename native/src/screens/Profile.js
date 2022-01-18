@@ -3,28 +3,33 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import SignIn from '../components/SignIn'
 import SignUp from '../components/SignUp'
 
-
-// Instanciamos createBottomTabNavigator para obtener todos sus Metodos y Componentes
 const Tab = createBottomTabNavigator();
-
-
-// BottomTabNavigator es el navigator que vamos a exportar y va a ser el encargado 
-// de mostrar las distintas vistas mediante eventos de navegación y las distintas pantallas
-// declaradas en el mismo, tambien es totalmente modificable su estilo y su forma de interaccion.-
 
 const Profile = ({ navigation}) => {
 
     
     return (
-        <Tab.Navigator>
-
-        {/* <Tab.Screen name="nose" component={ComponenteUno} /> */}
-        {/* <Tab.Screen name="C_Dos" component={ComponenteDos} /> */}
-        <Tab.Screen name="Signin" component={SignIn} />
-        <Tab.Screen name="SignUp" component={SignUp} />
-        
-
-    </Tab.Navigator>
+        <Tab.Navigator
+        screenOptions={{
+            tabBarStyle: {
+                backgroundColor: '#1f1f36',
+                border: '#1f1f36',
+                paddingBottom: 10,  
+            },
+            tabBarInactiveTintColor: 'white',
+            tabBarActiveTintColor: '#96faaf',
+            headerStyle: {
+            backgroundColor: '#1f1f36',
+            borderBottomWidth: 0,
+          },
+          headerTintColor: '#85deb4',
+          headerTitleStyle: {
+            fontWeight: 'bold',
+          },
+        }}>
+            <Tab.Screen name="Signin" component={SignIn} options={{title: 'Sign In'}}/>
+            <Tab.Screen name="SignUp" component={SignUp} options={{title: 'Sign Up'}}/>
+        </Tab.Navigator>
     )
 }
 
