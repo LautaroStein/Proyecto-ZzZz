@@ -3,7 +3,6 @@ import { Text, TextInput, View, ScrollView, TouchableHighlight, StyleSheet, Touc
 import { useDispatch } from "react-redux"
 import userAction from "../redux/actions/userActions"
 import toasty from "./Toast";
-import { showMessage } from "react-native-flash-message"
 
 const SignUp = (props) => {
 
@@ -43,7 +42,7 @@ const SignUp = (props) => {
   }
 
   return (
-    <ScrollView style={{ padding: 10 }}>
+    <ScrollView style={styles.container}>
       <View style={styles.centerItems}>
 
         <TextInput
@@ -92,7 +91,7 @@ const SignUp = (props) => {
       <View style={styles.centerItems}>
 
         <TouchableOpacity onPress={action} style={styles.touchableHighlight} activeOpacity={0.2} underlayColor="gray">
-          <Text> Sign Up </Text>
+          <Text style={styles.buttonText}> Sign Up </Text>
         </TouchableOpacity>
 
       </View>
@@ -101,13 +100,18 @@ const SignUp = (props) => {
 }
 
 const styles = StyleSheet.create({
+  container: {
+    backgroundColor: "#14141d" ,
+    padding: 10,
+  },
   textInput: {
     height: 40,
     width: '70%',
+    color: 'white',
     borderBottomWidth: 2,
-    borderBottomColor: 'red',
+    borderBottomColor: '#8f0788',
     borderStyle: 'solid',
-    marginBottom: 50
+    marginBottom: 50,
   },
   centerItems: {
     width: '100%',
@@ -117,8 +121,12 @@ const styles = StyleSheet.create({
   touchableHighlight: {
     padding: 10,
     borderRadius: 10,
-    backgroundColor: "red"
-  }
+    backgroundColor: "#b903b0"
+  },
+  buttonText: {
+    fontWeight: "bold",
+    color: 'white',
+  },
 
 })
 
