@@ -28,7 +28,7 @@ const userReducers = (state = initialState, action) => {
         case 'UPDATE_USER':
             return {
                 ...state,
-                user: { ...state.user, userName: action.payload.body.name, userImg: action.payload.body.img, ...action.payload.body }
+                user: { ...state.user, userName: action.payload.body.name, sub: action.payload.body.suscription, userImg: action.payload.body.img, ...action.payload.body }
             }
         default:
             return state
