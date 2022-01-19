@@ -79,7 +79,20 @@ const Form = (props) => {
         <div className="form-central-todo">
             <div className="form-color-todo">
                 <div className="form-contenedor-input">
-                    <h1>{props.location.pathname === "/SignIn" ? <>Sign In</> : <>Sign Up</>}</h1>
+                    <div className='form-contenedor-title-actions'>
+                        <h1>{props.location.pathname === "/SignIn" ? <>Sign In</> : <>Sign Up</>}</h1>
+                        <h2 className='action-link-sign'>
+                            {props.location.pathname === "/SignUp" ?
+                                <>
+
+                                    <Link className="btn-link-sign" to="/SignIn">SignIn</Link>
+                                </>
+                                :
+                                <>
+
+                                    <Link className="btn-link-sign" to="/SignUp">SignUp</Link>
+                                </>}</h2>
+                    </div>
                     <div className="social-container">
                         <ul>
                             <li>
@@ -123,20 +136,12 @@ const Form = (props) => {
                     {props.location.pathname === "/SignIn" ? <><SignIn signin={props.login} /></> : null}
                     {props.location.pathname === "/SignUp" ? <><SignUp signup={props.signup} /></> : null}
                 </div>
-                {
-                    props.location.pathname === "/SignUp" ?
-                        <div className="background-image">
-                            <h2>Welcome Back!</h2>
-                            <p>To keep connected with us please login with your personal info</p>
-                            <Link to="/SignIn">SignIn</Link>
-                        </div>
-                        :
-                        <div className="background-image">
-                            <h2>Hello, Friend!</h2>
-                            <p>Enter your personal details and start a journey with us</p>
-                            <Link to="/SignUp">SignUp</Link>
-                        </div>
-                }
+                <div className="background-image">
+                    {
+
+
+                    }
+                </div>
             </div>
         </div>
 

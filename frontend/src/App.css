@@ -242,8 +242,25 @@ ul li button:hover:nth-child(4) {
     background-position-y: -480px;
   }
 }
+
 .form-contenedor-input h1 {
   color: var(--color-white);
+}
+.form-contenedor-title-actions {
+  display: flex;
+  justify-items: center;
+  justify-content: center;
+  width: 100%;
+}
+.action-link-sign {
+  position: absolute;
+  text-align: end;
+  width: 35vw;
+}
+.btn-link-sign {
+  color: white;
+  text-decoration: none;
+  font-size: 1rem;
 }
 .navigation {
   position: fixed;
