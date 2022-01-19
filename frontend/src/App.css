@@ -26,26 +26,25 @@
   box-sizing: border-box;
   font-family: "Nunito", sans-serif;
 }
-#root{
+#root {
   overflow-y: auto;
 }
 body {
   background-color: var(--ColorFondo);
   /* background-image: url("./assets/4356068.webp"); */
 }
-body::-webkit-scrollbar{
+body::-webkit-scrollbar {
   display: none;
 }
 /* dropnav */
 
-
 [type="checkbox"]:checked,
-[type="checkbox"]:not(:checked){
+[type="checkbox"]:not(:checked) {
   position: absolute;
   left: -9999px;
 }
 .menu-icon:checked + label,
-.menu-icon:not(:checked) + label{
+.menu-icon:not(:checked) + label {
   position: fixed;
   top: 63px;
   right: 75px;
@@ -58,9 +57,9 @@ body::-webkit-scrollbar{
   z-index: 10;
 }
 .menu-icon:checked + label:before,
-.menu-icon:not(:checked) + label:before{
+.menu-icon:not(:checked) + label:before {
   position: absolute;
-  content: '';
+  content: "";
   display: block;
   width: 30px;
   height: 20px;
@@ -69,16 +68,15 @@ body::-webkit-scrollbar{
   left: 0;
   border-top: 2px solid #ececee;
   border-bottom: 2px solid #ececee;
-  transition: border-width 100ms 1500ms ease, 
-              top 100ms 1600ms cubic-bezier(0.23, 1, 0.32, 1),
-              height 100ms 1600ms cubic-bezier(0.23, 1, 0.32, 1), 
-              background-color 200ms ease,
-              transform 200ms cubic-bezier(0.23, 1, 0.32, 1);
+  transition: border-width 100ms 1500ms ease,
+    top 100ms 1600ms cubic-bezier(0.23, 1, 0.32, 1),
+    height 100ms 1600ms cubic-bezier(0.23, 1, 0.32, 1),
+    background-color 200ms ease, transform 200ms cubic-bezier(0.23, 1, 0.32, 1);
 }
 .menu-icon:checked + label:after,
-.menu-icon:not(:checked) + label:after{
+.menu-icon:not(:checked) + label:after {
   position: absolute;
-  content: '';
+  content: "";
   display: block;
   width: 22px;
   height: 2px;
@@ -87,34 +85,30 @@ body::-webkit-scrollbar{
   right: 4px;
   background-color: #ececee;
   margin-top: -1px;
-  transition: width 100ms 1750ms ease, 
-              right 100ms 1750ms ease,
-              margin-top 100ms ease, 
-              transform 200ms cubic-bezier(0.23, 1, 0.32, 1);
+  transition: width 100ms 1750ms ease, right 100ms 1750ms ease,
+    margin-top 100ms ease, transform 200ms cubic-bezier(0.23, 1, 0.32, 1);
 }
-.menu-icon:checked + label:before{
+.menu-icon:checked + label:before {
   top: 10px;
   transform: rotate(45deg);
   height: 2px;
   background-color: #ececee;
   border-width: 0;
-  transition: border-width 100ms 340ms ease, 
-              top 100ms 300ms cubic-bezier(0.23, 1, 0.32, 1),
-              height 100ms 300ms cubic-bezier(0.23, 1, 0.32, 1), 
-              background-color 200ms 500ms ease,
-              transform 200ms 1700ms cubic-bezier(0.23, 1, 0.32, 1);
+  transition: border-width 100ms 340ms ease,
+    top 100ms 300ms cubic-bezier(0.23, 1, 0.32, 1),
+    height 100ms 300ms cubic-bezier(0.23, 1, 0.32, 1),
+    background-color 200ms 500ms ease,
+    transform 200ms 1700ms cubic-bezier(0.23, 1, 0.32, 1);
 }
-.menu-icon:checked + label:after{
+.menu-icon:checked + label:after {
   width: 30px;
   margin-top: 0;
   right: 0;
   transform: rotate(-45deg);
-  transition: width 100ms ease,
-              right 100ms ease,  
-              margin-top 100ms 500ms ease, 
-              transform 200ms 1700ms cubic-bezier(0.23, 1, 0.32, 1);
+  transition: width 100ms ease, right 100ms ease, margin-top 100ms 500ms ease,
+    transform 200ms 1700ms cubic-bezier(0.23, 1, 0.32, 1);
 }
-.nav{
+.nav {
   position: fixed;
   top: 33px;
   right: 50px;
@@ -125,23 +119,38 @@ body::-webkit-scrollbar{
   margin: 0;
   z-index: 9;
   overflow: hidden;
-  box-shadow: 0 8px 30px 0 rgba(0,0,0,0.3);
+  box-shadow: 0 8px 30px 0 rgba(0, 0, 0, 0.3);
   background-color: var(--ColorPrimarioFuerte);
   animation: border-transform 7s linear infinite;
-  transition: top 350ms 1100ms cubic-bezier(0.23, 1, 0.32, 1),  
-              right 350ms 1100ms cubic-bezier(0.23, 1, 0.32, 1),
-              transform 250ms 1100ms ease,
-              width 650ms 400ms cubic-bezier(0.23, 1, 0.32, 1),
-              height 650ms 400ms cubic-bezier(0.23, 1, 0.32, 1);
+  transition: top 350ms 1100ms cubic-bezier(0.23, 1, 0.32, 1),
+    right 350ms 1100ms cubic-bezier(0.23, 1, 0.32, 1),
+    transform 250ms 1100ms ease,
+    width 650ms 400ms cubic-bezier(0.23, 1, 0.32, 1),
+    height 650ms 400ms cubic-bezier(0.23, 1, 0.32, 1);
 }
-@keyframes border-transform{
-    0%,100% { border-radius: 63% 37% 54% 46% / 55% 48% 52% 45%; } 
-  14% { border-radius: 40% 60% 54% 46% / 49% 60% 40% 51%; } 
-  28% { border-radius: 54% 46% 38% 62% / 49% 70% 30% 51%; } 
-  42% { border-radius: 61% 39% 55% 45% / 61% 38% 62% 39%; } 
-  56% { border-radius: 61% 39% 67% 33% / 70% 50% 50% 30%; } 
-  70% { border-radius: 50% 50% 34% 66% / 56% 68% 32% 44%; } 
-  84% { border-radius: 46% 54% 50% 50% / 35% 61% 39% 65%; } 
+@keyframes border-transform {
+  0%,
+  100% {
+    border-radius: 63% 37% 54% 46% / 55% 48% 52% 45%;
+  }
+  14% {
+    border-radius: 40% 60% 54% 46% / 49% 60% 40% 51%;
+  }
+  28% {
+    border-radius: 54% 46% 38% 62% / 49% 70% 30% 51%;
+  }
+  42% {
+    border-radius: 61% 39% 55% 45% / 61% 38% 62% 39%;
+  }
+  56% {
+    border-radius: 61% 39% 67% 33% / 70% 50% 50% 30%;
+  }
+  70% {
+    border-radius: 50% 50% 34% 66% / 56% 68% 32% 44%;
+  }
+  84% {
+    border-radius: 46% 54% 50% 50% / 35% 61% 39% 65%;
+  }
 }
 .menu-icon:checked ~ .nav {
   animation-play-state: paused;
@@ -150,13 +159,12 @@ body::-webkit-scrollbar{
   transform: translate(50%, -50%);
   width: 200%;
   height: 200%;
-  transition: top 350ms 700ms cubic-bezier(0.23, 1, 0.32, 1),  
-              right 350ms 700ms cubic-bezier(0.23, 1, 0.32, 1),
-              transform 250ms 700ms ease,
-              width 750ms 1000ms cubic-bezier(0.23, 1, 0.32, 1),
-              height 750ms 1000ms cubic-bezier(0.23, 1, 0.32, 1);
+  transition: top 350ms 700ms cubic-bezier(0.23, 1, 0.32, 1),
+    right 350ms 700ms cubic-bezier(0.23, 1, 0.32, 1), transform 250ms 700ms ease,
+    width 750ms 1000ms cubic-bezier(0.23, 1, 0.32, 1),
+    height 750ms 1000ms cubic-bezier(0.23, 1, 0.32, 1);
 }
-.nav ul{
+.nav ul {
   position: absolute;
   top: 50%;
   left: 0;
@@ -169,7 +177,7 @@ body::-webkit-scrollbar{
   transform: translateY(-50%);
   list-style: none;
 }
-.nav ul li{
+.nav ul li {
   position: relative;
   display: block;
   width: 100%;
@@ -183,29 +191,29 @@ body::-webkit-scrollbar{
   transform: translateY(30px);
   transition: all 250ms linear;
 }
-.nav ul li:nth-child(1){
+.nav ul li:nth-child(1) {
   transition-delay: 200ms;
 }
-.nav ul li:nth-child(2){
+.nav ul li:nth-child(2) {
   transition-delay: 172ms;
 }
-.nav ul li:nth-child(3){
+.nav ul li:nth-child(3) {
   transition-delay: 144ms;
 }
-.nav ul li:nth-child(4){
+.nav ul li:nth-child(4) {
   transition-delay: 116ms;
 }
-.nav ul li:nth-child(5){
+.nav ul li:nth-child(5) {
   transition-delay: 88ms;
 }
-.nav ul li:nth-child(6){
+.nav ul li:nth-child(6) {
   transition-delay: 60ms;
 }
-.nav ul li:nth-child(7){
+.nav ul li:nth-child(7) {
   transition-delay: 32ms;
 }
-.nav ul li a{
-  font-family: 'Montserrat', sans-serif;
+.nav ul li a {
+  font-family: "Montserrat", sans-serif;
   font-size: 9vh;
   text-transform: uppercase;
   line-height: 1.2;
@@ -215,15 +223,15 @@ body::-webkit-scrollbar{
   color: #ececee;
   transition: all 250ms linear;
 }
-.nav ul li a:hover{
+.nav ul li a:hover {
   text-decoration: none;
   color: #ffeba7;
 }
-.nav ul li a:after{
+.nav ul li a:after {
   display: block;
   position: absolute;
   top: 50%;
-  content: '';
+  content: "";
   height: 2vh;
   margin-top: -1vh;
   width: 0;
@@ -232,56 +240,55 @@ body::-webkit-scrollbar{
   opacity: 0.8;
   transition: width 250ms linear;
 }
-.nav ul li a:hover:after{
+.nav ul li a:hover:after {
   width: 100%;
 }
-.menu-icon:checked ~ .nav  ul li {
+.menu-icon:checked ~ .nav ul li {
   pointer-events: auto;
   visibility: visible;
   opacity: 1;
   transform: translateY(0);
-  transition: opacity 350ms ease,
-              transform 250ms ease;
+  transition: opacity 350ms ease, transform 250ms ease;
 }
-.menu-icon:checked ~ .nav ul li:nth-child(1){
+.menu-icon:checked ~ .nav ul li:nth-child(1) {
   transition-delay: 1400ms;
 }
-.menu-icon:checked ~ .nav ul li:nth-child(2){
+.menu-icon:checked ~ .nav ul li:nth-child(2) {
   transition-delay: 1480ms;
 }
-.menu-icon:checked ~ .nav ul li:nth-child(3){
+.menu-icon:checked ~ .nav ul li:nth-child(3) {
   transition-delay: 1560ms;
 }
-.menu-icon:checked ~ .nav ul li:nth-child(4){
+.menu-icon:checked ~ .nav ul li:nth-child(4) {
   transition-delay: 1640ms;
 }
-.menu-icon:checked ~ .nav ul li:nth-child(5){
+.menu-icon:checked ~ .nav ul li:nth-child(5) {
   transition-delay: 1720ms;
 }
-.menu-icon:checked ~ .nav ul li:nth-child(6){
+.menu-icon:checked ~ .nav ul li:nth-child(6) {
   transition-delay: 1800ms;
 }
-.menu-icon:checked ~ .nav ul li:nth-child(7){
+.menu-icon:checked ~ .nav ul li:nth-child(7) {
   transition-delay: 1880ms;
 }
 @media screen and (max-width: 991px) {
   .menu-icon:checked + label,
-  .menu-icon:not(:checked) + label{
+  .menu-icon:not(:checked) + label {
     right: 55px;
   }
-  .nav{
+  .nav {
     right: 30px;
   }
-  .nav ul li a{
+  .nav ul li a {
     font-size: 8vh;
   }
 }
-.menu-icon:not(:checked) + label{
+.menu-icon:not(:checked) + label {
   display: none;
 }
-.nav{
+.nav {
   display: none;
-  }
+}
 
 /* finish drop */
 
@@ -1153,7 +1160,7 @@ ul li button:hover:nth-child(4) {
 .filter-all-select select option {
   background-color: rgb(44, 44, 44);
   border: none;
-} 
+}
 .flex-all-sellers {
   justify-content: space-between;
 }
@@ -2432,13 +2439,44 @@ img {
 }
 .contenedor-rigth-shopping {
   width: 35%;
-  height: 100% - 30px;
+  height: auto;
   background-color: #191919;
   margin-top: 30px;
   padding: 0 20px 0 20px;
   display: flex;
   flex-direction: column;
   overflow: auto;
+}
+
+@media (max-width: 640px) {
+  .shippoing-left-divone h2 {
+    font-size: 1rem;
+  }
+  .contenedor-left-shopping .shippoing-left-divtwo {
+    font-size: 1rem !important;
+  }
+  .contenedor-rigth-shopping div:nth-child(1) h2 {
+    font-size: 1rem;
+  }
+  .contenedor-rigth-shopping div:nth-child(3) p {
+    font-size: 0.8rem;
+  }
+  .contenedor-rigth-shopping div:nth-child(5) h2 {
+    font-size: 1rem;
+  }
+  .contenedor-rigth-shopping div:nth-child(7) {
+    font-size: 1rem;
+  }
+  .contenedor-total-shopping{
+    display: block !important;
+
+  }
+  .contenedor-left-shopping {
+    width: auto !important;
+  }
+  .contenedor-rigth-shopping {
+    width:auto !important;
+  }
 }
 .contenedor-left-shopping .shippoing-left-divone {
   width: 100%;
@@ -2458,7 +2496,7 @@ img {
   background-color: #191919;
   display: flex;
   align-items: center;
-  text-align: justify;
+  justify-content: space-around;
   color: var(--ColorPrimario);
   font-size: 1.4em;
   font-weight: 600;
@@ -2601,9 +2639,11 @@ img {
   height: 3px;
   background-color: rgb(20, 20, 20);
 }
+@media (max-width: 640px) {
+}
 .contenedor-rigth-shopping div:nth-child(7) {
   width: 100%;
-  height: 20%;
+  height: 40%;
   color: white;
   display: flex;
   align-items: center;
@@ -2783,6 +2823,7 @@ img {
   width: 100%;
   display: flex;
   align-items: center;
+  height: calc(100% - 70px);
 }
 .filter-containter-total-market {
   width: 7%;
@@ -2958,7 +2999,7 @@ img {
 }
 .section-mid-martket-container-total {
   width: 65%;
-  height: 93vh;
+  height: 100%;
   overflow-y: scroll;
   padding-top: 20px;
   padding-right: 20px;
@@ -3406,7 +3447,7 @@ img {
   width: 100%;
   background-position: center;
   background-size: cover;
-  border-radius:20px 0;
+  border-radius: 20px 0;
   border: 2px solid var(--ColorDesctacar);
 }
 .modal-nft-body-left {
@@ -3427,7 +3468,7 @@ img {
   display: flex;
   font-size: 1rem;
   width: 100%;
-  margin:2px;
+  margin: 2px;
 }
 .modal-nft-body {
   height: 30%;
@@ -3481,60 +3522,60 @@ img {
   display: flex;
   align-items: center;
 }
-.menu-icon:checked + label, .menu-icon:not(:checked) + label{
+.menu-icon:checked + label,
+.menu-icon:not(:checked) + label {
   display: none;
 }
 
-
 /* tabla */
-  table{
-    height: 100%;
-    width: 100%;
-  }
-  th{
-    font-weight: 900;
-    color: white;
-    text-align: left;
-  }
-  thead th{
-    background-color: #202932;
-    border: 1px solid #202932;
-    padding: 0 10px 0;
-  }
-  tr {
-    padding-bottom: 10px;
-    height: 5em;
-  }
-  td {
-    padding: 0 10px 0;
-    text-align: center;
-    background-color:#2d3844;
-    color: white;
-    font-weight: 800;
-    text-align: left;
-  }
-  td button{
-    width: 100%;
-    height: 3em;
-    border-radius: 10px 0 10px 0;
-    display: flex;
-    align-items: center;
-    font-weight: 800;
-    font-size: 1.2em;
-    letter-spacing: 1.5px;
-    justify-content: center;
-    background:none;
-    border: 4px solid var(--ColorDesctacar);
-    color: white;
-    cursor: pointer;
-  }
+table {
+  height: 100%;
+  width: 100%;
+}
+th {
+  font-weight: 900;
+  color: white;
+  text-align: left;
+}
+thead th {
+  background-color: #202932;
+  border: 1px solid #202932;
+  padding: 0 10px 0;
+}
+tr {
+  padding-bottom: 10px;
+  height: 5em;
+}
+td {
+  padding: 0 10px 0;
+  text-align: center;
+  background-color: #2d3844;
+  color: white;
+  font-weight: 800;
+  text-align: left;
+}
+td button {
+  width: 100%;
+  height: 3em;
+  border-radius: 10px 0 10px 0;
+  display: flex;
+  align-items: center;
+  font-weight: 800;
+  font-size: 1.2em;
+  letter-spacing: 1.5px;
+  justify-content: center;
+  background: none;
+  border: 4px solid var(--ColorDesctacar);
+  color: white;
+  cursor: pointer;
+}
 /* finish tabla */
-.market-modal-payments div:nth-child(1){
+.market-modal-payments div:nth-child(1) {
   width: 100%;
 }
 /* pricing suscriptions */
 
-.pricing-table{
+.pricing-table {
   width: 100%;
   height: 100%;
   padding: 0 10px;
@@ -3543,16 +3584,16 @@ img {
   justify-content: center;
   flex-wrap: wrap;
 }
-.container-pricing-table{
+.container-pricing-table {
   width: 300px;
   height: 80%;
-  background-color: #2B2937;
+  background-color: #2b2937;
   border-radius: 15px 15px;
 }
-.container-pricing-table h1{
+.container-pricing-table h1 {
   height: 15%;
   width: 100%;
-  background-color: #1ABC9C;
+  background-color: #1abc9c;
   border-bottom: 2px solid #18997f;
   color: white;
   font-weight: 900;
@@ -3562,7 +3603,7 @@ img {
   align-items: center;
   justify-content: center;
 }
-.container-price-table{
+.container-price-table {
   width: 100%;
   height: 30%;
   display: flex;
@@ -3571,7 +3612,7 @@ img {
   justify-content: space-evenly;
   border-bottom: 2px solid #403e52;
 }
-.container-price-table p:nth-child(1){
+.container-price-table p:nth-child(1) {
   height: 50%;
   display: flex;
   align-items: center;
@@ -3579,11 +3620,11 @@ img {
   font-weight: 900;
   font-size: 4em;
 }
-.container-price-table p:nth-child(2){
+.container-price-table p:nth-child(2) {
   font-size: 1.2;
   color: rgb(173, 173, 173);
 }
-.data-pricing-table{
+.data-pricing-table {
   height: 10%;
   width: 100%;
   display: flex;
@@ -3594,7 +3635,7 @@ img {
   border-bottom: 2px solid #403e52;
   font-weight: 700;
 }
-.button-pricing-table{
+.button-pricing-table {
   width: 100%;
   height: 25%;
   flex-grow: 1;
@@ -3602,23 +3643,26 @@ img {
   align-items: center;
   justify-content: center;
 }
-.button-pricing-table button{
+.button-pricing-table button {
   height: 50%;
   width: 50%;
   background: none;
-  border: 4px solid #1ABC9C;
+  border: 4px solid #1abc9c;
   color: white;
   font-weight: 700;
   font-size: 1.5em;
   border-radius: 10px 10px;
   transition: ease-in-out 600ms;
 }
-.button-pricing-table button:hover{
+.button-pricing-table button:hover {
   border: 4px solid white;
   transition: ease-in-out 600ms;
 }
 /* finish pricing suscriptions */
-
+.contenedor-text-home div button:nth-child(2) a {
+  color: white;
+  text-decoration: none;
+}
 /* Responsive */
 
 /* Width */
@@ -3635,10 +3679,33 @@ img {
   .contenedor-cards-topCollection-home {
     height: 90%;
   }
+  .recent-creator-container-offerts{
+    display: none;
+  }
+  .section-mid-martket-container-total{
+    width: 92%;
+  }
+}
+@media (max-width: 882px){
+  .container-imgdos-presentacion-admin{
+    width:400px
+  }
+  .container-imgdos-presentacion-admin p{
+    width:70%
+  }
+  td button{
+    height: 2em;
+    font-size: 1em;
+    font-weight: 700;
+    border: 2px solid var(--ColorDesctacar);
+  }
 }
 @media (max-width: 830px) {
   .card-info-advantages-home p {
     flex-grow: 1;
+  }
+  .price-container-nft-market-hero p:nth-child(2){
+    width: 100%;
   }
 }
 @media (max-width: 803px) {
@@ -3654,8 +3721,12 @@ img {
     width: 48%;
     margin: 0;
   }
-  .contenedor-store-public div:nth-child(2) div{
+  .contenedor-store-public div:nth-child(2) div {
     width: 100% !important;
+  }
+  .clases-nft-market-ofert div:nth-child(1){
+    width:40px;
+    height:40px;
   }
 }
 @media (max-width: 787px) {
@@ -3664,6 +3735,16 @@ img {
   }
   .contenedor-about-advantages {
     margin-top: 30px;
+  }
+  .user-img{
+    width: max(150px, 200px);
+    height: max(150px, 200px);
+  }
+  .user-info-container div{
+    display:block;
+  }
+  .container-imgdos-presentacion-admin{
+    width: 350px;
   }
 }
 @media (max-width: 687px) {
@@ -3719,60 +3800,79 @@ img {
   .contenedor-ocho-about {
     height: 95%;
   }
-}
-@media (max-width: 500px){
-  .navigation{
+  .filter-containter-total-market{
     display: none;
   }
-  .nav{
+  .ocupador{
+    display: none;
+  }
+  .card-container-offert-accept{
+    width:80%;
+  }
+  .marketplace-container{
+    justify-content:center;
+  }
+  .container-nft-trading-action{
+    justify-content: center;
+  }
+}
+@media (max-width: 500px) {
+  .navigation {
+    display: none;
+  }
+  .nav {
     display: block;
   }
-  .menu-icon:not(:checked) + label{
+  .menu-icon:not(:checked) + label {
     display: block;
   }
   .nav ul li a {
     font-size: 5vh;
   }
-  .menu-icon:checked + label, .menu-icon:not(:checked) + label{
+  .menu-icon:checked + label,
+  .menu-icon:not(:checked) + label {
     display: block;
   }
+  .user-img{
+    width: max(60px, 100px);
+    height: max(60px, 100px);
+  }
 }
-@media (min-width: 1600px){
-  .contenedor-store-public div:nth-child(2){
+@media (min-width: 1600px) {
+  .contenedor-store-public div:nth-child(2) {
     width: 48%;
   }
-  .contenedor-store-public div:nth-child(1){
+  .contenedor-store-public div:nth-child(1) {
     width: 47.8%;
   }
 }
-@media (min-width: 1870px){
-  .contenedor-store-public div:nth-child(2) div{
-    width:60% !important;
+@media (min-width: 1870px) {
+  .contenedor-store-public div:nth-child(2) div {
+    width: 60% !important;
   }
 }
-@media (max-width: 980px){
-  .contenedor-store-public div:nth-child(1){
+@media (max-width: 980px) {
+  .contenedor-store-public div:nth-child(1) {
     width: 50%;
   }
-  .contenedor-store-public div:nth-child(2){
+  .contenedor-store-public div:nth-child(2) {
     width: 49%;
   }
 }
 
-
 /* Height */
-@media(max-height: 850px){
-  .contenedor-recent-activity-nft div:nth-child(1){
+@media (max-height: 850px) {
+  .contenedor-recent-activity-nft div:nth-child(1) {
     height: 60px;
     width: 60px;
   }
-  .creator-nft-offerts .creators-content-market div:nth-child(2){
+  .creator-nft-offerts .creators-content-market div:nth-child(2) {
     width: 60px;
     height: 60px;
   }
 }
-@media (max-height: 700px){
-  .contenedor-top-sellers-store{
+@media (max-height: 700px) {
+  .contenedor-top-sellers-store {
     height: 95vh;
   }
   .background-iluminacion {
@@ -3813,31 +3913,31 @@ img {
   .cardy {
     height: 80%;
   }
-  .contenedor-recent-activity-nft:nth-child(4){
+  .contenedor-recent-activity-nft:nth-child(4) {
     display: none;
   }
-  .contenedor-recent-activity-nft{
-    height:auto;
+  .contenedor-recent-activity-nft {
+    height: auto;
   }
-  .recent-activity-offerts{
-    height:50%;
+  .recent-activity-offerts {
+    height: 50%;
     padding: 0;
     margin-top: 30px;
   }
-  .creator-nft-offerts{
+  .creator-nft-offerts {
     height: 50%;
   }
-  .contenedor-store-public div:nth-child(2) div{
-    width:70% !important;
+  .contenedor-store-public div:nth-child(2) div {
+    width: 70% !important;
   }
 }
-@media (max-height: 600px){
-  .contenedor-store-public div:nth-child(2) div{
-    width:60% !important;
+@media (max-height: 600px) {
+  .contenedor-store-public div:nth-child(2) div {
+    width: 60% !important;
   }
 }
-@media (max-height: 1000px){
-  .contenedor-store-public div:nth-child(2) div{
+@media (max-height: 1000px) {
+  .contenedor-store-public div:nth-child(2) div {
     width: 80%;
   }
 }

@@ -3,6 +3,7 @@ import { Link } from "react-router-dom"
 import Lumn from "../components/Lumn"
 import { connect } from "react-redux"
 import transactionActions from '../redux/actions/transactionActions'
+import { toast } from 'react-toastify';
 // import Footer from '../components/Footer'
 
 const Home = (props) => {
@@ -27,7 +28,15 @@ const Home = (props) => {
                     <p className="text-home-collect">ProyectZzZz is a collection with more than 4500 unique NFTs. You can easly find some NFT ProyectZzZz.</p>
                     <div>
                         <button><Link to="/Store">Explore</Link></button>
-                        <button>Create</button>
+                            <button><Link to={`${props.user === '' ? "/" : "/Profile"}`} onClick={()=> props.user === '' && toast.warning('Please Login To Create', {
+                                        position: "top-right",
+                                        autoClose: 1500,
+                                        hideProgressBar: false,
+                                        closeOnClick: true,
+                                        pauseOnHover: true,
+                                        draggable: true,
+                                        progress: undefined,
+                                        })}>Create</Link></button>
                     </div>
                 </div>
                 <div className="contenedor-nft">
@@ -164,7 +173,8 @@ const Home = (props) => {
 }
 const mapStateToProps = (state) => {
     return{
-    topCreators: state.transactionReducers.topCreators
+    topCreators: state.transactionReducers.topCreators,
+    user : state.userReducers.user
     }
 }
 const mapDispatchToProps = {
