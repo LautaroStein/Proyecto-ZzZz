@@ -6,7 +6,7 @@ const nftActions = {
 
             try {
                 const token = localStorage.getItem('token')
-                const nft = await axios.post('http://localhost:4000/api/nft', paramNft, {
+                const nft = await axios.post('https://proyectozzzz.herokuapp.com/api/nft', paramNft, {
                     headers: { 'Authorization': 'Bearer ' + token }
                 })
                 console.log(nft);
@@ -19,7 +19,7 @@ const nftActions = {
     getNfts: () => {
         return async (dispatch, getState) => {
             try {
-                const nfts = await axios.get('http://localhost:4000/api/nft')
+                const nfts = await axios.get('https://proyectozzzz.herokuapp.com/api/nft')
                 dispatch({ type: 'GET_NFTS', payload: nfts.data.respuesta })
             } catch (error) {
                 console.log(error);
@@ -30,7 +30,7 @@ const nftActions = {
         return async (dispatch, getState) => {
             try {
                 const token = localStorage.getItem('token')
-                const nfts = await axios.get(`http://localhost:4000/api/nfts/user/${userId}`, {
+                const nfts = await axios.get(`https://proyectozzzz.herokuapp.com/api/nfts/user/${userId}`, {
                     headers: { 'Authorization': 'Bearer ' + token }
                 })
                 dispatch({ type: 'GET_USER_NFTS', payload: nfts.data.response })
@@ -43,7 +43,7 @@ const nftActions = {
         return async (dispatch, getState) => {
             try {
                 const token = localStorage.getItem('token')
-                const nft = await axios.get(`http://localhost:4000/api/nft/${nftId}`, {
+                const nft = await axios.get(`https://proyectozzzz.herokuapp.com/api/nft/${nftId}`, {
                     headers: { 'Authorization': 'Bearer ' + token }
                 })
                 return { nftId: nft.data.respuesta }
@@ -56,7 +56,7 @@ const nftActions = {
         return async (dispatch, getState) => {
             try {
                 const token = localStorage.getItem('token')
-                const nft = await axios.put(`http://localhost:4000/api/nft/${nftId}`, paramUser, {
+                const nft = await axios.put(`https://proyectozzzz.herokuapp.com/api/nft/${nftId}`, paramUser, {
                     headers: { 'Authorization': 'Bearer ' + token }
                 })
                 dispatch({ type: 'UPDATE_NFT', payload: { nftId: nft.data.actualizado, body: paramUser } })
@@ -69,7 +69,7 @@ const nftActions = {
         return async (dispatch, getState) => {
             try {
                 const token = localStorage.getItem('token')
-                const nft = await axios.delete(`http://localhost:4000/api/nft/${nftId}`, {
+                const nft = await axios.delete(`https://proyectozzzz.herokuapp.com/api/nft/${nftId}`, {
                     headers: { 'Authorization': 'Bearer ' + token }
                 })
                 dispatch({ type: 'DELETE_NFT', payload: nft.data.deletedNft })

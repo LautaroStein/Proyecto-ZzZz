@@ -1,5 +1,50 @@
 const Transaction = require("../models/Transaction");
 
+const sendMail = async (info) => {
+    const transporter = nodemailer.createTransport({
+      host: "smtp.gmail.com",
+      port: 465,
+      secure: true,
+      auth: {
+        user: "useremailverifyMindhub@gmail.com",
+        pass: "mindhub2021",
+      },
+    });
+
+    console.log(info)
+
+    const template = `Purchase confirmed.`
+
+    let remitente = "useremailverifyMindhub@gmail.com";
+
+    let mailOptions = {
+        from: remitente,
+        to: info.userBuyer.email,
+        subject: "Verificacion de email de usuario",
+        html: template,
+        attachments: [
+          {
+            filename: "logo-back.png",
+            path: reqPath + "/assets/logo-back.png",
+            cid: "logo-back",
+          },
+          {
+            filename: "logo-white.png",
+            path: reqPath + "/assets/logo-white.png",
+            cid: "logo-white",
+          },
+        ],
+      };
+    
+    await transporter.sendMail(mailOptions, function (error, response) {
+        if (error) {
+          console.log(error);
+        } else {
+          console.log("Message Sent");
+        }
+    });
+};
+
 const transactionController = {
 
     postTransaction: async (req, res) => {
@@ -7,7 +52,8 @@ const transactionController = {
         let transaction
         try {
             if (req.user) {
-                transaction = await new Transaction(transactionBody).save()
+                // transaction = await new Transaction(transactionBody).save()
+                await sendMail(transactionBody);
                 res.json({ response: transaction })
 
             } else {
