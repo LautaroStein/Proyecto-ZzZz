@@ -235,7 +235,26 @@ const Admin = (props) => {
                         <h2>Users Preview</h2>
                     </div>
                     <div className='nfts-container'>
-                        {props.users && props.users.length > 0 && props.users.map(nft =>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Rol</th>
+                                    <th>Ascend</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {props.users && props.users.length > 0 && props.users.map(nft => 
+                                    nft.role === 'user' && 
+                                    <tr key={nft._id} onMouseEnter={() => setOnCardHover({ bool: true, id: nft._id })} onMouseLeave={() => setOnCardHover({ bool: false, id: nft._id })}>
+                                        <td>{nft.name}</td>
+                                        <td>{nft.role}</td>
+                                        <td><button onClick={() => handlerAscend(nft._id)}>Ascend</button></td>
+                                    </tr>
+                                    )} 
+                            </tbody>
+                        </table>
+                        {/* {props.users && props.users.length > 0 && props.users.map(nft =>
                             nft.role === 'user' &&
                             <div key={nft._id} onMouseEnter={() => setOnCardHover({ bool: true, id: nft._id })} onMouseLeave={() => setOnCardHover({ bool: false, id: nft._id })} style={{ backgroundImage: `url(${nft.userImg})` }} className="admin-user-card">
                                 <div className='body-nft-admin-card'>
@@ -247,7 +266,7 @@ const Admin = (props) => {
                                     </div>
                                 }
                             </div>
-                        )}
+                        )} */}
                     </div>
                 </div>
                 <div className='main-nfts-content'>
@@ -255,7 +274,26 @@ const Admin = (props) => {
                         <h2>Moderators Preview</h2>
                     </div>
                     <div className='nfts-container'>
-                        {(props.users && props.users.length > 0) && props.users.map(nft =>
+                    <table>
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Rol</th>
+                                    <th>Descend</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {(props.users && props.users.length > 0) && props.users.map(nft =>
+                                    nft.role === 'moderator' && 
+                                    <tr key={nft._id} onMouseEnter={() => setOnCardHover({ bool: true, id: nft._id })} onMouseLeave={() => setOnCardHover({ bool: false, id: nft._id })}>
+                                        <td>{nft.name}</td>
+                                        <td>{nft.role}</td>
+                                        <td><button onClick={() => handlerDescend(nft._id)}>Descend</button></td>
+                                    </tr>
+                                    )} 
+                            </tbody>
+                        </table>
+                        {/* {(props.users && props.users.length > 0) && props.users.map(nft =>
                             nft.role === 'moderator' &&
                             <div key={nft._id} onMouseEnter={() => setOnCardHover({ bool: true, id: nft._id })} onMouseLeave={() => setOnCardHover({ bool: false, id: nft._id })} style={{ backgroundImage: `url(${nft.userImg})` }} className="admin-user-card">
                                 <div className='body-nft-admin-card'>
@@ -267,7 +305,7 @@ const Admin = (props) => {
                                     </div>
                                 }
                             </div>
-                        )}
+                        )} */}
                     </div>
                 </div>
             </article>

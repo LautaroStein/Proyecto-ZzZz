@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react'
 import { toast } from 'react-toastify';
-import nftActions from '../redux/actions/nftActions'
+import userActions from '../redux/actions/userActions'
 import { connect } from 'react-redux'
 import { app } from '../fb'
 
@@ -49,8 +49,8 @@ const SignUp = (props) => {
             phone: inputPhoneNumber.current.value
         }
 
-        const userResponse = await props.signup(user)
-        props.getNeftsByUser(userResponse.userId)
+        const userResponse = await props.addUser(user)
+        console.log(userResponse)
         userResponse.succes
             ?
             toast.success('Your acount succesfuly Sign up', {
@@ -89,7 +89,7 @@ const SignUp = (props) => {
                 <input type="text" name="lastName" ref={inputLastName} placeholder="Last name" />
                 <input type="email" name="userMail" ref={inputUserMail} placeholder="Email" />
                 <input type="password" name="password" ref={inputPassword} placeholder="Password" />
-                {imgLoad && <input type="file" onChange={archivoHandler} />}
+                <input type="file" onChange={archivoHandler} />
                 <input type="text" name="phoneNumberUser" ref={inputPhoneNumber} placeholder="2974758745" />
                 <button type='submit'>Sign Up</button>
             </form>
@@ -98,7 +98,7 @@ const SignUp = (props) => {
 }
 
 const mapDispatchToProps = {
-    getNeftsByUser: nftActions.getNftsByUser
+    addUser: userActions.addUser
 }
 export default connect(null, mapDispatchToProps)(SignUp);
 

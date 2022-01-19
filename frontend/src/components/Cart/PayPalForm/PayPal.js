@@ -9,7 +9,7 @@ import offerActions from '../../../redux/actions/offerActions'
 
 
 
-const PayPal = ({ total, cart, user, updateNft, active, mount, seller, addTransaction, updateOffer, clearCartAll }) => {
+const PayPal = ({ total, cart, user, updateNft, active, mount, seller, addTransaction,subHandlder, updateOffer, clearCartAll }) => {
 
     const [orderID, setOrderID] = useState(false)
     const [ErrorMessage, setErrorMessage] = useState("");
@@ -72,6 +72,7 @@ const PayPal = ({ total, cart, user, updateNft, active, mount, seller, addTransa
                         }
                         break;
                     case 'subscription':
+                        subHandlder()
                         break;
                     case 'offer':
                         const transaction = {

@@ -5,6 +5,7 @@ const userActions = {
         return async (dispatch, getState) => {
             try {
                 const user = await axios.post('https://proyectozzzz.herokuapp.com/api/auth/signUp', paramUser)
+                console.log(user)
                 if (user.data.success && !user.data.error) {
                     localStorage.setItem('token', user.data.response.token)
                     dispatch({

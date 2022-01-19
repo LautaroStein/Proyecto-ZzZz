@@ -2230,7 +2230,7 @@ img {
 }
 .admin-offer-card {
   height: 90%;
-  width: 22.5%;
+  width: 30%;
   margin: 0.7rem 1rem;
   background-position: center;
   background-size: cover;
@@ -3467,6 +3467,133 @@ img {
 .menu-icon:checked + label, .menu-icon:not(:checked) + label{
   display: none;
 }
+
+
+/* tabla */
+  table{
+    height: 100%;
+    width: 100%;
+  }
+  th{
+    font-weight: 900;
+    color: white;
+    text-align: left;
+  }
+  thead th{
+    background-color: #202932;
+    border: 1px solid #202932;
+    padding: 0 10px 0;
+  }
+  tr {
+    padding-bottom: 10px;
+    height: 5em;
+  }
+  td {
+    padding: 0 10px 0;
+    text-align: center;
+    background-color:#2d3844;
+    color: white;
+    font-weight: 800;
+    text-align: left;
+  }
+  td button{
+    width: 100%;
+    height: 3em;
+    border-radius: 10px 0 10px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background:none;
+    border: 2px solid var(--ColorDesctacar);
+    color: white;
+  }
+/* finish tabla */
+/* pricing suscriptions */
+
+.pricing-table{
+  width: 100%;
+  height: 100%;
+  padding: 0 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.container-pricing-table{
+  width: 300px;
+  height: 80%;
+  background-color: #2B2937;
+  border-radius: 15px 15px;
+}
+.container-pricing-table h1{
+  height: 15%;
+  width: 100%;
+  background-color: #1ABC9C;
+  border-bottom: 2px solid #18997f;
+  color: white;
+  font-weight: 900;
+  font-size: 2em;
+  border-radius: 10px 10px 0 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.container-price-table{
+  width: 100%;
+  height: 30%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-evenly;
+  border-bottom: 2px solid #403e52;
+}
+.container-price-table p:nth-child(1){
+  height: 50%;
+  display: flex;
+  align-items: center;
+  color: white;
+  font-weight: 900;
+  font-size: 4em;
+}
+.container-price-table p:nth-child(2){
+  font-size: 1.2;
+  color: rgb(173, 173, 173);
+}
+.data-pricing-table{
+  height: 10%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-right: 5px;
+  color: white;
+  border-bottom: 2px solid #403e52;
+  font-weight: 700;
+}
+.button-pricing-table{
+  width: 100%;
+  height: 25%;
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.button-pricing-table button{
+  height: 50%;
+  width: 50%;
+  background: none;
+  border: 4px solid #1ABC9C;
+  color: white;
+  font-weight: 700;
+  font-size: 1.5em;
+  border-radius: 10px 10px;
+  transition: ease-in-out 600ms;
+}
+.button-pricing-table button:hover{
+  border: 4px solid white;
+  transition: ease-in-out 600ms;
+}
+/* finish pricing suscriptions */
 
 /* Responsive */
 
