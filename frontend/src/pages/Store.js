@@ -6,7 +6,6 @@ import ScrollContainer from 'react-indiana-drag-scroll'
 
 const Store = (props) => {
 
-
     const [categoria, setCategoria] = useState("All");
     const [rareza, setRareza] = useState("All");
 
@@ -76,9 +75,10 @@ const Store = (props) => {
                     <ScrollContainer className="container">
                         <div style={{ display: "flex" }} >
                             {
-                                props.nfts.map((element, index) => {
+                                props.topNfts.map((element, index) => {
                                     return (
-                                        <CardNFT name={element.name} type={element.type} price={element.price} img={element.img} clase={element.clase} id={element._id} favorite={element.favs} userId={props.userId.userID} store={true}/>
+                                        index < 6 && 
+                                        <CardNFT name={element.name} stock={element.stock} type={element.type} price={element.price} img={element.img} clase={element.clase} id={element._id} favorite={element.favs} propiedad={element.users} userId={props.userId.userID} store={true} publicos={"no"}/>
                                     )
                                 })
                             }
@@ -110,7 +110,7 @@ const Store = (props) => {
                             {
                                 auxiliar.length > 0 ? auxiliar.map((element, index) => {
                                     return (
-                                        <CardNFT name={element.name} type={element.type} price={element.price} img={element.img} clase={element.clase} id={element._id} favorite={element.favs} userId={props.userId.userID} store={true}/>
+                                        <CardNFT name={element.name} type={element.type} stock={element.stock} price={element.price} img={element.img} clase={element.clase} id={element._id} propiedad={element.users} favorite={element.favs} userId={props.userId.userID} store={true} publicos={"no"}/>
                                     )
                                 }) : <h1>NFT not found</h1>
                             }
@@ -125,6 +125,7 @@ const Store = (props) => {
 const mapStateToProps = (state) => {
     return (
         {
+            topNfts: state.nftReducers.topNfts,
             nfts: state.nftReducers.nfts,
             userId: state.userReducers.user
         }

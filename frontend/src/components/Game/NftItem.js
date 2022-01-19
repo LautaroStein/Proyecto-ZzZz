@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
 const NftItem = (props) => {
+
     //     // const [time, setTime] = useState(3000)
     //     // useEffect(() => {
     //     //     const interval = setInterval(() => {
@@ -21,16 +22,15 @@ const NftItem = (props) => {
     return (
 
         <div className="nft-item">
-            <i style={{ cursor: 'pointer', alignSelf: 'center' }} onClick={() => props.left()} className="fa fa-chevron-left" aria-hidden="true"></i>
-            {(props.nftsProceced && props.nftsProceced.length > 0) && props.nftsProceced.map((nft) =>
-                nft.type === 'Gamer' &&
-                <button className='nft-card' key={Math.random()} onClick={() => props.choice(nft.name)}>
-                    <div className='nft-name'>{nft.name}</div>
-                    <div className='nft-img' style={{ backgroundImage: `url(${nft.img})` }} />
+            {!props.uniq && <i style={{ cursor: 'pointer', alignSelf: 'center', marginRight: '1rem' }} onClick={() => props.left()} className="fa fa-chevron-left" aria-hidden="true"></i>}
+            {props.nftsProceced &&
+                <button className='nft-card' key={Math.random()} onClick={() => props.choice(props.nftsProceced.name)}>
+                    <div className='nft-img' style={{ backgroundImage: `url(${props.nftsProceced.img})` }} >
+                        <div className='nft-name'>{props.nftsProceced.name}</div>
+                    </div>
                 </button>
-            )
             }
-            <i style={{ cursor: 'pointer', alignSelf: 'center' }} onClick={() => props.right()} className="fa fa-chevron-right" aria-hidden="true"></i>
+            {!props.uniq && <i style={{ cursor: 'pointer', alignSelf: 'center', marginLeft: '1rem' }} onClick={() => props.right()} className="fa fa-chevron-right" aria-hidden="true"></i>}
 
         </div>
 

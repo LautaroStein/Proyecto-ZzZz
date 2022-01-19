@@ -5,7 +5,6 @@ const BootHealth = (props) => {
     const healty = props.features.features.hp
     const [life, setLife] = useState('lightgreen')
     const maxhealty = props.features.features.maxHp
-    console.log(maxhealty);
 
     let newPercentage = (healty / maxhealty) * 100 + "%";
 

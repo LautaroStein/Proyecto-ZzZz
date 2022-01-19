@@ -19,7 +19,7 @@ const Favs = ({nfts, user}) => {
             <div className="fav-card-nft-heigth">
                 {
                     favNft.map(element => {
-                        return <CardNFT name={element.name} type={element.type} price={element.price} img={element.img} clase={element.clase} id={element._id} favorite={element.favs} userId={user.userID} favClass={"favClass"}/>
+                        return <CardNFT name={element.name} type={element.type} price={element.price} img={element.img} propiedad={element.users} clase={element.clase} id={element._id} favorite={element.favs} userId={user.userID} favClass={"favClass"} store={true} publicos={"no"}/>
                     })
                 }
             </div>

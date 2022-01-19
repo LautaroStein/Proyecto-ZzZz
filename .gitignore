@@ -2,3 +2,4 @@
 /backend/node_modules
 /native/node_modules
 /native/.expo
+/backend/.env

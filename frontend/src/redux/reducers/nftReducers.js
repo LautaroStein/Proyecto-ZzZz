@@ -1,7 +1,8 @@
 const initialState = {
     nfts: [],
     userNfts: "",
-    aux: []
+    aux: [],
+    topNfts : []
 }
 
 const nftReducers = (state = initialState, action) => {
@@ -14,10 +15,12 @@ const nftReducers = (state = initialState, action) => {
                 aux: [...state.nfts, action.payload]
             }
         case 'GET_NFTS':
+            let tops = [...action.payload]
             return {
                 ...state,
                 nfts: action.payload,
-                aux: action.payload
+                aux: action.payload,
+                topNfts : tops.sort((a,b) => b.users.length - a.users.length)
             }
 
         case 'DELETE_NFT':
