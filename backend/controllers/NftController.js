@@ -47,7 +47,7 @@ const nftControllers = {
     let nft = req.body;
     let actualizado;
     try {
-      if (req.user.role === 'admin' || req.user.role === 'moderator') {
+      if (req.user.role === 'admin' || req.user.role === 'moderator' || req.user.suscription) {
         actualizado = await Nft.findOneAndUpdate({ _id: id }, nft, { new: true });
         res.json({ actualizado: actualizado._id })
       } else {
@@ -90,7 +90,7 @@ const nftControllers = {
       res.json({ error: 'Error in the comunication' })
     }
   },
-  
+
 
 }
 
