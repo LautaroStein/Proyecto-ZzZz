@@ -112,7 +112,7 @@ const userActions = {
                         headers: { 'Authorization': 'Bearer ' + token }
                     })
                 console.log(user)
-                return {succes : true}
+                return {success : true}
             }catch(err){
                 console.log(err)
             }
@@ -121,11 +121,12 @@ const userActions = {
     logInAsync: (token) => {
         return async (dispatch, getState) => {
             try {
-                let response = await axios.get("http://localhost:4000/api/user/auth", {
+                let user = await axios.get("http://localhost:4000/api/user/auth", {
                 headers: { Authorization: 'Bearer '+ token }
                 
                  })
-                dispatch({type: 'usuario', payload: user.data.response})
+                
+                dispatch({type: 'USER_LOGGED', payload: user.data.response})
                 return { response: user.data.response } 
             } catch (error) {
                 dispatch ({type: "LOG_OUT"})

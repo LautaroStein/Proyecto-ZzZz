@@ -5,68 +5,90 @@ import nftActions from "../redux/actions/nftActions";
 // import cartActions from "../redux/actions/cartActions";
 import { connect } from "react-redux";
 // import { BsFillBookmarkHeartFill} from "react-icons/bs"
-// // import cartActions from "../redux/actions/cartActions";
 // // import { toast } from 'react-toastify';
 
-// const CardNFT = ({name, type, price, img, clase, favs, id, favorite, userId, nft, favClass, addNftToCart, nfts, cart}) => {
 
 // const [color, setColor] = useState("")
 // const [backColor, setBackColor] = useState("")
 
-// useEffect(() => {
-//     clase === "Common" ? setColor("rgba( 0, 232, 255, 0.25 )") : clase === "Rare" ? setColor("rgba( 0, 160, 42, 0.55 )") : setColor("rgba( 143, 7, 136, 0.55 )")
-//     clase === "Common" ? setBackColor("rgb(0, 234, 255)") : clase === "Rare" ? setBackColor("rgb(0, 160, 43)") : setBackColor("rgb(143, 7, 136)")
-// }, [clase])
-
-// const favsAndDisFavs = async() => {
-
-//   let fav 
-
-//   favorite.some(fav => fav === userId) 
-//   ? 
-//     fav = {
-//       nftId : id,
-//       bool:false
-//     } 
-//   :
-//     fav = {
-//       nftId : id,
-//       bool:true
-//     }
-//     const retorn =  await favs(fav)
-
-//     console.log(retorn)
-//     if(retorn.succes){
-//       nft()
-//     }
-//   }
 
 const CardNFTNative = ({name, type, price, img, clase, favs, id, favorite, userId, nft, favClass, addNftToCart, nfts, cart, store, publicos, propiedad, updateNft, index}) =>{  
+
+const favsAndDisFavs = async() => {
+
+  let fav 
+
+  favorite.some(fav => fav === userId) 
+  ? 
+    fav = {
+      nftId : id,
+      bool:false
+    } 
+  :
+    fav = {
+      nftId : id,
+      bool:true
+    }
+    const retorn =  await favs(fav)
+
+    console.log(retorn)
+    if(retorn.succes){
+      nft()
+    }
+  }
+
+
     
 
 const [color, setColor] = useState("")
 const [backColor, setBackColor] = useState("")
 
 useEffect(() => {
+  
+    getData()
+  
     clase === "Common" ? setColor("rgba( 0, 232, 255, 0.25 )") : clase === "Rare" ? setColor("rgba( 0, 160, 42, 0.55 )") : setColor("rgba( 143, 7, 136, 0.55 )")
     clase === "Common" ? setBackColor("rgb(0, 234, 255)") : clase === "Rare" ? setBackColor("rgb(0, 160, 43)") : setBackColor("rgb(143, 7, 136)")
 }, [clase])
+
+const getData = async () => {
+    const token = await AsyncStorage.getItem('token')
+    if (token) {
+      props.logInAsync(token)
+    }
+  } 
+
     
     
     return (
-        <View style={CardNFTNativeStyle.contenedor}>
+        <View style={CardNFTNativeStyle.contenedor} key={index}>
             <View style={CardNFTNativeStyle.contenedorTitulo}>
                 <Text style={CardNFTNativeStyle.text}>{name}</Text>
             </View>
-            <Image style={CardNFTNativeStyle.imagenNft} source={{uri:{img}}}  key={index}/>
+            <Image style={CardNFTNativeStyle.imagenNft} source={img} alt="nftImg" />
             <View style={CardNFTNativeStyle.contenedorDatos}>
-                    <Text style={CardNFTNativeStyle.text}>Class:{clase}</Text>
-                    <Text style={CardNFTNativeStyle.text}>Type:{type}</Text>
-                    <Text style={CardNFTNativeStyle.text}>price:{price}</Text>
+                    <Text style={CardNFTNativeStyle.text}>Class: {clase}</Text>
+                    <Text style={CardNFTNativeStyle.text}>Type: {type}</Text>
+                    <Text style={CardNFTNativeStyle.text}>price: {price} ETH</Text>
             </View>
             <View style={CardNFTNativeStyle.contenedorButtons}>
-                <Button style={CardNFTNativeStyle.button} title="Add to favourites 🤍" />
-                <Button style={CardNFTNativeStyle.button} title="Add to cart" />
+
+{/* 
+                <Button onPress={()=> favsAndDisFavs()} style={CardNFTNativeStyle.button} title="Add to favourites 🤍" /> */}
+                
+             <view>
+                            {
+                                favorite && favorite.some(fav => fav === userId) 
+                                ?
+                                <Button onPress={()=> favsAndDisFavs()} style={CardNFTNativeStyle.button} title="❤" />
+                                :
+                                <Button onPress={()=> favsAndDisFavs()} style={CardNFTNativeStyle.button} title="Add to favourites 🤍" />
+                              }
+                            </view>
+
+
+
+                <Button  style={CardNFTNativeStyle.button} title="Add to cart" />
             </View>
         </View>
 )}
@@ -207,6 +229,7 @@ const mapStateToProps = (state) => {
   const mapDispatchToProps = {
     favs : userActions.favs,
     nft : nftActions.getNfts,
+    logInAsync: userActions.logInAsync,
     // addNftToCart : cartActions.addNftToCart
   }
   

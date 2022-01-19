@@ -37,5 +37,18 @@ export  const styles = StyleSheet.create({
     drawerName: {
       color: '#96faaf',
       fontWeight: 'bold',
+    },
+    drawerImage: {
+      height: 80, 
+      width: 80, 
+      borderRadius: 40, 
+      marginTop: 10
+    },
+    drawerContainerImage: {
+      backgroundColor: '#001a33',
+      flexDirection: 'column',
+      justifyContent: 'center',
+      alignItems: 'center',
+      height: 100,
     }
   });
