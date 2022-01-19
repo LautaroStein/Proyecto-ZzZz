@@ -35,7 +35,6 @@ const offerNftController = {
             }
         );
     },
-    // controlador publico pero depende de la validacion (depende del rol lo que se MUESTRA por ende se controla en el frontend)
     getAllOffers: async (req, res) => {
         try {
             const offers = await NftOffer.find().populate('user')

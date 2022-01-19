@@ -5,6 +5,7 @@ export default function App() {
     const [pair, setpair] = useState("");
     const [price, setprice] = useState("0.00");
     const [pastData, setpastData] = useState({});
+    const [flag, setFlag] = useState(false)
     const ws = useRef(null);
     let first = useRef(false);
 
@@ -40,12 +41,13 @@ export default function App() {
         };
 
 
+        console.log(first.current);
         apiCall();
     }, []);
 
     useEffect(() => {
         if (!first.current) {
-
+            console.log(first.current);
             return;
         }
 
@@ -78,6 +80,8 @@ export default function App() {
                 data.push(obj)
             })
 
+            console.log(data);
+            console.log('entro');
             setpastData(data);
         };
 
@@ -95,9 +99,9 @@ export default function App() {
             }
         };
 
-
     }, [pair]);
     const handleSelect = (e) => {
+        setFlag(true)
         let unsubMsg = {
             type: "unsubscribe",
             product_ids: [pair],
@@ -128,7 +132,7 @@ export default function App() {
                         })} */}
                     </select>
                 </div>
-                <Graph price={price} data={pastData} />
+                <Graph price={price} flag={flag} data={pastData} />
 
             </article>
         </div>

@@ -9,7 +9,7 @@ import offerActions from '../../../redux/actions/offerActions'
 
 
 
-const PayPal = ({ total, cart, user, updateNft, active, mount, seller, addTransaction,subHandlder, updateOffer, clearCartAll }) => {
+const PayPal = ({ total, cart, user, updateNft, active, mount, seller, addTransaction, subHandlder, updateOffer, clearCartAll }) => {
 
     const [orderID, setOrderID] = useState(false)
     const [ErrorMessage, setErrorMessage] = useState("");
@@ -61,6 +61,7 @@ const PayPal = ({ total, cart, user, updateNft, active, mount, seller, addTransa
                 setOrderID(transaction.id)
                 switch (active) {
                     case 'shopping':
+                        console.log(user.sub);
                         if (cart.length > 1) {
 
                             cart.forEach(item => {
@@ -68,6 +69,7 @@ const PayPal = ({ total, cart, user, updateNft, active, mount, seller, addTransa
                             })
 
                         } else {
+                            console.log(cart[0]._id, cart[0].stock, cart[0].users);
                             updateNft(cart[0]._id, { stock: cart[0].stock - 1, users: [...cart[0].users, user.userID] })
                         }
                         break;
