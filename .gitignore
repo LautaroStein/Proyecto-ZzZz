@@ -3,5 +3,3 @@
 /native/node_modules
 /native/.expo
 /backend/.env
-/frontend
-/native

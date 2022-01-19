@@ -30,30 +30,33 @@ const Market = (props) => {
     const art = useRef()
     const classes = useRef()
 
+    console.log(view)
+
     const handlerFilter = () => {
         const checkboxes = []
         checkboxes.push(gamer.current)
         checkboxes.push(art.current)
         checkboxes.push(cyberpunk.current)
-
+        const filteredOffers = props.auxOffers.filter(offer => offer.public)
         const seleccionados = checkboxes.filter(checkbox => checkbox.checked)
         const selectedValues = seleccionados.map(seleccionado => seleccionado.value)
         const selected = Array.from(classes.current).find(option => option.selected)
         let print
         if (selectedValues.length > 0 && (selected && selected.text !== 'All') && nname.current.value === '') {
-            print = props.auxOffers.filter(offer => selectedValues.includes(offer.type) && selected.value === offer.clase)
+            print = filteredOffers.filter(offer => selectedValues.includes(offer.type) && selected.value === offer.clase)
         } else if (selectedValues.length > 0 && !(selected && selected.text !== 'All') && nname.current.value === '') {
-            print = props.auxOffers.filter(offer => selectedValues.includes(offer.type))
+            print = filteredOffers.filter(offer => selectedValues.includes(offer.type))
         } else if (selectedValues.length == 0 && (selected && selected.text !== 'All') && nname.current.value === '') {
-            print = props.auxOffers.filter(offer => selected.value === offer.clase)
+            print = filteredOffers.filter(offer => selected.value === offer.clase)
         } else if (selectedValues.length > 0 && (selected && selected.text !== 'All') && nname.current.value !== '') {
-            print = props.auxOffers.filter(offer => selectedValues.includes(offer.type) && selected.value === offer.clase && offer.name === nname.current.value)
+            print = filteredOffers.filter(offer => selectedValues.includes(offer.type) && selected.value === offer.clase && offer.name.toLowerCase().trim().startsWith(nname.current.value.toLowerCase().trim()))
         } else if (selectedValues.length > 0 && !(selected && selected.text !== 'All') && nname.current.value !== '') {
-            print = props.auxOffers.filter(offer => selectedValues.includes(offer.type) && offer.name === nname.current.value)
+            print = filteredOffers.filter(offer => selectedValues.includes(offer.type) && offer.name.toLowerCase().trim().startsWith(nname.current.value.toLowerCase().trim()))
+            console.log(nname.current.value);
         } else if (selectedValues.length == 0 && (selected && selected.text !== 'All') && nname.current.value !== '') {
-            print = props.auxOffers.filter(offer => selected.value === offer.clase && offer.name === nname.current.value)
+            print = filteredOffers.filter(offer => selected.value === offer.clase && offer.name.toLowerCase().trim().startsWith(nname.current.value.toLowerCase().trim()))
         } else if (selectedValues.length == 0 && !(selected && selected.text !== 'All') && nname.current.value !== '') {
-            print = props.auxOffers.filter(offer => offer.name.toLowerCase().trim().startsWith(nname.current.value.toLowerCase()))
+            print = filteredOffers.filter(offer => offer.name.toLowerCase().trim().startsWith(nname.current.value.toLowerCase().trim()))
         }
         print ? props.filter(print) : props.getOffers()
     }

@@ -11,8 +11,10 @@ import ManagementOffer from '../components/Profile/ManagementOffer'
 import { AiFillDashboard } from 'react-icons/ai'
 import { IoDuplicate } from "react-icons/io5";
 import Lumn from '../components/Lumn'
+import { connect } from 'react-redux'
 
-const Profile = () => {
+
+const Profile = (props) => {
 
     const [active, setActive] = useState("user")
 
@@ -22,9 +24,8 @@ const Profile = () => {
             <div className="total-profile-container">
                 <div className="nav-profile-col">
                     <FaHouseUser onClick={() => { setActive("user") }} className={active === "user" ? "active" : null} />
-                    <MdAdminPanelSettings onClick={() => { setActive("admin") }} className={active === "admin" ? "active" : null} />
-                    <AiFillDashboard onClick={() => { setActive("dashboard") }} className={active === "dashboard" ? "active" : null} />
-
+                    {(props.user.role === 'admin' || props.user.role === 'moderator') && <MdAdminPanelSettings onClick={() => { setActive("admin") }} className={active === "admin" ? "active" : null} />}
+                    {(props.user.role === 'admin' || props.user.role === 'moderator') && <AiFillDashboard onClick={() => { setActive("dashboard") }} className={active === "dashboard" ? "active" : null} />}
                     <GiWallet onClick={() => { setActive("wallet") }} className={active === "wallet" ? "active" : null} />
                     <IoDuplicate onClick={() => { setActive("managementOffer") }} className={active === "managementOffer" ? "active" : null} />
                     <FaEthereum onClick={() => { setActive("ethereum") }} className={active === "ethereum" ? "active" : null} />
@@ -38,4 +39,8 @@ const Profile = () => {
     )
 }
 
-export default Profile
+const mapStateToProps = (state) => ({
+    user: state.userReducers.user
+})
+
+export default connect(mapStateToProps, null)(Profile)

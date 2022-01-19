@@ -2,9 +2,11 @@ import { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
 import userActions from '../../redux/actions/userActions'
 import { app } from '../../fb'
+import { useNavigate } from 'react-router-dom'
 
 const User = (props) => {
 
+    const navigate = useNavigate()
 
     useEffect(() => {
         window.scrollTo({
@@ -47,10 +49,10 @@ const User = (props) => {
         })
     }
 
-    const handleRegister = async (e) => {
+    const handleRegister = (e) => {
         e.preventDefault()
         setModify(!modify)
-        await props.editUser(props.user.userID, modifyUser)
+        props.editUser(props.user.userID, modifyUser)
     }
 
     return (
@@ -61,7 +63,7 @@ const User = (props) => {
                 <div className="user-header-container">
                     <div>
                         <div className="edit-user" onClick={() => setModify(!modify)}>Editar</div>
-                        <div className="edit-user" onClick={() => props.logout()}>Cerrar sesión</div>
+                        <div className="edit-user" onClick={() => { props.logout(); navigate('/') }}>Cerrar sesión</div>
                     </div>
 
                     {!props.user && <div className="user-img" style={{ backgroundImage: `URL("https://www.batiburrillo.net/wp-content/uploads/2019/07/Ampliacio%CC%81n-de-imagen-en-li%CC%81nea-sin-perder-calidad.jpg")` }}></div>}

@@ -495,8 +495,25 @@ ul li button:hover:nth-child(4) {
     background-position-y: -480px;
   }
 }
+
 .form-contenedor-input h1 {
   color: var(--color-white);
+}
+.form-contenedor-title-actions {
+  display: flex;
+  justify-items: center;
+  justify-content: center;
+  width: 100%;
+}
+.action-link-sign {
+  position: absolute;
+  text-align: end;
+  width: 35vw;
+}
+.btn-link-sign {
+  color: white;
+  text-decoration: none;
+  font-size: 1rem;
 }
 .navigation {
   position: fixed;
@@ -3502,12 +3519,19 @@ img {
     border-radius: 10px 0 10px 0;
     display: flex;
     align-items: center;
+    font-weight: 800;
+    font-size: 1.2em;
+    letter-spacing: 1.5px;
     justify-content: center;
     background:none;
-    border: 2px solid var(--ColorDesctacar);
+    border: 4px solid var(--ColorDesctacar);
     color: white;
+    cursor: pointer;
   }
 /* finish tabla */
+.market-modal-payments div:nth-child(1){
+  width: 100%;
+}
 /* pricing suscriptions */
 
 .pricing-table{
@@ -3630,6 +3654,9 @@ img {
     width: 48%;
     margin: 0;
   }
+  .contenedor-store-public div:nth-child(2) div{
+    width: 100% !important;
+  }
 }
 @media (max-width: 787px) {
   .texto-nft-home h2 {
@@ -3710,6 +3737,27 @@ img {
     display: block;
   }
 }
+@media (min-width: 1600px){
+  .contenedor-store-public div:nth-child(2){
+    width: 48%;
+  }
+  .contenedor-store-public div:nth-child(1){
+    width: 47.8%;
+  }
+}
+@media (min-width: 1870px){
+  .contenedor-store-public div:nth-child(2) div{
+    width:60% !important;
+  }
+}
+@media (max-width: 980px){
+  .contenedor-store-public div:nth-child(1){
+    width: 50%;
+  }
+  .contenedor-store-public div:nth-child(2){
+    width: 49%;
+  }
+}
 
 
 /* Height */
@@ -3723,7 +3771,7 @@ img {
     height: 60px;
   }
 }
-@media (max-height: 700px) {
+@media (max-height: 700px){
   .contenedor-top-sellers-store{
     height: 95vh;
   }
@@ -3779,5 +3827,17 @@ img {
   .creator-nft-offerts{
     height: 50%;
   }
+  .contenedor-store-public div:nth-child(2) div{
+    width:70% !important;
+  }
 }
-
+@media (max-height: 600px){
+  .contenedor-store-public div:nth-child(2) div{
+    width:60% !important;
+  }
+}
+@media (max-height: 1000px){
+  .contenedor-store-public div:nth-child(2) div{
+    width: 80%;
+  }
+}
