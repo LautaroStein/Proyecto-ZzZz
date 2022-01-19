@@ -2783,6 +2783,7 @@ img {
   width: 100%;
   display: flex;
   align-items: center;
+  height: calc(100% - 70px);
 }
 .filter-containter-total-market {
   width: 7%;
@@ -2958,7 +2959,7 @@ img {
 }
 .section-mid-martket-container-total {
   width: 65%;
-  height: 93vh;
+  height: 100%;
   overflow-y: scroll;
   padding-top: 20px;
   padding-right: 20px;
@@ -3635,10 +3636,33 @@ img {
   .contenedor-cards-topCollection-home {
     height: 90%;
   }
+  .recent-creator-container-offerts{
+    display: none;
+  }
+  .section-mid-martket-container-total{
+    width: 92%;
+  }
+}
+@media (max-width: 882px){
+  .container-imgdos-presentacion-admin{
+    width:400px
+  }
+  .container-imgdos-presentacion-admin p{
+    width:70%
+  }
+  td button{
+    height: 2em;
+    font-size: 1em;
+    font-weight: 700;
+    border: 2px solid var(--ColorDesctacar);
+  }
 }
 @media (max-width: 830px) {
   .card-info-advantages-home p {
     flex-grow: 1;
+  }
+  .price-container-nft-market-hero p:nth-child(2){
+    width: 100%;
   }
 }
 @media (max-width: 803px) {
@@ -3657,6 +3681,10 @@ img {
   .contenedor-store-public div:nth-child(2) div{
     width: 100% !important;
   }
+  .clases-nft-market-ofert div:nth-child(1){
+    width:40px;
+    height:40px;
+  }
 }
 @media (max-width: 787px) {
   .texto-nft-home h2 {
@@ -3664,6 +3692,16 @@ img {
   }
   .contenedor-about-advantages {
     margin-top: 30px;
+  }
+  .user-img{
+    width: max(150px, 200px);
+    height: max(150px, 200px);
+  }
+  .user-info-container div{
+    display:block;
+  }
+  .container-imgdos-presentacion-admin{
+    width: 350px;
   }
 }
 @media (max-width: 687px) {
@@ -3719,6 +3757,21 @@ img {
   .contenedor-ocho-about {
     height: 95%;
   }
+  .filter-containter-total-market{
+    display: none;
+  }
+  .ocupador{
+    display: none;
+  }
+  .card-container-offert-accept{
+    width:80%;
+  }
+  .marketplace-container{
+    justify-content:center;
+  }
+  .container-nft-trading-action{
+    justify-content: center;
+  }
 }
 @media (max-width: 500px){
   .navigation{
@@ -3735,6 +3788,10 @@ img {
   }
   .menu-icon:checked + label, .menu-icon:not(:checked) + label{
     display: block;
+  }
+  .user-img{
+    width: max(60px, 100px);
+    height: max(60px, 100px);
   }
 }
 @media (min-width: 1600px){

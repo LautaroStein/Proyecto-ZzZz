@@ -1,0 +1,29 @@
+{
+  "files": {
+    "main.css": "/static/css/main.0e245512.css",
+    "main.js": "/static/js/main.69365f4d.js",
+    "static/js/787.774729bc.chunk.js": "/static/js/787.774729bc.chunk.js",
+    "static/media/mineria.png": "/static/media/mineria.4dc75f4e3f9b52a82024.png",
+    "static/media/fontawesome-webfont.svg?v=4.7.0": "/static/media/fontawesome-webfont.c1e38fd9e0e74ba58f7a.svg",
+    "static/media/HD-wallpaper-neon-leon.jpg": "/static/media/HD-wallpaper-neon-leon.45bb8d1d8c06a7bb8436.jpg",
+    "static/media/fontawesome-webfont.eot": "/static/media/fontawesome-webfont.8b43027f47b20503057d.eot",
+    "static/media/fontawesome-webfont.ttf?v=4.7.0": "/static/media/fontawesome-webfont.1e59d2330b4c6deb84b3.ttf",
+    "static/media/aboutraro.png": "/static/media/aboutraro.6fc47a5c098b9da1652c.png",
+    "static/media/fontawesome-webfont.woff?v=4.7.0": "/static/media/fontawesome-webfont.f691f37e57f04c152e23.woff",
+    "static/media/about.jpeg": "/static/media/about.349faf36820f4a96ce90.jpeg",
+    "static/media/aboutreves.jpeg": "/static/media/aboutreves.887dd293eaf0162319b9.jpeg",
+    "static/media/fontawesome-webfont.woff2?v=4.7.0": "/static/media/fontawesome-webfont.20fd1704ea223900efa9.woff2",
+    "static/media/lauty2.png": "/static/media/lauty2.94b2286b6c24900fab05.png",
+    "static/media/lauty1.png": "/static/media/lauty1.7270ec012184ed8fc223.png",
+    "static/media/lauty3.png": "/static/media/lauty3.81e87e93d2e7bf6fbcfa.png",
+    "static/media/diseño-admin-2.png": "/static/media/diseño-admin-2.1b4d17e8f627bb9b5c03.png",
+    "index.html": "/index.html",
+    "main.0e245512.css.map": "/static/css/main.0e245512.css.map",
+    "main.69365f4d.js.map": "/static/js/main.69365f4d.js.map",
+    "787.774729bc.chunk.js.map": "/static/js/787.774729bc.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.0e245512.css",
+    "static/js/main.69365f4d.js"
+  ]
+}
