@@ -7,14 +7,7 @@ import NftSaved from "../screens/NftSaved"
 import Cart from "../screens/Cart"
 import Profile from "../screens/Profile"
 
-
-// Instanciamos createStackNavigator para obtener todos sus Metodos y Componentes
 const Stack = createStackNavigator();
-
-
-// StackNavigator es el navigator que vamos a exportar y va a ser el encargado 
-// de mostrar las distintas vistas mediante eventos de navegación y las distintas pantallas
-// declaradas en el mismo, tambien es totalmente modificable su estilo y su forma de interaccion.-
 
 const StackNavigator = ()=>{
 

@@ -1,18 +1,14 @@
-// Importamos createDrawerNavigator
 import {useEffect} from 'react'
 import { Text, View, Image } from "react-native"
 import { createDrawerNavigator, DrawerContentScrollView, DrawerItemList } from '@react-navigation/drawer';
 import Home from "../screens/Home"
 import Store from "../screens/Store"
-import MarketPlace from "../screens/MarketPlace"
-import NftSaved from "../screens/NftSaved"
 import Cart from "../screens/Cart"
 import Profile from "../screens/Profile"
 import Logout from "../components/Logout" 
 
 import AsyncStorage from '@react-native-async-storage/async-storage'
 
-import nftActions from '../redux/actions/nftActions'
 import userActions from "../redux/actions/userActions"
 import { connect } from "react-redux";
 

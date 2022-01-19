@@ -8,8 +8,6 @@ import CardNFTNative from '../components/CardNftNative';
 
 const Store = (props) => {
 
-    console.log(props.nfts)
-
     const [categoria, setCategoria] = useState("All");
     const [rareza, setRareza] = useState("All");
 
@@ -26,23 +24,13 @@ const Store = (props) => {
                     <Image source={require('../../assets/mineria.png')} style={storeStyle.imagenMineria} />
                     <Text style={storeStyle.titleWelcome}>Live the new life check it out now.</Text>
                 </View>
-                
-                {/* <View style={storeStyle.view2}>
-                    <Text style={storeStyle.title2}>Top Sales</Text>
-                       
-                <View>
-                    <View>
-                                <CardNFTNative/>
-                    </View>
-                </View>
-                </View> */}
 
                 <View style={storeStyle.view3}>
-                    <Text style={storeStyle.title2}>Nfts</Text>
+                    <Text style={storeStyle.title2}>NFTs on sale</Text>
                     {
                                 props.nfts.map((element, index) => {
                                     return (
-                                        <CardNFTNative name={element.name} type={element.type} price={element.price} img={element.img} clase={element.clase} id={element._id} favorite={element.favs} propiedad={element.users} userId={props.userId.userID} store={true} publicos={"no"} index={index}/>
+                                        <CardNFTNative name={element.name} type={element.type} price={element.price} img={element.img} clase={element.clase} id={element._id} favorite={element.favs} propiedad={element.users} userId={props.userId.userID} store={true} publicos={"no"} key={index}/>
                                     )
                                 })
                             }
@@ -54,20 +42,20 @@ const Store = (props) => {
 
 const storeStyle = StyleSheet.create({
     mainView:{
-        backgroundColor:'black',
+        backgroundColor:'#14141d',
     },
     view:{
-        backgroundColor:'black',
+        backgroundColor:'#14141d',
         margin:'0.5rem',        
         // display: 'flex',
         // flexDirection:'row',
     },
-    // view2:{
-    //     backgroundColor:'black',
-    //     marginTop:'1rem',
-    // },
+    view2:{
+        backgroundColor:'#14141d',
+        marginTop:'1rem',
+    },
     view3:{
-        backgroundColor:'black',
+        backgroundColor:'#14141d',
         marginTop:'1rem',
     },
     titleWelcome:{
@@ -75,28 +63,29 @@ const storeStyle = StyleSheet.create({
         width: '100%',
         height:'0.5rem',
         textAlign: 'center',
-        margin: '1rem',
+        margin: '.5rem',
+        fontWeight: 'bold',
     },
     title:{
         color:'white',
         width: '100%',
         height:'0.5rem',
         textAlign: 'center',
-        margin: '1rem',
-        fontSize:'0.3rem',
+        margin: '.5rem',
+        fontSize:'1rem',
         fontWeight:'bold',
     },
-    // title2:{
-    //     fontWeight:'bold',
-    //     fontSize:'1rem',
-    //     color:'white',
-    //     width: '100%',
-    //     textAlign: 'left',
-    //     margin: '1rem'
-    // },
+    title2:{
+       fontWeight:'bold',
+        fontSize:'1rem',
+        color:'white',
+        width: '100%',
+        textAlign: 'left',
+        margin: '1rem'
+    },
     imagenMineria:{
-        width: '100px',
-        height: '100px',
+        width: '150px',
+        height: '150px',
         alignSelf: 'center',
     },
     

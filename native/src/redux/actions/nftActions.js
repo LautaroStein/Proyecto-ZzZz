@@ -20,7 +20,6 @@ const nftActions = {
         return async (dispatch, getState) => {
             try {
                 const nfts = await axios.get('http://localhost:4000/api/nft')
-                console.log(nfts);
                 dispatch({ type: 'GET_NFTS', payload: nfts.data.respuesta })
             } catch (error) {
                 console.log(error);
