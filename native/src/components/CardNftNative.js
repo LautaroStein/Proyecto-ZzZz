@@ -45,18 +45,18 @@ const [backColor, setBackColor] = useState("")
 
 useEffect(() => {
   
-    getData()
+    // getData()
   
     clase === "Common" ? setColor("rgba( 0, 232, 255, 0.25 )") : clase === "Rare" ? setColor("rgba( 0, 160, 42, 0.55 )") : setColor("rgba( 143, 7, 136, 0.55 )")
     clase === "Common" ? setBackColor("rgb(0, 234, 255)") : clase === "Rare" ? setBackColor("rgb(0, 160, 43)") : setBackColor("rgb(143, 7, 136)")
 }, [clase])
 
-const getData = async () => {
-    const token = await AsyncStorage.getItem('token')
-    if (token) {
-      props.logInAsync(token)
-    }
-  } 
+// const getData = async () => {
+//     const token = await AsyncStorage.getItem('token')
+//     if (token) {
+//       props.logInAsync(token)
+//     }
+//   } 
 
     
     
