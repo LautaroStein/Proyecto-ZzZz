@@ -13,6 +13,7 @@ export const styles = StyleSheet.create({
     alignItems: "flex-end",
     padding: 10,
     margin: 20
+  
   },
   cubo: {
     flex: 1,

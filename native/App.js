@@ -1,5 +1,5 @@
 import Test from './Test'
-import { StateProvider } from './src/core/StateProvider';
+// import { StateProvider } from './src/core/StateProvider';
 import reducer, {initialState} from './src/core/reducer'
 // NavigationContainer es el encargado de escuchar los eventos de navegacion de los navigators 
 import { NavigationContainer } from '@react-navigation/native';
