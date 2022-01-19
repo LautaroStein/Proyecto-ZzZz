@@ -5,6 +5,7 @@ import cartReducers from './cartReducers'
 
 const mainReducer = combineReducers({
     userReducers,
+    cartReducers,
     nftReducers,
     cartReducers,
 })

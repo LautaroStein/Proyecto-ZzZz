@@ -88,7 +88,7 @@ const favsAndDisFavs = async() => {
                                         }) 
                                       }else{
                                         addNftToCart(id, nfts)
-                                        toast.info('NFT add in your cart', {
+                                        toast.info('NFT added to your cart', {
                                           position: "top-right",
                                           autoClose: 1500,
                                           hideProgressBar: false,
