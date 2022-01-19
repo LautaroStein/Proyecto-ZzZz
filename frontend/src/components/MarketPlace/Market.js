@@ -25,16 +25,13 @@ const Market = (props) => {
         setView(props.auxOffertsDos[aleatorio])
     }, [props.auxOffertsDos])
     const nname = useRef()
-    const gamer = useRef()
     const cyberpunk = useRef()
     const art = useRef()
     const classes = useRef()
 
-    console.log(view)
 
     const handlerFilter = () => {
         const checkboxes = []
-        checkboxes.push(gamer.current)
         checkboxes.push(art.current)
         checkboxes.push(cyberpunk.current)
         const filteredOffers = props.auxOffers.filter(offer => offer.public)
@@ -84,11 +81,6 @@ const Market = (props) => {
                                 <label htmlFor="cyberpunk" className={`${select.cyber ? "select-cyber-checked" : null}`}><GiSteampunkGoggles /></label>
                                 <p>CyberPunk</p>
                                 <input name='cyberpunk' onChange={handlerFilter} ref={cyberpunk} onClick={() => { setSelect({ ...select, cyber: !select.cyber }) }} value='cyberpunk' id="cyberpunk" type="checkbox" />
-                            </div>
-                            <div className='checkbox-gamer'>
-                                <label htmlFor="gamer" className={`${select.gamer ? "select-gamer-checked" : null}`}><BiGame /></label>
-                                <p>Gamer</p>
-                                <input name='gamer' ref={gamer} onChange={handlerFilter} onClick={() => { setSelect({ ...select, gamer: !select.gamer }) }} value='gamer' id='gamer' type="checkbox" />
                             </div>
                             <select onChange={handlerFilter} ref={classes} className='select-market-place'>
                                 <option defaultValue>All</option>

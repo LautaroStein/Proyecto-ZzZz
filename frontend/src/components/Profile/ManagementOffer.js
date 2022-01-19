@@ -11,7 +11,7 @@ const CreateOffer = (props) => {
     const [features, setFeatures] = useState(false)
     const [onCardHover, setOnCardHover] = useState({ bool: false, id: '' })
     const [editNft, setEditNft] = useState('')
-    const [formTimeReal, setFormTimeReal] = useState({name: "", type: "Art", class:"Common", img: "", price: 0 })
+    const [formTimeReal, setFormTimeReal] = useState({ name: "", type: "Art", class: "Common", img: "", price: 0 })
     const [modal, setModal] = useState(false)
 
     const nname = useRef(null)
@@ -88,64 +88,63 @@ const CreateOffer = (props) => {
     }
     const subHandlder = async () => {
         props.updateSub(props.user.userID, { suscription: true })
-        // refresh de pagina
     }
 
     if (!props.user.sub) {
         return (
             <>
-            
-            <section className="pricing-table">
-                <div className="container-pricing-table">
-                    <h1>STANDARD</h1>
-                    <div className="container-price-table">
-                        <p>$50</p>
-                        <p>per month</p>
-                    </div>
-                    <p className='data-pricing-table'>Create 15 NFT</p>
-                    <p className='data-pricing-table'>Edit NFT</p>
-                    <p className='data-pricing-table'>Public NFT in Market Place</p>
-                    <div className='button-pricing-table'>
-                        <button onClick={() => setModal(true)}>Suscribe</button>
-                    </div>
-                </div>
 
-            </section>
-            {modal ?
-                <div onClick={(e) => {
-                    if (e.target.className === 'position-cienporciento') {
-                        setModal(false)
+                <section className="pricing-table">
+                    <div className="container-pricing-table">
+                        <h1>STANDARD</h1>
+                        <div className="container-price-table">
+                            <p>$50</p>
+                            <p>per month</p>
+                        </div>
+                        <p className='data-pricing-table'>Create 15 NFT</p>
+                        <p className='data-pricing-table'>Edit NFT</p>
+                        <p className='data-pricing-table'>Public NFT in Market Place</p>
+                        <div className='button-pricing-table'>
+                            <button onClick={() => setModal(true)}>Subscribe</button>
+                        </div>
+                    </div>
+
+                </section>
+                {modal ?
+                    <div onClick={(e) => {
+                        if (e.target.className === 'position-cienporciento') {
+                            setModal(false)
+                        }
                     }
-                }
-                } className='position-cienporciento'>
-                    <div className="modal-market-place-pagos">
-                        <p style={{ cursor: 'pointer', position: 'absolute', alignSelf: 'flex-start' }} onClick={() => setModal(false)}> X </p>
-                        <div className='market-modal-left-column'>
-                            <div className='market-modal-nft-card'>
-                                <div className='modal-nft-body'>
-                                    <h2 style={{color:"white"}}>Suscription STANDARD</h2>
-                                    <div className='modal-nft-main-body'>
-                                        <div className='modal-nft-body-left'>
-                                            <h2 style={{color:"white"}}>$50</h2>
-                                            <h2 style={{color:"white"}}>15 NFT</h2>
-                                            <h2 style={{color:"white"}}>Edit NFT</h2>
-                                            <h2 style={{color:"white"}}>Public NFT</h2>
+                    } className='position-cienporciento'>
+                        <div className="modal-market-place-pagos">
+                            <p style={{ cursor: 'pointer', position: 'absolute', alignSelf: 'flex-start' }} onClick={() => setModal(false)}> X </p>
+                            <div className='market-modal-left-column'>
+                                <div className='market-modal-nft-card'>
+                                    <div className='modal-nft-body'>
+                                        <h2 style={{ color: "white" }}>STANDARD Subscription</h2>
+                                        <div className='modal-nft-main-body'>
+                                            <div className='modal-nft-body-left'>
+                                                <h2 style={{ color: "white" }}>$50</h2>
+                                                <h2 style={{ color: "white" }}>15 NFT</h2>
+                                                <h2 style={{ color: "white" }}>Edit NFT</h2>
+                                                <h2 style={{ color: "white" }}>Public NFT</h2>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div className='market-modal-right-column'>
-                            <div className='market-modal-payments'>
-                                <PayPal mount={50} active='subscription' subHandlder={subHandlder} seller={{ userId: props.user.userID }} />
-                            </div>
+                            <div className='market-modal-right-column'>
+                                <div className='market-modal-payments'>
+                                    <PayPal mount={50} active='subscription' subHandlder={subHandlder} />
+                                </div>
 
+                            </div>
                         </div>
                     </div>
-                </div>
-                : null}
-                </>            
-                // <div style={{ backgroundImage: 'url(/assets/subscribe.jpeg)', backgroundSize: 'cover', height: '100%', width: '100%', backgroundPosition: 'center' }}>
+                    : null}
+            </>
+            // <div style={{ backgroundImage: 'url(/assets/subscribe.jpeg)', backgroundSize: 'cover', height: '100%', width: '100%', backgroundPosition: 'center' }}>
 
             //     <h2 style={{ color: 'white', width: '100%', height: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>You need subscribe to our web, click <button onClick={subHandlder}>here</button></h2>
             // </div>
@@ -165,7 +164,7 @@ const CreateOffer = (props) => {
                         <h2>Offer Management</h2>
                     </div>
                     <div className='nfts-container'>
-                        {props.userOffers.length > 0 && props.userOffers.map(nft =>
+                        {props.userOffers && props.userOffers.length > 0 && props.userOffers.map(nft =>
                             <div key={nft._id} onMouseEnter={() => setOnCardHover({ bool: true, id: nft._id })} onMouseLeave={() => setOnCardHover({ bool: false, id: nft._id })} style={{ backgroundImage: `url(${nft.img})` }} className="cardy">
                                 <div className='body-nft-admin-card'>
                                     <h2>{nft.name}</h2>
@@ -205,8 +204,8 @@ const CreateOffer = (props) => {
                                     <input min='0' type="number" placeholder="price" value={editNft.nftId.price} onChange={(e) => setEditNft({ nftId: { price: e.target.value, _id: editNft.nftId._id } })} />
                                 </> :
                                 <>
-                                    <input type="text" placeholder='name' ref={nname} onChange={(e)=> setFormTimeReal({...formTimeReal, name:e.target.value})}/>
-                                    <input type="text" placeholder="type" ref={type} onChange={(e)=> setFormTimeReal({...formTimeReal, type:e.target.value})}/>
+                                    <input type="text" placeholder='name' ref={nname} onChange={(e) => setFormTimeReal({ ...formTimeReal, name: e.target.value })} />
+                                    <input type="text" placeholder="type" ref={type} onChange={(e) => setFormTimeReal({ ...formTimeReal, type: e.target.value })} />
                                     <input type="text" placeholder="class" ref={clase} />
                                     <input type="text" placeholder="img" ref={img} />
                                     <input min='0' type="number" placeholder="price" ref={price} />
