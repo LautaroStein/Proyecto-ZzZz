@@ -14,13 +14,13 @@ const Dashboard = (props) => {
     useEffect(() => {
         props.getOffers()
         props.getUsers()
-        fetch('http://localhost:4000/api/usersByDay')
+        fetch('https://proyectozzzz.herokuapp.com/api/usersByDay')
             .then(res => res.json())
             .then(data => setUsersData(data))
-        fetch('http://localhost:4000/api/suscriptionByDay')
+        fetch('https://proyectozzzz.herokuapp.com/api/suscriptionByDay')
             .then(res => res.json())
             .then(data => setSubscriptions(data))
-        fetch('http://localhost:4000/api/offersByDay')
+        fetch('https://proyectozzzz.herokuapp.com/api/offersByDay')
             .then(res => res.json())
             .then(data => setOffers(data))
     }, []);

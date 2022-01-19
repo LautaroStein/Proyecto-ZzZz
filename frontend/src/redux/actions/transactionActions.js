@@ -6,7 +6,7 @@ const transactionActions = {
 
             try {
                 const token = localStorage.getItem('token')
-                const transaction = await axios.post('http://localhost:4000/api/transactions', bodyTransaction, {
+                const transaction = await axios.post('https://proyectozzzz.herokuapp.com/api/transactions', bodyTransaction, {
                     headers: { 'Authorization': 'Bearer ' + token }
                 })
                 if (transaction.data.response) {
@@ -24,7 +24,7 @@ const transactionActions = {
         return async (dispatch, getState) => {
 
             try {
-                const transaction = await axios.get('http://localhost:4000/api/recents')
+                const transaction = await axios.get('https://proyectozzzz.herokuapp.com/api/recents')
                 if (transaction.data.response) {
                     dispatch({ type: 'GET_RECENTS', payload: transaction.data.response })
                     return { success: true }
@@ -40,7 +40,7 @@ const transactionActions = {
         return async (dispatch, getState) => {
 
             try {
-                const transaction = await axios.get('http://localhost:4000/api/transactions')
+                const transaction = await axios.get('https://proyectozzzz.herokuapp.com/api/transactions')
                 if (transaction.data.response) {
                     dispatch({ type: 'GET_TOP_CREATOR', payload: transaction.data.response })
                     return { success: true }

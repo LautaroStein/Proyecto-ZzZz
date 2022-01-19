@@ -6,7 +6,7 @@ const nftActions = {
 
             try {
                 const token = localStorage.getItem('token')
-                const offer = await axios.post('http://localhost:4000/api/offers', paramOffer, {
+                const offer = await axios.post('https://proyectozzzz.herokuapp.com/api/offers', paramOffer, {
                     headers: { 'Authorization': 'Bearer ' + token }
                 })
                 if (offer.data.response) {
@@ -23,7 +23,7 @@ const nftActions = {
     getOffers: () => {
         return async (dispatch, getState) => {
             try {
-                const offers = await axios.get('http://localhost:4000/api/offers')
+                const offers = await axios.get('https://proyectozzzz.herokuapp.com/api/offers')
                 dispatch({ type: 'GET_OFFERS', payload: offers.data.response })
             } catch (error) {
                 console.log(error);
@@ -34,7 +34,7 @@ const nftActions = {
         return async (dispatch, getState) => {
             try {
                 const token = localStorage.getItem('token')
-                const nfts = await axios.get(`http://localhost:4000/api/offers/user/${userId}`, {
+                const nfts = await axios.get(`https://proyectozzzz.herokuapp.com/api/offers/user/${userId}`, {
                     headers: { 'Authorization': 'Bearer ' + token }
                 })
                 dispatch({ type: 'GET_USER_OFFERS', payload: nfts.data.response })
@@ -47,7 +47,7 @@ const nftActions = {
         return async (dispatch, getState) => {
             try {
                 const token = localStorage.getItem('token')
-                const offer = await axios.get(`http://localhost:4000/api/offer/${nftId}`, {
+                const offer = await axios.get(`https://proyectozzzz.herokuapp.com/api/offer/${nftId}`, {
                     headers: { 'Authorization': 'Bearer ' + token }
                 })
                 return { nftId: offer.data.response }
@@ -60,7 +60,7 @@ const nftActions = {
         return async (dispatch, getState) => {
             try {
                 const token = localStorage.getItem('token')
-                const offer = await axios.put(`http://localhost:4000/api/offer/${offerId}`, paramOffer, {
+                const offer = await axios.put(`https://proyectozzzz.herokuapp.com/api/offer/${offerId}`, paramOffer, {
                     headers: { 'Authorization': 'Bearer ' + token }
                 })
                 console.log(offer)
@@ -80,7 +80,7 @@ const nftActions = {
         return async (dispatch, getState) => {
             try {
                 const token = localStorage.getItem('token')
-                const nft = await axios.delete(`http://localhost:4000/api/offer/${nftId}`, {
+                const nft = await axios.delete(`https://proyectozzzz.herokuapp.com/api/offer/${nftId}`, {
                     headers: { 'Authorization': 'Bearer ' + token }
                 })
                 dispatch({ type: 'DELETE_OFFER', payload: nft.data.deletedNft })
