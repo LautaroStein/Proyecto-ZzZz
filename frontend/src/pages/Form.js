@@ -96,17 +96,8 @@ const Form = (props) => {
                     <div className="social-container">
                         <ul>
                             <li>
-                                <button className="facebook">
-                                    <span></span>
-                                    <span></span>
-                                    <span></span>
-                                    <span></span>
-                                    <BsFacebook />
-                                </button>
-                            </li>
-                            <li>
                                 <GoogleLogin
-                                    clientId="409676372754-m8ptb83qo10l0r1rn4itlai43g7tjjh1.apps.googleusercontent.com"
+                                    clientId="236469815759-52opakok2rekrcgq8dd7h9su8c4gfi1m.apps.googleusercontent.com"
                                     render={renderProps => (
                                         <button className="google" onClick={renderProps.onClick} disabled={renderProps.disabled}>
                                             <span></span>
@@ -121,15 +112,6 @@ const Form = (props) => {
                                     onFailure={responseGoogle}
                                     cookiePolicy={'single_host_origin'}
                                 />
-                            </li>
-                            <li>
-                                <button className="instagram">
-                                    <span></span>
-                                    <span></span>
-                                    <span></span>
-                                    <span></span>
-                                    <BsInstagram />
-                                </button>
                             </li>
                         </ul>
                     </div>

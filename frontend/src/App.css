@@ -3659,7 +3659,10 @@ td button {
   transition: ease-in-out 600ms;
 }
 /* finish pricing suscriptions */
-
+.contenedor-text-home div button:nth-child(2) a {
+  color: white;
+  text-decoration: none;
+}
 /* Responsive */
 
 /* Width */
