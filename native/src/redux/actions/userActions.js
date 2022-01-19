@@ -112,7 +112,7 @@ const userActions = {
                         headers: { 'Authorization': 'Bearer ' + token }
                     })
                 console.log(user)
-                return {succes : true}
+                return {success : true}
             }catch(err){
                 console.log(err)
             }
