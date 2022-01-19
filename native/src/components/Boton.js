@@ -1,36 +1,36 @@
-import React from 'react';
-import { TouchableOpacity,StyleSheet, Text } from 'react-native';
+// import React from 'react';
+// import { TouchableOpacity,StyleSheet, Text } from 'react-native';
 
-const Boton = (props) => {
+// const Boton = (props) => {
 
-    const { onPress, text } = props;
+//     const { onPress, text } = props;
     
 
-    return (
-        <TouchableOpacity 
-        style={styles.buttonContainer}
-        onPress={ onPress }
-        > 
-            <Text 
-            style={styles.buttonText}
-            >{ text }
-            </Text>
-        </TouchableOpacity>
-    )
-}
+//     return (
+//         <TouchableOpacity 
+//         style={styles.buttonContainer}
+//         onPress={ onPress }
+//         > 
+//             <Text 
+//             style={styles.buttonText}
+//             >{ text }
+//             </Text>
+//         </TouchableOpacity>
+//     )
+// }
 
-export default Boton
+// export default Boton
 
-const styles = StyleSheet.create({
+// const styles = StyleSheet.create({
 
-    buttonContainer:{ 
-        backgroundColor:"blue",
-        margin:30,
-        padding:20
+//     buttonContainer:{ 
+//         backgroundColor:"blue",
+//         margin:30,
+//         padding:20
 
-    },
-    buttonText:{
-        color:"black"
-    }
+//     },
+//     buttonText:{
+//         color:"black"
+//     }
 
-})
+// })
