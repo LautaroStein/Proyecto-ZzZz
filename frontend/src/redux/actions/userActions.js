@@ -4,19 +4,26 @@ const userActions = {
     addUser: (paramUser) => {
         return async (dispatch, getState) => {
             try {
+<<<<<<< HEAD
                 const user = await axios.post('http://localhost:4000/api/auth/signUp', paramUser)
+=======
+                const user = await axios.post('https://proyectozzzz.herokuapp.com/api/auth/signUp', paramUser)
+>>>>>>> 56500953d8cac7f68ded5679fc59e0ea1ad042eb
                 console.log(user)
                 if (user.data.success && !user.data.error) {
                     localStorage.setItem('token', user.data.response.token)
-                    dispatch({ type: 'USER_LOGGED', payload: { 
-                        userName: user.data.response._doc.name,
-                        lastName: user.data.response._doc.lastName, 
-                        email: user.data.response._doc.email, 
-                        phone: user.data.response._doc.phone, 
-                        img: user.data.response._doc.userImg, 
-                        userID: user.data.response._doc._id, 
-                        sub: user.data.response._doc.suscription, 
-                        role: user.data.response.role } })
+                    dispatch({
+                        type: 'USER_LOGGED', payload: {
+                            userName: user.data.response._doc.name,
+                            lastName: user.data.response._doc.lastName,
+                            email: user.data.response._doc.email,
+                            phone: user.data.response._doc.phone,
+                            img: user.data.response._doc.userImg,
+                            userID: user.data.response._doc._id,
+                            sub: user.data.response._doc.suscription,
+                            role: user.data.response.role
+                        }
+                    })
                     return { succes: true, userId: user.data.response._doc._id }
                 } else {
                     return { succes: false, error: user.data.errors }
@@ -31,7 +38,7 @@ const userActions = {
         return async (dispatch, getState) => {
             try {
                 const token = localStorage.getItem('token')
-                const res = await axios.delete(`http://localhost:4000/api/admin/user/${userId}`, {
+                const res = await axios.delete(`https://proyectozzzz.herokuapp.com/api/admin/user/${userId}`, {
                     headers: { 'Authorization': 'Bearer ' + token }
                 })
                 dispatch({ type: 'DELETE_USER', payload: res.data.deletedId })
@@ -47,7 +54,7 @@ const userActions = {
         return async (dispatch, getState) => {
             try {
                 const token = localStorage.getItem('token')
-                const res = await axios.get(`http://localhost:4000/api/admin/users`, {
+                const res = await axios.get(`https://proyectozzzz.herokuapp.com/api/admin/users`, {
                     headers: { 'Authorization': 'Bearer ' + token }
                 })
                 dispatch({ type: 'GET_USERS', payload: res.data.users })
@@ -64,7 +71,7 @@ const userActions = {
         return async (dispatch, getState) => {
             try {
                 const token = localStorage.getItem('token')
-                const res = await axios.put(`http://localhost:4000/api/admin/user/${userId}`, userBody, {
+                const res = await axios.put(`https://proyectozzzz.herokuapp.com/api/admin/user/${userId}`, userBody, {
                     headers: { 'Authorization': 'Bearer ' + token }
                 })
                 dispatch({ type: 'UPDATE_USER', payload: { userId: res.data.response._id, body: userBody } })
@@ -78,20 +85,21 @@ const userActions = {
     signIn: (users) => {
         return async (dispatch, getState) => {
             try {
-                const user = await axios.post('http://localhost:4000/api/auth/signIn', users)
-                console.log(user)
+                const user = await axios.post('https://proyectozzzz.herokuapp.com/api/auth/signIn', users)
                 if (user.data.success && !user.data.error) {
                     localStorage.setItem('token', user.data.response.token)
-                    dispatch({ type: 'USER_LOGGED', payload: { 
-                        userName: user.data.response._doc.name, 
-                        lastName: user.data.response._doc.lastName, 
-                        email: user.data.response._doc.email, 
-                        phone: user.data.response._doc.phone, 
-                        img: user.data.response._doc.userImg, 
-                        userID: user.data.response._doc._id, 
-                        sub: user.data.response._doc.suscription, 
-                        role: user.data.response._doc.role 
-                    }})
+                    dispatch({
+                        type: 'USER_LOGGED', payload: {
+                            userName: user.data.response._doc.name,
+                            lastName: user.data.response._doc.lastName,
+                            email: user.data.response._doc.email,
+                            phone: user.data.response._doc.phone,
+                            img: user.data.response._doc.userImg,
+                            userID: user.data.response._doc._id,
+                            sub: user.data.response._doc.suscription,
+                            role: user.data.response._doc.role
+                        }
+                    })
                     return { succes: true, userId: user.data.response._doc._id }
                 } else {
                     return { succes: false, error: user.data.error }
@@ -105,7 +113,7 @@ const userActions = {
         return async (dispatch, getState) => {
             try {
                 const token = localStorage.getItem('token')
-                const user = await axios.get('http://localhost:4000/api/user/auth', {
+                const user = await axios.get('https://proyectozzzz.herokuapp.com/api/user/auth', {
                     headers: { 'Authorization': 'Bearer ' + token }
                 })
                 dispatch({ type: 'usuario', payload: { userName: user.data.response.userName, img: user.data.response.img, userID: user.data.response._id, sub: user.data.response.suscription, role: user.data.response.role } })
@@ -125,10 +133,9 @@ const userActions = {
         return async (dispatch, getState) => {
             try {
                 const token = localStorage.getItem('token')
-                const user = await axios.put('http://localhost:4000/api/favs', { ...favs }, {
+                const user = await axios.put('https://proyectozzzz.herokuapp.com/api/favs', { ...favs }, {
                     headers: { 'Authorization': 'Bearer ' + token }
                 })
-                console.log(user)
                 return { succes: true }
             } catch (err) {
                 console.log(err)

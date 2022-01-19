@@ -8,7 +8,16 @@ import Svg2 from "../assets/Svg2";
 import Svg3 from "../assets/Svg3";
 import Svg4 from "../assets/Svg4";
 
-const Home = () => {
+import transactionActions from '../redux/actions/transactionActions'
+import { connect } from "react-redux"
+
+const Home = (props) => {
+    
+    useEffect(() => {
+        props.getTopCreators()
+    },[])
+
+    console.log(props)
 
     return (
 
@@ -130,7 +139,23 @@ const Home = () => {
 
                 <View style={styles.containerCollections}>
 
-                    <Image
+                {props.topCreators && props.topCreators.map((e, i) => {
+
+                            return (
+                                    i < 3 &&
+                                        <View key={i} style={{backgroundColor: '#1f1f36', borderRadius:10, padding:10, borderColor:'#8f0788', borderWidth: 3, margin:5}}>
+                                            <Image
+                                                source={e.transaction[0].userImg}
+                                                style={{ width: 200, height: 200, borderRadius: 15, position: 'relative', alignSelf: 'center',marginTop: 30 }}
+                                            />
+                                            <Text style={styles.textUserName}>{e.transaction[0].name}</Text>
+                                            <Text style={styles.textPrice}>+ {e.mount} ETH</Text>
+                                            <Text style={styles.textDescription}>The NFT & Defi farming initiative built on Ethereum (ETH) blockechain in OpenBid</Text>
+                                        </View>
+                                    )})
+                }
+
+                    {/* <Image
                         source={require('../assets/manimage.jpg')}
                         style={{ width: 200, height: 200, borderRadius: 15, position: 'relative', left: 50, marginTop: 30 }}
                     />
@@ -153,7 +178,7 @@ const Home = () => {
                     />
                     <Text style={styles.textUserName}>UserName</Text>
                     <Text style={styles.textPrice}>Price</Text>
-                    <Text style={styles.textDescription}>The NFT & Defi farming initiative built on Ethereum (ETH) blockechain in OpenBid</Text>
+                    <Text style={styles.textDescription}>The NFT & Defi farming initiative built on Ethereum (ETH) blockechain in OpenBid</Text> */}
 
                 </View>
             </View>
@@ -164,5 +189,13 @@ const Home = () => {
     )
 };
 
+const mapStateToProps = (state) => {
+    return{
+    topCreators: state.transactionReducers.topCreators
+    }
+}
+const mapDispatchToProps = {
+    getTopCreators: transactionActions.getMostCreators
+}
 
-export default Home
+export default connect(mapStateToProps, mapDispatchToProps)(Home)

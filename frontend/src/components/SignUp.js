@@ -1,8 +1,8 @@
 import React, { useRef, useState } from 'react'
 import { toast } from 'react-toastify';
-import nftActions from '../redux/actions/nftActions'
+import userActions from '../redux/actions/userActions'
 import { connect } from 'react-redux'
-import {app} from '../fb'
+import { app } from '../fb'
 
 const SignUp = (props) => {
 
@@ -12,12 +12,12 @@ const SignUp = (props) => {
     const inputPassword = useRef()
     const inputPhoneNumber = useRef()
     const [url, setUrl] = useState("")
-
-    const  generateRandomString = (num) => {
-        const characters ='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    const [imgLoad, setImgLoad] = useState(false)
+    const generateRandomString = (num) => {
+        const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
         let result1 = ''
-        for(let i = 0; i < num; i++){
-            result1 += Math.random().toString(36).substring(0,num);       
+        for (let i = 0; i < num; i++) {
+            result1 += Math.random().toString(36).substring(0, num);
         }
 
         return result1;
@@ -32,9 +32,10 @@ const SignUp = (props) => {
         console.log("archivo cargado:", archivo.name)
         const enlaceUrl = await archivoPath.getDownloadURL()
         setUrl(enlaceUrl)
-
-    }   
-    console.log(url)
+        setTimeout(() => {
+            setImgLoad(true)
+        }, 3000)
+    }
 
     const handleSubmitInputs = async (e) => {
         e.preventDefault()
@@ -48,8 +49,8 @@ const SignUp = (props) => {
             phone: inputPhoneNumber.current.value
         }
 
-        const userResponse = await props.signup(user)
-        props.getNeftsByUser(userResponse.userId)
+        const userResponse = await props.addUser(user)
+        console.log(userResponse)
         userResponse.succes
             ?
             toast.success('Your acount succesfuly Sign up', {
@@ -97,7 +98,7 @@ const SignUp = (props) => {
 }
 
 const mapDispatchToProps = {
-    getNeftsByUser: nftActions.getNftsByUser
+    addUser: userActions.addUser
 }
 export default connect(null, mapDispatchToProps)(SignUp);
 

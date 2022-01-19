@@ -2,7 +2,14 @@ import React, { useEffect, useState } from "react";
 import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 import { connect } from "react-redux"
 import nftActions from '../../../redux/actions/nftActions'
-const PayPal = ({ total, cart, user, updateNft, offerNft, clearCartAll }) => {
+import transactionActions from '../../../redux/actions/transactionActions'
+import offerActions from '../../../redux/actions/offerActions'
+
+
+
+
+
+const PayPal = ({ total, cart, user, updateNft, active, mount, seller, addTransaction,subHandlder, updateOffer, clearCartAll }) => {
 
     const [orderID, setOrderID] = useState(false)
     const [ErrorMessage, setErrorMessage] = useState("");
@@ -16,9 +23,10 @@ const PayPal = ({ total, cart, user, updateNft, offerNft, clearCartAll }) => {
                 descript += `,${item.name}`
             })
 
-        } else if(cart.length === 1){
+        } else if (cart.length === 1 && cart) {
             descript = `${cart[0].name}`
         }
+
         PayPalCheckOut()
 
     }, [total])
@@ -33,9 +41,9 @@ const PayPal = ({ total, cart, user, updateNft, offerNft, clearCartAll }) => {
         return actions.order.create({
             purchase_units: [
                 {
-                    description: descript,
+                    description: 'Compraste',
                     amount: {
-                        value: total
+                        value: mount ? mount : total
                     }
                 }
             ]
@@ -51,6 +59,36 @@ const PayPal = ({ total, cart, user, updateNft, offerNft, clearCartAll }) => {
                 console.log(transaction.status)
                 alert('Transaction' + transaction.status + ':' + transaction.id)
                 setOrderID(transaction.id)
+                switch (active) {
+                    case 'shopping':
+                        if (cart.length > 1) {
+
+                            cart.forEach(item => {
+                                updateNft(item._id, { stock: item.stock - 1, users: [...item.users, user.userID] })
+                            })
+
+                        } else {
+                            updateNft(cart[0]._id, { stock: cart[0].stock - 1, users: [...cart[0].users, user.userID] })
+                        }
+                        break;
+                    case 'subscription':
+                        subHandlder()
+                        break;
+                    case 'offer':
+                        const transaction = {
+                            userBuyer: user.userID,
+                            userSeller: seller.userId,
+                            nftOffer: seller.offerId,
+                            mount: mount
+                        }
+                        addTransaction(transaction)
+                        updateOffer(seller.offerId, { public: false, user: user.userID })
+
+                        break;
+                    default:
+                        new Error('Invalid option')
+                }
+
                 if (cart.length > 1) {
                     cart.forEach(item => {
                         updateNft(item._id, { stock: item.stock - 1, users: [...item.users, user.userID] })
@@ -58,7 +96,7 @@ const PayPal = ({ total, cart, user, updateNft, offerNft, clearCartAll }) => {
                 } else {
                     updateNft(cart[0]._id, { stock: cart[0].stock - 1, users: [...cart[0].users, user.userID] })
                 }
-                if(transaction.status === "COMPLETED"){
+                if (transaction.status === "COMPLETED") {
                     clearCartAll && clearCartAll()
                 }
             })
@@ -98,6 +136,8 @@ const mapStateToProps = (state) => {
     }
 }
 const mapDispatchToProps = {
-    updateNft: nftActions.updateNft
+    updateNft: nftActions.updateNft,
+    updateOffer: offerActions.updateOffer,
+    addTransaction: transactionActions.addTransaction
 }
 export default connect(mapStateToProps, mapDispatchToProps)(PayPal)
