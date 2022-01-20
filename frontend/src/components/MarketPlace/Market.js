@@ -60,7 +60,7 @@ const Market = (props) => {
 
     return (
         <div className='contenedor-todo-market'>
-            <div style={{ height: "70px" }} ></div>
+            <div className="ocupador" style={{ height: "70px" }} ></div>
             <section className='marketplace-container'>
                 <div className={`filter-containter-total-market ${filterView ? "filter-view-activer-market-total-container" : null}`}>
                     <div className={`container-filter-market ${filterView ? "filter-view-activer-market" : null}`}>

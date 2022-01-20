@@ -7,7 +7,7 @@ import cartActions from "../redux/actions/cartActions";
 import { toast } from 'react-toastify';
 import { Link } from "react-router-dom"
 
-const CardNFT = ({ name, type, price, img, stock, clase, favs, id, favorite, userId, nft, favClass, addNftToCart, nfts, cart, store, publicos, propiedad, updateNft }) => {
+const CardNFT = ({ name, type, price, img, stock, clase, favs, id, favorite, userId, nft, favClass, addNftToCart, nfts, cart, store, publicos, propiedad, updateNft, user }) => {
 
   const [color, setColor] = useState("")
   const [backColor, setBackColor] = useState("")
@@ -95,8 +95,31 @@ const CardNFT = ({ name, type, price, img, stock, clase, favs, id, favorite, use
                       <span style={{ backgroundColor: `${backColor}` }}></span><span style={{ backgroundColor: `${backColor}` }}></span><span style={{ backgroundColor: `${backColor}` }}></span><span style={{ backgroundColor: `${backColor}` }}></span>
                     </button> :
                       <button className="button-compra-nft" style={{ color: `${color}`, borderColor: `${color}` }} onClick={() => {
-                        if (cart.some(element => element._id === id)) {
-                          toast.warning('NFT Already added to your cart', {
+                        if(user !== ""){
+                          if (cart.some(element => element._id === id)) {
+                            toast.warning('NFT Already added to your cart', {
+                              position: "top-right",
+                              autoClose: 1500,
+                              hideProgressBar: false,
+                              closeOnClick: true,
+                              pauseOnHover: true,
+                              draggable: true,
+                              progress: undefined,
+                            })
+                          } else {
+                            addNftToCart(id, nfts)
+                            toast.info('NFT add in your cart', {
+                              position: "top-right",
+                              autoClose: 1500,
+                              hideProgressBar: false,
+                              closeOnClick: true,
+                              pauseOnHover: true,
+                              draggable: true,
+                              progress: undefined,
+                            })
+                          }
+                        }else{
+                          toast.warning('Please login To buy NFT', {
                             position: "top-right",
                             autoClose: 1500,
                             hideProgressBar: false,
@@ -104,19 +127,8 @@ const CardNFT = ({ name, type, price, img, stock, clase, favs, id, favorite, use
                             pauseOnHover: true,
                             draggable: true,
                             progress: undefined,
-                          })
-                        } else {
-                          addNftToCart(id, nfts)
-                          toast.info('NFT add in your cart', {
-                            position: "top-right",
-                            autoClose: 1500,
-                            hideProgressBar: false,
-                            closeOnClick: true,
-                            pauseOnHover: true,
-                            draggable: true,
-                            progress: undefined,
-                          })
-                        }
+                        })
+                      }
                       }}>
                         Add to Cart
                         <span style={{ backgroundColor: `${backColor}` }}></span><span style={{ backgroundColor: `${backColor}` }}></span><span style={{ backgroundColor: `${backColor}` }}></span><span style={{ backgroundColor: `${backColor}` }}></span>
@@ -137,7 +149,8 @@ const CardNFT = ({ name, type, price, img, stock, clase, favs, id, favorite, use
 const mapStateToProps = (state) => {
   return {
     nfts: state.nftReducers.nfts,
-    cart: state.cartReducers.cart
+    cart: state.cartReducers.cart,
+    user : state.userReducers.user
   }
 }
 const mapDispatchToProps = {
