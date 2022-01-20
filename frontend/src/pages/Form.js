@@ -97,7 +97,7 @@ const Form = (props) => {
                         <ul>
                             <li>
                                 <GoogleLogin
-                                    clientId="236469815759-52opakok2rekrcgq8dd7h9su8c4gfi1m.apps.googleusercontent.com"
+                                    clientId="236469815759-mv17kco0pfguvbkulm48aa2u6hnf5amq.apps.googleusercontent.com"
                                     render={renderProps => (
                                         <button className="google" onClick={renderProps.onClick} disabled={renderProps.disabled}>
                                             <span></span>
