@@ -19,7 +19,7 @@ function testing() {
         webDriver.manage().window().maximize()
         it('Verificacion de visualizacion de NFTs pendientes - Debe encontrar un Nft, cuyo estado es "pendiente"', async () => {
 
-            await webDriver.get('http://localhost:3000/SignIn')
+            await webDriver.get('https://proyectzzzz.netlify.app/SignIn')
             await webDriver.sleep(2000)
             await webDriver.findElement(By.name('email')).sendKeys(credenciales.email)
             await webDriver.sleep(2000)
@@ -27,12 +27,12 @@ function testing() {
             await webDriver.sleep(2000)
             await webDriver.findElement(By.id('submit')).click()
             await webDriver.sleep(2000)
-            await webDriver.get('http://localhost:3000/Profile')
+            await webDriver.get('https://proyectzzzz.netlify.app/Profile')
             await webDriver.sleep(4000)
             await webDriver.findElement(By.css('#root > div.total-profile-container > div.nav-profile-col > svg:nth-child(2)')).click()
             await webDriver.sleep(2000)
             const texto = await webDriver.findElement(By.css("#root > div.total-profile-container > div.profile-render-constant > section > article:nth-child(3) > div > div.nfts-container > div > div > h2:nth-child(1)")).getText()
-            assert.strictEqual(texto, "Selenium Test")
+            assert.strictEqual(texto, "NFT prime")
             await webDriver.sleep(2000)
             await webDriver.findElement(By.css("#root > div.total-profile-container > div.nav-profile-col > svg:nth-child(1)")).click()
             await webDriver.sleep(2000)
@@ -42,7 +42,7 @@ function testing() {
         })
         it('Verificacion de NFT de typo game - Debe encontrar un mensaje haciendo referencia a la falta de NFT de tipo "Game"', async () => {
 
-            await webDriver.get('http://localhost:3000/SignIn')
+            await webDriver.get('https://proyectzzzz.netlify.app/SignIn')
             await webDriver.sleep(2000)
             await webDriver.findElement(By.name('email')).sendKeys(credenciales.email)
             await webDriver.sleep(2000)
@@ -50,12 +50,12 @@ function testing() {
             await webDriver.sleep(2000)
             await webDriver.findElement(By.id('submit')).click()
             await webDriver.sleep(2000)
-            await webDriver.get('http://localhost:3000/game')
+            await webDriver.get('https://proyectzzzz.netlify.app/game')
             await webDriver.sleep(2000)
             const texto = await webDriver.findElement(By.css('#root > div.main-content > div > h2')).getText()
             assert.strictEqual(texto, "You must have a gamer nft for feel the power")
 
-            await webDriver.get('http://localhost:3000/Profile')
+            await webDriver.get('https://proyectzzzz.netlify.app/Profile')
             await webDriver.sleep(2000)
             await webDriver.findElement(By.css("#root > div.total-profile-container > div.nav-profile-col > svg:nth-child(1)")).click()
             await webDriver.sleep(2000)
@@ -64,7 +64,7 @@ function testing() {
         })
         it('Verificacion en la visualizacion de usuarios - Debe encontrar el numero exacto al numero de usuarios registrados en el sitio web', async () => {
 
-            await webDriver.get('http://localhost:3000/SignIn')
+            await webDriver.get('https://proyectzzzz.netlify.app/SignIn')
             await webDriver.sleep(2000)
             await webDriver.findElement(By.name('email')).sendKeys(credenciales.email)
             await webDriver.sleep(2000)
@@ -72,12 +72,12 @@ function testing() {
             await webDriver.sleep(2000)
             await webDriver.findElement(By.id('submit')).click()
             await webDriver.sleep(2000)
-            await webDriver.get('http://localhost:3000/Profile')
+            await webDriver.get('https://proyectzzzz.netlify.app/Profile')
             await webDriver.sleep(2000)
             await webDriver.findElement(By.css("#root > div.total-profile-container > div.nav-profile-col > svg:nth-child(3)")).click()
             await webDriver.sleep(2000)
             const number = await webDriver.findElement(By.css('#root > div.total-profile-container > div.profile-render-constant > section > article > div.dashboard-resume > div.card-total-users > div > h2.card-amount')).getText()
-            assert.strictEqual(Number(number), 12)
+            assert.strictEqual(Number(number), 23)
             webDriver.quit()
         })
 

@@ -172,7 +172,7 @@ const Game = (props) => {
                         </div>
                         <div className='game-intro-right'>
                             {props.rdxNftsByUser === '' && <div className="nfts-loading-container"><div className="nfts-loading" style={{ backgroundImage: `url(/assets/loading_gif.gif)` }} ><h2>Calling your NFT Army, please wait...</h2> </div></div>}
-                            {props.rdxNftsByUser && ((props.rdxNftsByUser.length >= 0) && time && props.rdxNftsByUser.findIndex(element => element.type === 'Gamer') === -1) && <Carousel choice={handlerRandomPick} nfts={props.rdxNfts.filter(boot => boot.type === "Gamer")} />}
+                            {props.rdxNftsByUser && ((props.rdxNftsByUser.length >= 0) && time && props.rdxNftsByUser.findIndex(element => element.type === 'Gamer') === -1) && <><h2 style={{ textAlign: 'center', color: 'white' }}>You must have a Gamer NFt for play</h2> <Carousel choice={handlerRandomPick} nfts={props.rdxNfts.filter(boot => boot.type === "Gamer")} /></>}
                             {props.rdxNftsByUser && (props.rdxNftsByUser.length > 0 && props.rdxNftsByUser.findIndex(element => element.type === 'Gamer') >= 0) && <Carousel choice={handlerChoice} nfts={props.rdxNftsByUser} />}
                         </div>
                     </div>

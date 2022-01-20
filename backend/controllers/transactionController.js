@@ -71,7 +71,6 @@ const transactionController = {
                 },
             ],
             function (err, result) {
-                // console.log(result[0].date.getDate());
                 const proccecedData = result.map(element => {
                     let month = element.date.getMonth() + 1
                     let obj = {

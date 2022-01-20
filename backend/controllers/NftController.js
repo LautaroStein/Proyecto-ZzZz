@@ -47,7 +47,6 @@ const nftControllers = {
     let nft = req.body;
     let actualizado;
     try {
-      console.log(req.user.suscription)
       if (req.user.role === 'admin' || req.user.role === 'moderator' || req.user.suscription) {
         actualizado = await Nft.findOneAndUpdate({ _id: id }, nft, { new: true });
         res.json({ actualizado: actualizado._id })
