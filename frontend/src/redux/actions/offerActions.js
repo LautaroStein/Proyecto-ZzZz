@@ -63,7 +63,6 @@ const nftActions = {
                 const offer = await axios.put(`https://proyectozzzz.herokuapp.com/api/offer/${offerId}`, paramOffer, {
                     headers: { 'Authorization': 'Bearer ' + token }
                 })
-                console.log(offer)
                 if (offer.data.offerUpdatedId) {
                     dispatch({ type: 'UPDATE_OFFER', payload: { offerId: offer.data.offerUpdatedId, body: paramOffer } })
                     return { success: true }

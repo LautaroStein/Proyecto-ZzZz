@@ -45,7 +45,6 @@ const Admin = (props) => {
         setEditNft(nft)
     }
     const handlerAscend = (userId) => {
-        console.log(userId);
         props.updateUser(userId, { role: 'moderator' })
     }
     const handlerDescend = (userId) => {
@@ -244,14 +243,14 @@ const Admin = (props) => {
                                 </tr>
                             </thead>
                             <tbody>
-                                {props.users && props.users.length > 0 && props.users.map(nft => 
-                                    nft.role === 'user' && 
+                                {props.users && props.users.length > 0 && props.users.map(nft =>
+                                    nft.role === 'user' &&
                                     <tr key={nft._id} onMouseEnter={() => setOnCardHover({ bool: true, id: nft._id })} onMouseLeave={() => setOnCardHover({ bool: false, id: nft._id })}>
                                         <td>{nft.name}</td>
                                         <td>{nft.role}</td>
                                         <td><button onClick={() => handlerAscend(nft._id)}>Ascend</button></td>
                                     </tr>
-                                    )} 
+                                )}
                             </tbody>
                         </table>
                         {/* {props.users && props.users.length > 0 && props.users.map(nft =>
@@ -274,7 +273,7 @@ const Admin = (props) => {
                         <h2>Moderators Preview</h2>
                     </div>
                     <div className='nfts-container'>
-                    <table>
+                        <table>
                             <thead>
                                 <tr>
                                     <th>Name</th>
@@ -284,13 +283,13 @@ const Admin = (props) => {
                             </thead>
                             <tbody>
                                 {(props.users && props.users.length > 0) && props.users.map(nft =>
-                                    nft.role === 'moderator' && 
+                                    nft.role === 'moderator' &&
                                     <tr key={nft._id} onMouseEnter={() => setOnCardHover({ bool: true, id: nft._id })} onMouseLeave={() => setOnCardHover({ bool: false, id: nft._id })}>
                                         <td>{nft.name}</td>
                                         <td>{nft.role}</td>
                                         <td><button onClick={() => handlerDescend(nft._id)}>Descend</button></td>
                                     </tr>
-                                    )} 
+                                )}
                             </tbody>
                         </table>
                         {/* {(props.users && props.users.length > 0) && props.users.map(nft =>

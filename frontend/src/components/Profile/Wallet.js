@@ -8,7 +8,6 @@ import OfferCard from "../MarketPlace/OfferCard"
 
 const Wallet = ({ user, getNft, userNfts, userOffers, getOffersByUser, updateNft }) => {
 
-    console.log(user, userNfts, userOffers)
 
     useEffect(() => {
         getNft(user.userID)
@@ -60,9 +59,9 @@ const Wallet = ({ user, getNft, userNfts, userOffers, getOffersByUser, updateNft
 
 const mapStateToProps = (state) => {
     return {
-        user : state.userReducers.user,
-        userNfts : state.nftReducers.userNfts,
-        userOffers : state.offerReducers.userOffers
+        user: state.userReducers.user,
+        userNfts: state.nftReducers.userNfts,
+        userOffers: state.offerReducers.userOffers
     }
 }
 

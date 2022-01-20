@@ -170,7 +170,6 @@ const Game = (props) => {
                                 <p>PLAY WITH OVER 15 MILLION GAMERS IN LEAGUES TOURNAMENTS AND LADDERS</p>
                             </div>
                         </div>
-                        {props.rdxNftsByUser && console.log(props.rdxNftsByUser.findIndex(element => element.type == 'Gamer'))}
                         <div className='game-intro-right'>
                             {props.rdxNftsByUser === '' && <div className="nfts-loading-container"><div className="nfts-loading" style={{ backgroundImage: `url(/assets/loading_gif.gif)` }} ><h2>Calling your NFT Army, please wait...</h2> </div></div>}
                             {props.rdxNftsByUser && ((props.rdxNftsByUser.length >= 0) && time && props.rdxNftsByUser.findIndex(element => element.type === 'Gamer') === -1) && <Carousel choice={handlerRandomPick} nfts={props.rdxNfts.filter(boot => boot.type === "Gamer")} />}

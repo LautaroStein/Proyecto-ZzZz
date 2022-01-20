@@ -41,13 +41,11 @@ export default function App() {
         };
 
 
-        console.log(first.current);
         apiCall();
     }, []);
 
     useEffect(() => {
         if (!first.current) {
-            console.log(first.current);
             return;
         }
 
@@ -80,8 +78,6 @@ export default function App() {
                 data.push(obj)
             })
 
-            console.log(data);
-            console.log('entro');
             setpastData(data);
         };
 

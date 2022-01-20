@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React, { useRef, useState, useEffect } from 'react'
 import { connect } from 'react-redux'
 import offerActions from '../../redux/actions/offerActions'
 import userActions from '../../redux/actions/userActions'
@@ -20,8 +20,12 @@ const CreateOffer = (props) => {
     const img = useRef(null)
     const price = useRef(null)
 
+    useEffect(() => {
 
-    props.user && props.getOffersByUser(props.user.userID)
+
+        props.user && props.getOffersByUser(props.user.userID)
+
+    }, [props.offers])
 
     const handlerSetCreate = () => {
         setEdit(false)
@@ -35,9 +39,7 @@ const CreateOffer = (props) => {
 
 
     }
-    const handlerDelete = (nftId) => {
-        props.deleteNft(nftId)
-    }
+
     const handlerEdit = async (nftId) => {
 
         const nft = await props.getNft(nftId)
@@ -172,7 +174,6 @@ const CreateOffer = (props) => {
                                 </div>
                                 {(onCardHover.bool && onCardHover.id === nft._id) &&
                                     <div className='management-actions'>
-                                        <button onClick={() => handlerDelete(nft._id)}>DELETE</button>
                                         <button onClick={() => {
                                             handlerEdit(nft._id); setEdit(true); setFeatures(true);
                                         }}>EDIT</button>
@@ -183,6 +184,7 @@ const CreateOffer = (props) => {
                     </div>
                 </div>
                 <aside className="right-side-management">
+                    {console.log(props.userOffers)}
                     <div className='edit-form'>
                         <h2><span>{edit ? 'Edit' : 'Create'}</span> Offer Form</h2>
                         <div className='nft-form'>

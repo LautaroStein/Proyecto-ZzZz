@@ -49,7 +49,6 @@ const Market = (props) => {
             print = filteredOffers.filter(offer => selectedValues.includes(offer.type) && selected.value === offer.clase && offer.name.toLowerCase().trim().startsWith(nname.current.value.toLowerCase().trim()))
         } else if (selectedValues.length > 0 && !(selected && selected.text !== 'All') && nname.current.value !== '') {
             print = filteredOffers.filter(offer => selectedValues.includes(offer.type) && offer.name.toLowerCase().trim().startsWith(nname.current.value.toLowerCase().trim()))
-            console.log(nname.current.value);
         } else if (selectedValues.length == 0 && (selected && selected.text !== 'All') && nname.current.value !== '') {
             print = filteredOffers.filter(offer => selected.value === offer.clase && offer.name.toLowerCase().trim().startsWith(nname.current.value.toLowerCase().trim()))
         } else if (selectedValues.length == 0 && !(selected && selected.text !== 'All') && nname.current.value !== '') {

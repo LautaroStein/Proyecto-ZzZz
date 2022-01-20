@@ -4,7 +4,7 @@ import { connect } from "react-redux"
 import nftActions from '../../../redux/actions/nftActions'
 import transactionActions from '../../../redux/actions/transactionActions'
 import offerActions from '../../../redux/actions/offerActions'
-
+import { toast } from 'react-toastify'
 
 
 
@@ -54,14 +54,19 @@ const PayPal = ({ total, cart, user, updateNft, active, mount, seller, addTransa
         return actions.order.capture()
             .then(function (details) {
                 const { payer } = details;
-                console.log('Capture result', details, JSON.stringify(details, null, 2))
                 var transaction = details.purchase_units[0].payments.captures[0];
-                console.log(transaction.status)
-                alert('Transaction' + transaction.status + ':' + transaction.id)
                 setOrderID(transaction.id)
+                toast.success('Purchase successful', {
+                    position: "top-right",
+                    autoClose: 1500,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                })
                 switch (active) {
                     case 'shopping':
-                        console.log(user.sub);
                         if (cart.length > 1) {
 
                             cart.forEach(item => {
@@ -69,7 +74,6 @@ const PayPal = ({ total, cart, user, updateNft, active, mount, seller, addTransa
                             })
 
                         } else {
-                            console.log(cart[0]._id, cart[0].stock, cart[0].users);
                             updateNft(cart[0]._id, { stock: cart[0].stock - 1, users: [...cart[0].users, user.userID] })
                         }
                         break;
@@ -105,7 +109,15 @@ const PayPal = ({ total, cart, user, updateNft, active, mount, seller, addTransa
         // se actualiza el offerNFT
     }
     const onCancel = (data) => {
-        console.log('you have cancelled the payment', data)
+        toast.warning('Purchase canceled', {
+            position: "top-right",
+            autoClose: 1500,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+        })
     }
     const onError = (data, actions) => {
         setErrorMessage('An Error ocurred with your payment')

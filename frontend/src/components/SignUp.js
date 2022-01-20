@@ -29,7 +29,6 @@ const SignUp = (props) => {
         const storageRef = app.storage().ref()
         const archivoPath = storageRef.child(generateRandomString(10) + archivo.name)
         await archivoPath.put(archivo)
-        console.log("archivo cargado:", archivo.name)
         const enlaceUrl = await archivoPath.getDownloadURL()
         setUrl(enlaceUrl)
         setTimeout(() => {
@@ -50,7 +49,6 @@ const SignUp = (props) => {
         }
 
         const userResponse = await props.addUser(user)
-        console.log(userResponse)
         userResponse.succes
             ?
             toast.success('Your acount succesfuly Sign up', {
