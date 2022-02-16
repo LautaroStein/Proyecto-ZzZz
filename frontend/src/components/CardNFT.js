@@ -61,6 +61,70 @@ const CardNFT = ({ name, type, price, img, stock, clase, favs, id, favorite, use
       nft()
     }
   }
+<<<<<<< HEAD
+    return (
+        <div className={`contenedor-card-nft ${favClass}`} style={{border: `6px solid ${color}`}} >
+            <div className="container-nft">
+                <div className="ochenta-nft">
+                    <img src={img} alt={name}/>
+                    <h2>{name}</h2>
+                    <div className={`contenedor-total-clasificacion ${store ? null : "no-estas-en-store"}`}>
+                        <div className="clasificacion-nft">
+                            <p style={{color:`${color}`, fontWeight:"900"}}>Class: {clase}</p>
+                            <p>Type: {type}</p>
+                        </div>
+                            {store ? 
+                            <>
+                              <div className="contenedor-price-nft">
+                                  <div>
+                                      <p style={{color:"rgb(141, 141, 141)"}}>Price</p>
+                                      <p>{price} ETH</p>
+                                  </div>
+                                  <div>
+                                    {
+                                      favorite && favorite.some(fav => fav === userId) 
+                                      ?
+                                      <BsFillBookmarkHeartFill onClick={()=> favsAndDisFavs()} style={{color:`${color}`, fontSize:"30px", cursor:"pointer"}}/>
+                                      :
+                                      <BsFillBookmarkHeartFill onClick={()=> favsAndDisFavs()} style={{fontSize:"30px", cursor:"pointer"}}/>
+                                    }
+                                  </div>
+                                  <div className="contenedor-buttons-nft">
+                                      {propiedad.some(e => e === userId) ? <Link to="/Profile"className="button-compra-nft" style={{color: `${color}`,borderColor:`${color}`, textDecoration: "none"}}>Go to NFT</Link> :
+                                        <button className="button-compra-nft" style={{color: `${color}`,borderColor:`${color}`}} onClick={()=>{if(cart.some(element => element._id === id)){
+                                        toast.warning('NFT Already added to your cart', {
+                                          position: "top-right",
+                                          autoClose: 1500,
+                                          hideProgressBar: false,
+                                          closeOnClick: true,
+                                          pauseOnHover: true,
+                                          draggable: true,
+                                          progress: undefined,
+                                        }) 
+                                      }else{
+                                        addNftToCart(id, nfts)
+                                        toast.info('NFT added to your cart', {
+                                          position: "top-right",
+                                          autoClose: 1500,
+                                          hideProgressBar: false,
+                                          closeOnClick: true,
+                                          pauseOnHover: true,
+                                          draggable: true,
+                                          progress: undefined,})
+                                        }}}>
+                                        Add to Cart
+                                        <span style={{backgroundColor:`${backColor}`}}></span><span style={{backgroundColor:`${backColor}`}}></span><span style={{backgroundColor:`${backColor}`}}></span><span style={{backgroundColor:`${backColor}`}}></span>
+                                      </button>}
+                                  </div>
+                              </div>
+                            </>
+                            : null}
+                          {publicos !== "no" ? publicos ? <button onClick={() => HandlerUnPublish(id)}className="botton-public-nft-action">UnPublish</button> : <button onClick={() => HandlerPublic(id)} className="botton-public-nft-action">Public</button> : null
+
+                          }
+                    </div>
+                </div>
+=======
   return (
     <div className={`contenedor-card-nft ${favClass}`} style={{ border: `6px solid ${color}` }} >
       <div className="container-nft">
@@ -71,6 +135,7 @@ const CardNFT = ({ name, type, price, img, stock, clase, favs, id, favorite, use
             <div className="clasificacion-nft">
               <p style={{ color: `${color}`, fontWeight: "900" }}>Class: {clase}</p>
               <p>Type: {type}</p>
+>>>>>>> 56500953d8cac7f68ded5679fc59e0ea1ad042eb
             </div>
             {store ?
               <>

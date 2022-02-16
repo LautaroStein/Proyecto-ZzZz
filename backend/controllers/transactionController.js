@@ -24,26 +24,12 @@ const transactionController = {
     getMaxCreator: async (req, res) => {
         Transaction.aggregate(
             [
-
-                { $match: {} },
-
                 {
-                    $group: {
-                        "_id": "$userSeller",
+                    "$group": {
+                        "_id": {
+                            "seller": "$userSeller"
+                        },
                         "mount": { $sum: "$mount" }
-                    },
-                },
-                {
-                    $lookup: {
-                        from: 'users',  // referencia al modelo users
-                        localField: '_id', // toma el local de la consulta definido en $group ("_id")
-                        foreignField: '_id', // toma el id forastero que viene del modelo users 
-                        as: 'transaction' // nombre con el que se guarda la query
-                    }
-                },
-                {
-                    $sort: {
-                        mount: -1
                     }
                 }
             ],
@@ -52,35 +38,47 @@ const transactionController = {
             }
         );
     },
+    getOneTransaction: async (req, res) => {
+        let offer;
+        const id = req.params.id;
+        try {
+            offer = await Transaction.findOne({ _id: id }).populate('user')
+            res.json({ response: offer, success: true });
+        } catch (error) {
+
+            res.json({ success: false, respuesta: "Oops! error" })
+        }
+    },
     getRecents: async (req, res) => {
         Transaction.aggregate(
             [
-                { $match: {} },
                 {
-                    $sort: {
-                        _id: -1
-                    }
-                },
-                {
-                    $lookup: {
-                        from: 'nftoffers',
-                        localField: 'nftOffer',
-                        foreignField: '_id',
-                        as: 'transaction'
-                    }
-                },
+                    "$group": {
+                        "_id": {
+
+                            date: {
+                                "year": { "$year": "$date" },
+                                "month": { "$month": "$date" },
+                                "day": { "$dayOfMonth": "$date" }
+                            },
+                            mount: "$mount",
+                            nft: "$nftOffer",
+                        },
+
+                        $lookup: {
+                            from: "nft",
+                            localField: "nftoffer",
+                            foreignField: "_id",
+                            as: "nftOffer_doc"
+                        }
+
+                    },
+
+                }
             ],
             function (err, result) {
-                // console.log(result[0].date.getDate());
-                const proccecedData = result.map(element => {
-                    let month = element.date.getMonth() + 1
-                    let obj = {
-                        ...element,
-                        date: `${element.date.getDate()}/${month < 10 ? `0${month}` : month}`
-                    }
-                    return obj;
-                })
-                res.json({ success: true, response: proccecedData })
+                console.log(result);
+                res.json({ success: true, response: result })
             }
         );
     },

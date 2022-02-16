@@ -20,8 +20,8 @@ const Navigations = withRouter(Navigation)
 const Forms = withRouter(Form)
 
 function App({ user, rdxAuth, rdxLogin, getUserNfts, getNfts }) {
+  
   useEffect(() => {
-    // 
     async function fetchData() {
       const user = await rdxAuth();
       getUserNfts(user.response._id)
@@ -51,6 +51,7 @@ function App({ user, rdxAuth, rdxLogin, getUserNfts, getNfts }) {
         <Route path="/SignIn" element={user === '' ? <Forms /> : <Navigate replace to="/" />} />
         <Route path="/SignUp" element={user === '' ? <Forms /> : <Navigate replace to="/" />} />
         <Route path="*" element={<Home />} />
+        <Route path="/Store" element={<Store/>} />
       </Routes>
       <ToastContainer />
     </BrowserRouter>

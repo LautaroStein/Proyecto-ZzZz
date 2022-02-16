@@ -523,6 +523,7 @@ ul li button:hover:nth-child(4) {
   font-size: 1rem;
 }
 .navigation {
+  top:0;
   position: fixed;
   top: 0;
   height: 70px;
@@ -2721,8 +2722,9 @@ img {
   cursor: pointer;
   border-radius: 10px;
 }
-.paypal-button-store {
-}
+/* .paypal-button-store{
+  
+} */
 
 /* Finish Shopping */
 /* USER TAB*/

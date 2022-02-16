@@ -105,6 +105,7 @@ const controllerUser = {
             res.json({ success: false, response: null, error: error })
         }
     },
+    
     userLoged: async (req, res) => {
         const { email, password } = req.body
         if (email == '' || password == '') {

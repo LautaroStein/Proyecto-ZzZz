@@ -36,6 +36,9 @@ Router.route('/auth/signUp')
 Router.route('/auth/signIn')
     .post(userLoged)
 
+// Router.route('/users/:id')
+//     .get(getAllUsers)
+
 Router.route('/nfts/user/:id')
     .get(passport.authenticate('jwt', { session: false }), getNftsByUser)
 
